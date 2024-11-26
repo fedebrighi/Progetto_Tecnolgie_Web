@@ -5,8 +5,10 @@ body {
     padding: 0;
     background-color: #222;
     color: #f0f0f0;
+    text-align: center; /* Centra il testo globalmente */
   }
 
+  /* Header */
   header {
     background-color: #333;
     color: #f0a834;
@@ -14,6 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center; /* Centra i testi dell'intestazione */
   }
 
   header .logo {
@@ -27,20 +30,28 @@ body {
     margin-right: 10px;
   }
 
+  header nav {
+    display: flex;
+    gap: 15px; /* Spaziatura uniforme tra i link */
+  }
+
   header nav a {
     color: #f0a834;
-    margin: 0 10px;
     text-decoration: none;
+    text-align: center;
   }
 
   header nav a:hover {
     text-decoration: underline;
   }
 
+  /* Main */
   main {
     padding: 20px;
+    text-align: center; /* Centra il contenuto della sezione principale */
   }
 
+  /* Carrello */
   .cart {
     max-width: 800px;
     margin: 0 auto;
@@ -48,26 +59,33 @@ body {
 
   .cart-item {
     display: flex;
+    flex-direction: column; /* Disposizione verticale per centrare il contenuto */
     align-items: center;
     background-color: #444;
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 8px;
+    text-align: center; /* Centra il testo all'interno di ciascun articolo */
   }
 
   .cart-item img {
     width: 80px;
     height: auto;
-    margin-right: 20px;
+    margin-bottom: 10px;
   }
 
   .item-info {
-    flex-grow: 1;
+    margin-bottom: 10px;
   }
 
   .item-info h2 {
     margin: 0;
     font-size: 18px;
+    text-align: center; /* Centra i titoli */
+  }
+
+  .item-info p {
+    text-align: center; /* Centra i paragrafi */
   }
 
   .item-info .price {
@@ -77,10 +95,13 @@ body {
 
   .item-controls {
     text-align: center;
+    display: flex;
+    flex-direction: column; /* Disposizione verticale dei controlli */
+    align-items: center;
   }
 
   .item-controls input {
-    width: 40px;
+    width: 50px;
     text-align: center;
     margin-bottom: 10px;
   }
@@ -98,9 +119,12 @@ body {
     background-color: #c04949;
   }
 
+  /* Azioni del carrello */
   .cart-actions {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Disposizione verticale dei pulsanti */
+    gap: 10px; /* Spaziatura tra i pulsanti */
+    align-items: center;
   }
 
   .cart-actions .continue-btn,
@@ -111,6 +135,7 @@ body {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
+    text-align: center;
   }
 
   .cart-actions .checkout-btn {
@@ -123,17 +148,19 @@ body {
     opacity: 0.9;
   }
 
+  /* Footer */
   footer {
     background-color: #333;
     color: #f0a834;
     padding: 10px 20px;
-    text-align: center;
+    text-align: center; /* Centra i testi nel footer */
   }
 
   footer a {
     color: #f0a834;
     margin: 0 10px;
     text-decoration: none;
+    text-align: center;
   }
 
   footer a:hover {
