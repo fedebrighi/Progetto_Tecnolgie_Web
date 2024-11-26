@@ -1,3 +1,7 @@
 body{
   color: #FFCC99;
 }
+
+nav a, footer, footer a{
+  color: #FFCC99;
+}
