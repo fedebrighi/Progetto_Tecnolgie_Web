@@ -2,6 +2,6 @@ body{
   color: #FFCC99;
 }
 
-nav a, footer, footer a{
+nav a, .navbar-brand, footer, footer a{
   color: #FFCC99;
 }
