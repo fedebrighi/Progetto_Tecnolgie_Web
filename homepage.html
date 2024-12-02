@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHPint - Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PHPint - Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
 
-<body class="bg-dark">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2">PHPint
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="catalogo_prodotti.html">Prodotti</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Carrello</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Consigli per gli abbinamenti</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <body class="bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+            <div class="container">
+                <a class="navbar-brand fs-1 font-monospace" href="homepage.html">
+                    <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2" />PHPint
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalogo_prodotti.html">Prodotti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="carrello.html">Carrello</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Consigli per gli abbinamenti</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-  <!-- Main Content -->
-  <div class="container text-center py-5">
-    <h1 class="mb-4">PHPint</h1>
-    <a href="prodotto_in_dettaglio.html"><img src="img/emilia.png" alt="Emilia" class="img-fluid mb-4" style="max-width: 300px;"></a>
-    <p class="mb-4">{WHEN CODING HITS HARD}</p>
-    <div class="d-grid gap-3">
-      <button class="btn btn-light" onclick="window.location.href='catalogo_prodotti.html';">VAI AL CATALOGO</button>
-      <button class="btn btn-light">VAI AI CONSIGLI</button>
-      <button class="btn btn-light">VAI AL CARRELLO</button>
-    </div>
-  </div>
+        <div class="container text-center py-5">
+            <h1 class="mb-4 fs-1 font-monospace">PHPint</h1>
+            <a href="prodotto_in_dettaglio.html"><img src="img/emilia.png" alt="Emilia" class="img-fluid mb-4" style="max-width: 300px;" /></a>
+            <p class="mb-4 fs-3 font-monospace">{WHEN CODING HITS HARD}</p>
+            <div class="d-grid gap-3">
+                <button class="btn btn-light btn-lg" onclick="window.location.href='catalogo_prodotti.html';">VAI AL CATALOGO</button>
+                <button class="btn btn-light btn-lg">VAI AI CONSIGLI</button>
+                <button class="btn btn-light btn-lg" onclick="window.location.href='carrello.html';">VAI AL CARRELLO</button>
+            </div>
+        </div>
+        <footer class="bg-dark py-4">
+          <div class="container text-center">
+            <a href="#" class="d-block mb-2">Contatti</a>
+            <a href="#" class="d-block mb-2">Chi siamo?</a>
+            <a href="#">Specifiche aziendali</a>
+          </div>
+        </footer>
 
-  <!-- Footer -->
-  <footer class="bg-dark py-4">
-    <div class="container text-center">
-      <a href="#" class="d-block mb-2">Contatti</a>
-      <a href="#" class="d-block mb-2">Chi siamo?</a>
-      <a href="#">Specifiche aziendali</a>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 
 </html>

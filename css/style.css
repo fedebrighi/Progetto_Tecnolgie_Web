@@ -5,3 +5,7 @@ body{
 nav a, .navbar-brand, footer, footer a{
   color: #FFCC99;
 }
+
+body p {
+  color: #FFCC99;
+}
