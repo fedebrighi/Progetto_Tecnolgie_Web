@@ -1,128 +1,119 @@
 <!DOCTYPE html>
 <html lang="it">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHPint - Checkout</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PHPint - Checkout</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
 
-<body class="bg-dark">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2">PHPint
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Prodotti</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Carrello</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Consigli per gli abbinamenti</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <body class="bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+            <div class="container">
+                <a class="navbar-brand fs-1 font-monospace" href="homepage.html">
+                    <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2" />PHPint
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalogo_prodotti.html">Prodotti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="carrello.html">Carrello</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Consigli per gli abbinamenti</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container py-4">
+            <h2 class="text-center mb-4">Informazioni di spedizione</h2>
+            <form method="post">
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-12">Dati personali</legend>
+                    <div class="col-12">
+                        <label for="indirizzo" class="form-label">Indirizzo:</label>
+                        <input type="text" class="form-control max-width" id="indirizzo" placeholder="Inserisci il tuo indirizzo" />
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-8">
+                            <label for="citta" class="form-label">Città:</label>
+                            <input type="text" class="form-control max-width" id="citta" placeholder="Inserisci la città" />
+                        </div>
+                        <div class="col-4">
+                            <label for="cap" class="form-label">CAP:</label>
+                            <input type="text" class="form-control max-width" id="cap" placeholder="CAP" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label for="cellulare" class="form-label">Cellulare:</label>
+                            <input type="tel" class="form-control max-width" id="cellulare" placeholder="Inserisci il tuo numero di cellulare" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label">Tipo di spedizione:</label>
+                              <div class="form-check">
+                                  <input type="radio" class="form-check-input" name="spedizione" id="spedizioneStandard" checked />
+                                  <label for="spedizioneStandard" class="form-check-label">Standard</label>
+                              </div>
+                              <div class="form-check">
+                                  <input type="radio" class="form-check-input" name="spedizione" id="spedizioneRapida" />
+                                  <label for="spedizioneRapida" class="form-check-label">Rapida</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="noteCorriere" class="form-label">Informazioni per il corriere:</label>
+                            <textarea class="form-control max-width" id="noteCorriere" rows="3" placeholder="Note per la consegna"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-12">Scegli il metodo di pagamento</legend>
+                      <div class="col-12">
+                          <div class="form-check">
+                              <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta" checked />
+                              <label for="pagamentoCarta" class="form-check-label">Carta di credito</label>
+                          </div>
+                          <div class="form-check">
+                              <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay" />
+                              <label for="pagamentoApplePay" class="form-check-label">ApplePay</label>
+                          </div>
+                          <div class="form-check">
+                              <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay" />
+                              <label for="pagamentoGooglePay" class="form-check-label">GooglePay</label>
+                          </div>
+                          <div class="form-check">
+                              <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPaypal" />
+                              <label for="pagamentoPaypal" class="form-check-label">PayPal</label>
+                          </div>
+                          <div class="form-check">
+                              <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno" />
+                              <label for="pagamentoContrassegno" class="form-check-label">Pagamento alla consegna</label>
+                          </div>
+                      </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-light">Procedi al pagamento</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <footer class="bg-dark py-4">
+            <div class="container text-left">
+                <a href="#" class="d-block mb-2">Contatti</a>
+                <a href="#" class="d-block mb-2">Chi siamo?</a>
+                <a href="#">Specifiche aziendali</a>
+            </div>
+        </footer>
 
- <!-- Main Content -->
-<div class="container py-4">
-  <h2 class="text-center mb-4">Informazioni di spedizione</h2>
-
-  <!-- Shipping Information -->
-  <form method="post">
-    <fieldset class="row mb-3">
-      <legend class="col-form-label col-12">Dati personali</legend>
-      <div class="col-12">
-        <label for="indirizzo" class="form-label">Indirizzo:</label>
-        <input type="text" class="form-control max-width" id="indirizzo" placeholder="Inserisci il tuo indirizzo">
-      </div>
-      <div class="row mb-3">
-        <div class="col-8">
-          <label for="citta" class="form-label">Città:</label>
-          <input type="text" class="form-control max-width" id="citta" placeholder="Inserisci la città">
-        </div>
-        <div class="col-4">
-          <label for="cap" class="form-label">CAP:</label>
-          <input type="text" class="form-control max-width" id="cap" placeholder="CAP">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12">
-          <label for="cellulare" class="form-label">Cellulare:</label>
-          <input type="tel" class="form-control max-width" id="cellulare" placeholder="Inserisci il tuo numero di cellulare">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-12">
-          <label class="form-label">Tipo di spedizione:</label>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="spedizione" id="spedizioneStandard" checked>
-            <label for="spedizioneStandard" class="form-check-label">Standard</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="spedizione" id="spedizioneRapida">
-            <label for="spedizioneRapida" class="form-check-label">Rapida</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-4">
-        <div class="col-12">
-          <label for="noteCorriere" class="form-label">Informazioni per il corriere:</label>
-          <textarea class="form-control max-width" id="noteCorriere" rows="3" placeholder="Note per la consegna"></textarea>
-        </div>
-      </div>
-    </fieldset>
-
-    <!-- Payment Methods -->
-    <fieldset class="row mb-3">
-      <legend class="col-form-label col-12">Scegli il metodo di pagamento</legend>
-      <div class="col-12">
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta" checked>
-          <label for="pagamentoCarta" class="form-check-label">Carta di credito</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay">
-          <label for="pagamentoApplePay" class="form-check-label">ApplePay</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay">
-          <label for="pagamentoGooglePay" class="form-check-label">GooglePay</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPaypal">
-          <label for="pagamentoPaypal" class="form-check-label">PayPal</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno">
-          <label for="pagamentoContrassegno" class="form-check-label">Pagamento alla consegna</label>
-        </div>
-      </div>
-    </fieldset>
-
-    <!-- Submit Button -->
-    <div class="row">
-      <div class="col-12 text-center">
-        <button type="submit" class="btn btn-light">Procedi al pagamento</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<footer class="bg-dark py-4">
-  <div class="container text-left">
-    <a href="#" class="d-block mb-2">Contatti</a>
-    <a href="#" class="d-block mb-2">Chi siamo?</a>
-    <a href="#">Specifiche aziendali</a>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
