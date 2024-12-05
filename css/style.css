@@ -1,5 +1,13 @@
 body{
+  display: flex;
+  flex-direction: column;
   color: #FFCC99;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main{
+  flex-grow: 1;
 }
 
 nav a, .navbar-brand, footer, footer a{
@@ -8,4 +16,11 @@ nav a, .navbar-brand, footer, footer a{
 
 body p , body a{
   color: #FFCC99;
+}
+
+footer {
+  background-color: antiquewhite;
+  padding: 10px;
+  max-height: 170px;
+  margin-top: auto;
 }
