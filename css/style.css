@@ -51,8 +51,8 @@ footer a:hover {
 
 /* Immagine della Birra */
 #beer-image {
-  width: 300px; /* Dimensione uniforme */
-  height: 300px;
+  width: 350px; /* Dimensione uniforme */
+  height: 350px;
   object-fit: cover; /* Mantiene le proporzioni */
   border-radius: 8px;
 }
