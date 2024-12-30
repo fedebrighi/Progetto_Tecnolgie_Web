@@ -29,31 +29,62 @@
             </div>
         </div>
     </nav>
+
     <main>
-        <div class="container text-center py-5">
-            <h1 class="mb-4 fs-1 font-monospace">PHPint</h1>
-            <a href="prodotto_in_dettaglio.html">
-                <img id="beer-image" alt="Immagine della birra" class="img-fluid mb-4" style="max-width: 300px;" />
-            </a>
-            <p class="mb-4 fs-3 font-monospace">{WHEN CODING HITS HARD}</p>
-            <div class="d-grid gap-3">
-                <button class="btn btn-light btn-lg" onclick="window.location.href='catalogo_prodotti.html';">VAI AL CATALOGO</button>
-                <button class="btn btn-light btn-lg">VAI AI CONSIGLI</button>
-                <button class="btn btn-light btn-lg" onclick="window.location.href='carrello.html';">VAI AL CARRELLO</button>
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <h1 class="fs-1 font-sans-serif">PHPint</h1>
+                <p class="fs-3 font-sans-serif">{WHEN CODING HITS HARD}</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center">
+                    <a href="prodotto_in_dettaglio.html">
+                        <img id="beer-image" alt="Immagine della birra" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-grid gap-3">
+                        <button class="btn btn-light btn-lg fw-bold" onclick="window.location.href='catalogo_prodotti.html';">SCOPRI I NOSTRI PRODOTTI</button>
+                        <button class="btn btn-light btn-lg fw-bold">VISUALIZZA I CONSIGLI PER LE BIRRE</button>
+                        <button class="btn btn-light btn-lg fw-bold" onclick="window.location.href='carrello.html';">CONTROLLA LO STATO DEL TUO CARRELLO</button>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Sezione Testimonianze -->
+        <section class="bg-dark py-3">
+            <div class="container text-center">
+                <h2 class="fs-2 mb-4">COSA DICONO I NOSTRI CLIENTI</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>"Birre fantastiche e servizio impeccabile! 🔥"</p>
+                        <small>- Mattia</small>
+                    </div>
+                    <div class="col-md-4">
+                        <p>"Il miglior negozio di birre artigianali che abbia mai trovato."</p>
+                        <small>- Monia</small>
+                    </div>
+                    <div class="col-md-4">
+                        <p>"Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!"</p>
+                        <small>- Dave</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-    <footer class="bg-dark py-4">
+
+    <footer class="bg-dark py-3">
         <div class="container text-center">
             <a href="#" class="d-block mb-2">Contatti</a>
             <a href="#" class="d-block mb-2">Chi siamo?</a>
             <a href="#">Specifiche aziendali</a>
         </div>
     </footer>
+
     <script>
-        // Array con i nomi dei file delle birre
         const beerImages = [
-            "bloom.png",
             "bluetornado.png",
             "charlie.png",
             "confidential.png",
@@ -65,13 +96,11 @@
             "panda.png"
         ];
 
-        // Funzione per scegliere un'immagine casuale
         function getRandomBeerImage() {
             const randomIndex = Math.floor(Math.random() * beerImages.length);
             return `img/beers/${beerImages[randomIndex]}`;
         }
 
-        // Aggiorna l'immagine della birra
         document.addEventListener("DOMContentLoaded", () => {
             const beerImageElement = document.getElementById("beer-image");
             beerImageElement.src = getRandomBeerImage();

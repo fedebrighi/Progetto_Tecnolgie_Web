@@ -1,3 +1,4 @@
+/* Body e Layout Generale */
 body {
   display: flex;
   flex-direction: column;
@@ -8,8 +9,12 @@ body {
 
 main {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuzione uniforme */
 }
 
+/* Navigazione e Link */
 nav a,
 .navbar-brand,
 footer a {
@@ -29,25 +34,65 @@ body a {
 }
 
 body a:focus {
-
   outline-offset: 3px;
 }
 
+/* Footer */
 footer {
   padding: 10px;
-  max-height: 170px;
-  margin-top: auto;
   text-align: center;
+  margin-top: auto;
 }
 
 footer a:hover {
   color: #FFFFFF; /* Effetto hover per link nel footer */
 }
 
+
+/* Immagine della Birra */
 #beer-image {
-  width: 500px; /* Larghezza fissa */
-  height: 500px; /* Altezza fissa */
-  object-fit: cover; /* Adatta l'immagine al contenitore mantenendo le proporzioni */
-  border-radius: 8px; /* Facoltativo: bordi arrotondati per un design più accattivante */
+  width: 300px; /* Dimensione uniforme */
+  height: 300px;
+  object-fit: cover; /* Mantiene le proporzioni */
+  border-radius: 8px;
 }
 
+/* Testo Centrale */
+main .text-center {
+  margin-bottom: 2rem; /* Spazio tra il titolo e l'immagine */
+}
+
+/* Rimuovi font-family per il testo centrale, lascia che Bootstrap gestisca */
+main .text-center h1,
+main .text-center p {
+  font-family: inherit; /* Eredita il font dal Bootstrap */
+}
+
+/* Pulsanti */
+button.btn {
+  background-color: #FFCC99; /* Colore di sfondo coordinato con il tema */
+  color: #000; /* Colore del testo */
+  border-radius: 8px; /* Bordi arrotondati */
+  font-family: 'Arial', sans-serif; /* Font leggibile e moderno */
+  font-weight: 700; /* Testo più spesso */
+  font-size: 1.2rem; /* Testo più grande per leggibilità */
+  padding: 0.8rem 1.5rem; /* Spaziatura maggiore */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transizione morbida */
+}
+
+button.btn:hover {
+  background-color: #FFA07A; /* Colore di sfondo più scuro al passaggio del mouse */
+  transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+button.btn:active {
+  background-color: #FF8C00; /* Colore di sfondo ancora più scuro quando cliccato */
+  transform: scale(0.95); /* Effetto di pressione */
+}
+
+/* Media Query per Layout Responsivo */
+@media (min-width: 768px) {
+  #beer-image {
+    max-width: 300px; /* Ridimensiona su desktop */
+  }
+}
