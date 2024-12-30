@@ -43,3 +43,11 @@ footer {
 footer a:hover {
   color: #FFFFFF; /* Effetto hover per link nel footer */
 }
+
+#beer-image {
+  width: 500px; /* Larghezza fissa */
+  height: 500px; /* Altezza fissa */
+  object-fit: cover; /* Adatta l'immagine al contenitore mantenendo le proporzioni */
+  border-radius: 8px; /* Facoltativo: bordi arrotondati per un design più accattivante */
+}
+
