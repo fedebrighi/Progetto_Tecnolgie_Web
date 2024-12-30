@@ -10,7 +10,7 @@ main{
   flex-grow: 1;
 }
 
-nav a, .navbar-brand, footer, footer a{
+nav a, .navbar-brand, footer a{
   color: #FFCC99;
 }
 
@@ -19,7 +19,6 @@ body p , body a{
 }
 
 footer {
-  background-color: antiquewhite;
   padding: 10px;
   max-height: 170px;
   margin-top: auto;

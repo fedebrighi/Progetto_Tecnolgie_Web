@@ -4,21 +4,36 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PHPint - Home</title>
+        <title>PHPint - Registrati</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
     </head>
 
     <body class="bg-dark">
-        <header class="text-center py-4">
-            <img src="img/logo.jpg" alt="PHPint Logo" class="img-fluid mb-3" style="width: 100px;" />
-            <h1 class="mb-0">PHPint</h1>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+            <div class="container">
+                <a class="navbar-brand fs-1 font-monospace" href="homepage.html">
+                    <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2" />PHPint
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalogo_prodotti.html">Prodotti</a></li>
+                        <li class="nav-item"><a class="nav-link" href="carrello.html">Carrello</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Consigli per gli abbinamenti</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="border border-secondary rounded p-4">
-                        <h2 class="text-center mb-4">Registrati come cliente</h2>
+                        <h2 class="text-center mb-4">Registrati</h2>
                         <form method="post">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome:</label>
