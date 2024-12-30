@@ -1,4 +1,4 @@
-body{
+body {
   display: flex;
   flex-direction: column;
   color: #FFCC99;
@@ -6,20 +6,40 @@ body{
   margin: 0;
 }
 
-main{
+main {
   flex-grow: 1;
 }
 
-nav a, .navbar-brand, footer a{
+nav a,
+.navbar-brand,
+footer a {
+  color: #FFCC99;
+  text-decoration: none;
+}
+
+nav a:hover,
+footer a:hover {
+  color: #FFFFFF; /* Colore più chiaro per hover */
+  text-decoration: underline; /* Sottolineatura per evidenziare */
+}
+
+body p,
+body a {
   color: #FFCC99;
 }
 
-body p , body a{
-  color: #FFCC99;
+body a:focus {
+
+  outline-offset: 3px;
 }
 
 footer {
   padding: 10px;
   max-height: 170px;
   margin-top: auto;
+  text-align: center;
+}
+
+footer a:hover {
+  color: #FFFFFF; /* Effetto hover per link nel footer */
 }
