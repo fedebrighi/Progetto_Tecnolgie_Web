@@ -37,6 +37,15 @@ body a:focus {
   outline-offset: 3px;
 }
 
+/* Banner Promozionale */
+.bg-warning {
+  background-color: #FFA500; /* Colore arancione chiaro */
+  color: #000;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
 /* Footer */
 footer {
   padding: 10px;
@@ -48,24 +57,15 @@ footer a:hover {
   color: #FFFFFF; /* Effetto hover per link nel footer */
 }
 
-
-/* Immagine della Birra */
-#beer-image {
-  width: 350px; /* Dimensione uniforme */
-  height: 350px;
-  object-fit: cover; /* Mantiene le proporzioni */
-  border-radius: 8px;
+footer .social-icons a {
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  color: #FFCC99;
+  transition: color 0.3s ease;
 }
 
-/* Testo Centrale */
-main .text-center {
-  margin-bottom: 2rem; /* Spazio tra il titolo e l'immagine */
-}
-
-/* Rimuovi font-family per il testo centrale, lascia che Bootstrap gestisca */
-main .text-center h1,
-main .text-center p {
-  font-family: inherit; /* Eredita il font dal Bootstrap */
+footer .social-icons a:hover {
+  color: #FFFFFF; /* Hover sui social */
 }
 
 /* Pulsanti */
@@ -90,9 +90,85 @@ button.btn:active {
   transform: scale(0.95); /* Effetto di pressione */
 }
 
+/* Carosello */
+.carousel-inner {
+  position: relative;
+  overflow: hidden; /* Evita che le immagini escano dal contenitore */
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: auto; /* Mantiene le proporzioni */
+  max-height: 450px; /* Limita l'altezza per evitare immagini troppo grandi */
+  object-fit: contain; /* Assicura che l'intera immagine sia visibile */
+  border-radius: 8px; /* Aggiunge angoli arrotondati */
+}
+
+.carousel-item {
+  display: none; /* Nasconde le immagini non attive */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Transizioni fluide */
+  opacity: 0; /* Imposta l'opacità a zero per immagini non attive */
+  z-index: 0; /* Immagini non attive sono sullo sfondo */
+}
+
+.carousel-item.active {
+  display: block; /* Mostra l'immagine attiva */
+  position: relative;
+  opacity: 1; /* Rende visibile l'immagine attiva */
+  z-index: 1; /* Porta l'immagine attiva in primo piano */
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+  display: block; /* Rende visibili le immagini in transizione */
+  opacity: 0; /* Partono come invisibili */
+  z-index: 0; /* Sono dietro l'immagine attiva */
+}
+
+.carousel-item-next.active,
+.carousel-item-prev.active {
+  opacity: 1; /* Diventano visibili durante la transizione */
+  z-index: 1; /* Passano in primo piano */
+}
+
+/* Sezione Testimonianze */
+section.bg-dark {
+  margin-bottom: 0.7rem; /* Riduce lo spazio sotto la sezione */
+}
+
+section.bg-dark p {
+  font-size: 1.4rem; /* Font più grande */
+  font-style: italic; /* Stile citazione */
+}
+
+section.bg-dark h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Linea di separazione */
+.divider {
+  width: 80%; /* Larghezza della linea */
+  height: 2px; /* Altezza della linea */
+  background-color: #FFCC99; /* Colore coordinato con il tema */
+  margin: 0.8rem auto; /* Spaziatura sopra e sotto */
+  border: none;
+}
+
+
+
 /* Media Query per Layout Responsivo */
 @media (min-width: 768px) {
-  #beer-image {
-    max-width: 300px; /* Ridimensiona su desktop */
+  .carousel-inner img {
+    height: 250px; /* Ridimensiona su desktop per immagini proporzionate */
+  }
+
+  footer .social-icons {
+    font-size: 1.2rem; /* Social più piccoli su schermi grandi */
   }
 }
