@@ -53,45 +53,60 @@
 
                     <!-- Area Personale -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
+                            role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle me-1"></i> Area Personale
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><a class="dropdown-item text-light" href="area_personale.html"><i class="bi bi-gear me-1"></i> Impostazioni</a></li>
-                            <li><a class="dropdown-item text-light" href="storico_ordini.html"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-light" href="logout.html"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
+                            <li><a class="dropdown-item text-light" href="utente.html"><i
+                                        class="bi bi-gear me-1"></i> Impostazioni</a></li>
+                            <li><a class="dropdown-item text-light" href="venditore.html"><i
+                                        class="bi bi-archive me-1"></i> Storico Ordini</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-light" href="logout.html"><i
+                                        class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
                         </ul>
                     </li>
 
                     <!-- Notifiche -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
+                            role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
                             <span class="badge bg-danger rounded-pill ms-1" id="notification-count">3</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><h6 class="dropdown-header text-warning">Notifiche</h6></li>
                             <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                <h6 class="dropdown-header text-warning">Notifiche</h6>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
+                                    href="#">
                                     <span>Nuovo ordine ricevuto</span>
                                     <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
+                                    href="#">
                                     <span>Promozione scaduta</span>
                                     <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
+                                    href="#">
                                     <span>Prodotto esaurito</span>
                                     <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
                                 </a>
                             </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le notifiche</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le
+                                    notifiche</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -158,11 +173,13 @@
                 <aside class="border border-secondary rounded p-4 text-center">
                     <h2 class="text-warning mb-4"><i class="bi bi-person-plus"></i> Prima volta sul sito?</h2>
                     <form>
-                        <button type="button" class="btn btn-warning w-100 fw-bold">Registrati!</button>
+                        <button type="button" class="btn btn-warning w-100 fw-bold"
+                            onclick="window.location.href='regCliente.html';">Registrati!</button>
                     </form>
                 </aside>
             </div>
         </div>
+
 
     </div>
 
