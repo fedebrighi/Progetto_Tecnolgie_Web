@@ -11,6 +11,14 @@
             }
         }
 
+        public function getAllBeers(){
+            $query = "SELECT codProdotto, nome, alc, prezzo, immagine FROM PRODOTTO";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
         public function getBeerDetails($idBirra){
             $query = "SELECT nome, alc, descrizione, prezzo,immagine FROM PRODOTTO WHERE idBirra = ?";
             $stmt = $this->db->prepare($query);

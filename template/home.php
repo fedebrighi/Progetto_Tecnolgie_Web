@@ -54,14 +54,14 @@
 
                     <!-- Area Personale -->
                     <li class="nav-item dropdown">
-                        <a <?php isActive("utente.php");?> class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle me-1"></i> Area Personale
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><a class="dropdown-item text-light" href="utente.html"><i class="bi bi-gear me-1"></i> Impostazioni</a></li>
-                            <li><a class="dropdown-item text-light" href="venditore.html"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
+                            <li><a <?php isActive("utente.php");?> class="dropdown-item text-light" href="utente.php"><i class="bi bi-gear me-1"></i> Impostazioni</a></li>
+                            <li><a <?php isActive("venditore.php");?> class="dropdown-item text-light" href="venditore.php"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-light" href="logout.html"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
+                            <li><a <?php isActive("logout.php");?> class="dropdown-item text-light" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
                         </ul>
                     </li>
 
@@ -113,33 +113,11 @@
                     <!-- Carousel -->
                     <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="img/beers/emilia.png" class="d-block w-100 img-fluid" alt="Emilia Paranoica">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/bluetornado.png" class="d-block w-100 img-fluid" alt="Blue Tornado">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/macarena.png" class="d-block w-100 img-fluid" alt="Macarena Remix">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/molly.png" class="d-block w-100 img-fluid" alt="Molly">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/kiwi.png" class="d-block w-100 img-fluid" alt="Kiwi Passenger">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/charlie.png" class="d-block w-100 img-fluid" alt="Charlie">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/don.png" class="d-block w-100 img-fluid" alt="Don">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/panda.png" class="d-block w-100 img-fluid" alt="Panda">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="img/beers/confidential.png" class="d-block w-100 img-fluid" alt="Confidential">
-                            </div>
+                            <?php foreach ($templateParams["birre"] as $index => $birra): ?>
+                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                                    <img src="<?php echo $birra["immagine"]; ?>" class="d-block w-100 img-fluid" alt="<?php echo $birra["nome"]; ?>">
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
