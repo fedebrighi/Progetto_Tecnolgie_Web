@@ -22,17 +22,26 @@ $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Ottieni l'istanza di connessione dal database
         $db = $databaseHelper->getDb();
+        /*
+        // Crea un nuovo carrello con ID univoco
+        do {
+            $carrelloId = uniqid();
+            $queryVerifica = "SELECT COUNT(*) as count FROM carrello WHERE codCarrello = ?";
+            $stmtVerifica = $db->prepare($queryVerifica);
+            $stmtVerifica->bind_param('s', $carrelloId);
+            $stmtVerifica->execute();
+            $result = $stmtVerifica->get_result();
+            $count = $result->fetch_assoc()['count'];
+        } while ($count > 0);
 
-        // Crea un nuovo carrello per il cliente
-        $carrelloId = uniqid(); // Genera un ID univoco per il carrello
+        // Inserisci il nuovo carrello
         $queryCarrello = "INSERT INTO carrello (codCarrello, totale) VALUES (?, 0)";
         $stmtCarrello = $db->prepare($queryCarrello);
         $stmtCarrello->bind_param('s', $carrelloId);
         $stmtCarrello->execute();
 
-        // Salva i dati del cliente, incluso il nuovo carrello
+        // Salva l'utente
         $databaseHelper->saveUserInfo(
             $_POST['nome'],
             $_POST['cognome'],
@@ -44,9 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['cap'],
             $_POST['indirizzo'],
             $_POST['telefono'],
-        );
 
-        // Reindirizzamento alla homepage dopo il successo
+        );
+        */
+        // Reindirizzamento
         header("Location: homepage.php");
         exit();
     } catch (Exception $e) {
@@ -57,5 +67,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $templateParams["message"] = $message;
 
 // Includi il template per la registrazione cliente
-require 'template/regClient.php';
+require 'template/registration.php';
 ?>

@@ -2,20 +2,20 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PHPint - Carrello</title>
+    <title><?php echo $templateParams["titolo"]; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
         rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
 </head>
 
-<body class="bg-dark text-custom">
-    <!-- Navbar -->
+<body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="homepage.php">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="homepage.html">
                 <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2">
                 <span class="fs-2 fw-bold text-warning">PHPint</span>
             </a>
@@ -25,6 +25,7 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Link Home -->
                     <li class="nav-item">
                         <a <?php isActive("homepage.php"); ?> class="nav-link text-secondary d-flex align-items-center"
                             href="homepage.php">
@@ -58,23 +59,24 @@
 
                     <!-- Area Personale -->
                     <li class="nav-item dropdown">
-                        <a <?php isActive("utente.php"); ?>
-                            class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
+                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
                             role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle me-1"></i> Area Personale
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><a class="dropdown-item text-light" href="utente.php"><i class="bi bi-gear me-1"></i>
-                                    Impostazioni</a></li>
-                            <li><a class="dropdown-item text-light" href="venditore.php"><i
-                                        class="bi bi-archive me-1"></i> Storico Ordini</a></li>
+                            <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light" href="utente.php"><i
+                                        class="bi bi-gear me-1"></i> Impostazioni</a></li>
+                            <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light"
+                                    href="venditore.php"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-light" href="logout.php"><i
+                            <li><a <?php isActive("logout.php"); ?> class="dropdown-item text-light" href="logout.php"><i
                                         class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
                         </ul>
                     </li>
+
+                    <!-- Notifiche -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
                             role="button" data-bs-toggle="dropdown">
@@ -118,48 +120,71 @@
         </div>
     </nav>
 
-    <!-- Carrello -->
-    <div class="container py-4">
-        <div class="row gy-3">
-            <?php foreach ($templateParams["elementicarrello"] as $item): ?>
-                <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3">
-                    <img src="<?php echo $dbh->getBeerDetails($items["codProdotto"])["immagine"]?>"
-                        alt="<?php echo $dbh->getBeerDetails($items["codProdotto"])["nome"]?>" class="img-fluid me-3" style="width: 80px;" />
-                    <div class="flex-grow-1">
-                        <h6 class="m-0"><?php echo $dbh->getBeerDetails($items["codProdotto"])["nome"]?></h6>
-                        <p class="m-0">alc. <?php echo $dbh->getBeerDetails($items["codProdotto"])["alc"]?>% vol</p>
-                        <p class="m-0 fw-bold"><?php echo $dbh->getBeerDetails($items["codProdotto"])["quantita"]?> x
-                        <?php $dbh->getBeerDetails($items["codProdotto"])["prezzo"]?> €</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <input type="number" id="quantity<?php $dbh->getBeerDetails($items["codProdotto"])["quantita"]?>"
-                            class="form-control mb-2 text-center" min="1" value="<?php $dbh->getBeerDetails($items["codProdotto"])["quantita"]?>"
-                            style="height: 40px;">
-                        <form method="post" action="remove_item.php">
-                            <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($item['codCarrello']) ?>">
-                            <input type="hidden" name="codProdotto" value="<?= htmlspecialchars($item['codProdotto']) ?>">
-                            <button type="submit" class="btn btn-warning btn-sm w-100">Rimuovi dal carrello</button>
-                        </form>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+    <body class="bg-dark text-light">
+    <div class="container py-5">
+        <h1 class="text-center text-warning">Informazioni di spedizione</h1>
+        <form method="post" action="simulation.php">
+            <!-- Dati personali -->
+            <div class="mb-3">
+                <label for="indirizzo" class="form-label">Indirizzo:</label>
+                <input type="text" class="form-control" id="indirizzo" name="indirizzo" placeholder="Inserisci il tuo indirizzo" required>
+            </div>
+            <div class="mb-3">
+                <label for="citta" class="form-label">Città:</label>
+                <input type="text" class="form-control" id="citta" name="citta" placeholder="Inserisci la città" required>
+            </div>
+            <div class="mb-3">
+                <label for="cap" class="form-label">CAP:</label>
+                <input type="text" class="form-control" id="cap" name="cap" placeholder="CAP" required>
+            </div>
+            <div class="mb-3">
+                <label for="cellulare" class="form-label">Cellulare:</label>
+                <input type="text" class="form-control" id="cellulare" name="cellulare" placeholder="Inserisci il tuo numero di cellulare" required>
+            </div>
 
-        <div class="d-flex justify-content-between mt-4">
-            <button class="btn btn-outline-light" type="button"
-                onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
-            <form method="post" action="empty_cart.php">
-                <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($items[0]['codCarrello'] ?? '') ?>">
-                <button class="btn btn-warning" type="button" onclick="window.location.href='checkout.php';">Procedi al pagamento</button>
-            </form>
-        </div>
+            <!-- Tipo di spedizione -->
+            <div class="mb-3">
+                <label class="form-label">Tipo di spedizione:</label><br>
+                <input type="radio" id="standard" name="spedizione" value="standard" checked>
+                <label for="standard">Standard</label><br>
+                <input type="radio" id="rapida" name="spedizione" value="rapida">
+                <label for="rapida">Rapida</label>
+            </div>
+
+            <!-- Note per il corriere -->
+            <div class="mb-3">
+                <label for="note" class="form-label">Note per il corriere:</label>
+                <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+            </div>
+
+            <!-- Metodo di pagamento -->
+            <div class="form-check">
+                        <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta" checked />
+                        <label for="pagamentoCarta" class="form-check-label">Carta di credito</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay" />
+                        <label for="pagamentoApplePay" class="form-check-label">ApplePay</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay" />
+                        <label for="pagamentoGooglePay" class="form-check-label">GooglePay</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPaypal" />
+                        <label for="pagamentoPaypal" class="form-check-label">PayPal</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno" />
+                        <label for="pagamentoContrassegno" class="form-check-label">Pagamento alla consegna</label>
+                    </div>
+            <button type="submit" class="btn btn-warning w-100">Procedi al pagamento</button>
+        </form>
     </div>
+</body>
 
-    <!-- Divider aggiunto -->
     <div class="divider"></div>
-
-    <!-- Footer -->
-    <footer class="bg-dark py-4">
+    <footer class="bg-dark py-2">
         <div class="container text-center">
             <a href="paginainformativa.html" class="d-block mb-2">Contatti</a>
             <a href="paginainformativa.html" class="d-block mb-2">Chi siamo?</a>
@@ -168,6 +193,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 
 </html>

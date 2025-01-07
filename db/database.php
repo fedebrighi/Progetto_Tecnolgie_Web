@@ -4,17 +4,27 @@ class DatabaseHelper
 {
 
     private $db;
-    public function getDb() {
+    public function getDb()
+    {
         return $this->db;
     }
 
-        public function __construct($servername, $username, $password, $dbname, $port) {
-            $this->db = new mysqli($servername, $username, $password, $dbname, $port);
-            if ($this->db->connect_error) {
-                die("Connection failed: " . $this->db->connect_error);
-            }
+    public function __construct($servername, $username, $password, $dbname, $port)
+    {
+        $this->db = new mysqli($servername, $username, $password, $dbname, $port);
+        if ($this->db->connect_error) {
+            die("Connection failed: " . $this->db->connect_error);
         }
+    }
 
+    public function getAllBeers()
+    {
+        $query = "SELECT codProdotto, nome, alc, prezzo, immagine FROM PRODOTTO";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function getBeerDetails($idBirra)
     {
         $query = "SELECT nome, alc, descrizione, prezzo,immagine FROM PRODOTTO WHERE idBirra = ?";
@@ -51,7 +61,6 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-
     public function emptyCart($codCarrello)
     {
         $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = ?";
@@ -60,7 +69,8 @@ class DatabaseHelper
         $stmt->execute();
     }
 
-    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono,) {
+    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, )
+    {
         $query = "INSERT INTO CLIENTI (nome, cognome, email, username, password, data_nascita, citta, cap, indirizzo, telefono,)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
