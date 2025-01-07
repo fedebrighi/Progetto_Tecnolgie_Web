@@ -4,6 +4,9 @@ class DatabaseHelper
 {
 
     private $db;
+    public function getDb() {
+        return $this->db;
+    }
 
         public function __construct($servername, $username, $password, $dbname, $port) {
             $this->db = new mysqli($servername, $username, $password, $dbname, $port);
@@ -55,6 +58,18 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $codCarrello);
         $stmt->execute();
+    }
+
+    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono,) {
+        $query = "INSERT INTO CLIENTI (nome, cognome, email, username, password, data_nascita, citta, cap, indirizzo, telefono,)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // Hash della password
+        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $hashedPassword, $dataNascita, $citta, $cap, $indirizzo, $telefono, );
+
+        if (!$stmt->execute()) {
+            throw new Exception("Errore durante l'inserimento dell'utente: " . $stmt->error);
+        }
     }
 }
 

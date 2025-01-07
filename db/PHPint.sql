@@ -1,7 +1,7 @@
 -- *********************************************
--- * Standard SQL generation                   
+-- * Standard SQL generation
 -- *********************************************
--- * DB-MAIN version: 11.0.2                   
+-- * DB-MAIN version: 11.0.2
 -- *********************************************
 -- * Generation date: Fri Jan  3 17:44:02 2025
 -- *********************************************
@@ -29,6 +29,7 @@ CREATE TABLE CLIENTE (
     indirizzo VARCHAR(255) NOT NULL,
     citta VARCHAR(50) NOT NULL,
     cap CHAR(5) NOT NULL,
+    telefono VARCHAR(15) NOT NULL,
     CONSTRAINT ID_CLIENTE_ID PRIMARY KEY (username),
     CONSTRAINT SID_CLIEN_CARRE_ID UNIQUE (codCarrello)
 );

@@ -13,5 +13,5 @@ if (isUserLoggedIn()) {
 $templateParams["utente"] = "giovanni_rossi";
 $templateParams["elementicarrello"] = $dbh->getCartFromUser($templateParams["utente"]);
 */
-require 'template/carrel.php';
+require 'template/cart.php';
 ?>
