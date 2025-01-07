@@ -1,7 +1,7 @@
 <?php
     session_start();
     define("UPLOAD_DIR", "./img/");
-    //require_once("utils/functions.php");
+    require_once("utils/functions.php");
     require_once("db/database.php");
-    $dbh = new DatabaseHelper("localhost", "root", "", "PHPint", 3306);
+    $dbh = new DatabaseHelper("localhost", "root", "", "er_2phpint", 3306);
 ?>

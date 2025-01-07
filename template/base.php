@@ -11,11 +11,6 @@
 </head>
 
 <body class="bg-dark">
-    <!-- Banner Promozionale -->
-    <div class="bg-warning text-dark py-2 text-center">
-        <strong>Offerta speciale:</strong> Ordina oggi e ricevi uno sconto del 10% sulla tua prima birra! 🎉
-    </div>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary">
         <div class="container">
             <!-- Logo -->
@@ -31,35 +26,35 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     <!-- Link Home -->
                     <li class="nav-item">
-                        <a class="nav-link text-secondary d-flex align-items-center" href="homepage.html">
+                        <a <?php isActive("homepage.php");?> class="nav-link text-secondary d-flex align-items-center" href="homepage.php">
                             <i class="bi bi-house me-1"></i> Home
                         </a>
                     </li>
 
                     <!-- Link Prodotti -->
                     <li class="nav-item">
-                        <a class="nav-link text-secondary d-flex align-items-center" href="catalogo_prodotti.html">
+                        <a <?php isActive("catalogo_prodotti.php");?> class="nav-link text-secondary d-flex align-items-center" href="catalogo_prodotti.php">
                             <i class="bi bi-shop-window me-1"></i> Prodotti
                         </a>
                     </li>
 
                     <!-- Link Carrello -->
                     <li class="nav-item">
-                        <a class="nav-link text-secondary d-flex align-items-center" href="carrello.html">
+                        <a <?php isActive("carrello.php");?> class="nav-link text-secondary d-flex align-items-center" href="carrello.php">
                             <i class="bi bi-cart3 me-1"></i> Carrello
                         </a>
                     </li>
 
                     <!-- Link Login -->
                     <li class="nav-item">
-                        <a class="nav-link text-secondary d-flex align-items-center" href="login.html">
+                        <a <?php isActive("login.php");?>  class="nav-link text-secondary d-flex align-items-center" href="login.php">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Login
                         </a>
                     </li>
 
                     <!-- Area Personale -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <a <?php isActive("utente.php");?> class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-person-circle me-1"></i> Area Personale
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
