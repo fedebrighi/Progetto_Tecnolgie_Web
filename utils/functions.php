@@ -4,8 +4,3 @@
             echo " class='active' ";
         }
     }
-    function isUserLoggedIn(){
-        return !empty($_SESSION['idutente']);
-    }
-
-?>
