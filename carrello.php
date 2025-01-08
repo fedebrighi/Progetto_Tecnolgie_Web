@@ -5,13 +5,12 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "PHPint - Carrello";
 
 if (isUserLoggedIn()) {
-    $templateParams["utente"] = $_SESSION["idutente"];
+    $templateParams["username"] = $_SESSION["username"];
 }else {
     header("Location: login.php");
 }
 
-$templateParams["utente"] = "giovanni_rossi";
-$templateParams["elementicarrello"] = $dbh->getCartFromUser($templateParams["utente"]);
+$templateParams["elementicarrello"] = $dbh->getCartFromUser($templateParams["username"]);
 
 require 'template/cart.php';
 ?>

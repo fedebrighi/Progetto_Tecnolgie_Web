@@ -121,19 +121,19 @@
     <!-- Carrello -->
     <div class="container py-4">
         <div class="row gy-3">
-            <?php foreach ($templateParams["elementicarrello"] as $item): ?>
+            <?php foreach ($templateParams["elementicarrello"] as $item):?>
+                <?php $birra= $dbh->getBeerDetails($item["codProdotto"]); ?>
                 <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3">
-                    <img src="<?php echo $dbh->getBeerDetails($items["codProdotto"])["immagine"]?>"
-                        alt="<?php echo $dbh->getBeerDetails($items["codProdotto"])["nome"]?>" class="img-fluid me-3" style="width: 80px;" />
+                    <img src="img/beers/<?php echo $birra["immagine"]?>"
+                        alt="<?php echo $birra["nome"]?>" class="img-fluid me-3" style="width: 80px;" />
                     <div class="flex-grow-1">
-                        <h6 class="m-0"><?php echo $dbh->getBeerDetails($items["codProdotto"])["nome"]?></h6>
-                        <p class="m-0">alc. <?php echo $dbh->getBeerDetails($items["codProdotto"])["alc"]?>% vol</p>
-                        <p class="m-0 fw-bold"><?php echo $dbh->getBeerDetails($items["codProdotto"])["quantita"]?> x
-                        <?php $dbh->getBeerDetails($items["codProdotto"])["prezzo"]?> €</p>
+                        <h6 class="m-0"><?php echo $birra["nome"]?></h6>
+                        <p class="m-0">alc. <?php echo $birra["alc"]?>% vol</p>
+                        <p class="m-0 fw-bold"><?php echo $birra["prezzo"]?> €</p>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                        <input type="number" id="quantity<?php $dbh->getBeerDetails($items["codProdotto"])["quantita"]?>"
-                            class="form-control mb-2 text-center" min="1" value="<?php $dbh->getBeerDetails($items["codProdotto"])["quantita"]?>"
+                        <input type="number" id="quantity<?php $itemS["quantita"]?>"
+                            class="form-control mb-2 text-center" min="1" value="<?php echo $item["quantita"]?>"
                             style="height: 40px;">
                         <form method="post" action="remove_item.php">
                             <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($item['codCarrello']) ?>">
@@ -149,17 +149,15 @@
             <button class="btn btn-outline-light" type="button"
                 onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
             <form method="post" action="empty_cart.php">
-                <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($items[0]['codCarrello'] ?? '') ?>">
+                <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($item[0]['codCarrello'] ?? '') ?>">
                 <button class="btn btn-warning" type="button" onclick="window.location.href='checkout.php';">Procedi al pagamento</button>
             </form>
         </div>
     </div>
 
-    <!-- Divider aggiunto -->
-    <div class="divider"></div>
-
     <!-- Footer -->
     <footer class="bg-dark py-4">
+        <div class="divider"></div>
         <div class="container text-center">
             <a href="paginainformativa.html" class="d-block mb-2">Contatti</a>
             <a href="paginainformativa.html" class="d-block mb-2">Chi siamo?</a>

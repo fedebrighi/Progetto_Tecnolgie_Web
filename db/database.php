@@ -25,14 +25,15 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getBeerDetails($idBirra)
     {
-        $query = "SELECT nome, alc, descrizione, prezzo,immagine FROM PRODOTTO WHERE idBirra = ?";
+        $query = "SELECT nome, alc, descrizione, prezzo, immagine FROM PRODOTTO WHERE codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idBirra);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_assoc();
     }
 
     public function getIngredients($idBirra)
@@ -47,13 +48,14 @@ class DatabaseHelper
 
     public function getCartFromUser($id)
     {
-        $query = "SELECT CA.codCarrello AS carrello_id, CA.totale AS totale_carrello,
-                             P.codProdotto AS prodotto_id, P.nome AS prodotto_nome,
-                             P.alc AS prodotto_alc, CC.quantita AS prodotto_quantita
-                      FROM CARRELLO CA
-                      JOIN COMPOSIZIONECARRELLO CC ON CC.codCarrello = CA.codCarrello
-                      JOIN PRODOTTO P ON P.codProdotto = CC.codProdotto
-                      WHERE CA.codCarrello = ?";
+        $query = "SELECT CA.codCarrello, CA.totale,
+                             P.codProdotto, P.nome,
+                             P.alc, CC.quantita 
+                      FROM CARRELLO CA, COMPOSIZIONECARRELLO CC, PRODOTTO P, CLIENTE CL
+                      WHERE CL.username = ? 
+                      AND CA.codCarrello = CL.codCarrello
+                      AND CC.codCarrello = CA.codCarrello 
+                      AND CC.codProdotto = P.codProdotto ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
