@@ -9,9 +9,9 @@ if (isUserLoggedIn()) {
 }else {
     header("Location: login.php");
 }
-/*
+
 $templateParams["utente"] = "giovanni_rossi";
 $templateParams["elementicarrello"] = $dbh->getCartFromUser($templateParams["utente"]);
-*/
+
 require 'template/cart.php';
 ?>

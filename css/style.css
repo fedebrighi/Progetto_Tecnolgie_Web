@@ -228,6 +228,25 @@ section.bg-dark h2 {
   color: #000; /* Colore nero al passaggio del mouse */
 }
 
+#passwordStrength {
+  font-weight: bold;
+}
+
+.strength-very-weak {
+  color: #ff0000; /* Rosso */
+}
+
+.strength-weak {
+  color: #ffc107; /* Giallo */
+}
+
+.strength-strong {
+  color: #8bc34a; /* Verdino */
+}
+
+.strength-very-strong {
+  color: #388e3c; /* Verde scuro */
+}
 
 /* Media Query per Layout Responsivo */
 @media (min-width: 768px) {
