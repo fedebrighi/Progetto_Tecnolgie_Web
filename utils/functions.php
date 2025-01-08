@@ -9,17 +9,12 @@
     }
 
     function isUserLoggedIn(){
-        return !empty($_SESSION['idautore']);
+        return !empty($_SESSION['username']);
     }
 
     function registerLoggedUser($user){
-        $_SESSION["idautore"] = $user["idautore"];
         $_SESSION["username"] = $user["username"];
-        $_SESSION["nome"] = $user["nome"];
-    }
-
-    function getEmptyArticle(){
-        return array("idarticolo" => "", "titoloarticolo" => "", "imgarticolo" => "", "testoarticolo" => "", "anteprimaarticolo" => "", "categorie" => array());
+        $_SESSION["pw"] = $user["pw"];
     }
 
     function getAction($action){

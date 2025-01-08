@@ -71,7 +71,7 @@ class DatabaseHelper
 
     public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, )
     {
-        $query = "INSERT INTO CLIENTI (nome, cognome, email, username, password, data_nascita, citta, cap, indirizzo, telefono,)
+        $query = "INSERT INTO CLIENTI (nome, cognome, email, username, pw, data_nascita, citta, cap, indirizzo, telefono,)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // Hash della password
@@ -80,6 +80,30 @@ class DatabaseHelper
         if (!$stmt->execute()) {
             throw new Exception("Errore durante l'inserimento dell'utente: " . $stmt->error);
         }
+    }
+
+    public function getClientIfRegistered($username,$password)
+    {
+        $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);    
+
+    }
+
+    public function getSellerIfRegistered($username,$password)
+    {
+        $query = "SELECT * FROM VENDITORE WHERE username = ? AND pw = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+
     }
 }
 

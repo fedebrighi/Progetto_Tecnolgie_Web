@@ -1,6 +1,6 @@
 INSERT INTO CARRELLO (codCarrello, totale)
 VALUES
-(1, 0),
+(1, 133),
 (2, 0),
 (3, 0),
 (4, 0),
@@ -11,7 +11,7 @@ VALUES
 (9, 0),
 (10, 0);
 
-INSERT INTO CLIENTE (username, codCarrello, password, email, nome, cognome, dataNascita, indirizzo, citta, cap, telefono)
+INSERT INTO CLIENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap, telefono)
 VALUES
 ('giovanni_rossi', 1, 'Giovanni123!', 'giovanni.rossi@example.com', 'Giovanni', 'Rossi', '1985-04-15', 'Via Milano 10', 'Milano', '20100','3332989455'),
 ('maria_bianchi', 2, 'Maria456!', 'maria.bianchi@example.com', 'Maria', 'Bianchi', '1990-07-20', 'Via Roma 25', 'Roma', '00100','3332989454'),
@@ -46,16 +46,16 @@ VALUES
 
 INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
 VALUES
-(1, 1, 'EMILIA PARANOICA', 9.5, 'Birra dal colore nero impenetrabile, come la nebbia degli inverni della pianura emiliana. Al naso note di cioccolato, liquirizia e caffè accompagnate da leggeri sentori di vaniglia e caramello che ricompaiono anche in bevuta. Birra con un corpo pieno e avvolgente con un finale morbido e appagante che nascondono i suoi 9,5%.', 4.50, 100, 'img\beers\emilia.png'),
-(2, 2, 'CHARLIE DON’T SURF', 7.5, 'Birra prodotta con soli malti Pils e Carapils, luppolata con Nelson Sauvin, Riwaka ed Enigma. Il risultato è una birra con una forte spinta aromatica verso l’agrumato, floreale, che si trova tale e quale al palato. Rendendola estremamente beverina e appagante, facendone dimenticare la gradazione.', 4.20, 100, 'img\beers\charlie.png'),
-(3, 3 , 'KIWI PASSENGER', 6.0, 'Fermata in Nuova Zelanda per farti provare l’esplosione dei luppoli della Farm Hop Revolution. Nelson Sauvin, Motueka e Riwaka fanno da protagonisti per una birra che sprigiona sentori esotici. Freschissima e super gradevole, è accompagnata poi da un corpo morbido che ne bilancia la bevuta e che invoglia immediatamente al secondo sorso.', 4.00, 100, 'img\beers\kiwi.png' ),
-(4, 4, 'DON QUISCIOTTE', 6.5, 'West Coast IPA fatta con malto Pils e Pale, chiara e ben luppolata. Con luppoli Citra, Mosaic, Simcoe e Columbus al naso sprigiona un intenso aroma di frutta tropicale, l’amaro è ben bilanciato nella beva.', 3.80, 100, 'img\beers\don.png' ),
-(5, 5, 'CONFIDENTIAL', 6.0, 'Birra in stile West Coast IPA creata con una nuova tecnica di estrazione della luppolina da parte della farm Crosby Hop. I luppoli Strata, Nelson Sauvin e Nugget sono usati nella loro versione CGX . Processo criogenico avanzato che separa la luppolina dalla materia vegetativa del luppolo in un ambiente ad ossigeno zero e a temperature bassisime -30/-45 °C. Ne esce una birra con una notevole parte aromatica di frutta gialla e tropicale. Con note di pesca e papaya. In bocca è setosa e piacevolmente equilibrata con un amaro delicato sul finale.', 4.00, 100, 'img\beers\confidential.png'),
-(6, 6, 'PANDA', 5.0, 'American Ipa luppolata con Ekuanot, Amarillo e Nuggets su una base di malti Pale. In aroma spicca la componente agrumata con note di arancia, pompelmo e limone seguita da sentori floreali ed erbacei. L’amaro è equilibrato e persistente. GLUTEN FREE', 3.50, 100, 'img\beers\panda.png'),
-(7, 7, 'MOLLY', 4.0, 'Birra di stampo British da bere in quantità. Prodotta con malti Maris Otter e Crystal, e fermentata con un ceppo di lievito Inglese. Di color ambrato, in aroma spiccano note di nocciola e mou. In bocca è morbida e scorrevole, con note di malto e biscotto in evidenza, seguite da richiami terrosi che accompagnano in un finale lievemente amaro.', 3.50, 100, 'img\beers\molly.png');
+(1, 1, 'EMILIA PARANOICA', 9.5, 'Birra dal colore nero impenetrabile, come la nebbia degli inverni della pianura emiliana. Al naso note di cioccolato, liquirizia e caffè accompagnate da leggeri sentori di vaniglia e caramello che ricompaiono anche in bevuta. Birra con un corpo pieno e avvolgente con un finale morbido e appagante che nascondono i suoi 9,5%.', 4.50, 100, 'emilia.png'),
+(2, 2, 'CHARLIE DON’T SURF', 7.5, 'Birra prodotta con soli malti Pils e Carapils, luppolata con Nelson Sauvin, Riwaka ed Enigma. Il risultato è una birra con una forte spinta aromatica verso l’agrumato, floreale, che si trova tale e quale al palato. Rendendola estremamente beverina e appagante, facendone dimenticare la gradazione.', 4.20, 100, 'charlie.png'),
+(3, 3 , 'KIWI PASSENGER', 6.0, 'Fermata in Nuova Zelanda per farti provare l’esplosione dei luppoli della Farm Hop Revolution. Nelson Sauvin, Motueka e Riwaka fanno da protagonisti per una birra che sprigiona sentori esotici. Freschissima e super gradevole, è accompagnata poi da un corpo morbido che ne bilancia la bevuta e che invoglia immediatamente al secondo sorso.', 4.00, 100, 'kiwi.png' ),
+(4, 4, 'DON QUISCIOTTE', 6.5, 'West Coast IPA fatta con malto Pils e Pale, chiara e ben luppolata. Con luppoli Citra, Mosaic, Simcoe e Columbus al naso sprigiona un intenso aroma di frutta tropicale, l’amaro è ben bilanciato nella beva.', 3.80, 100, 'don.png' ),
+(5, 5, 'CONFIDENTIAL', 6.0, 'Birra in stile West Coast IPA creata con una nuova tecnica di estrazione della luppolina da parte della farm Crosby Hop. I luppoli Strata, Nelson Sauvin e Nugget sono usati nella loro versione CGX . Processo criogenico avanzato che separa la luppolina dalla materia vegetativa del luppolo in un ambiente ad ossigeno zero e a temperature bassisime -30/-45 °C. Ne esce una birra con una notevole parte aromatica di frutta gialla e tropicale. Con note di pesca e papaya. In bocca è setosa e piacevolmente equilibrata con un amaro delicato sul finale.', 4.00, 100, 'confidential.png'),
+(6, 6, 'PANDA', 5.0, 'American Ipa luppolata con Ekuanot, Amarillo e Nuggets su una base di malti Pale. In aroma spicca la componente agrumata con note di arancia, pompelmo e limone seguita da sentori floreali ed erbacei. L’amaro è equilibrato e persistente. GLUTEN FREE', 3.50, 100, 'panda.png'),
+(7, 7, 'MOLLY', 4.0, 'Birra di stampo British da bere in quantità. Prodotta con malti Maris Otter e Crystal, e fermentata con un ceppo di lievito Inglese. Di color ambrato, in aroma spiccano note di nocciola e mou. In bocca è morbida e scorrevole, con note di malto e biscotto in evidenza, seguite da richiami terrosi che accompagnano in un finale lievemente amaro.', 3.50, 100, 'molly.png');
 
 
-INSERT INTO VENDITORE (username, password, email, telefono, indirizzo, citta, cap)
+INSERT INTO VENDITORE (username, pw, email, telefono, indirizzo, citta, cap)
 VALUES
 ('marco_massa', '1234567890', 'marco.massa@example.com', '1234567890', 'via forli 19', 'forli', '47121'),
 ('mattia_saponaro', '1234567890', 'mattia.saponaro@example.com', '3456789012', 'via cesena 12', 'forli', '47122'),
@@ -106,7 +106,7 @@ VALUES
 (13, 0);
 
 
-INSERT INTO CLIENTE (username, codCarrello, password, email, nome, cognome, dataNascita, indirizzo, citta, cap)
+INSERT INTO CLIENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap)
 VALUES
 ('mattia', 11, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', '40121'),
 ('monia', 12, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', '20121'),
@@ -126,3 +126,9 @@ VALUES
 (2, 'giovanni_rossi', 1, 1),
 (3, 'giovanni_rossi', 2, 1),
 (4, 'giovanni_rossi', 2, 1);
+
+INSERT INTO composizioneCarrello (codProdotto, codCarrello, quantita)
+VALUES
+(1, 1, 5),
+(2, 1, 6),
+(3, 1, 2);
