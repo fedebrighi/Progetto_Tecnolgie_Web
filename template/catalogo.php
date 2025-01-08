@@ -2,6 +2,17 @@
 <html lang="it">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHPint - Catalogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-dark">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo $templateParams["titolo"];?></title>
@@ -99,79 +110,44 @@
             </div>
         </div>
     </nav>
-
     <main>
-        <div class="container py-3">
-            <div class="text-center mb-5">
-                <h1 class="fs-1 font-sans-serif">PHPint</h1>
-                <p class="fs-4 font-sans-serif">{WHEN CODING HITS HARD}</p>
+        <div class="container py-4">
+            <div class="text-center mb-4">
+                <h2 class="text-warning">Scopri le nostre birre artigianali!</h2>
+                <p class="text-light">Scegli la tua preferita e abbinala ai tuoi momenti speciali.</p>
             </div>
 
-            <div class="row align-items-center">
-                <!-- Colonna Carosello -->
-                <div class="col-md-6 text-center">
-                    <!-- Carousel -->
-                    <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                        <div class="carousel-inner">
-                            <?php foreach ($templateParams["birre"] as $index => $birra): ?>
-                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                    <img src="img/beers/<?php echo $birra["immagine"]; ?>" class="d-block w-100 img-fluid" alt="<?php echo $birra["nome"]; ?>">
-                                </div>
-                            <?php endforeach; ?>
+            <div class="row">
+                <!-- Colonna Sinistra -->
+                <div class="col-md-6 border-end border-secondary">
+                    <?php foreach($templateParams["birre"] as $birra): ?>
+                    <div class="d-flex align-items-center border-bottom border-secondary pb-3">
+                        <a href="prodotto_in_dettaglio.html">
+                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" class="img-fluid me-3"
+                                style="width: 150px;">
+                        </a>
+                        <div>
+                            <h6 class="m-0 fs-4"><?php echo $birra["nome"]; ?></h6>
+                            <p class="m-0 fs-5">alc. <?php echo $birra["alc"]; ?> % vol</p>
+                            <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#beerCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <div class="ms-auto d-flex flex-column align-items-stretch">
+                            <label for="quantity1" class="form-label text-center">Quantità:</label>
+                            <input type="number" id="quantity1" class="form-control mb-2 text-center" min="1" value="1"
+                                style="height: 40px;">
+                            <button class="btn btn-warning btn-sm mb-2"
+                                style="height: 40px; font-weight: bold; padding: 0.5rem;">Aggiungi</button>
+                            <a href="prodotto_in_dettaglio.html" class="btn btn-warning btn-sm text-center"
+                                style="height: 40px; font-weight: bold; padding: 0.5rem;">Scopri</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Colonna Pulsanti -->
-                <div class="col-md-6">
-                    <div class="d-grid gap-3">
-                        <a href="catalogo_prodotti.html" class="btn btn-custom btn-lg fw-bold">
-                            <i class="bi bi-basket"></i> SCOPRI I NOSTRI PRODOTTI
-                        </a>
-                        <a href="abbinamenti.html" class="btn btn-custom btn-lg fw-bold">
-                            <i class="bi bi-info-circle"></i> VISUALIZZA I CONSIGLI PER LE BIRRE
-                        </a>
-                        <a href="carrello.html" class="btn btn-custom btn-lg fw-bold">
-                            <i class="bi bi-cart-check"></i> CONTROLLA LO STATO DEL TUO CARRELLO
-                        </a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
-
-        <!-- Sezione Testimonianze -->
-        <section class="bg-dark py-3">
-            <div class="container text-center">
-                <h2 class="fs-3 mb-4">COSA DICONO I NOSTRI CLIENTI</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p class="fs-5">"Birre fantastiche e servizio impeccabile! 🔥"</p>
-                        <small>- Mattia</small>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="fs-5">"Il miglior negozio di birre artigianali che abbia mai trovato."</p>
-                        <small>- Monia</small>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="fs-5">"Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top,
-                            consigliatissimo!"</p>
-                        <small>- Dave</small>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
-
     <div class="divider"></div>
-    <footer class="bg-dark py-2">
+    <footer class="py-4">
         <div class="container text-center">
             <a href="paginainformativa.html" class="d-block mb-2">Contatti</a>
             <a href="paginainformativa.html" class="d-block mb-2">Chi siamo?</a>
@@ -180,7 +156,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/carousel.js"></script>
 </body>
 
 </html>
