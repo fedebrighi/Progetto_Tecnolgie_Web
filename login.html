@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PHPint - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
 </head>
 
@@ -59,8 +60,8 @@
                             <i class="bi bi-person-circle me-1"></i> Area Personale
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><a class="dropdown-item text-light" href="utente.html"><i
-                                        class="bi bi-gear me-1"></i> Impostazioni</a></li>
+                            <li><a class="dropdown-item text-light" href="utente.html"><i class="bi bi-gear me-1"></i>
+                                    Impostazioni</a></li>
                             <li><a class="dropdown-item text-light" href="venditore.html"><i
                                         class="bi bi-archive me-1"></i> Storico Ordini</a></li>
                             <li>
@@ -133,10 +134,16 @@
                             <input type="text" class="form-control" id="usernameCliente"
                                 placeholder="Inserisci il tuo username" />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 position-relative">
                             <label for="passwordCliente" class="form-label text-light">Password:</label>
-                            <input type="password" class="form-control" id="passwordCliente"
-                                placeholder="Inserisci la tua password" />
+                            <div class="input-group">
+                                <!-- Campo di input -->
+                                <input type="password" class="form-control" id="passwordCliente" placeholder="Inserisci la tua password" />
+                                <!-- Icona "occhio" -->
+                                <span class="input-group-text">
+                                    <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-warning w-100 fw-bold">Accedi!</button>
@@ -155,10 +162,16 @@
                             <input type="text" class="form-control" id="usernameVenditore"
                                 placeholder="Inserisci il tuo username" />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 position-relative">
                             <label for="passwordVenditore" class="form-label text-light">Password:</label>
-                            <input type="password" class="form-control" id="passwordVenditore"
-                                placeholder="Inserisci la tua password" />
+                            <div class="input-group">
+                                <!-- Campo di input -->
+                                <input type="password" class="form-control" id="passwordVenditore" placeholder="Inserisci la tua password" />
+                                <!-- Icona "occhio" per mostrare/nascondere -->
+                                <span class="input-group-text bg-white">
+                                    <i class="bi bi-eye toggle-password-venditore" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-warning w-100 fw-bold">Accedi!</button>
@@ -196,6 +209,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Collegamento al file JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>

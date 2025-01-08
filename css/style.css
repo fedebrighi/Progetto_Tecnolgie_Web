@@ -210,6 +210,23 @@ section.bg-dark h2 {
   border: none;
 }
 
+.input-group-text {
+  border: none; /* Rimuove il bordo extra intorno alle icone */
+  cursor: pointer; /* Cambia il cursore sopra le icone */
+  background-color: #fff !important; /* Sfondo bianco per le icone */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.toggle-password {
+  color: #6c757d; /* Colore grigio per l'icona dell'occhio */
+}
+
+.toggle-password:hover {
+  color: #000; /* Colore nero al passaggio del mouse */
+}
 
 
 /* Media Query per Layout Responsivo */
