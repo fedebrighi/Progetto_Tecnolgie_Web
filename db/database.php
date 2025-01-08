@@ -50,11 +50,11 @@ class DatabaseHelper
     {
         $query = "SELECT CA.codCarrello, CA.totale,
                              P.codProdotto, P.nome,
-                             P.alc, CC.quantita 
+                             P.alc, CC.quantita
                       FROM CARRELLO CA, COMPOSIZIONECARRELLO CC, PRODOTTO P, CLIENTE CL
-                      WHERE CL.username = ? 
+                      WHERE CL.username = ?
                       AND CA.codCarrello = CL.codCarrello
-                      AND CC.codCarrello = CA.codCarrello 
+                      AND CC.codCarrello = CA.codCarrello
                       AND CC.codProdotto = P.codProdotto ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
@@ -63,12 +63,13 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function emptyCart($codCarrello)
+    public function removeProductFromCart($username, $codProdotto): bool
     {
-        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = ?";
+        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $codCarrello);
-        $stmt->execute();
+        $stmt->bind_param('si', $username, $codProdotto);
+        $success = $stmt->execute();
+        return $success;
     }
 
     public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, )
@@ -84,19 +85,19 @@ class DatabaseHelper
         }
     }
 
-    public function getClientIfRegistered($username,$password)
+    public function getClientIfRegistered($username, $password)
     {
         $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-        
-        return $result->fetch_all(MYSQLI_ASSOC);    
+
+        return $result->fetch_all(MYSQLI_ASSOC);
 
     }
 
-    public function getSellerIfRegistered($username,$password)
+    public function getSellerIfRegistered($username, $password)
     {
         $query = "SELECT * FROM VENDITORE WHERE username = ? AND pw = ?";
         $stmt = $this->db->prepare($query);

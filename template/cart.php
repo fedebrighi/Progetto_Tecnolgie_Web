@@ -121,37 +121,45 @@
     <!-- Carrello -->
     <div class="container py-4">
         <div class="row gy-3">
-            <?php foreach ($templateParams["elementicarrello"] as $item):?>
-                <?php $birra= $dbh->getBeerDetails($item["codProdotto"]); ?>
+            <?php
+            $total = 0; // Inizializza il totale
+            foreach ($templateParams["elementicarrello"] as $item):
+                $birra = $dbh->getBeerDetails($item["codProdotto"]);
+                $itemTotal = $birra["prezzo"] * $item["quantita"];
+                $total += $itemTotal; // Somma il prezzo totale del prodotto
+                ?>
                 <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3">
-                    <img src="img/beers/<?php echo $birra["immagine"]?>"
-                        alt="<?php echo $birra["nome"]?>" class="img-fluid me-3" style="width: 80px;" />
+                    <img src="img/beers/<?php echo $birra["immagine"] ?>" alt="<?php echo $birra["nome"] ?>"
+                        class="img-fluid me-3" style="width: 80px;" />
                     <div class="flex-grow-1">
-                        <h6 class="m-0"><?php echo $birra["nome"]?></h6>
-                        <p class="m-0">alc. <?php echo $birra["alc"]?>% vol</p>
-                        <p class="m-0 fw-bold"><?php echo $birra["prezzo"]?> €</p>
+                        <h6 class="m-0"><?php echo $birra["nome"] ?></h6>
+                        <p class="m-0">alc. <?php echo $birra["alc"] ?>% vol</p>
+                        <p class="m-0 fw-bold"><?php echo $birra["prezzo"] ?> €</p>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                        <input type="number" id="quantity<?php $itemS["quantita"]?>"
-                            class="form-control mb-2 text-center" min="1" value="<?php echo $item["quantita"]?>"
+                        <input type="number" id="quantity<?php echo $item["quantita"]; ?>"
+                            class="form-control mb-2 text-center" min="1" value="<?php echo $item["quantita"] ?>"
                             style="height: 40px;">
-                        <form method="post" action="remove_item.php">
-                            <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($item['codCarrello']) ?>">
-                            <input type="hidden" name="codProdotto" value="<?= htmlspecialchars($item['codProdotto']) ?>">
-                            <button type="submit" class="btn btn-warning btn-sm w-100">Rimuovi dal carrello</button>
-                        </form>
+                        <button class="btn btn-warning btn-sm w-100 remove-from-cart"
+                            data-id="<?php echo $item['codProdotto']; ?>">
+                            Rimuovi dal carrello
+                        </button>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
 
+        <!-- Sezione Totale -->
+        <div class="mt-4 text-end">
+            <h5 class="text-light">Totale: <span class="text-warning"><?= number_format($total, 2) ?> €</span></h5>
+        </div>
+
+        <!-- Pulsanti -->
         <div class="d-flex justify-content-between mt-4">
             <button class="btn btn-outline-light" type="button"
                 onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
-            <form method="post" action="empty_cart.php">
-                <input type="hidden" name="codCarrello" value="<?= htmlspecialchars($item[0]['codCarrello'] ?? '') ?>">
-                <button class="btn btn-warning" type="button" onclick="window.location.href='checkout.php';">Procedi al pagamento</button>
-            </form>
+            <button class="btn btn-warning" type="button" onclick="window.location.href='checkout.php';">Procedi al
+                pagamento</button>
         </div>
     </div>
 
@@ -166,6 +174,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/rimuoviCarrello.js"></script>
 </body>
 
 </html>
