@@ -72,17 +72,13 @@ class DatabaseHelper
         return $success;
     }
 
-    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, )
-    {
-        $query = "INSERT INTO CLIENTI (nome, cognome, email, username, pw, data_nascita, citta, cap, indirizzo, telefono,)
+    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello)
+     {
+        $query = "INSERT INTO cliente (nome, cognome, email, username, password, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // Hash della password
-        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $hashedPassword, $dataNascita, $citta, $cap, $indirizzo, $telefono, );
-
-        if (!$stmt->execute()) {
-            throw new Exception("Errore durante l'inserimento dell'utente: " . $stmt->error);
-        }
+        $stmt->bind_param('sssssssssss',$nome,$cognome,$email,$username,$password,$dataNascita,$citta,$cap,$indirizzo,$telefono,$codCarrello);
+        $stmt->execute();
     }
 
     public function getClientIfRegistered($username, $password)

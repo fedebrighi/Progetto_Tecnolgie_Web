@@ -53,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $db = $databaseHelper->getDb();
-                /*
                 // Crea un nuovo carrello con ID univoco
                 do {
                     $carrelloId = uniqid();
@@ -83,9 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_POST['cap'],
                     $_POST['indirizzo'],
                     $_POST['telefono'],
-
+                    $carrelloId
                 );
-                */
                 // Reindirizzamento
                 header("Location: homepage.php");
                 exit();
