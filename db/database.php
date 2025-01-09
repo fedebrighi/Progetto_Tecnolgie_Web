@@ -63,6 +63,53 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function createEmptyCart(): string {
+        do {
+            $cartId = bin2hex(random_bytes(8)); // Genera un ID univoco
+            $queryCheck = "SELECT COUNT(*) AS count FROM CARRELLO WHERE codCarrello = ?";
+            $stmtCheck = $this->db->prepare($queryCheck);
+            $stmtCheck->bind_param('s', $cartId);
+            $stmtCheck->execute();
+            $result = $stmtCheck->get_result();
+            $row = $result->fetch_assoc();
+            $exists = $row['count'] > 0;
+        } while ($exists);
+
+        $queryInsert = "INSERT INTO CARRELLO (codCarrello, totale) VALUES (?, 0)";
+        $stmtInsert = $this->db->prepare($queryInsert);
+        $stmtInsert->bind_param('s', $cartId);
+        $stmtInsert->execute();
+
+        return $cartId;
+    }
+
+    public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
+    {
+        // Crea un nuovo carrello vuoto
+        $codCarrello = $this->createEmptyCart();
+
+        // Salva l'utente con il carrello assegnato
+        $query = "INSERT INTO CLIENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            'sssssssssss',
+            $nome,
+            $cognome,
+            $email,
+            $username,
+            $pw,
+            $dataNascita,
+            $citta,
+            $cap,
+            $indirizzo,
+            $telefono,
+            $codCarrello
+        );
+
+        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+    }
+
     public function removeProductFromCart($username, $codProdotto): bool
     {
         $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
@@ -73,11 +120,11 @@ class DatabaseHelper
     }
 
     public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello)
-     {
+    {
         $query = "INSERT INTO cliente (nome, cognome, email, username, password, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssssssss',$nome,$cognome,$email,$username,$password,$dataNascita,$citta,$cap,$indirizzo,$telefono,$codCarrello);
+        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello);
         $stmt->execute();
     }
 
