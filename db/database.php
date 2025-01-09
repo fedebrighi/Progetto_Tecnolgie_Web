@@ -151,6 +151,58 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
 
     }
+
+
+    
+    public function getClientByUsername($username)
+    {
+        $query = "SELECT * FROM CLIENTE WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    public function getOrdersByClientUsername($username)
+    {
+        $query = "SELECT * FROM ORDINE WHERE username = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderByCod($codiceOrdine)
+    {
+        $query = "SELECT * FROM ORDINE WHERE codiceOrdine = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_assoc();
+    }
+
+    public function getOrderElementsByCod($codiceOrdine)
+    {
+        $query = "SELECT * FROM composizioneOrdine WHERE codiceOrdine = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
