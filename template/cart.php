@@ -120,6 +120,11 @@
 
     <!-- Carrello -->
     <div class="container py-4">
+        <!-- Scritta introduttiva -->
+        <div class="text-center mb-4">
+            <h2 class="text-warning">Ecco il tuo carrello!</h2>
+            <p class="text-light">Controlla i prodotti selezionati e procedi al pagamento per completare l'acquisto.</p>
+        </div>
         <div class="row gy-3">
             <?php
             $total = 0; // Inizializza il totale
