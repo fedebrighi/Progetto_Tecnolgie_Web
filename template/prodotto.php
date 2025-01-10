@@ -16,7 +16,7 @@
                 <div class="d-flex align-items-center mt-3">
                     <label for="quantity" class="form-label m-3">Quantità</label>
                     <input type="number" id="quantity" class="form-control me-3" style="width: 80px;" min="1" value="1" />
-                    <button class="btn btn-light">Aggiungi al carrello</button>
+                <button class="btn btn-light" onclick="<?php $dbh->addProductToCart($templateParams["codCarrello"]["codCarrello"], $templateParams["birra"]["codProdotto"], 1);?>" >Aggiungi al carrello</button>
                 </div>
             </div>
     </div>

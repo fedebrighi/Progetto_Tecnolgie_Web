@@ -46,7 +46,17 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCartFromUser($id)
+    public function getCart($username)
+    {
+        $query = "SELECT codCarrello FROM CLIENTE WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function getCartFromUser($username)
     {
         $query = "SELECT CA.codCarrello, CA.totale,
                              P.codProdotto, P.nome,
@@ -57,7 +67,7 @@ class DatabaseHelper
                       AND CC.codCarrello = CA.codCarrello
                       AND CC.codProdotto = P.codProdotto ";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -83,12 +93,47 @@ class DatabaseHelper
         return $cartId;
     }
 
+    public function removeProductFromCart($username, $codProdotto): bool
+    {
+        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $username, $codProdotto);
+        $success = $stmt->execute();
+        return $success;
+    }
+
+    public function addProductToCart($codCarrello, $codProdotto, $quantita): bool {
+        // Verifica se il prodotto è già presente nel carrello
+        $query = "SELECT quantita FROM COMPOSIZIONECARRELLO WHERE codCarrello = ? AND codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $codCarrello, $codProdotto); // Nota: qui solo due parametri
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows == 0) {
+            // Se il prodotto non è nel carrello, lo aggiungiamo
+            $query = "INSERT INTO COMPOSIZIONECARRELLO (codCarrello, codProdotto, quantita) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iii', $codCarrello, $codProdotto, $quantita);
+            $success = $stmt->execute();
+        } else {
+            // Se il prodotto è già presente, aggiorniamo la quantità
+            $row = $result->fetch_assoc();
+            $nuovaQuantita = $row['quantita'] + $quantita;
+    
+            $query = "UPDATE COMPOSIZIONECARRELLO SET quantita = ? WHERE codCarrello = ? AND codProdotto = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iii', $nuovaQuantita, $codCarrello, $codProdotto);
+            $success = $stmt->execute();
+        }
+    
+        return $success;
+    }
+    
+
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
     {
-        // Crea un nuovo carrello vuoto
         $codCarrello = $this->createEmptyCart();
-
-        // Salva l'utente con il carrello assegnato
         $query = "INSERT INTO CLIENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -108,15 +153,6 @@ class DatabaseHelper
         );
 
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
-    }
-
-    public function removeProductFromCart($username, $codProdotto): bool
-    {
-        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $username, $codProdotto);
-        $success = $stmt->execute();
-        return $success;
     }
 
     public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello)
@@ -151,8 +187,6 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
 
     }
-
-
     
     public function getClientByUsername($username)
     {
