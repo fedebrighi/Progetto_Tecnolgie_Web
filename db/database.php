@@ -25,14 +25,15 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     public function getBeerDetails($idBirra)
     {
-        $query = "SELECT nome, alc, descrizione, prezzo,immagine FROM PRODOTTO WHERE idBirra = ?";
+        $query = "SELECT nome, alc, descrizione, prezzo, immagine FROM PRODOTTO WHERE codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idBirra);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_assoc();
     }
 
     public function getIngredients($idBirra)
@@ -47,13 +48,14 @@ class DatabaseHelper
 
     public function getCartFromUser($id)
     {
-        $query = "SELECT CA.codCarrello AS carrello_id, CA.totale AS totale_carrello,
-                             P.codProdotto AS prodotto_id, P.nome AS prodotto_nome,
-                             P.alc AS prodotto_alc, CC.quantita AS prodotto_quantita
-                      FROM CARRELLO CA
-                      JOIN COMPOSIZIONECARRELLO CC ON CC.codCarrello = CA.codCarrello
-                      JOIN PRODOTTO P ON P.codProdotto = CC.codProdotto
-                      WHERE CA.codCarrello = ?";
+        $query = "SELECT CA.codCarrello, CA.totale,
+                             P.codProdotto, P.nome,
+                             P.alc, CC.quantita
+                      FROM CARRELLO CA, COMPOSIZIONECARRELLO CC, PRODOTTO P, CLIENTE CL
+                      WHERE CL.username = ?
+                      AND CA.codCarrello = CL.codCarrello
+                      AND CC.codCarrello = CA.codCarrello
+                      AND CC.codProdotto = P.codProdotto ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -61,40 +63,84 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function emptyCart($codCarrello)
+    public function createEmptyCart(): string {
+        do {
+            $cartId = bin2hex(random_bytes(8)); // Genera un ID univoco
+            $queryCheck = "SELECT COUNT(*) AS count FROM CARRELLO WHERE codCarrello = ?";
+            $stmtCheck = $this->db->prepare($queryCheck);
+            $stmtCheck->bind_param('s', $cartId);
+            $stmtCheck->execute();
+            $result = $stmtCheck->get_result();
+            $row = $result->fetch_assoc();
+            $exists = $row['count'] > 0;
+        } while ($exists);
+
+        $queryInsert = "INSERT INTO CARRELLO (codCarrello, totale) VALUES (?, 0)";
+        $stmtInsert = $this->db->prepare($queryInsert);
+        $stmtInsert->bind_param('s', $cartId);
+        $stmtInsert->execute();
+
+        return $cartId;
+    }
+
+    public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
     {
-        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = ?";
+        // Crea un nuovo carrello vuoto
+        $codCarrello = $this->createEmptyCart();
+
+        // Salva l'utente con il carrello assegnato
+        $query = "INSERT INTO CLIENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $codCarrello);
+        $stmt->bind_param(
+            'sssssssssss',
+            $nome,
+            $cognome,
+            $email,
+            $username,
+            $pw,
+            $dataNascita,
+            $citta,
+            $cap,
+            $indirizzo,
+            $telefono,
+            $codCarrello
+        );
+
+        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+    }
+
+    public function removeProductFromCart($username, $codProdotto): bool
+    {
+        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $username, $codProdotto);
+        $success = $stmt->execute();
+        return $success;
+    }
+
+    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello)
+    {
+        $query = "INSERT INTO cliente (nome, cognome, email, username, password, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello);
         $stmt->execute();
     }
 
-    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, )
-    {
-        $query = "INSERT INTO CLIENTI (nome, cognome, email, username, pw, data_nascita, citta, cap, indirizzo, telefono,)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // Hash della password
-        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $hashedPassword, $dataNascita, $citta, $cap, $indirizzo, $telefono, );
-
-        if (!$stmt->execute()) {
-            throw new Exception("Errore durante l'inserimento dell'utente: " . $stmt->error);
-        }
-    }
-
-    public function getClientIfRegistered($username,$password)
+    public function getClientIfRegistered($username, $password)
     {
         $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-        
-        return $result->fetch_all(MYSQLI_ASSOC);    
+
+        return $result->fetch_all(MYSQLI_ASSOC);
 
     }
 
-    public function getSellerIfRegistered($username,$password)
+    public function getSellerIfRegistered($username, $password)
     {
         $query = "SELECT * FROM VENDITORE WHERE username = ? AND pw = ?";
         $stmt = $this->db->prepare($query);
@@ -104,6 +150,58 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
 
+    }
+
+
+    
+    public function getClientByUsername($username)
+    {
+        $query = "SELECT * FROM CLIENTE WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    public function getOrdersByClientUsername($username)
+    {
+        $query = "SELECT * FROM ORDINE WHERE username = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOrderByCod($codiceOrdine)
+    {
+        $query = "SELECT * FROM ORDINE WHERE codiceOrdine = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_assoc();
+    }
+
+    public function getOrderElementsByCod($codiceOrdine)
+    {
+        $query = "SELECT * FROM composizioneOrdine WHERE codiceOrdine = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 

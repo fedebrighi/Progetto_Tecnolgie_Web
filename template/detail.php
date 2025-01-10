@@ -117,105 +117,63 @@
             </div>
         </div>
     </nav>
+
+    <!-- Intestazione -->
     <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="border border-secondary rounded p-4">
-                    <h2 class="text-center mb-4">Registrati</h2>
-                    <?php if (!empty($message)): ?>
-                        <div class="alert alert-info">
-                            <?= htmlspecialchars($message) ?>
-                        </div>
-                    <?php endif; ?>
-                    <form method="post">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome:</label>
-                            <input type="text" name="nome" class="form-control" id="nome"
-                                placeholder="Inserisci il tuo nome" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="cognome" class="form-label">Cognome:</label>
-                            <input type="text" name="cognome" class="form-control" id="cognome"
-                                placeholder="Inserisci il tuo cognome" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" name="email" class="form-control" id="email"
-                                placeholder="Inserisci la tua email" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username:</label>
-                            <input type="text" name="username" class="form-control" id="username"
-                                placeholder="Inserisci un username" required />
-                        </div>
-                        <div class="mb-3 position-relative">
-                            <label for="password" class="form-label">Password:</label>
-                            <div class="input-group">
-                                <input type="password" name="password" class="form-control pe-5" id="password"
-                                    placeholder="Inserisci una password" required />
-                                <!-- Icona per mostrare/nascondere la password -->
-                                <span class="input-group-text bg-white">
-                                    <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
-                                </span>
-                                <!-- Pulsante per generare una password casuale -->
-                                <span class="input-group-text bg-white">
-                                    <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
-                                        title="Genera password casuale"></i>
-                                </span>
-                            </div>
-                            <!-- Indicatore della forza della password -->
-                            <small id="passwordStrength" class="form-text mt-2"></small>
-                        </div>
+        <div class="text-center mb-4">
+            <?php $order = $templateParams["infoordine"]; ?>
+            <h2 class="text-warning">Ordine # <?php echo $order["codiceOrdine"];?> </h2>
+            
+            </div>
 
-                        <!-- Messaggio di errore -->
-                        <div class="alert alert-danger d-none" id="passwordError">
-                            La password deve essere almeno "Forte" per procedere con la registrazione.
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="dataNascita" class="form-label">Data di Nascita:</label>
-                            <input type="date" name="dataNascita" class="form-control" id="dataNascita" required />
-                        </div>
-                        <div class="alert alert-danger d-none" id="dataNascitaError">
-                            Devi essere maggiorenne per registrarti!
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-8">
-                                <label for="citta" class="form-label">Città:</label>
-                                <input type="text" name="citta" class="form-control" id="citta"
-                                    placeholder="Inserisci la città" required />
-                            </div>
-                            <div class="col-4">
-                                <label for="cap" class="form-label">CAP:</label>
-                                <input type="text" name="cap" class="form-control" id="cap" placeholder="CAP"
-                                    required />
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="indirizzo" class="form-label">Indirizzo:</label>
-                            <input type="text" name="indirizzo" class="form-control" id="indirizzo"
-                                placeholder="Inserisci il tuo indirizzo" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Telefono:</label>
-                            <input type="tel" name="telefono" class="form-control" id="telefono"
-                                placeholder="Inserisci il tuo numero di telefono" required />
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-warning w-100 fw-bold"
-                                id="submitButton">Registrati!</button>
-                        </div>
-                    </form>
-                </div>
+        <!-- Sezione Dati Dell'Ordine -->
+        <div class="border border-secondary rounded p-4 mb-5">
+            <h4 class="text-warning mb-3"> Dati dell'ordine</h4>
+            <p class="text-light"><strong> Data Ordine: <?php echo $order["dataOrdine"];?></strong> </p>
+            <p class="text-light"><strong> Data di Spedizione: <?php echo $order["dataSpedizione"];?></strong></p>
+            <p class="text-light"><strong> Data di Arrivo: <?php echo $order["dataArrivo"];?></strong></p>
+            <p class="text-light"><strong> Pagamento utilizzato: <?php echo $order["tipoPagamento"];?></strong></p>
+            <p class="text-light"><strong> Indirizzo: <?php echo $order["indirizzo"] . ", " . $order["citta"] . ", " . $order["cap"];?></strong></p>
+            <p class="text-light"><strong> Tipo spedizione: <?php echo $order["tipo"];?></strong></p>
+            <p class="text-light"><strong> Note: <?php echo $order["note"];?></strong></p>
+            
+            <div class="text-center">
+                <h5 class="text-warning mb-3"><strong> Totale: <?php echo $order["totale"];?> €</strong></h5>
             </div>
         </div>
     </div>
 
-    <!-- Divider aggiunto -->
-    <div class="divider"></div>
+    <!-- Ordine -->
+    <div class="container py-4">
+        <div class="row gy-3">
+            <?php        
+            foreach ($templateParams["elementiordine"] as $item):
+                $birra = $dbh->getBeerDetails($item["codProdotto"]);
+                ?>
+                <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3">
+                    <img src="img/beers/<?php echo $birra["immagine"] ?>" alt="<?php echo $birra["nome"] ?>"
+                        class="img-fluid me-3" style="width: 150px;" />
+                    <div class="flex-grow-1">
+                        <h6 class="m-0 fs-4"><?php echo $birra["nome"] ?></h6>
+                        <p class="m-0 fs-5">alc. <?php echo $birra["alc"] ?>% vol</p>
+                        <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"] ?> €</p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <p class="m-0 fs-5">Quantità: <?php echo $item["quantita"] ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-outline-light" type="button"
+                onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
+        </div>  
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark py-4">
+        <div class="divider"></div>
         <div class="container text-center">
             <a href="paginainformativa.html" class="d-block mb-2">Contatti</a>
             <a href="paginainformativa.html" class="d-block mb-2">Chi siamo?</a>
@@ -224,8 +182,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/maggiorenne.js"></script>
+    <script src="js/rimuoviCarrello.js"></script>
 </body>
 
 </html>
