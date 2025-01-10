@@ -3,6 +3,7 @@
 require_once 'bootstrap.php';
 
 $templateParams["titolo"] = "PHPint - Login";
+$templateParams["nome"] = "loginpage.php";
 
 $result = [
     "logineseguito" => false,
@@ -22,9 +23,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         }
     } else {
         registerLoggedUser($login_result[0]);
-        
+
     }
-    
+
 }
 
 if (isUserLoggedIn()) {
@@ -33,6 +34,6 @@ if (isUserLoggedIn()) {
     header("Location: homepage.php");
 }
 
-require 'template/loginpage.php';
+require 'template/base.php';
 
 ?>

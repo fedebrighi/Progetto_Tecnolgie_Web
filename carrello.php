@@ -3,6 +3,7 @@ require_once 'bootstrap.php';
 
 // Base Template
 $templateParams["titolo"] = "PHPint - Carrello";
+$templateParams["nome"] = "cart.php";
 
 // Controlla se l'utente è loggato
 if (isUserLoggedIn()) {
@@ -44,5 +45,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 }
 
 // Mostra il template del carrello
-require 'template/cart.php';
+require 'template/base.php';
 ?>
