@@ -9,4 +9,3 @@ session_destroy();
 
 header("Location: homepage.php");
 exit();
-?>
