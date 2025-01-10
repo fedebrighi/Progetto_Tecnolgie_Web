@@ -2,6 +2,7 @@
 require_once 'bootstrap.php';
 
 $templateParams["titolo"] = "PHPint - Registrazione Cliente";
+$templateParams["nome"] = "registration.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
@@ -25,5 +26,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Includi il template per la registrazione cliente
-require 'template/registration.php';
+require 'template/base.php';
 ?>
