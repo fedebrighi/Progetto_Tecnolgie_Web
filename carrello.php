@@ -46,4 +46,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
 
 // Mostra il template del carrello
 require 'template/base.php';
-?>

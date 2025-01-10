@@ -2,9 +2,8 @@
 require_once 'bootstrap.php';
 
 
-$templateParams["titolo"] = "PHPint - ORDINE #" . $_GET["codiceOrdine"];
-$templateParams["infoordine"] = $dbh->getOrderByCod($_GET["codiceOrdine"]);
-$templateParams["elementiordine"] = $dbh->getOrderElementsByCod($_GET["codiceOrdine"]);
+$templateParams["titolo"] = "PHPint - ORDINE #" . $_POST["codiceOrdine"];
+$templateParams["infoordine"] = $dbh->getOrderByCod($_POST["codiceOrdine"]);
+$templateParams["elementiordine"] = $dbh->getOrderElementsByCod($_POST["codiceOrdine"]);
 
 require 'template/detail.php';
-?>
