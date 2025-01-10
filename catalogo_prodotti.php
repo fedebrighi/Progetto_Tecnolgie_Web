@@ -3,7 +3,8 @@
 
     //Base Template
     $templateParams["titolo"] = "PHPint - Catalogo Prootti";
+    $templateParams["nome"] = "catalogo.php";
     $templateParams["birre"] = $dbh->getAllBeers();
 
-    require 'template/catalogo.php';
+    require 'template/base.php';
 ?>

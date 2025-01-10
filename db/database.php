@@ -28,7 +28,7 @@ class DatabaseHelper
 
     public function getBeerDetails($idBirra)
     {
-        $query = "SELECT nome, alc, descrizione, prezzo, immagine FROM PRODOTTO WHERE codProdotto = ?";
+        $query = "SELECT codProdotto, nome, alc, descrizione, prezzo, immagine FROM PRODOTTO P WHERE P.codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idBirra);
         $stmt->execute();
@@ -38,7 +38,7 @@ class DatabaseHelper
 
     public function getIngredients($idBirra)
     {
-        $query = "SELECT ingredienti FROM INGREDIENTI I WHERE I.codProdotto = ?";
+        $query = "SELECT ingrediente FROM INGREDIENTI I WHERE I.codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idBirra);
         $stmt->execute();
