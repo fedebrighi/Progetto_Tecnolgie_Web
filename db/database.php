@@ -73,7 +73,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createEmptyCart(): string {
+    public function createEmptyCart(): string
+    {
         do {
             $cartId = bin2hex(random_bytes(8)); // Genera un ID univoco
             $queryCheck = "SELECT COUNT(*) AS count FROM CARRELLO WHERE codCarrello = ?";
@@ -173,7 +174,6 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-
     }
 
     public function getSellerIfRegistered($username, $password)
@@ -185,12 +185,22 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-
     }
-    
+
     public function getClientByUsername($username)
     {
         $query = "SELECT * FROM CLIENTE WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    public function getSellerByUsername($username)
+    {
+        $query = "SELECT * FROM VENDITORE WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -238,5 +248,3 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
-
-?>
