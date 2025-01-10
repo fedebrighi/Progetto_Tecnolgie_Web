@@ -12,6 +12,10 @@
         return !empty($_SESSION['username']);
     }
 
+    function isSellerLoggedIn(){
+        return !empty($_SESSION['username']);
+    }
+
     function registerLoggedUser($user){
         $_SESSION["username"] = $user["username"];
         $_SESSION["pw"] = $user["pw"];
