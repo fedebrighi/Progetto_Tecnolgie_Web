@@ -19,7 +19,7 @@ class DatabaseHelper
 
     public function getAllBeers()
     {
-        $query = "SELECT codProdotto, nome, alc, prezzo, immagine FROM PRODOTTO";
+        $query = "SELECT * FROM PRODOTTO";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -28,7 +28,7 @@ class DatabaseHelper
 
     public function getBeerDetails($idBirra)
     {
-        $query = "SELECT codProdotto, nome, alc, descrizione, prezzo, immagine FROM PRODOTTO P WHERE P.codProdotto = ?";
+        $query = "SELECT * FROM PRODOTTO P WHERE P.codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idBirra);
         $stmt->execute();
@@ -103,7 +103,8 @@ class DatabaseHelper
         return $success;
     }
 
-    public function addProductToCart($codCarrello, $codProdotto, $quantita): bool {
+    public function addProductToCart($codCarrello, $codProdotto, $quantita): bool
+    {
         $success = false; // Inizializza $success come false
         try {
             // Verifica se il prodotto è già presente nel carrello
@@ -133,8 +134,8 @@ class DatabaseHelper
         }
         return $success;
     }
-    
-    
+
+
 
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
     {
@@ -250,5 +251,40 @@ class DatabaseHelper
 
         // Restituisce tutti gli ordini come array associativo multidimensionale
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNextCodProdotto()
+    {
+        $query = "SELECT MAX(codProdotto) AS maxCodProdotto FROM PRODOTTO";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Calcola il nuovo codProdotto
+        $nextCodProdotto = isset($row['maxCodProdotto']) ? $row['maxCodProdotto'] + 1 : 1;
+
+        return $nextCodProdotto;
+    }
+
+
+    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $prezzo, $quantita, $immagine)
+    {
+        $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
+                  VALUES (?,?,?,?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            'iisdsdis',
+            $codProdotto,
+            $codInfo,
+            $nome,
+            $alc,
+            $descrizione,
+            $prezzo,
+            $quantita,
+            $immagine
+        );
+
+        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
 }

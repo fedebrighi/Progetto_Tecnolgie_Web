@@ -1,6 +1,6 @@
 <div class="container py-4">
     <div class="text-center mb-4">
-        <h2 class="text-warning">Benvenuto, Venditore!</h2>
+        <h2 class="text-warning">Benvenuto!</h2>
         <p class="text-light">Gestisci i tuoi prodotti e monitora le vendite direttamente da questa pagina.</p>
     </div>
 
@@ -12,9 +12,9 @@
                 <h4 class="text-warning mb-3">Gestione Prodotti</h4>
                 <p class="text-light">Aggiungi, modifica o elimina prodotti dal catalogo.</p>
                 <button class="btn btn-warning w-100 mb-2 fw-bold"
-                    onclick="window.location.href='aggiungi_prodotto.html'">Aggiungi Prodotto</button>
+                    onclick="window.location.href='aggiungiprodotto.php'">Aggiungi Nuovo Prodotto</button>
                 <button class="btn btn-outline-light w-100 fw-bold"
-                    onclick="window.location.href='gestione_prodotti.html'">Modifica/Elimina Prodotti</button>
+                    onclick="window.location.href='gestioneprodotti.php'">Gestisci Prodotti</button>
             </div>
         </div>
 
