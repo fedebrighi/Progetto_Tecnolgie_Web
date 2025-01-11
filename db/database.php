@@ -104,32 +104,36 @@ class DatabaseHelper
     }
 
     public function addProductToCart($codCarrello, $codProdotto, $quantita): bool {
-        // Verifica se il prodotto è già presente nel carrello
-        $query = "SELECT quantita FROM COMPOSIZIONECARRELLO WHERE codCarrello = ? AND codProdotto = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $codCarrello, $codProdotto); // Nota: qui solo due parametri
-        $stmt->execute();
-        $result = $stmt->get_result();
-    
-        if ($result->num_rows == 0) {
-            // Se il prodotto non è nel carrello, lo aggiungiamo
-            $query = "INSERT INTO COMPOSIZIONECARRELLO (codCarrello, codProdotto, quantita) VALUES (?, ?, ?)";
+        $success = false; // Inizializza $success come false
+        try {
+            // Verifica se il prodotto è già presente nel carrello
+            $query = "SELECT quantita FROM COMPOSIZIONECARRELLO WHERE codCarrello = ? AND codProdotto = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('iii', $codCarrello, $codProdotto, $quantita);
-            $success = $stmt->execute();
-        } else {
-            // Se il prodotto è già presente, aggiorniamo la quantità
-            $row = $result->fetch_assoc();
-            $nuovaQuantita = $row['quantita'] + $quantita;
-    
-            $query = "UPDATE COMPOSIZIONECARRELLO SET quantita = ? WHERE codCarrello = ? AND codProdotto = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bind_param('iii', $nuovaQuantita, $codCarrello, $codProdotto);
-            $success = $stmt->execute();
+            $stmt->bind_param('ii', $codCarrello, $codProdotto);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows == 0) {
+                $query = "INSERT INTO COMPOSIZIONECARRELLO (codCarrello, codProdotto, quantita) VALUES (?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('iii', $codCarrello, $codProdotto, $quantita);
+                $success = $stmt->execute();
+            } else {
+                $row = $result->fetch_assoc();
+                $nuovaQuantita = $row['quantita'] + $quantita;
+                $query = "UPDATE COMPOSIZIONECARRELLO SET quantita = ? WHERE codCarrello = ? AND codProdotto = ?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('iii', $nuovaQuantita, $codCarrello, $codProdotto);
+                $success = $stmt->execute();
+            }
+            if (!$success) {
+                throw new Exception("Errore nell'esecuzione della query.");
+            }
+        } catch (Exception $e) {
+            error_log($e->getMessage());
         }
-    
         return $success;
     }
+    
     
 
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
