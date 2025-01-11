@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Salva il nuovo utente
     if ($dbh->saveNewUser($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono)) {
-        header("Location: homepage.php"); // Reindirizza alla homepage
+        header("Location: simulation_registration.php"); // Reindirizza alla homepage
         exit();
     } else {
         echo "Errore nella creazione dell'utente!";
