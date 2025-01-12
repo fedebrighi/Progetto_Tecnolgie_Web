@@ -34,15 +34,15 @@ VALUES
 ('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'Standard'),
 ('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'Express');
 
-INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spese, ricavo)
+INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
 VALUES
-(1, 0, 100, 0),
-(2, 0, 100, 0),
-(3, 0, 100, 0),
-(4, 0, 100, 0),
-(5, 0, 100, 0),
-(6, 0, 100, 0),
-(7, 0, 100, 0);
+(1, 0, 2, 0),
+(2, 0, 2, 0),
+(3, 0, 2, 0),
+(4, 0, 2, 0),
+(5, 0, 1, 0),
+(6, 0, 1, 0),
+(7, 0, 1, 0);
 
 INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
 VALUES

@@ -28,6 +28,11 @@
                     step="0.01" required>
             </div>
             <div class="mb-3">
+                <label for="spesaUnitaria" class="form-label text-light">Costo di produzione per pezzo (€)</label>
+                <input type="number" class="form-control" name="spesaUnitaria" id="spesaUnitaria" placeholder="Inserisci la spesa unitaria"
+                    step="0.01" required>
+            </div>
+            <div class="mb-3">
                 <label for="quantitaProdotto" class="form-label text-light">Quantità</label>
                 <input type="number" class="form-control" name="quantitaProdotto" id="quantitaProdotto"
                     placeholder="Inserisci la quantità disponibile" required>
