@@ -14,20 +14,20 @@
                 $itemTotal = $birra["prezzo"] * $item["quantita"];
                 $total += $itemTotal; // Somma il prezzo totale del prodotto
                 ?>
-                <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3">
+                <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
+                    data-id="<?php echo $item['codProdotto']; ?>">
                     <img src="img/beers/<?php echo $birra["immagine"] ?>" alt="<?php echo $birra["nome"] ?>"
                         class="img-fluid me-3" style="width: 80px;" />
                     <div class="flex-grow-1">
                         <h6 class="m-0"><?php echo $birra["nome"] ?></h6>
                         <p class="m-0">alc. <?php echo $birra["alc"] ?>% vol</p>
-                        <p class="m-0 fw-bold"><?php echo $birra["prezzo"] ?> €</p>
+                        <p class="m-0 fw-bold prezzo"><?php echo $birra["prezzo"] ?> €</p>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                        <input type="number" id="quantity<?php echo $item["quantita"]; ?>"
-                            class="form-control mb-2 text-center" min="1" value="<?php echo $item["quantita"] ?>"
-                            style="height: 40px;">
+                        <input type="number" class="form-control mb-2 text-center quantita" min="1"
+                            value="<?php echo $item["quantita"] ?>" style="height: 40px;"
+                            onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                         <button class="btn btn-warning btn-sm w-100 remove-from-cart"
-                            data-id="<?php echo $item['codProdotto']; ?>"
                             onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
                             Rimuovi dal carrello
                         </button>
@@ -38,8 +38,10 @@
 
         <!-- Sezione Totale -->
         <div class="mt-4 text-end">
-            <h5 class="text-light">Totale: <span class="text-warning"><?= number_format($total, 2) ?> €</span></h5>
+            <h5 class="text-light">Totale: <span id="totale-carrello"
+                    class="text-warning"><?php echo number_format($total, 2); ?> €</span></h5>
         </div>
+
 
         <!-- Pulsanti -->
         <div class="d-flex justify-content-between mt-4">
@@ -55,4 +57,5 @@
         </div>
     </div>
     <script src="js/rimuoviDalCarrello.js"></script>
+    <script src="js/spesaTotale.js"></script>
 </body>

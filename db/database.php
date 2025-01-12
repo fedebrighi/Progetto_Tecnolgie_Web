@@ -135,6 +135,12 @@ class DatabaseHelper
         return $success;
     }
 
+    public function updateCartQuantity($codCarrello, $codProdotto, $quantita) {
+        $query = "UPDATE COMPOSIZIONECARRELLO SET quantita = ? WHERE codCarrello = ? AND codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $quantita, $codCarrello, $codProdotto);
+        $stmt->execute();
+    }
 
 
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool

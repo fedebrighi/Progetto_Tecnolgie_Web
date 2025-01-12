@@ -94,4 +94,5 @@
         </div>
     </div>
     <script src="js/spedizioneRapida.js"></script>
+    <script src="js/spesaTotale.js"></script>
 </body>

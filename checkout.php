@@ -7,5 +7,6 @@ $carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
 $templateParams["titolo"] = "PHPint - Checkout";
 $templateParams["nome"] = "payment.php";
 
+
 require 'template/base.php';
 ?>
