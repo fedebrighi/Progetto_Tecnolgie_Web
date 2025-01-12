@@ -52,7 +52,7 @@ CREATE TABLE composizioneOrdine (
 CREATE TABLE INFO_VENDITA (
     codInfo INT NOT NULL,
     quantitaVendute INT NOT NULL,
-    spese DECIMAL(10, 2) NOT NULL,
+    spesaUnitaria DECIMAL(10, 2) NOT NULL,
     ricavo DECIMAL(10, 2) NOT NULL,
     CONSTRAINT ID_INFO_VENDITA_ID PRIMARY KEY (codInfo)
 );

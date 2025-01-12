@@ -16,9 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $prezzo = $_POST['prezzoProdotto'];
     $quantita = $_POST['quantitaProdotto'];
     $immagine = $_POST['immagineProdotto'];
+    $spesaUnitaria = $_POST['spesaUnitaria'];
 
     $codProdotto = $dbh->getNextCodProdotto();
 
+    if (!$dbh->saveNewSalesInfo($codProdotto, $spesaUnitaria)) {
+        echo "Errore nella creazione del prodotto!";
+    }
     // Salva la nuova birra
     if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $prezzo, $quantita, $immagine)) {
         header("Location: venditore.php"); // Reindirizza alla area venditore

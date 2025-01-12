@@ -167,15 +167,6 @@ class DatabaseHelper
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
 
-    public function saveUserInfo($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello)
-    {
-        $query = "INSERT INTO cliente (nome, cognome, email, username, password, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssssssss', $nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono, $codCarrello);
-        $stmt->execute();
-    }
-
     public function getClientIfRegistered($username, $password)
     {
         $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
@@ -273,8 +264,21 @@ class DatabaseHelper
         return $nextCodProdotto;
     }
 
+    public function saveNewSalesInfo($codInfo, $spesaUnitaria): bool
+    {
+        $query = "INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
+                  VALUES (?,0,?,0)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            'id',
+            $codInfo,
+            $spesaUnitaria
+        );
 
-    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $prezzo, $quantita, $immagine)
+        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+    }
+
+    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $prezzo, $quantita, $immagine): bool
     {
         $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
                   VALUES (?,?,?,?,?,?,?,?)";
