@@ -45,6 +45,54 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <button class="btn btn-warning btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;" data-bs-toggle="modal" data-bs-target="#modificaProdottoModal">
+                                Modifica
+                            </button>
+
+                            <!-- Modale per modificare il prodotto -->
+                            <div class="modal fade" id="modificaProdottoModal" tabindex="-1" aria-labelledby="modificaProdottoLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark text-light">
+                                        <div class="modal-header border-secondary">
+                                            <h5 class="modal-title text-warning" id="modificaProdottoModalLabel">Modifica Prodotto</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="modificaProdottoForm">
+                                                <div class="mb-3">
+                                                    <label for="modificaNome" class="form-label">Nome</label>
+                                                    <input type="text" class="form-control" id="modificaNome" value="<?php echo $birra["nome"]; ?>" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="modificaAlc" class="form-label">Percentuale Alcolica (%)</label>
+                                                    <input type="number" class="form-control" id="modificaAlc" value="<?php echo $birra["alc"]; ?>" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="modificaPrezzo" class="form-label">Prezzo</label>
+                                                    <input type="number" class="form-control" id="modificaPrezzo" value="<?php echo $birra["prezzo"]; ?>" required />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="modificaDescrizione" class="form-label">Descrizione</label>
+                                                    <textarea class="form-control" name="descrizioneProdotto" id="descrizioneProdotto" rows="3" required><?php echo htmlspecialchars($birra["descrizione"]); ?></textarea>
+
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="modificaImmagine" class="form-label">Immagine</label>
+                                                    <input type="text" class="form-control" id="modificaImmagine" value="<?php echo $birra["immagine"]; ?>" required />
+                                                </div>
+
+
+                                        </div>
+                                        </form>
+
+                                        <div class="modal-footer border-secondary">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                            <button type="button" class="btn btn-warning" onclick="salvaModificheProdotto()">Salva Modifiche</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
