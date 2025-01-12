@@ -94,11 +94,11 @@ class DatabaseHelper
         return $cartId;
     }
 
-    public function removeProductFromCart($username, $codProdotto): bool
+    public function removeProductFromCart($codCarrello, $codProdotto): bool
     {
-        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = (SELECT codCarrello FROM CARRELLO WHERE username = ?) AND codProdotto = ?";
+        $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codCarrello = ? AND codProdotto = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $username, $codProdotto);
+        $stmt->bind_param('ii', $codCarrello, $codProdotto);
         $success = $stmt->execute();
         return $success;
     }

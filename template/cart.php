@@ -27,7 +27,8 @@
                             class="form-control mb-2 text-center" min="1" value="<?php echo $item["quantita"] ?>"
                             style="height: 40px;">
                         <button class="btn btn-warning btn-sm w-100 remove-from-cart"
-                            data-id="<?php echo $item['codProdotto']; ?>">
+                            data-id="<?php echo $item['codProdotto']; ?>"
+                            onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
                             Rimuovi dal carrello
                         </button>
                     </div>
@@ -53,5 +54,5 @@
             <?php endif; ?>
         </div>
     </div>
-    <script src="js/rimuoviCarrello.js"></script>
+    <script src="js/rimuoviDalCarrello.js"></script>
 </body>

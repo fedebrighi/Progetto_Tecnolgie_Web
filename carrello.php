@@ -15,36 +15,13 @@ if (isUserLoggedIn()) {
 
 // Recupera i prodotti nel carrello
 $templateParams["elementicarrello"] = $dbh->getCartFromUser($templateParams["username"]);
+$templateParams["codCarrello"] = $dbh->getCart($templateParams["username"]);
 
 // Se il carrello è vuoto
 if (empty($templateParams["elementicarrello"])) {
     $templateParams["carrelloVuoto"] = true;
 } else {
     $templateParams["carrelloVuoto"] = false;
-}
-
-// Rimozione prodotto dal carrello
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] === 'remove') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    $productId = $data['productId'] ?? null;
-
-    if ($productId) {
-        $dbh->removeProductFromCart($templateParams["username"], $productId);
-
-        $updatedCart = $dbh->getCartFromUser($templateParams["username"]);
-        $total = 0;
-        foreach ($updatedCart as $item) {
-            $beerDetails = $dbh->getBeerDetails($item["codProdotto"]);
-            $total += $beerDetails["prezzo"] * $item["quantita"];
-        }
-
-        header('Content-Type: application/json');
-        echo json_encode([
-            "success" => true,
-            "total" => number_format($total, 2)
-        ]);
-        exit();
-    }
 }
 
 // Mostra il template del carrello
