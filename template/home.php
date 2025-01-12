@@ -31,7 +31,7 @@
                 <!-- Colonna Pulsanti -->
                 <div class="col-md-6">
                     <div class="d-grid gap-3">
-                        <a href="catalogo_prodotti.html" class="btn btn-custom btn-lg fw-bold">
+                        <a <?php isActive("catalogo_prodotti.php");?> href="catalogo_prodotti.php" class="btn btn-custom btn-lg fw-bold">
                             <i class="bi bi-basket"></i> SCOPRI I NOSTRI PRODOTTI
                         </a>
                         <a href="abbinamenti.html" class="btn btn-custom btn-lg fw-bold">

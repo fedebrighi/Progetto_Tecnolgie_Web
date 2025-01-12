@@ -6,6 +6,8 @@
     $templateParams["nome"] = "prodotto.php";
     $templateParams["birra"] = $dbh->getBeerDetails($_GET["id"]);
     $templateParams["ingredienti"] = $dbh->getIngredients($_GET["id"]);
-    $templateParams["codCarrello"] = $dbh->getCart($_SESSION["username"]);
+    if(isset($_SESSION["username"])){
+        $templateParams["codCarrello"] = $dbh->getCart($_SESSION["username"]);
+    }
     require 'template/base.php';
 ?>

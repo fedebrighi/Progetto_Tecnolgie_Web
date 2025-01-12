@@ -20,7 +20,11 @@
                     <div class="ms-auto d-flex flex-column align-items-stretch">
                         <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità:</label>
                         <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>" class="form-control mb-2 text-center" min="1" value="1" style="height: 40px;">
-                        <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>, <?php echo $birra['codProdotto']; ?>, 1)"> Aggiungi </button>
+                        <?php if(!empty($_SESSION["username"])) : ?>
+                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>, <?php echo $birra['codProdotto']; ?>, 1)"> Aggiungi </button>
+                        <?php else : ?>
+                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
+                        <?php endif; ?>
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>" class="btn btn-warning btn-sm text-center" style="height: 40px; font-weight: bold; padding: 0.5rem;">Scopri</a>
                     </div>
                 </div>
