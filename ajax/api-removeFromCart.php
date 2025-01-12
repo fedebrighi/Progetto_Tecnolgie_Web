@@ -2,7 +2,6 @@
 require_once '../bootstrap.php';
 header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'), true);
-error_log("Dati ricevuti: " . print_r($data, true));
 $codCarrello = $data["codCarrello"] ?? null;
 $codProdotto = $data["codProdotto"] ?? null;
 if (!empty($codCarrello) && !empty($codProdotto)) {

@@ -21,7 +21,9 @@
                         <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità:</label>
                         <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>" class="form-control mb-2 text-center" min="1" value="1" style="height: 40px;">
                         <?php if(!empty($_SESSION["username"])) : ?>
-                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>, <?php echo $birra['codProdotto']; ?>, 1)"> Aggiungi </button>
+                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
+                                <?php echo $birra['codProdotto']; ?>,
+                                document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">  Aggiungi </button>
                         <?php else : ?>
                             <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
                         <?php endif; ?>

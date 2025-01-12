@@ -1,18 +1,18 @@
 <?php
-require_once '../bootstrap.php';
+require_once "../bootstrap.php";
 header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
 $codProdotto = $data['codProdotto'] ?? null;
 $quantita = $data['quantita'] ?? null;
-
+$codCarrello = $dbh->getCart($_SESSION['username']);
+error_log($codCarrello['codCarrello']);
 if (!empty($codProdotto) && is_numeric($quantita)) {
     try {
         // Aggiorna la quantità nel database
-        $dbh->updateCartQuantity($_SESSION['codCarrello'], $codProdotto, $quantita);
-
+        $dbh->updateCartQuantity($codCarrello['codCarrello'], $codProdotto, $quantita);
         // Ricalcola il totale del carrello
-        $elementiCarrello = $dbh->getCart($_SESSION['codCarrello']);
+        $elementiCarrello = $dbh->getCartFromUser($_SESSION['username']);
         $totale = 0;
         foreach ($elementiCarrello as $item) {
             $birra = $dbh->getBeerDetails($item['codProdotto']);

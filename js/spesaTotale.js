@@ -26,7 +26,7 @@ function aggiornaTotaleCarrello() {
 
 // Funzione per aggiornare la quantità nel database tramite API
 function aggiornaQuantitaCartAPI(codProdotto, quantita) {
-    fetch('ajax/api-updateProductFromCart.php', {
+    fetch("ajax/api-updateProductFromCart.php", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
