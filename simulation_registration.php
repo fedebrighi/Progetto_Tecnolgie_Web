@@ -44,7 +44,7 @@
         <div class="spinner-border text-warning" role="status" style="width: 5rem; height: 5rem;">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <h1 class="text-info mt-4">Iscrizione completata con successo!</h1>
+        <h1 class="text-warning mt-4">Iscrizione completata con successo!</h1>
         <p class="thank-you-message">Grazie per esserti iscritto al nostro sito. Sarai reindirizzato alla tua pagina personale tra pochi secondi.</p>
         <p>Se il reindirizzamento non avviene automaticamente, <a href="homepage.php" class="text-info">clicca qui</a>.</p>
     </div>
