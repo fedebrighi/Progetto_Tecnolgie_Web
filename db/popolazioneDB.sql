@@ -44,15 +44,15 @@ VALUES
 (6, 0, 1, 0),
 (7, 0, 1, 0);
 
-INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
+INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, listaIngredienti, prezzo, quantitaMagazzino, immagine)
 VALUES
-(1, 1, 'EMILIA PARANOICA', 9.5, 'Birra dal colore nero impenetrabile, come la nebbia degli inverni della pianura emiliana. Al naso note di cioccolato, liquirizia e caffè accompagnate da leggeri sentori di vaniglia e caramello che ricompaiono anche in bevuta. Birra con un corpo pieno e avvolgente con un finale morbido e appagante che nascondono i suoi 9,5%.', 4.50, 100, 'emilia.png'),
-(2, 2, 'CHARLIE DON’T SURF', 7.5, 'Birra prodotta con soli malti Pils e Carapils, luppolata con Nelson Sauvin, Riwaka ed Enigma. Il risultato è una birra con una forte spinta aromatica verso l’agrumato, floreale, che si trova tale e quale al palato. Rendendola estremamente beverina e appagante, facendone dimenticare la gradazione.', 4.20, 100, 'charlie.png'),
-(3, 3 , 'KIWI PASSENGER', 6.0, 'Fermata in Nuova Zelanda per farti provare l’esplosione dei luppoli della Farm Hop Revolution. Nelson Sauvin, Motueka e Riwaka fanno da protagonisti per una birra che sprigiona sentori esotici. Freschissima e super gradevole, è accompagnata poi da un corpo morbido che ne bilancia la bevuta e che invoglia immediatamente al secondo sorso.', 4.00, 100, 'kiwi.png' ),
-(4, 4, 'DON QUISCIOTTE', 6.5, 'West Coast IPA fatta con malto Pils e Pale, chiara e ben luppolata. Con luppoli Citra, Mosaic, Simcoe e Columbus al naso sprigiona un intenso aroma di frutta tropicale, l’amaro è ben bilanciato nella beva.', 3.80, 100, 'don.png' ),
-(5, 5, 'CONFIDENTIAL', 6.0, 'Birra in stile West Coast IPA creata con una nuova tecnica di estrazione della luppolina da parte della farm Crosby Hop. I luppoli Strata, Nelson Sauvin e Nugget sono usati nella loro versione CGX . Processo criogenico avanzato che separa la luppolina dalla materia vegetativa del luppolo in un ambiente ad ossigeno zero e a temperature bassisime -30/-45 °C. Ne esce una birra con una notevole parte aromatica di frutta gialla e tropicale. Con note di pesca e papaya. In bocca è setosa e piacevolmente equilibrata con un amaro delicato sul finale.', 4.00, 100, 'confidential.png'),
-(6, 6, 'PANDA', 5.0, 'American Ipa luppolata con Ekuanot, Amarillo e Nuggets su una base di malti Pale. In aroma spicca la componente agrumata con note di arancia, pompelmo e limone seguita da sentori floreali ed erbacei. L’amaro è equilibrato e persistente. GLUTEN FREE', 3.50, 100, 'panda.png'),
-(7, 7, 'MOLLY', 4.0, 'Birra di stampo British da bere in quantità. Prodotta con malti Maris Otter e Crystal, e fermentata con un ceppo di lievito Inglese. Di color ambrato, in aroma spiccano note di nocciola e mou. In bocca è morbida e scorrevole, con note di malto e biscotto in evidenza, seguite da richiami terrosi che accompagnano in un finale lievemente amaro.', 3.50, 100, 'molly.png');
+(1, 1, 'EMILIA PARANOICA', 9.5, 'Birra dal colore nero impenetrabile, come la nebbia degli inverni della pianura emiliana. Al naso note di cioccolato, liquirizia e caffè accompagnate da leggeri sentori di vaniglia e caramello che ricompaiono anche in bevuta. Birra con un corpo pieno e avvolgente con un finale morbido e appagante che nascondono i suoi 9,5%.','acqua, malto d\'orzo, malto destrine, luppolo, lievito.', 4.50, 100, 'emilia.png'),
+(2, 2, 'CHARLIE DON’T SURF', 7.5, 'Birra prodotta con soli malti Pils e Carapils, luppolata con Nelson Sauvin, Riwaka ed Enigma. Il risultato è una birra con una forte spinta aromatica verso l’agrumato, floreale, che si trova tale e quale al palato. Rendendola estremamente beverina e appagante, facendone dimenticare la gradazione.','Acqua, malto d\'orzo, orzo, luppolo, lievito.', 4.20, 100, 'charlie.png'),
+(3, 3 , 'KIWI PASSENGER', 6.0, 'Fermata in Nuova Zelanda per farti provare l’esplosione dei luppoli della Farm Hop Revolution. Nelson Sauvin, Motueka e Riwaka fanno da protagonisti per una birra che sprigiona sentori esotici. Freschissima e super gradevole, è accompagnata poi da un corpo morbido che ne bilancia la bevuta e che invoglia immediatamente al secondo sorso.','acqua, malto d\'orzo, luppolo, lievito.', 4.00, 100, 'kiwi.png' ),
+(4, 4, 'DON QUISCIOTTE', 6.5, 'West Coast IPA fatta con malto Pils e Pale, chiara e ben luppolata. Con luppoli Citra, Mosaic, Simcoe e Columbus al naso sprigiona un intenso aroma di frutta tropicale, l’amaro è ben bilanciato nella beva.','Acqua, malto d\'orzo, avena, luppolo, lievito.', 3.80, 100, 'don.png' ),
+(5, 5, 'CONFIDENTIAL', 6.0, 'Birra in stile West Coast IPA creata con una nuova tecnica di estrazione della luppolina da parte della farm Crosby Hop. I luppoli Strata, Nelson Sauvin e Nugget sono usati nella loro versione CGX . Processo criogenico avanzato che separa la luppolina dalla materia vegetativa del luppolo in un ambiente ad ossigeno zero e a temperature bassisime -30/-45 °C. Ne esce una birra con una notevole parte aromatica di frutta gialla e tropicale. Con note di pesca e papaya. In bocca è setosa e piacevolmente equilibrata con un amaro delicato sul finale.','acqua, malto d\'orzo, orzo, luppolo, lievito.', 4.00, 100, 'confidential.png'),
+(6, 6, 'PANDA', 5.0, 'American Ipa luppolata con Ekuanot, Amarillo e Nuggets su una base di malti Pale. In aroma spicca la componente agrumata con note di arancia, pompelmo e limone seguita da sentori floreali ed erbacei. L’amaro è equilibrato e persistente. GLUTEN FREE','acqua, malto d\'orzo, orzo, luppolo, lievito.', 3.50, 100, 'panda.png'),
+(7, 7, 'MOLLY', 4.0, 'Birra di stampo British da bere in quantità. Prodotta con malti Maris Otter e Crystal, e fermentata con un ceppo di lievito Inglese. Di color ambrato, in aroma spiccano note di nocciola e mou. In bocca è morbida e scorrevole, con note di malto e biscotto in evidenza, seguite da richiami terrosi che accompagnano in un finale lievemente amaro.','acqua, malto d\'orzo, orzo, luppolo, lievito.', 3.50, 100, 'molly.png');
 
 
 INSERT INTO VENDITORE (username, pw, email, telefono, indirizzo, citta, cap)
@@ -60,44 +60,6 @@ VALUES
 ('marco_massa', '1234567890', 'marco.massa@example.com', '1234567890', 'via forli 19', 'forli', '47121'),
 ('mattia_saponaro', '1234567890', 'mattia.saponaro@example.com', '3456789012', 'via cesena 12', 'forli', '47122'),
 ('federico_brighi', '1234567890', 'federico.brighi@example.com', '7890123456', 'via faenza 22', 'forli', '47121');
-
-INSERT INTO ingredienti (codProdotto, ingrediente)
-VALUES
-(1, 'acqua'),
-(1, 'malto d\'ORZO'),
-(1, 'malto destrine'),
-(1, 'luppolo'),
-(1, 'lievito'),
-(2, 'Acqua'),
-(2, 'malto d\'ORZO'),
-(2, 'ORZO'),
-(2, 'luppolo'),
-(2, 'lievito'),
-(3, 'acqua'),
-(3, 'malto d\'ORZO'),
-(3, 'luppolo'),
-(3, 'lievito'),
-(4, 'Acqua'),
-(4, 'malto d\'ORZO'),
-(4, 'AVENA'),
-(4, 'luppolo'),
-(4, 'lievito'),
-(5, 'acqua'),
-(5, 'malto d\'ORZO'),
-(5, 'ORZO'),
-(5, 'luppolo'),
-(5, 'lievito'),
-(6, 'acqua'),
-(6, 'malto d\'ORZO'),
-(6, 'ORZO'),
-(6, 'luppolo'),
-(6, 'lievito'),
-(7, 'acqua'),
-(7, 'malto d\'ORZO'),
-(7, 'ORZO'),
-(7, 'luppolo'),
-(7, 'lievito');
-
 
 INSERT INTO CARRELLO (codCarrello, totale)
 VALUES

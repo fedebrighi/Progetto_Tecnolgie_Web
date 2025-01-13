@@ -18,18 +18,20 @@
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità in magazzino: <?php echo $birra["quantitaMagazzino"]; ?></label>
-                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" data-bs-toggle="modal" data-bs-target="#aggiuntaBirraModal">Aggiungi</button>
+                            <!-- Bottone che apre il modale -->
+                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                                data-bs-toggle="modal" data-bs-target="#aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>">Aggiungi</button>
 
-                            <!-- Modale per aggiungere birre in magazzino -->
-                            <div class="modal fade" id="aggiuntaBirraModal" tabindex="-1" aria-labelledby="aggiuntaBirraLabel" aria-hidden="true">
+                            <!-- Modale unico per la birra -->
+                            <div class="modal fade" id="aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="aggiuntaBirraLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark text-light">
                                         <div class="modal-header border-secondary">
-                                            <h5 class="modal-title text-warning" id="aggiuntaBirraModalLabel">Aggiungi <?php echo $birra["nome"]; ?></h5>
+                                            <h5 class="modal-title text-warning" id="aggiuntaBirraModalLabel-<?php echo $birra['codProdotto']; ?>">Aggiungi <?php echo $birra["nome"]; ?></h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="aggiuntaBirraForm">
+                                            <form id="aggiuntaBirraForm-<?php echo $birra['codProdotto']; ?>">
                                                 <div class="mb-3 text-center d-flex justify-content-center align-items-center" style="padding: 20px;">
                                                     <p class="m-0 fs-5 me-3">Inserisci nel magazzino: </p>
                                                     <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>"
@@ -46,57 +48,60 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-warning btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;" data-bs-toggle="modal" data-bs-target="#modificaProdottoModal">
-                                Modifica
-                            </button>
+                            <!-- Bottone che apre il modale -->
+                            <button class="btn btn-warning btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                                data-bs-toggle="modal" data-bs-target="#modificaProdottoModal-<?php echo $birra['codProdotto']; ?>">Modifica</button>
 
-                            <!-- Modale per modificare il prodotto -->
-                            <div class="modal fade" id="modificaProdottoModal" tabindex="-1" aria-labelledby="modificaProdottoLabel" aria-hidden="true">
+                            <!-- Modale unico per la birra -->
+                            <div class="modal fade" id="modificaProdottoModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="modificaProdottoLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark text-light">
                                         <div class="modal-header border-secondary">
-                                            <h5 class="modal-title text-warning" id="modificaProdottoModalLabel">Modifica Prodotto</h5>
+                                            <h5 class="modal-title text-warning" id="modificaProdottoModalLabel-<?php echo $birra['codProdotto']; ?>">Modifica <?php echo $birra["nome"]; ?></h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="modificaProdottoForm">
+                                            <form id="modificaProdottoForm-<?php echo $birra['codProdotto']; ?>">
                                                 <div class="mb-3">
-                                                    <label for="modificaNome" class="form-label">Nome</label>
+                                                    <label for="modificaNome" class="form-label">Nome:</label>
                                                     <input type="text" class="form-control" id="modificaNome" value="<?php echo $birra["nome"]; ?>" required />
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="modificaAlc" class="form-label">Percentuale Alcolica (%)</label>
+                                                    <label for="modificaAlc" class="form-label">Percentuale Alcolica (%):</label>
                                                     <input type="number" class="form-control" id="modificaAlc" value="<?php echo $birra["alc"]; ?>" required />
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="modificaPrezzo" class="form-label">Prezzo</label>
+                                                    <label for="modificaPrezzo" class="form-label">Prezzo (€):</label>
                                                     <input type="number" class="form-control" id="modificaPrezzo" value="<?php echo $birra["prezzo"]; ?>" required />
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="modificaDescrizione" class="form-label">Descrizione</label>
+                                                    <label for="modificaDescrizione" class="form-label">Descrizione:</label>
                                                     <textarea class="form-control" name="descrizioneProdotto" id="descrizioneProdotto" rows="3" required><?php echo htmlspecialchars($birra["descrizione"]); ?></textarea>
-
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="modificaImmagine" class="form-label">Immagine</label>
-                                                    <input type="text" class="form-control" id="modificaImmagine" value="<?php echo $birra["immagine"]; ?>" required />
+                                                    <label for="modificaListaIngredienti" class="form-label">Lista Ingredienti:</label>
+                                                    <input type="text" class="form-control" id="modificaListaIngredienti" value="<?php echo $birra["listaIngredienti"]; ?>" required />
                                                 </div>
-
-
+                                                <div class="mb-3">
+                                                    <label for="modificaImmagine" class="form-label">Immagine:</label>
+                                                    <input type="file" class="form-control" id="modificaImmagine" value="<?php echo $birra["immagine"]; ?>" required />
+                                                </div>
+                                            </form>
                                         </div>
-                                        </form>
-
                                         <div class="modal-footer border-secondary">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                            <button type="button" class="btn btn-secondary" onclick="confermaEliminazione(() => eliminaProdotto(<?php echo $birra['codProdotto']; ?>))">Elimina</button>
                                             <button type="button" class="btn btn-warning" onclick="salvaModificheProdotto()">Salva Modifiche</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
+    <script src="js/confermaEliminazione.js"></script>
 </main>

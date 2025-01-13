@@ -57,11 +57,6 @@ CREATE TABLE INFO_VENDITA (
     CONSTRAINT ID_INFO_VENDITA_ID PRIMARY KEY (codInfo)
 );
 
-CREATE TABLE ingredienti (
-    codProdotto INT NOT NULL,
-    ingrediente VARCHAR(255) NOT NULL,
-    CONSTRAINT ID_ingredienti_ID PRIMARY KEY (codProdotto, ingrediente)
-);
 
 CREATE TABLE ORDINE (
     username VARCHAR(50) NOT NULL,
@@ -85,6 +80,7 @@ CREATE TABLE PRODOTTO (
     nome VARCHAR(100) NOT NULL,
     alc DECIMAL(5, 2),
     descrizione TEXT,
+    listaIngredienti TEXT,
     prezzo DECIMAL(10, 2) NOT NULL,
     quantitaMagazzino INT NOT NULL,
     immagine VARCHAR(255),
@@ -147,10 +143,6 @@ ALTER TABLE composizioneOrdine ADD CONSTRAINT REF_compo_PRODO
     FOREIGN KEY (codProdotto)
     REFERENCES PRODOTTO(codProdotto);
 
-ALTER TABLE ingredienti ADD CONSTRAINT FKPRO_ing
-    FOREIGN KEY (codProdotto)
-    REFERENCES PRODOTTO(codProdotto);
-
 ALTER TABLE ORDINE ADD CONSTRAINT REF_ORDIN_SPEDI_FK
     FOREIGN KEY (tipo)
     REFERENCES SPEDIZIONE(tipo);
@@ -188,7 +180,6 @@ CREATE INDEX REF_compo_PRODO_1_IND ON composizioneCarrello (codProdotto);
 CREATE UNIQUE INDEX ID_composizioneOrdine_IND ON composizioneOrdine (codProdotto, username, codiceOrdine);
 CREATE INDEX EQU_compo_ORDIN_IND ON composizioneOrdine (username, codiceOrdine);
 CREATE UNIQUE INDEX ID_INFO_VENDITA_IND ON INFO_VENDITA (codInfo);
-CREATE UNIQUE INDEX ID_ingredienti_IND ON ingredienti (codProdotto, ingrediente);
 CREATE UNIQUE INDEX ID_ORDINE_IND ON ORDINE (username, codiceOrdine);
 CREATE INDEX REF_ORDIN_SPEDI_IND ON ORDINE (tipo);
 CREATE UNIQUE INDEX ID_PRODOTTO_IND ON PRODOTTO (codProdotto);

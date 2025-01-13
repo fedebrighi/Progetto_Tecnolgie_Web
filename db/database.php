@@ -36,16 +36,6 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
-    public function getIngredients($idBirra)
-    {
-        $query = "SELECT ingrediente FROM INGREDIENTI I WHERE I.codProdotto = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idBirra);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getCart($username)
     {
         $query = "SELECT codCarrello FROM CLIENTE WHERE username = ?";
@@ -135,7 +125,8 @@ class DatabaseHelper
         return $success;
     }
 
-    public function updateCartQuantity($codCarrello, $codProdotto, $quantita) {
+    public function updateCartQuantity($codCarrello, $codProdotto, $quantita)
+    {
         $query = "UPDATE COMPOSIZIONECARRELLO SET quantita = ? WHERE codCarrello = ? AND codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii', $quantita, $codCarrello, $codProdotto);
@@ -278,23 +269,87 @@ class DatabaseHelper
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
 
-    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $prezzo, $quantita, $immagine): bool
+    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine): bool
     {
-        $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, prezzo, quantitaMagazzino, immagine)
-                  VALUES (?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, listaIngredienti, prezzo, quantitaMagazzino, immagine)
+                    VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
-            'iisdsdis',
+            'iisdssdis',
             $codProdotto,
             $codInfo,
             $nome,
             $alc,
             $descrizione,
+            $listaIngredienti,
             $prezzo,
             $quantita,
             $immagine
         );
 
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+    }
+
+    public function deleteProduct($codProdotto): bool
+    {
+        $query = "DELETE FROM PRODOTTO WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codProdotto);
+
+        return $stmt->execute();
+    }
+
+    public function deleteProductFromCart($codProdotto)
+    {
+        $query = "SELECT * FROM COMPOSIZIONECARRELLO WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows != 0) {
+            $query = "DELETE FROM COMPOSIZIONECARRELLO WHERE codProdotto = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $codProdotto);
+            $stmt->execute();
+        }
+    }
+
+    public function deleteProductFromOrder($codProdotto)
+    {
+        $query = "SELECT * FROM COMPOSIZIONEORDINE WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows != 0) {
+            $query = "DELETE FROM COMPOSIZIONEORDINE WHERE codProdotto = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $codProdotto);
+            $stmt->execute();
+        }
+    }
+
+    public function deleteProductFromReview($codProdotto)
+    {
+        $query = "SELECT * FROM RECENSIONE WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows != 0) {
+            $query = "DELETE FROM RECENSIONE WHERE codProdotto = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $codProdotto);
+            $stmt->execute();
+        }
+    }
+
+    public function deleteSalesInfo($codInfo): bool
+    {
+        $query = "DELETE FROM INFO_VENDITA WHERE codInfo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codInfo);
+
+        return $stmt->execute();
     }
 }
