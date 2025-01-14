@@ -48,7 +48,7 @@ class DatabaseHelper
 
     public function getCart($username)
     {
-        $query = "SELECT codCarrello FROM CLIENTE WHERE username = ?";
+        $query = "SELECT CL.codCarrello, CA.totale FROM CLIENTE CL, CARRELLO CA WHERE username = ? AND CL.codCarrello = CA.codCarrello";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -71,6 +71,14 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updateTotalCart($tot, $username) {
+        $query = "UPDATE CARRELLO SET totale = ? WHERE codCarrello = (SELECT codCarrello FROM CLIENTE WHERE username = ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $tot, $username);
+        $success = $stmt->execute();
+        return $success;
     }
 
     public function createEmptyCart(): string

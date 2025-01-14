@@ -83,7 +83,7 @@
 
                         <!-- Totale -->
                         <div class="text-center my-4">
-                            <h4 id="totale">Tot: €50</h4>
+                            <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"]?> €</h4>
                         </div>
 
                         <!-- Pulsante di pagamento -->
@@ -93,6 +93,9 @@
             </div>
         </div>
     </div>
+    <script>
+        const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;
+    </script>
     <script src="js/spedizioneRapida.js"></script>
     <script src="js/spesaTotale.js"></script>
 </body>

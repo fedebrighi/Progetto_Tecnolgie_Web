@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mostra/nascondi password
 
-    /*togglePasswordIcons.addEventListener("click", function () {
+    togglePasswordIcons.addEventListener("click", function () {
         // Trova il campo password associato all'icona cliccata
         const passwordField = this.closest(".input-group").querySelector("input[type='password'], input[type='text']");
 
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.toggle("bi-eye");
         this.classList.toggle("bi-eye-slash");
     });
-    */
 
     // Genera una password casuale
     generatePassword.addEventListener("click", function () {

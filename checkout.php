@@ -1,12 +1,10 @@
 <?php
 require_once 'bootstrap.php';
-// Verifica se il carrello è vuoto
-$carrello = isset($_SESSION['carrello']) ? $_SESSION['carrello'] : [];
 
-//Base Template
 $templateParams["titolo"] = "PHPint - Checkout";
 $templateParams["nome"] = "payment.php";
-
-
+if(isset($_SESSION["username"])){
+    $templateParams["carrello"] = $dbh->getCart($_SESSION["username"]);
+}
 require 'template/base.php';
 ?>

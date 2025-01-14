@@ -18,7 +18,7 @@
                 <h2 class="text-center text-warning mb-4">Accesso per cliente</h2>
                 <form method="POST" action="login.php">
                     <div class="mb-3">
-                        <label for="username-cliente" class="form-label text-light">Username:</label>
+                        <label for="username-cliente" class="form-label">Username:</label>
                         <input type="text" class="form-control" id="username-cliente" name="username"
                             placeholder="Inserisci il tuo username" />
                     </div>
@@ -46,7 +46,7 @@
                 <h2 class="text-center text-warning mb-4">Accesso per venditore</h2>
                 <form method="POST" action="login.php">
                     <div class="mb-3">
-                        <label for="username-venditore" class="form-label text-light">Username:</label>
+                        <label for="username-venditore" class="form-label">Username:</label>
                         <input type="text" class="form-control" id="username-venditore" name="username"
                             placeholder="Inserisci il tuo username" />
                     </div>
@@ -83,3 +83,5 @@
         </div>
 
     </div>
+</div>
+<script src="js/script.js"></script>

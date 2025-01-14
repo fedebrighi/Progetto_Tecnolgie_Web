@@ -128,9 +128,11 @@ button.btn:active {
   padding: 0.25em 0.5em;
 }
 
-.nav-link.text-secondary:hover {
-  color: #f8f9fa !important; /* Cambia colore a bianco su hover */
+.dropdown-menu .dropdown-item:hover {
+  background-color: #343a40 !important; /* Colore di sfondo scuro */
+  color: #f8f9fa; /* Colore del testo chiaro */
 }
+
 
 .badge#notification-count {
   font-size: 0.75rem;
