@@ -44,57 +44,59 @@
                             <i class="bi bi-cart3 me-1"></i> Carrello
                         </a>
                     </li>
+                    <?php if(!isset($_SESSION["username"])):?>
+                        <!-- Link Login -->
+                        <li class="nav-item">
+                            <a <?php isActive("login.php");?>  class="nav-link text-secondary d-flex align-items-center" href="login.php">
+                                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                            </a>
+                        </li>
+                    <?php endif;?>
+                    <?php if(isset($_SESSION["username"])):?>
+                        <!-- Area Personale -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle me-1"></i> Area Personale
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
+                                <li><a <?php isActive("utente.php");?> class="dropdown-item text-light" href="utente.php"><i class="bi bi-gear me-1"></i> Impostazioni</a></li>
+                                <li><a <?php isActive("venditore.php");?> class="dropdown-item text-light" href="venditore.php"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a <?php isActive("logout.php");?> class="dropdown-item text-light" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
+                            </ul>
+                        </li>
 
-                    <!-- Link Login -->
-                    <li class="nav-item">
-                        <a <?php isActive("login.php");?>  class="nav-link text-secondary d-flex align-items-center" href="login.php">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Login
-                        </a>
-                    </li>
-
-                    <!-- Area Personale -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle me-1"></i> Area Personale
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><a <?php isActive("utente.php");?> class="dropdown-item text-light" href="utente.php"><i class="bi bi-gear me-1"></i> Impostazioni</a></li>
-                            <li><a <?php isActive("venditore.php");?> class="dropdown-item text-light" href="venditore.php"><i class="bi bi-archive me-1"></i> Storico Ordini</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a <?php isActive("logout.php");?> class="dropdown-item text-light" href="logout.php"><i class="bi bi-box-arrow-right me-1"></i> Logout</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Notifiche -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="badge bg-danger rounded-pill ms-1" id="notification-count">3</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                            <li><h6 class="dropdown-header text-warning">Notifiche</h6></li>
-                            <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
-                                    <span>Nuovo ordine ricevuto</span>
-                                    <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
-                                    <span>Promozione scaduta</span>
-                                    <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
-                                    <span>Prodotto esaurito</span>
-                                    <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le notifiche</a></li>
-                        </ul>
-                    </li>
+                        <!-- Notifiche -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-bell"></i>
+                                <span class="badge bg-danger rounded-pill ms-1" id="notification-count">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
+                                <li><h6 class="dropdown-header text-warning">Notifiche</h6></li>
+                                <li>
+                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                        <span>Nuovo ordine ricevuto</span>
+                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                        <span>Promozione scaduta</span>
+                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
+                                        <span>Prodotto esaurito</span>
+                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le notifiche</a></li>
+                            </ul>
+                        </li>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>

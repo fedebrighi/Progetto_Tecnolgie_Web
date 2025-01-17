@@ -37,7 +37,7 @@
                         <a href="abbinamenti.html" class="btn btn-custom btn-lg fw-bold">
                             <i class="bi bi-info-circle"></i> VISUALIZZA I CONSIGLI PER LE BIRRE
                         </a>
-                        <a href="carrello.html" class="btn btn-custom btn-lg fw-bold">
+                        <a <?php isActive("carrello.php");?> href="carrello.php" class="btn btn-custom btn-lg fw-bold">
                             <i class="bi bi-cart-check"></i> CONTROLLA LO STATO DEL TUO CARRELLO
                         </a>
                     </div>
