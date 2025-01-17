@@ -55,5 +55,5 @@
 
         </div>
     </div>
+    <script src="js/gestionePassword.js"></script>
 </main>
-<script src="js/script.js"></script>

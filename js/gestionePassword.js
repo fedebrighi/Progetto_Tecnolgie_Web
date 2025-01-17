@@ -1,24 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const togglePasswordIcons = document.querySelectorAll(".toggle-password");
     const generatePassword = document.querySelector(".generate-password");
-    const passwordField = document.querySelectorAll("#password");
+    const passwordField = document.querySelector("#password");
     const passwordStrength = document.querySelector("#passwordStrength");
     const passwordError = document.querySelector("#passwordError");
     const submitButton = document.querySelector("#submitButton");
 
     // Mostra/nascondi password
-
-    togglePasswordIcons.addEventListener("click", function () {
-        // Trova il campo password associato all'icona cliccata
-        const passwordField = this.closest(".input-group").querySelector("input[type='password'], input[type='text']");
-
-        // Cambia il tipo di input tra password e text
-        const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
-        passwordField.setAttribute("type", type);
-
-        // Cambia l'icona
-        this.classList.toggle("bi-eye");
-        this.classList.toggle("bi-eye-slash");
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            const passwordField = this.closest(".input-group").querySelector("input[type='password'], input[type='text']");
+            const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+            passwordField.setAttribute("type", type);
+            this.classList.toggle("bi-eye");
+            this.classList.toggle("bi-eye-slash");
+        });
     });
 
     // Genera una password casuale
