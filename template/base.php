@@ -73,7 +73,7 @@
                                 <span class="badge bg-danger rounded-pill ms-1" id="notification-count">3</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                                <li><h6 class="dropdown-header text-warning">Notifiche</h6></li>
+                                <li><h2 class="dropdown-header text-warning">Notifiche</h2></li>
                                 <li>
                                     <a class="dropdown-item text-light d-flex justify-content-between align-items-center" href="#">
                                         <span>Nuovo ordine ricevuto</span>
@@ -92,7 +92,7 @@
                                         <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
                                     </a>
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le notifiche</a></li>
                             </ul>
                         </li>

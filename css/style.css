@@ -14,6 +14,32 @@ main {
   justify-content: space-between; /* Distribuzione uniforme */
 }
 
+body main h1 {
+  font-size: 6rem;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  color: #ffcc00;
+  line-height: 1.2;
+}
+
+body main p {
+  font-style: italic;
+  color: #FFFFFF;
+}
+
+.carousel img {
+  border-radius: 8px;
+}
+
+body main section h2 {
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+}
+
+body main section p {
+  font-size: 1.25rem;
+}
+
 /* Navigazione e Link */
 nav a,
 .navbar-brand,
@@ -103,8 +129,6 @@ button.btn:active {
     border-color: #FFCC99; /* Bordo visibile */
     color: #000; /* Testo rimane leggibile */
 }
-
-
 
 .navbar-nav .nav-link {
   font-size: 1.1rem;

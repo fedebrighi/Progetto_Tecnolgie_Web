@@ -13,7 +13,7 @@
                         <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" class="img-fluid me-3" style="width: 150px;">
                     </a>
                     <div>
-                        <h6 class="m-0 fs-4"><?php echo $birra["nome"]; ?></h6>
+                        <h2 class="m-0 fs-4"><?php echo $birra["nome"]; ?></h2>
                         <p class="m-0 fs-5">alc. <?php echo $birra["alc"]; ?> % vol</p>
                         <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                     </div>
