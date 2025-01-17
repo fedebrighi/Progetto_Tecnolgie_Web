@@ -1,34 +1,46 @@
-function salvaModifiche() {
-    // Logica per salvare le modifiche
-    const nome = document.getElementById('modificaNomeProdotto').value;
-    const prezzo = document.getElementById('modificaPrezzoProdotto').value;
-    const quantita = document.getElementById('modificaQuantitaProdotto').value;
+function salvaModificheProdotto() {
+    // Trova l'ID del prodotto dal bottone cliccato
+    const modaleAperto = document.querySelector('.modal.show');
+    const idProdotto = modaleAperto.id.split('-')[1];
 
-    // Trova la riga corrispondente nella tabella
-    const row = document.querySelector(`tr[data-id="${modificaProdotto.currentId}"]`);
-    if (row) {
-        row.querySelector('.nome').textContent = nome;
-        row.querySelector('.prezzo').textContent = `€${parseFloat(prezzo).toFixed(2)}`;
-        row.querySelector('.quantita').textContent = quantita;
-    }
+    // Recupera i dati dal form corrispondente
+    const nome = modaleAperto.querySelector('#modificaNome').value;
+    const alc = modaleAperto.querySelector('#modificaAlc').value;
+    const prezzo = modaleAperto.querySelector('#modificaPrezzo').value;
+    const descrizione = modaleAperto.querySelector('#descrizioneProdotto').value;
+    const listaIngredienti = modaleAperto.querySelector('#modificaListaIngredienti').value;
+    const glutenFree = modaleAperto.querySelector('#glutenFree').checked ? 1 : 0;
 
-    alert(`Modifiche salvate:\nNome: ${nome}\nPrezzo: €${prezzo}\nQuantità: ${quantita}`);
+    // Creazione del payload
+    const dati = {
+        idProdotto: idProdotto,
+        nome: nome,
+        alc: alc,
+        prezzo: prezzo,
+        descrizione: descrizione,
+        listaIngredienti: listaIngredienti,
+        glutenFree: glutenFree
+    };
 
-    // Chiude il modale
-    const modal = bootstrap.Modal.getInstance(document.getElementById('modificaProdottoModal'));
-    modal.hide();
-}
-
-// Modifica la funzione modificaProdotto per salvare l'ID del prodotto
-function modificaProdotto(id) {
-    modificaProdotto.currentId = id; // Salva l'ID corrente per riferimenti futuri
-
-    // Precompila i campi del prodotto selezionato
-    document.getElementById('modificaNomeProdotto').value = `Prodotto ${id}`;
-    document.getElementById('modificaPrezzoProdotto').value = (10.99 * id).toFixed(2);
-    document.getElementById('modificaQuantitaProdotto').value = 50 + id;
-
-    // Mostra il modale
-    const modal = new bootstrap.Modal(document.getElementById('modificaProdottoModal'));
-    modal.show();
+    // Invia i dati al server tramite fetch
+    fetch('ajax/api-updateProduct.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dati),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Modifiche salvate con successo!');
+                location.reload(); // Ricarica la pagina per riflettere le modifiche
+            } else {
+                alert('Errore nel salvataggio: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Errore durante la richiesta:', error);
+            alert('Si è verificato un errore durante il salvataggio.');
+        });
 }

@@ -111,4 +111,5 @@
         </div>
     </div>
     <script src="js/confermaEliminazione.js"></script>
+    <script src="js/modificaProdotto.js"></script>
 </main>

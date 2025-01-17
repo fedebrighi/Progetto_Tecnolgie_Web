@@ -9,20 +9,27 @@ VALUES
 (7, 0),
 (8, 0),
 (9, 0),
-(10, 0);
+(10, 0),
+(11, 0),
+(12, 0),
+(13, 0);
 
 INSERT INTO CLIENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap, telefono)
 VALUES
-('giovanni_rossi', 1, 'Giovanni123!', 'giovanni.rossi@example.com', 'Giovanni', 'Rossi', '1985-04-15', 'Via Milano 10', 'Milano', '20100','3332989455'),
-('maria_bianchi', 2, 'Maria456!', 'maria.bianchi@example.com', 'Maria', 'Bianchi', '1990-07-20', 'Via Roma 25', 'Roma', '00100','3332989454'),
-('luca_verdi', 3, 'Luca789!', 'luca.verdi@example.com', 'Luca', 'Verdi', '1992-11-05', 'Via Torino 40', 'Torino', '10100','3332989453'),
-('chiara_zanetti', 4, 'Chiara987!', 'chiara.zanetti@example.com', 'Chiara', 'Zanetti', '1987-02-12', 'Viale Europa 15', 'Napoli', '80100','3332989452'),
-('francesco_martini', 5, 'Francesco123!', 'francesco.martini@example.com', 'Francesco', 'Martini', '1983-03-25', 'Corso Italia 5', 'Bologna', '40100','3332989451'),
-('valentina_ferrari', 6, 'Valentina321!', 'valentina.ferrari@example.com', 'Valentina', 'Ferrari', '1994-06-30', 'Via San Francesco 18', 'Firenze', '50100','3332989450'),
-('andrea_conti', 7, 'Andrea654!', 'andrea.conti@example.com', 'Andrea', 'Conti', '1991-08-10', 'Piazza Garibaldi 12', 'Verona', '37100','3332989456'),
-('giulia_marini', 8, 'Giulia456!', 'giulia.marini@example.com', 'Giulia', 'Marini', '1995-12-25', 'Viale Vittorio Emanuele 60', 'Genova', '16100','3332989457'),
-('matteo_neri', 9, 'Matteo789!', 'matteo.neri@example.com', 'Matteo', 'Neri', '1989-09-18', 'Via Giuseppe Mazzini 45', 'Palermo', '90100','3332989458'),
-('laura_bellucci', 10, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', '70100','3332989459');
+('giovanni_rossi', 1, 'Giovanni123!', 'giovanni.rossi@example.com', 'Giovanni', 'Rossi', '1985-04-15', 'Via Milano 10', 'Milano', 20100,3332989455),
+('maria_bianchi', 2, 'Maria456!', 'maria.bianchi@example.com', 'Maria', 'Bianchi', '1990-07-20', 'Via Roma 25', 'Roma', 00100,3332989454),
+('luca_verdi', 3, 'Luca789!', 'luca.verdi@example.com', 'Luca', 'Verdi', '1992-11-05', 'Via Torino 40', 'Torino', 10100,3332989453),
+('chiara_zanetti', 4, 'Chiara987!', 'chiara.zanetti@example.com', 'Chiara', 'Zanetti', '1987-02-12', 'Viale Europa 15', 'Napoli', 80100, 3332989452 ),
+('francesco_martini', 5, 'Francesco123!', 'francesco.martini@example.com', 'Francesco', 'Martini', '1983-03-25', 'Corso Italia 5', 'Bologna', 40100,3332989451),
+('valentina_ferrari', 6, 'Valentina321!', 'valentina.ferrari@example.com', 'Valentina', 'Ferrari', '1994-06-30', 'Via San Francesco 18', 'Firenze', 50100,3332989450),
+('andrea_conti', 7, 'Andrea654!', 'andrea.conti@example.com', 'Andrea', 'Conti', '1991-08-10', 'Piazza Garibaldi 12', 'Verona',37100,3332989456),
+('giulia_marini', 8, 'Giulia456!', 'giulia.marini@example.com', 'Giulia', 'Marini', '1995-12-25', 'Viale Vittorio Emanuele 60', 'Genova', 16100,3332989457),
+('matteo_neri', 9, 'Matteo789!', 'matteo.neri@example.com', 'Matteo', 'Neri', '1989-09-18', 'Via Giuseppe Mazzini 45', 'Palermo', 90100,3332989458),
+('laura_bellucci', 10, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', 70100,3332989459);
+('mattia', 11, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', 40121, 2137685381),
+('monia', 12, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', 20121, 2134769011),
+('dave', 13, 'davide1234', 'davide.samorani@example.com', 'Davide', 'Samorani', '1995-08-27', 'Piazza Duomo 7', 'Firenze', 50122, 2132198763);
+
 
 INSERT INTO SPEDIZIONE( tipo, sovrapprezzo)
 VALUES
@@ -60,20 +67,6 @@ VALUES
 ('marco_massa', '1234567890', 'marco.massa@example.com', '1234567890', 'via forli 19', 'forli', '47121'),
 ('mattia_saponaro', '1234567890', 'mattia.saponaro@example.com', '3456789012', 'via cesena 12', 'forli', '47122'),
 ('federico_brighi', '1234567890', 'federico.brighi@example.com', '7890123456', 'via faenza 22', 'forli', '47121');
-
-INSERT INTO CARRELLO (codCarrello, totale)
-VALUES
-(11, 0),
-(12, 0),
-(13, 0);
-
-
-INSERT INTO CLIENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap)
-VALUES
-('mattia', 11, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', '40121'),
-('monia', 12, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', '20121'),
-('dave', 13, 'davide1234', 'davide.samorani@example.com', 'Davide', 'Samorani', '1995-08-27', 'Piazza Duomo 7', 'Firenze', '50122');
-
 
 INSERT INTO RECENSIONE (codRecensione, valutazione, testo, codProdotto, username)
 VALUES

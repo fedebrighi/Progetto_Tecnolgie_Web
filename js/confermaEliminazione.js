@@ -5,7 +5,7 @@ function confermaEliminazione(eliminaCallback) {
 }
 
 function eliminaProdotto(codProdotto) {
-    fetch('eliminaprodotto.php', {
+    fetch('ajax/api-deleteProduct.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

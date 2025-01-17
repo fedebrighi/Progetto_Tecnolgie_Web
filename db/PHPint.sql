@@ -28,8 +28,8 @@ CREATE TABLE CLIENTE (
     dataNascita DATE NOT NULL,
     indirizzo VARCHAR(255) NOT NULL,
     citta VARCHAR(50) NOT NULL,
-    cap CHAR(5) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
+    cap INT NOT NULL,
+    telefono BIGINT NOT NULL,
     CONSTRAINT ID_CLIENTE_ID PRIMARY KEY (username),
     CONSTRAINT SID_CLIEN_CARRE_ID UNIQUE (codCarrello)
 );

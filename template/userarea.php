@@ -30,30 +30,70 @@
                             </div>
                             <div class="modal-body">
                                 <form id="modificaInfoUtenteForm">
-                                    <div class="mb-3">
-                                        <label for="modificaNome" class="form-label">Nome</label>
+                                    <div class="mb-2">
+                                        <label for="modificaNome" class="form-label  text-warning fs-6">Nome</label>
                                         <input type="text" class="form-control" id="modificaNome" value="<?php echo $user["nome"]; ?>" required />
-                                        <label for="modificaCognome" class="form-label">Cognome</label>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaCognome" class="form-label  text-warning fs-6">Cognome</label>
                                         <input type="text" class="form-control" id="modificaCognome" value="<?php echo $user["cognome"]; ?> " required />
-                                        <label for="modificaEmail" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="modificaEmail" value="<?php echo $user["email"]; ?>" required />
-                                        <label for="modificaIndirizzo" class="form-label">Indirizzo</label>
-                                        <input type="text" class="form-control" id="modificaIndirizzo" value="<?php echo $user["indirizzo"]; ?>" required />
-                                        <label for="modificaCitta" class="form-label">Città</label>
-                                        <input type="text" class="form-control" id="modificaCitta" value="<?php echo $user["citta"]; ?>" required />
-                                        <label for="modificaTelefono" class="form-label">Telefono</label>
-                                        <input type="text" class="form-control" id="modificaTelefono" value="<?php echo $user["telefono"]; ?>" required />
-                                        <label for="dataNascita" class="form-label">Data di Nascita:</label>
-                                        <input type="date" name="dataNascita" class="form-control" id="dataNascita" value="<?php echo $user["dataNascita"]; ?>" required />
-                                        <div class="alert alert-danger d-none" id="dataNascitaError">
-                                            Devi essere maggiorenne per registrarti!
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaEmail" class="form-label  text-warning fs-6">Email</label>
+                                        <input type="text" class="form-control" id="modificaEmail" value="<?php echo $user["email"]; ?> " required />
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaPassword" class="form-label text-warning fs-6">Password</label>
+                                        <div class="input-group">
+                                            <input type="password" name="modificaPassword" class="form-control pe-5" id="password"
+                                                value="<?php echo $user["pw"]; ?>" required />
+                                            <!-- Icona perstrare/nascondere la password -->
+                                            <span class="input-group-text bg-white">
+                                                <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
+                                            </span>
+                                            <!-- Pulsante per generare una password casuale -->
+                                            <span class="input-group-text bg-white">
+                                                <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
+                                                    title="Genera password casuale"></i>
+                                            </span>
+                                        </div>
+                                        <!-- Indicatore della forza della password -->
+                                        <div class="mt-2">
+                                            <small id="passwordStrength" class="form-text"></small>
                                         </div>
                                     </div>
+
+
+
+                                    <div class="mb-2">
+                                        <label for="modificaIndirizzo" class="form-label text-warning fs-6">Indirizzo</label>
+                                        <input type="text" class="form-control" id="modificaIndirizzo" value="<?php echo $user["indirizzo"]; ?>" required />
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaCitta" class="form-label text-warning fs-6">Città</label>
+                                        <input type="text" class="form-control" id="modificaCitta" value="<?php echo $user["citta"]; ?>" required />
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaCAP" class="form-label text-warning fs-6">CAP</label>
+                                        <input type="number" class="form-control" id="modificaCAP" value="<?php echo $user["cap"]; ?>" required />
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="modificaTelefono" class="form-label text-warning fs-6">Telefono</label>
+                                        <input type="number" class="form-control" id="modificaTelefono" value="<?php echo $user["telefono"]; ?>" required />
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="dataNascita" class="form-label text-warning fs-6">Data di Nascita:</label>
+                                        <input type="date" name="dataNascita" class="form-control" id="dataNascita" required />
+                                    </div>
+                                    <div class="alert alert-danger d-none" id="dataNascitaError">
+                                        Devi essere maggiorenne per registrarti!
+                                    </div>
+
                                 </form>
                             </div>
                             <div class="modal-footer border-secondary">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                <button type="button" class="btn btn-warning" onclick="salvaModifiche()">Salva Modifiche</button>
+                                <button type="button" class="btn btn-warning" id="submitButton" onclick="salvaModifiche()">Salva Modifiche</button>
                             </div>
                         </div>
                     </div>
@@ -77,5 +117,7 @@
             </ul>
         </div>
     </div>
-    <script src="js/modificautente.js"></script>
+    <script src="js/modificaUtente.js"></script>
+    <script src="js/gestionePassword.js"></script>
+    <script src="js/maggiorenne.js"></script>
 </main>

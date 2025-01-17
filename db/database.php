@@ -150,7 +150,7 @@ class DatabaseHelper
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
-            'sssssssssss',
+            'sssssssisis',
             $nome,
             $cognome,
             $email,
@@ -166,6 +166,20 @@ class DatabaseHelper
 
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
+
+    public function updateUser($username, $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
+    {
+        $query = "UPDATE CLIENTE 
+              SET nome = ?, cognome = ?, email = ?, pw = ?, indirizzo = ?, citta = ?, cap = ?, telefono = ?, dataNascita = ?
+              WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bind_param('ssssssiiss', $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita, $username);
+        $stmt->execute();
+    }
+
+
+
 
     public function isClientLogged($username): bool
     {
@@ -324,6 +338,16 @@ class DatabaseHelper
         );
 
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+    }
+
+    public function updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree)
+    {
+        $query = "UPDATE PRODOTTO 
+              SET nome = ?, alc = ?, prezzo = ?, descrizione = ?, listaIngredienti = ?, glutenFree = ? 
+              WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sddssii', $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree, $idProdotto);
+        $stmt->execute();
     }
 
     public function deleteProduct($codProdotto): bool
