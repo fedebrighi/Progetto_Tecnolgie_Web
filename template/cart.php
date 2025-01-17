@@ -1,4 +1,4 @@
-<body>
+<main class="bg-dark text-light">
     <!-- Carrello -->
     <div class="container py-4">
         <!-- Scritta introduttiva -->
@@ -58,4 +58,4 @@
     </div>
     <script src="js/rimuoviDalCarrello.js"></script>
     <script src="js/spesaTotale.js"></script>
-</body>
+</main>
