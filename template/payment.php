@@ -1,10 +1,11 @@
+
 <body>
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="border border-secondary rounded p-4">
                     <h1 class="text-center text-warning">Informazioni di Spedizione</h1>
-                    <h2 class="text-center text-secondary fs-5">Completa con i tuoi dati per procedere alla spedizione e
+                    <h2 class="text-center  fs-5">Completa con i tuoi dati per procedere alla spedizione e
                         al pagamento</h2>
 
                     <form method="post" action="simulation.php">
@@ -83,7 +84,7 @@
 
                         <!-- Totale -->
                         <div class="text-center my-4">
-                            <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"]?> €</h4>
+                            <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"] ?> €</h4>
                         </div>
 
                         <!-- Pulsante di pagamento -->
