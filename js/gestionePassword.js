@@ -34,14 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
         evaluatePasswordStrength(password);
     });
 
-    function evaluatePasswordStrength(password) {
-        let strength = 0;
 
-        if (password.length >= 8) strength++; // Lunghezza minima
-        if (/[a-z]/.test(password)) strength++; // Lettere minuscole
-        if (/[A-Z]/.test(password)) strength++; // Lettere maiuscole
-        if (/[0-9]/.test(password)) strength++; // Numeri
-        if (/[^a-zA-Z0-9]/.test(password)) strength++; // Caratteri speciali
+
+    // Funzione per aggiornare l'indicatore di forza della password
+    function evaluatePasswordStrength(password) {
+        const strength = calcolaForzaPassword(password);
 
         // Aggiorna l'indicatore di forza
         if (strength <= 2) {
@@ -64,13 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Controllo prima dell'invio del form
     submitButton.addEventListener("click", function (event) {
         const password = passwordField.value;
-        let strength = 0;
-
-        if (password.length >= 8) strength++;
-        if (/[a-z]/.test(password)) strength++;
-        if (/[A-Z]/.test(password)) strength++;
-        if (/[0-9]/.test(password)) strength++;
-        if (/[^a-zA-Z0-9]/.test(password)) strength++;
+        const strength = calcolaForzaPassword(password);
 
         if (strength < 4) {
             event.preventDefault(); // Blocca l'invio del form
@@ -80,3 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Funzione per calcolare la forza della password
+function calcolaForzaPassword(password) {
+    let strength = 0;
+
+    if (password.length >= 8) strength++; // Lunghezza minima
+    if (/[a-z]/.test(password)) strength++; // Lettere minuscole
+    if (/[A-Z]/.test(password)) strength++; // Lettere maiuscole
+    if (/[0-9]/.test(password)) strength++; // Numeri
+    if (/[^a-zA-Z0-9]/.test(password)) strength++; // Caratteri speciali
+
+    return strength;
+}

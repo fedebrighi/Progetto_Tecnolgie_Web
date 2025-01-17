@@ -17,6 +17,25 @@ function salvaModifiche() {
         return;
     }
 
+    // Verifica l'età
+    const oggi = new Date();
+    const dataNascita = new Date(dati.dataNascita);
+    const maggioreEta = new Date(oggi.getFullYear() - 18, oggi.getMonth(), oggi.getDate()); // Calcolo della data per i maggiorenni
+
+
+    if (dataNascita > maggioreEta) {
+        alert("Devi essere maggiorenne!");
+        return;
+    }
+
+    // Verifica la forza della password
+    const strength = calcolaForzaPassword(dati.pw);
+    if (strength < 4) {
+        alert("La password è troppo debole!");
+        return;
+    }
+
+    // Se tutti i controlli sono validi, invia i dati al server
     fetch("ajax/api-updateUser.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

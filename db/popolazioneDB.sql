@@ -25,7 +25,7 @@ VALUES
 ('andrea_conti', 7, 'Andrea654!', 'andrea.conti@example.com', 'Andrea', 'Conti', '1991-08-10', 'Piazza Garibaldi 12', 'Verona',37100,3332989456),
 ('giulia_marini', 8, 'Giulia456!', 'giulia.marini@example.com', 'Giulia', 'Marini', '1995-12-25', 'Viale Vittorio Emanuele 60', 'Genova', 16100,3332989457),
 ('matteo_neri', 9, 'Matteo789!', 'matteo.neri@example.com', 'Matteo', 'Neri', '1989-09-18', 'Via Giuseppe Mazzini 45', 'Palermo', 90100,3332989458),
-('laura_bellucci', 10, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', 70100,3332989459);
+('laura_bellucci', 10, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', 70100,3332989459),
 ('mattia', 11, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', 40121, 2137685381),
 ('monia', 12, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', 20121, 2134769011),
 ('dave', 13, 'davide1234', 'davide.samorani@example.com', 'Davide', 'Samorani', '1995-08-27', 'Piazza Duomo 7', 'Firenze', 50122, 2132198763);

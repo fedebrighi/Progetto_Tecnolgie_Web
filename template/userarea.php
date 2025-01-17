@@ -93,7 +93,7 @@
                             </div>
                             <div class="modal-footer border-secondary">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                <button type="button" class="btn btn-warning" id="submitButton" onclick="salvaModifiche()">Salva Modifiche</button>
+                                <button type="button" class="btn btn-warning" onclick="salvaModifiche()">Salva Modifiche</button>
                             </div>
                         </div>
                     </div>
@@ -119,5 +119,4 @@
     </div>
     <script src="js/modificaUtente.js"></script>
     <script src="js/gestionePassword.js"></script>
-    <script src="js/maggiorenne.js"></script>
 </main>
