@@ -1,4 +1,3 @@
-console.log('Totale base:', totaleBase);
 // Usa il valore passato dal backend tramite PHP
 const basePrice = totaleBase;
 // Funzione per aggiornare il totale

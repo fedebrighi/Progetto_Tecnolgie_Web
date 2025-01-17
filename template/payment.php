@@ -1,6 +1,3 @@
-<?php
-var_dump($templateParams['carrello']['totale']);
-?>
 
 <body>
     <div class="container py-5">
