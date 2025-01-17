@@ -18,6 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantita = $_POST['quantitaProdotto'];
     $immagine = $_FILES["immagineProdotto"]["name"];
     $spesaUnitaria = $_POST['spesaUnitaria'];
+    $glutenFree = $_POST['glutenFree'];
+    if ($glutenFree != 1) {
+        $glutenFree = 0;
+    }
 
     $codProdotto = $dbh->getNextCodProdotto();
 
@@ -25,11 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Errore nella creazione del prodotto!";
     }
     // Salva la nuova birra
-    if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine)) {
-        header("Location: venditore.php"); // Reindirizza alla area venditore
+    if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree)) {
+        echo "<script>alert('Prodotto creato con successo!'); window.location.href = 'venditore.php';</script>";
         exit();
     } else {
         echo "Errore nella creazione del prodotto!";
+        $dbh->deleteSalesInfo($codProdotto);
     }
 }
 require 'template/base.php';

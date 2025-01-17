@@ -62,29 +62,36 @@
                                         </div>
                                         <div class="modal-body">
                                             <form id="modificaProdottoForm-<?php echo $birra['codProdotto']; ?>">
-                                                <div class="mb-3">
-                                                    <label for="modificaNome" class="form-label">Nome:</label>
+                                                <div class="mb-2">
+                                                    <label for="modificaNome" class="form-label text-warning fs-5">Nome:</label>
                                                     <input type="text" class="form-control" id="modificaNome" value="<?php echo $birra["nome"]; ?>" required />
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="modificaAlc" class="form-label">Percentuale Alcolica (%):</label>
+                                                <div class="mb-2">
+                                                    <label for="modificaAlc" class="form-label text-warning fs-5">Percentuale Alcolica (%):</label>
                                                     <input type="number" class="form-control" id="modificaAlc" value="<?php echo $birra["alc"]; ?>" required />
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="modificaPrezzo" class="form-label">Prezzo (€):</label>
+                                                <div class="mb-2">
+                                                    <label for="modificaPrezzo" class="form-label text-warning fs-5">Prezzo (€):</label>
                                                     <input type="number" class="form-control" id="modificaPrezzo" value="<?php echo $birra["prezzo"]; ?>" required />
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="modificaDescrizione" class="form-label">Descrizione:</label>
+                                                <div class="mb-2">
+                                                    <label for="modificaDescrizione" class="form-label text-warning fs-5">Descrizione:</label>
                                                     <textarea class="form-control" name="descrizioneProdotto" id="descrizioneProdotto" rows="3" required><?php echo htmlspecialchars($birra["descrizione"]); ?></textarea>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="modificaListaIngredienti" class="form-label">Lista Ingredienti:</label>
+                                                <div class="mb-2">
+                                                    <label for="modificaListaIngredienti" class="form-label text-warning fs-5">Lista Ingredienti:</label>
                                                     <input type="text" class="form-control" id="modificaListaIngredienti" value="<?php echo $birra["listaIngredienti"]; ?>" required />
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="modificaImmagine" class="form-label">Immagine:</label>
-                                                    <input type="file" class="form-control" id="modificaImmagine" value="<?php echo $birra["immagine"]; ?>" required />
+                                                <div class="mb-2">
+                                                    <label for="modificaImmagine" class="form-label text-warning fs-5">Immagine:</label>
+                                                    <input type="file" class="form-control" id="modificaImmagine" required />
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label text-warning fs-5">Senza Glutine:</label>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="glutenFree" id="glutenFree" value="1">
+                                                        <label class="form-check-label" for="glutenFree">Sì</label>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

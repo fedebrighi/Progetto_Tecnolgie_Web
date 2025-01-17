@@ -63,7 +63,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateTotalCart($tot, $username) {
+    public function updateTotalCart($tot, $username)
+    {
         $query = "UPDATE CARRELLO SET totale = ? WHERE codCarrello = (SELECT codCarrello FROM CLIENTE WHERE username = ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $tot, $username);
@@ -166,6 +167,20 @@ class DatabaseHelper
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
 
+    public function isClientLogged($username): bool
+    {
+        $query = "SELECT 1 FROM CLIENTE WHERE username = ? LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce true se viene trovato almeno un risultato, false altrimenti
+        return $result->num_rows > 0;
+    }
+
+
     public function getClientIfRegistered($username, $password)
     {
         $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
@@ -236,6 +251,18 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
+    public function getAllOrders()
+    {
+        $query = "SELECT * FROM ORDINE";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Restituisce tutti gli ordini come array associativo multidimensionale
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getOrderElementsByCod($codiceOrdine)
     {
         $query = "SELECT * FROM composizioneOrdine WHERE codiceOrdine = ?";
@@ -277,13 +304,13 @@ class DatabaseHelper
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
     }
 
-    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine): bool
+    public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree): bool
     {
-        $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, listaIngredienti, prezzo, quantitaMagazzino, immagine)
-                    VALUES (?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, listaIngredienti, prezzo, quantitaMagazzino, immagine, glutenFree)
+                    VALUES (?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
-            'iisdssdis',
+            'iisdssdisi',
             $codProdotto,
             $codInfo,
             $nome,
@@ -292,7 +319,8 @@ class DatabaseHelper
             $listaIngredienti,
             $prezzo,
             $quantita,
-            $immagine
+            $immagine,
+            $glutenFree
         );
 
         return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
