@@ -1,9 +1,9 @@
-// Prezzo base
-const basePrice = 50;
-
+console.log('Totale base:', totaleBase);
+// Usa il valore passato dal backend tramite PHP
+const basePrice = totaleBase;
 // Funzione per aggiornare il totale
 function updateTotal() {
-    let total = basePrice; // Imposta il totale iniziale al prezzo base
+    let total = basePrice; // Imposta il totale iniziale al valore calcolato dal backend
     const spedizioneRapida = document.getElementById('rapida').checked; // Controlla se è selezionata la spedizione rapida
 
     if (spedizioneRapida) {
