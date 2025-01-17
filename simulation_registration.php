@@ -34,7 +34,7 @@
         // Reindirizza alla pagina personale dopo 5 secondi
         setTimeout(function () {
             window.location.href = "utente.php";
-        }, 3000);
+        }, 5000);
     </script>
 </head>
 
@@ -45,8 +45,8 @@
             <span class="visually-hidden">Loading...</span>
         </div>
         <h1 class="text-warning mt-4">Iscrizione completata con successo!</h1>
-        <p class="thank-you-message">Grazie per esserti iscritto al nostro sito. Sarai reindirizzato alla tua pagina personale tra pochi secondi.</p>
-        <p>Se il reindirizzamento non avviene automaticamente, <a href="homepage.php" class="text-info">clicca qui</a>.</p>
+        <p class="thank-you-message">Grazie per esserti iscritto al nostro sito.Ora accedi con le tue credenziali e scopri i nostri prodotti!</p>
+        <p>Se il reindirizzamento non avviene automaticamente, <a href="login.php" class="text-info">clicca qui</a>.</p>
     </div>
 </body>
 
