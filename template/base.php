@@ -181,7 +181,7 @@
                     </div>
                 </div>
             </div>
-            <hr style="border-color: #333333; margin: 1rem 0;">
+            <hr style="border-color: #333333; ">
             <div class="text-center" style="color: #333333;">
                 © 2025 <strong>PHPINT</strong>. Tutti i diritti non riservati.
             </div>
