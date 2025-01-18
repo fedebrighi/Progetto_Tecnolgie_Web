@@ -31,8 +31,9 @@
                             onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                         <button class="btn btn-warning btn-sm w-100 remove-from-cart"
                             onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
-                            Rimuovi dal carrello
+                            <i class="bi bi-trash me-1"></i> Rimuovi dal Carrello
                         </button>
+
                     </div>
                 </div>
             <?php endforeach; ?>
