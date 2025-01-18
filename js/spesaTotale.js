@@ -1,30 +1,20 @@
-// Funzione per aggiornare il totale del carrello
 function aggiornaTotaleCarrello() {
     let totale = 0;
-
-    // Seleziona tutti gli elementi con classe carrello-item
     const prodotti = document.querySelectorAll('.carrello-item');
 
     prodotti.forEach(prodotto => {
         const prezzo = parseFloat(prodotto.querySelector('.prezzo').textContent.replace('€', '').trim());
         const quantita = parseInt(prodotto.querySelector('.quantita').value, 10);
-        const codProdotto = prodotto.dataset.id; // Ottieni il codice prodotto dall'attributo data-id
-
-        // Aggiungi il prezzo totale del prodotto al totale del carrello
+        const codProdotto = prodotto.dataset.id;
         totale += prezzo * quantita;
-
-        // Aggiorna il database per questo prodotto
         aggiornaQuantitaCartAPI(codProdotto, quantita);
     });
-
-    // Aggiorna il totale nella pagina
     const totaleElement = document.querySelector('#totale-carrello');
     if (totaleElement) {
         totaleElement.textContent = totale.toFixed(2) + ' €';
     }
 }
 
-// Funzione per aggiornare la quantità nel database tramite API
 function aggiornaQuantitaCartAPI(codProdotto, quantita) {
     fetch("ajax/api-updateProductFromCart.php", {
         method: 'POST',
@@ -47,13 +37,9 @@ function aggiornaQuantitaCartAPI(codProdotto, quantita) {
 
 }
 
-
-// Aggiungi event listener per ogni input di quantità
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.quantita').forEach(input => {
         input.addEventListener('input', aggiornaTotaleCarrello);
     });
-
-    // Calcola il totale iniziale
     aggiornaTotaleCarrello();
 });
