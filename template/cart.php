@@ -26,9 +26,6 @@
                         <p class="m-0 fw-bold prezzo"><?php echo $birra["prezzo"] ?> €</p>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                        <input type="number" class="form-control mb-2 text-center quantita" min="1"
-                            value="<?php echo $item["quantita"] ?>" style="height: 40px;" data-quantity="true"
-                            onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                         <div class="d-flex align-items-center mb-2">
                             <label for="quantita-<?php echo $item['codProdotto']; ?>" class="me-2">Quantità:</label>
                             <input type="number" id="quantita-<?php echo $item['codProdotto']; ?>" class="form-control form-control-sm text-center quantita" 
@@ -37,8 +34,7 @@
                         </div>
                         <button class="btn btn-warning btn-sm w-100 remove-from-cart"
                             onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
-                            <i class="bi bi-trash me-1"></i> Rimuovi dal Carrello
-                            Rimuovi
+                            <i class="bi bi-trash me-1"></i>Rimuovi
                         </button>
                     </div>
                 </div>
