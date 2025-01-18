@@ -169,13 +169,61 @@ class DatabaseHelper
 
     public function updateUser($username, $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
     {
-        $query = "UPDATE CLIENTE 
+        $query = "UPDATE CLIENTE
               SET nome = ?, cognome = ?, email = ?, pw = ?, indirizzo = ?, citta = ?, cap = ?, telefono = ?, dataNascita = ?
               WHERE username = ?";
         $stmt = $this->db->prepare($query);
 
         $stmt->bind_param('ssssssiiss', $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita, $username);
         $stmt->execute();
+    }
+
+    public function getNextCod($tableName, $columnName)
+    {
+        // Proteggi il nome della tabella e della colonna da SQL injection
+        $tableName = $this->db->real_escape_string($tableName);
+        $columnName = $this->db->real_escape_string($columnName);
+
+        // Prepara la query dinamica
+        $query = "SELECT MAX($columnName) AS maxCod FROM $tableName";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Calcola il prossimo codice
+        $nextCod = isset($row['maxCod']) ? $row['maxCod'] + 1 : 1;
+
+        return $nextCod;
+    }
+
+    public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti)
+    {
+        $dataOrdine = date("Y-m-d");
+        $dataSpedizione = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+3 days")) : date("Y-m-d", strtotime("+7 days"));
+        $dataArrivo = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
+        $codiceOrdine = $this->getNextCod("ORDINE","codiceOrdine"); // Genera un codice ordine unico
+        try {
+            // Inserisci l'ordine nella tabella ORDINE
+            $stmt = $this->db->prepare("
+                INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
+                VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ");
+            $stmt->bind_param("sisssdssiss", $username, $codiceOrdine, $dataOrdine, $dataSpedizione, $dataArrivo, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
+            $stmt->execute();
+            // Inserisci i dettagli dei prodotti nella tabella composizioneOrdine
+            foreach ($prodotti as $item) {
+                $stmt = $this->db->prepare("
+                    INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
+                    VALUES (?,?,?,?)
+                ");
+                $stmt->bind_param("isii", $item["codProdotto"], $item["username"], $item["codiceOrdine"], $item["quantita"]);
+                $stmt->execute();
+            }
+
+        } catch (Exception $e) {
+            throw new Exception("Errore durante il salvataggio dell'ordine: " . $e->getMessage());
+        }
     }
 
 
@@ -342,8 +390,8 @@ class DatabaseHelper
 
     public function updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree)
     {
-        $query = "UPDATE PRODOTTO 
-              SET nome = ?, alc = ?, prezzo = ?, descrizione = ?, listaIngredienti = ?, glutenFree = ? 
+        $query = "UPDATE PRODOTTO
+              SET nome = ?, alc = ?, prezzo = ?, descrizione = ?, listaIngredienti = ?, glutenFree = ?
               WHERE codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sddssii', $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree, $idProdotto);

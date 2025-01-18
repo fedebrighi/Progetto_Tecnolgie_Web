@@ -7,7 +7,7 @@
                     <h2 class="text-center  fs-5">Completa con i tuoi dati per procedere alla spedizione e
                         al pagamento</h2>
 
-                    <form method="post" action="simulation.php">
+                    <form method="POST" action="simulation.php">
                         <!-- Dati personali -->
                         <div class="mb-3">
                             <label for="indirizzo" class="form-label">Indirizzo:</label>
@@ -91,18 +91,18 @@
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Numero Carta:</label>
                                 <input type="text" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
-                                    placeholder="Inserisci il numero della carta" required>
+                                    placeholder="Inserisci il numero della carta" >
                             </div>
                             <div class="mb-3">
                                 <label for="expiryDate" class="form-label">Scadenza (MM/YYYY):</label>
                                 <input type="text" class="form-control" id="expiryDate" name="expiryDate"
-                                    placeholder="MM/YYYY" required>
+                                    placeholder="MM/YYYY">
                                 <small id="expiryError" class="text-danger"></small>
                             </div>
                             <div class="mb-3">
                                 <label for="cvv" class="form-label">CVV:</label>
                                 <input type="text" class="form-control" id="cvv" name="cvv" maxlength="3"
-                                    placeholder="CVV" required>
+                                    placeholder="CVV">
                             </div>
                         </div>
 

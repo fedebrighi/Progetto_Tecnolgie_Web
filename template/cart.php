@@ -28,8 +28,8 @@
                     <div class="d-flex flex-column align-items-center">
                         <div class="d-flex align-items-center mb-2">
                             <label for="quantita-<?php echo $item['codProdotto']; ?>" class="me-2">Quantità:</label>
-                            <input type="number" id="quantita-<?php echo $item['codProdotto']; ?>" class="form-control form-control-sm text-center quantita" 
-                                min="1" value="<?php echo $item['quantita']; ?>" style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;"
+                            <input type="number" id="quantita-<?php echo $item['codProdotto']; ?>" class="form-control form-control-sm text-center quantita"
+                                min="1" value="<?php echo $item['quantita']; ?>" style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;" data-quantity="true"
                                 onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                         </div>
                         <button class="btn btn-warning btn-sm w-100 remove-from-cart"

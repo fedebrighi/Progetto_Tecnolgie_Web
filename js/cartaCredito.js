@@ -3,11 +3,17 @@ function toggleCardForm() {
     const cardForm = document.getElementById('creditCardForm');
     const pagamentoCarta = document.getElementById('pagamentoCarta');
 
-    // Mostra il form solo se l'opzione "Carta di credito" è selezionata
+    // Mostra o nasconde il form della carta di credito
     if (pagamentoCarta.checked) {
         cardForm.style.display = 'block';
+        document.getElementById('cardNumber').setAttribute('required', 'true');
+        document.getElementById('expiryDate').setAttribute('required', 'true');
+        document.getElementById('cvv').setAttribute('required', 'true');
     } else {
         cardForm.style.display = 'none';
+        document.getElementById('cardNumber').removeAttribute('required');
+        document.getElementById('expiryDate').removeAttribute('required');
+        document.getElementById('cvv').removeAttribute('required');
     }
 }
 
