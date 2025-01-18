@@ -1,17 +1,12 @@
-// Usa il valore passato dal backend tramite PHP
 const basePrice = totaleBase;
-// Funzione per aggiornare il totale
 function updateTotal() {
-    let total = basePrice; // Imposta il totale iniziale al valore calcolato dal backend
-    const spedizioneRapida = document.getElementById('rapida').checked; // Controlla se è selezionata la spedizione rapida
-
+    let total = 0;
+    total += basePrice;
+    const spedizioneRapida = document.getElementById('rapida').checked;
     if (spedizioneRapida) {
-        total += 5; // Aggiungi €5 per la spedizione rapida
+        total += 5;
     }
-
-    // Aggiorna il testo del totale nella pagina
-    document.getElementById('totale').textContent = `Totale: €${total}`;
+    document.getElementById('totale').textContent = totale.toFixed(2) + ' €';
 }
 
-// Inizializza il totale al caricamento della pagina
 updateTotal();

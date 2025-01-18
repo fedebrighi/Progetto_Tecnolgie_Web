@@ -67,7 +67,7 @@ class DatabaseHelper
     {
         $query = "UPDATE CARRELLO SET totale = ? WHERE codCarrello = (SELECT codCarrello FROM CLIENTE WHERE username = ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('is', $tot, $username);
+        $stmt->bind_param('ds', $tot, $username);
         $success = $stmt->execute();
         return $success;
     }
