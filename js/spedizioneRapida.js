@@ -1,12 +1,12 @@
 const basePrice = totaleBase;
+
 function updateTotal() {
-    let total = 0;
-    total += basePrice;
-    const spedizioneRapida = document.getElementById('rapida').checked;
+    let total = basePrice; 
+    const spedizioneRapida = document.getElementById('rapida').checked; 
     if (spedizioneRapida) {
         total += 5;
     }
-    document.getElementById('totale').textContent = totale.toFixed(2) + ' €';
+    document.getElementById('totale').textContent = total.toFixed(2) + ' €';
 }
 
 updateTotal();
