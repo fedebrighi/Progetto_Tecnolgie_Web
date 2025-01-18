@@ -135,7 +135,7 @@
     }
     ?>
 
-    <footer class="py-2" style="background-color: #FFCC99;">
+    <footer class="py-4" style="background-color: #FFCC99;">
         <div class="container">
             <div class="row text-center">
                 <!-- Colonna Informazioni -->
