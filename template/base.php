@@ -16,7 +16,7 @@
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="homepage.html">
-                <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2">
+                <img src="img/logo1.jpg" alt="PHPint Logo" width="130" class="me-2">
                 <span class="fs-2 fw-bold">PHPint</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
