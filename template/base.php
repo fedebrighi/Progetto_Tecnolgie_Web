@@ -16,7 +16,7 @@
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="homepage.html">
-                <img src="img/logo.jpg" alt="PHPint Logo" width="40" class="me-2">
+                <img src="img/logo1.jpg" alt="PHPint Logo" width="130" class="me-2">
                 <span class="fs-2 fw-bold">PHPint</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -135,7 +135,7 @@
     }
     ?>
 
-    <footer class="py-2" style="background-color: #FFCC99;">
+    <footer class="py-4" style="background-color: #FFCC99;">
         <div class="container">
             <div class="row text-center">
                 <!-- Colonna Informazioni -->

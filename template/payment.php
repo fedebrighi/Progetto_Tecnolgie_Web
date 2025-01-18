@@ -1,4 +1,3 @@
-
 <body>
     <div class="container py-5">
         <div class="row justify-content-center">
@@ -52,35 +51,61 @@
 
                         <!-- Metodo di pagamento -->
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta" checked />
+                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta"
+                                value="carta" checked onchange="toggleCardForm()">
                             <label for="pagamentoCarta" class="form-check-label">
                                 <i class="bi bi-credit-card"></i> Carta di credito
                             </label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay" />
+                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay"
+                                value="applepay" onchange="toggleCardForm()">
                             <label for="pagamentoApplePay" class="form-check-label">
                                 <i class="bi bi-apple"></i> ApplePay
                             </label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay" />
+                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay"
+                                value="googlepay" onchange="toggleCardForm()">
                             <label for="pagamentoGooglePay" class="form-check-label">
                                 <i class="bi bi-google"></i> GooglePay
                             </label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPayPal" />
+                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPayPal"
+                                value="paypal" onchange="toggleCardForm()">
                             <label for="pagamentoPayPal" class="form-check-label">
                                 <i class="bi bi-paypal"></i> PayPal
                             </label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno" />
+                            <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno"
+                                value="contrassegno" onchange="toggleCardForm()">
                             <label for="pagamentoContrassegno" class="form-check-label">
                                 <i class="bi bi-truck"></i> Pagamento alla consegna
                             </label>
                         </div>
+
+                        <!-- Dati della carta di credito -->
+                        <div id="creditCardForm" style="display: none;">
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">Numero Carta:</label>
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
+                                    placeholder="Inserisci il numero della carta" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="expiryDate" class="form-label">Scadenza (MM/YYYY):</label>
+                                <input type="text" class="form-control" id="expiryDate" name="expiryDate"
+                                    placeholder="MM/YYYY" required>
+                                <small id="expiryError" class="text-danger"></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cvv" class="form-label">CVV:</label>
+                                <input type="text" class="form-control" id="cvv" name="cvv" maxlength="3"
+                                    placeholder="CVV" required>
+                            </div>
+                        </div>
+
 
                         <!-- Totale -->
                         <div class="text-center my-4">
@@ -99,4 +124,5 @@
     </script>
     <script src="js/spedizioneRapida.js"></script>
     <script src="js/spesaTotale.js"></script>
+    <script src="js/cartaCredito.js"></script>
 </body>
