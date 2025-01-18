@@ -13,7 +13,7 @@
                 <p><strong>INGREDIENTI: <?php echo $templateParams["birra"]["listaIngredienti"]; ?></strong></p>
                 <div class="d-flex align-items-center mt-3">
                     <label for="quantity" class="form-label m-3 ">Quantità:</label>
-                    <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>" class="form-control me-3" style="width: 80px;" min="1" value="1" />
+                    <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>" class="form-control me-3" style="width: 40px; height: 25px; border-radius: 50px; padding: 5px;" min="1" value="1" />
                     <?php if (!empty($_SESSION["username"])) : ?>
                         <button class="btn btn-warning btn-sm mb-2 mt-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                             <?php echo $templateParams['birra']['codProdotto']; ?>,

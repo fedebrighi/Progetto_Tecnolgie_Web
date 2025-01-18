@@ -18,8 +18,10 @@
                         <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                     </div>
                     <div class="ms-auto d-flex flex-column align-items-stretch">
-                        <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità:</label>
-                        <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>" class="form-control mb-2 text-center" min="1" value="1" style="height: 40px;">
+                        <div class="d-flex align-items-center mb-2">
+                            <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="me-2">Quantità:</label>
+                            <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>" class="form-control text-center" min="1" value="1" style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;">
+                        </div>
                         <?php if(!empty($_SESSION["username"])) : ?>
                             <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                                 <?php echo $birra['codProdotto']; ?>,
