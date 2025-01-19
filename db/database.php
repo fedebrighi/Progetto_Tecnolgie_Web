@@ -142,6 +142,31 @@ class DatabaseHelper
         $stmt->execute();
     }
 
+    public function getUserFavorites($username) {
+        $stmt = $this->db->prepare("SELECT * FROM prodotto JOIN PREFERITI ON prodotto.codProdotto = preferiti.codProdotto WHERE preferiti.username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function isProductFavorite($username, $codProdotto) {
+        $stmt = $this->db->prepare("SELECT * FROM PREFERITI WHERE username = ? AND codProdotto = ?");
+        $stmt->bind_param("si", $username, $codProdotto);
+        $stmt->execute();
+        return $stmt->get_result()->num_rows > 0;
+    }
+
+    public function addFavorite($username, $codProdotto) {
+        $stmt = $this->db->prepare("INSERT INTO PREFERITI (username, codProdotto) VALUES (?, ?)");
+        $stmt->bind_param("si", $username, $codProdotto);
+        $stmt->execute();
+    }
+
+    public function removeFavorite($username, $codProdotto) {
+        $stmt = $this->db->prepare("DELETE FROM PREFERITI WHERE username = ? AND codProdotto = ?");
+        $stmt->bind_param("si", $username, $codProdotto);
+        $stmt->execute();
+    }
 
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
     {
@@ -209,7 +234,7 @@ class DatabaseHelper
                 INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
                 VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
-            $stmt->bind_param("sisssdssiss", $username, $codiceOrdine, $dataOrdine, $dataSpedizione, $dataArrivo, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
+            $stmt->bind_param("sisssdsssiss", $username, $codiceOrdine, $dataOrdine, $dataSpedizione, $dataArrivo, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
             $stmt->execute();
             // Inserisci i dettagli dei prodotti nella tabella composizioneOrdine
             foreach ($prodotti as $item) {
@@ -225,8 +250,6 @@ class DatabaseHelper
             throw new Exception("Errore durante il salvataggio dell'ordine: " . $e->getMessage());
         }
     }
-
-
 
 
     public function isClientLogged($username): bool

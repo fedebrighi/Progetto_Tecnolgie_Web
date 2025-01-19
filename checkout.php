@@ -26,7 +26,7 @@ if (isset($_SESSION["username"])) {
                 $tipoSpedizione,
                 $tipoPagamento,
                 $totale,
-                $templateParams["carrello"]["prodotti"]
+                $dbh->getCartFromUser($username)
             );
             header("Location: simulation.php");
             exit();

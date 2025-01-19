@@ -53,6 +53,14 @@
                         </a>
                     </li>
 
+                    <!-- Link Preferiti -->
+                    <li class="nav-item text-center">
+                        <a <?php isActive("preferiti.php"); ?>
+                            class="nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
+                            <i class="bi bi-heart"></i>
+                            <span>Preferiti</span>
+                        </a>
+
                     <?php if (!isset($_SESSION["username"])): ?>
                         <!-- Link Login -->
                         <li class="nav-item text-center">

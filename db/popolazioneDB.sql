@@ -33,13 +33,13 @@ VALUES
 
 INSERT INTO SPEDIZIONE( tipo, sovrapprezzo)
 VALUES
-('Standard', 0),
-('Express', 2.50);
+('standard', 0),
+('rapida', 5);
 
 INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
 VALUES
-('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'Standard'),
-('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'Express');
+('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'standard'),
+('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'rapida');
 
 INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
 VALUES
