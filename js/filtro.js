@@ -12,7 +12,6 @@ function updateAlcoholLabel() {
     document.getElementById("alcoholMaxLabel").innerText = `${max}%`;
 }
 
-
 function filterProducts() {
     const searchQuery = document.getElementById('searchBar').value.toLowerCase();
     const glutenFreeOnly = document.getElementById('glutenFreeFilter').checked;
@@ -31,33 +30,41 @@ function filterProducts() {
 
         let isVisible = true;
 
-        // Filtro per nome
         if (searchQuery && !name.includes(searchQuery)) {
             isVisible = false;
         }
-
-        // Filtro per glutine
         if (glutenFreeOnly && !glutenFree) {
             isVisible = false;
         }
-
-        // Filtro per prezzo
         if (price < priceMin || price > priceMax) {
             isVisible = false;
         }
-
-        // Filtro per alcol
         if (alcohol < alcoholMin || alcohol > alcoholMax) {
             isVisible = false;
         }
 
-        // Mostra o nasconde il prodotto
         product.style.display = isVisible ? 'block' : 'none';
     });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const filterButton = document.getElementById("toggleFilterButton");
+    const filterContainer = document.getElementById("filterContainer");
 
-document.addEventListener('DOMContentLoaded', () => {
+    filterButton.addEventListener("click", () => {
+        // Aggiungi/rimuovi la classe "show" per gestire l'apertura
+        filterContainer.classList.toggle("show");
+
+        // Cambia il testo del pulsante in base allo stato
+        if (filterContainer.classList.contains("show")) {
+            filterButton.innerText = "Nascondi Filtri";
+        } else {
+            filterButton.innerText = "Mostra Filtri";
+        }
+    });
+
+    // Funzioni esistenti
     updatePriceLabel();
     updateAlcoholLabel();
 });
+

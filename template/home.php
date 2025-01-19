@@ -14,15 +14,18 @@
                     <div class="carousel-inner">
                         <?php foreach ($templateParams["birre"] as $index => $birra): ?>
                             <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="img/beers/<?php echo $birra["immagine"]; ?>" class="d-block w-100 img-fluid rounded" alt="<?php echo $birra["nome"]; ?>">
+                                <img src="img/beers/<?php echo $birra["immagine"]; ?>"
+                                    class="d-block w-100 img-fluid rounded" alt="<?php echo $birra["nome"]; ?>">
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#beerCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#beerCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -32,13 +35,14 @@
             <!-- Colonna Pulsanti -->
             <div class="col-md-6">
                 <div class="d-grid gap-3">
-                    <a <?php isActive("catalogo_prodotti.php");?> href="catalogo_prodotti.php" class="btn btn-custom btn-lg fw-bold">
+                    <a href="paginainformativa.html" class="btn btn-custom btn-lg fw-bold">
+                        <i class="bi bi-info-circle"></i> SCOPRI CHI SIAMO
+                    </a>
+                    <a <?php isActive("catalogo_prodotti.php"); ?> href="catalogo_prodotti.php"
+                        class="btn btn-custom btn-lg fw-bold">
                         <i class="bi bi-basket"></i> SCOPRI I NOSTRI PRODOTTI
                     </a>
-                    <a href="abbinamenti.html" class="btn btn-custom btn-lg fw-bold">
-                        <i class="bi bi-info-circle"></i> VISUALIZZA I CONSIGLI PER LE BIRRE
-                    </a>
-                    <a <?php isActive("carrello.php");?> href="carrello.php" class="btn btn-custom btn-lg fw-bold">
+                    <a <?php isActive("carrello.php"); ?> href="carrello.php" class="btn btn-custom btn-lg fw-bold">
                         <i class="bi bi-cart-check"></i> CONTROLLA LO STATO DEL TUO CARRELLO
                     </a>
                 </div>
@@ -60,7 +64,8 @@
                     <small>- Monia</small>
                 </div>
                 <div class="col-md-4">
-                    <p>"Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!"</p>
+                    <p>"Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!"
+                    </p>
                     <small>- Dave</small>
                 </div>
             </div>
