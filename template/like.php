@@ -3,7 +3,11 @@
         <h1 class="text-warning text-center mb-4">Le tue Birre Preferite</h1>
         <div class="row gy-4">
             <?php if (empty($templateParams["preferiti"])): ?>
-                <p class="text-light text-center">Non hai ancora aggiunto nessuna birra ai tuoi preferiti.</p>
+                <p class="text-light text-center">
+                    <i class="bi bi-heartbreak text-warning" style="font-size: 10rem;"></i>
+                    <br>
+                    Non hai ancora aggiunto nessuna birra ai tuoi preferiti.
+                </p>
             <?php else: ?>
                 <?php foreach ($templateParams["preferiti"] as $birra): ?>
                     <div class="col-md-4 text-center">

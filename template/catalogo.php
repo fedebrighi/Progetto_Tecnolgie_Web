@@ -106,4 +106,5 @@
         </div>
     </div>
     <script src="js/filtro.js"></script>
+    <script src="js/aggiungiAlCarrello.js"></script>
 </main>

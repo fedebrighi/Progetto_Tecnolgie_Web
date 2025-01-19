@@ -124,11 +124,6 @@ button.btn:hover {
   transform: scale(1.05); /* Leggero ingrandimento */
 }
 
-button.btn:active {
-  background-color: #FF8C00; /* Colore di sfondo ancora più scuro quando cliccato */
-  transform: scale(0.95); /* Effetto di pressione */
-}
-
 .btn-custom {
     background-color: #FFCC99; /* Colore iniziale */
     color: #000; /* Colore del testo */
@@ -138,21 +133,15 @@ button.btn:active {
 
 .btn-custom:hover {
     background-color: #FFA366; /* Colore al passaggio del mouse */
-    transform: scale(1.05); /* Leggero ingrandimento */
+    transform: scale(1.5); /* Leggero ingrandimento */
     border-color: #FFCC99; /* Bordo visibile */
     color: #000; /* Testo rimane leggibile */
 }
 
-.nav-link i,
-.nav-link.active i {
+
+.nav-link i {
   font-size: 1.5rem; /* Mantiene la dimensione delle icone */
   margin-bottom: 0.2rem; /* Mantiene la spaziatura */
-}
-
-.nav-link span,
-.nav-link.active span {
-  font-size: 1.1rem; /* Mantiene la dimensione del testo */
-  font-weight: 500; /* Mantiene lo spessore del testo */
 }
 
 .nav-link.active {
@@ -166,8 +155,6 @@ button.btn:active {
 .navbar-brand {
   font-size: 1.5rem;
 }
-
-
 
 .badge {
   font-size: 0.8rem;
