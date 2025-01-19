@@ -242,7 +242,7 @@ class DatabaseHelper
                     INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
                     VALUES (?,?,?,?)
                 ");
-                $stmt->bind_param("isii", $item["codProdotto"], $item["username"], $item["codiceOrdine"], $item["quantita"]);
+                $stmt->bind_param("isii", $item["codProdotto"], $username, $codiceOrdine, $item["quantita"]);
                 $stmt->execute();
             }
 

@@ -19,11 +19,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="cap" class="form-label">CAP:</label>
-                            <input type="text" class="form-control" id="cap" name="cap" placeholder="CAP" required>
+                            <input type="number" class="form-control" id="cap" name="cap" placeholder="CAP" required>
                         </div>
                         <div class="mb-3">
                             <label for="cellulare" class="form-label">Cellulare:</label>
-                            <input type="text" class="form-control" id="cellulare" name="cellulare"
+                            <input type="number" class="form-control" id="cellulare" name="cellulare"
                                 placeholder="Inserisci il tuo numero di cellulare" required>
                         </div>
                         <div class="mb-3">
