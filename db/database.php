@@ -142,27 +142,31 @@ class DatabaseHelper
         $stmt->execute();
     }
 
-    public function getUserFavorites($username) {
+    public function getUserFavorites($username)
+    {
         $stmt = $this->db->prepare("SELECT * FROM prodotto JOIN PREFERITI ON prodotto.codProdotto = preferiti.codProdotto WHERE preferiti.username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function isProductFavorite($username, $codProdotto) {
+    public function isProductFavorite($username, $codProdotto)
+    {
         $stmt = $this->db->prepare("SELECT * FROM PREFERITI WHERE username = ? AND codProdotto = ?");
         $stmt->bind_param("si", $username, $codProdotto);
         $stmt->execute();
         return $stmt->get_result()->num_rows > 0;
     }
 
-    public function addFavorite($username, $codProdotto) {
+    public function addFavorite($username, $codProdotto)
+    {
         $stmt = $this->db->prepare("INSERT INTO PREFERITI (username, codProdotto) VALUES (?, ?)");
         $stmt->bind_param("si", $username, $codProdotto);
         $stmt->execute();
     }
 
-    public function removeFavorite($username, $codProdotto) {
+    public function removeFavorite($username, $codProdotto)
+    {
         $stmt = $this->db->prepare("DELETE FROM PREFERITI WHERE username = ? AND codProdotto = ?");
         $stmt->bind_param("si", $username, $codProdotto);
         $stmt->execute();
@@ -225,16 +229,16 @@ class DatabaseHelper
     public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti)
     {
         $dataOrdine = date("Y-m-d");
-        $dataSpedizione = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+3 days")) : date("Y-m-d", strtotime("+7 days"));
-        $dataArrivo = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
-        $codiceOrdine = $this->getNextCod("ORDINE","codiceOrdine"); // Genera un codice ordine unico
+        $dataPrevista = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
+        $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine"); // Genera un codice ordine unico
+        $stato = "In Preparazione";
         try {
             // Inserisci l'ordine nella tabella ORDINE
             $stmt = $this->db->prepare("
-                INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
-                VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
-            $stmt->bind_param("sisssdsssiss", $username, $codiceOrdine, $dataOrdine, $dataSpedizione, $dataArrivo, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
+            $stmt->bind_param("sisssdsssiss", $username, $codiceOrdine, $dataOrdine, $dataPrevista, $stato, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
             $stmt->execute();
             // Inserisci i dettagli dei prodotti nella tabella composizioneOrdine
             foreach ($prodotti as $item) {
@@ -245,7 +249,6 @@ class DatabaseHelper
                 $stmt->bind_param("isii", $item["codProdotto"], $username, $codiceOrdine, $item["quantita"]);
                 $stmt->execute();
             }
-
         } catch (Exception $e) {
             throw new Exception("Errore durante il salvataggio dell'ordine: " . $e->getMessage());
         }
@@ -481,6 +484,48 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $codInfo);
 
+        return $stmt->execute();
+    }
+
+    public function updateOrderStatus($codiceOrdine, $nuovoStato, $data, $dataPrevista): bool
+    {
+        error_log("inizio update");
+        $validStates = ["In Preparazione", "Spedito", "In Consegna", "Consegnato"];
+        if (!in_array($nuovoStato, $validStates, true)) {
+            return false; // Stato non valido
+        }
+
+        if (!DateTime::createFromFormat('Y-m-d', $data)) {
+            return false; // Data non valida
+        }
+
+        if (!DateTime::createFromFormat('Y-m-d', $dataPrevista)) {
+            return false; // Data prevista non valida
+        }
+
+        error_log("primi controlli passati");
+
+        // Query per aggiornare lo stato, le date e la data prevista
+        $query = "UPDATE ORDINE SET 
+              stato = ?, 
+              dataSpedizione = CASE WHEN ? = 'Spedito' THEN ? ELSE dataSpedizione END,
+              dataArrivo = CASE WHEN ? = 'Consegnato' THEN ? ELSE dataArrivo END,
+              dataPrevista = ?
+              WHERE codiceOrdine = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param(
+            "ssssssi",
+            $nuovoStato,
+            $nuovoStato,
+            $data,
+            $nuovoStato,
+            $data,
+            $dataPrevista,
+            $codiceOrdine
+        );
+
+        error_log("faccio l'esecuzione");
         return $stmt->execute();
     }
 }

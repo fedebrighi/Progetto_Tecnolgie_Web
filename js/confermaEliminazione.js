@@ -8,9 +8,11 @@ function eliminaProdotto(codProdotto) {
     fetch('ajax/api-deleteProduct.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
         },
-        body: `codProdotto=${encodeURIComponent(codProdotto)}`
+        body: JSON.stringify({
+            codProdotto: codProdotto,
+        }),
     })
         .then(response => response.text())
         .then(data => {

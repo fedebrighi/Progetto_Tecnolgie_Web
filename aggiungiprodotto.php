@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $glutenFree = 0;
     }
 
-    $codProdotto = $dbh->getNextCodProdotto();
+    $codProdotto = $dbh->getNextCod('PRODOTTO', 'codProdotto');
 
     if (!$dbh->saveNewSalesInfo($codProdotto, $spesaUnitaria)) {
         echo "Errore nella creazione del prodotto!";
     }
     // Salva la nuova birra
     if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree)) {
-        echo "<script>alert('Prodotto creato con successo!'); window.location.href = 'venditore.php';</script>";
+        header("Location: venditore.php");
         exit();
     } else {
         echo "Errore nella creazione del prodotto!";

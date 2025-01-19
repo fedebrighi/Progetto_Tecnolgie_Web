@@ -36,10 +36,11 @@ VALUES
 ('standard', 0),
 ('rapida', 5);
 
-INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
+INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
 VALUES
-('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'standard'),
-('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'rapida');
+('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', NULL, 'Consegnato', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'standard'),
+('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', NULL, 'Consegnato', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'rapida'),
+('giovanni_rossi', 3, '2025-01-05', '2025-01-06', NULL, '2025-01-10','Spedito', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'Standard');
 
 INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
 VALUES
