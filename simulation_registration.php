@@ -8,26 +8,43 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        .loading-icon {
-            font-size: 5rem;
-            color: #ffc107;
-            animation: spin 2s linear infinite;
-            /* Applicazione animazione */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centro verticale */
+            min-height: 100vh;
+            background-color: #212529; /* Sfondo scuro */
+            color: #f8f9fa; /* Testo chiaro */
+            margin: 0;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+        .content {
+            text-align: center;
+            font-size: 1.5rem;
+        }
 
-            100% {
-                transform: rotate(360deg);
-            }
+        .spinner-border {
+            width: 6rem;
+            height: 6rem;
+        }
+
+        h1 {
+            font-size: 3rem;
         }
 
         .thank-you-message {
+            font-size: 1.8rem;
             margin-top: 20px;
+        }
+
+        a {
             font-size: 1.5rem;
+            color: #17a2b8; /* Cambiato per essere più leggibile */
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #138496;
         }
     </style>
     <script>
@@ -38,10 +55,10 @@
     </script>
 </head>
 
-<body class="bg-dark text-light text-center">
-    <div class="container py-5">
+<body>
+    <div class="content">
         <!-- Icona animata -->
-        <div class="spinner-border text-warning" role="status" style="width: 5rem; height: 5rem;">
+        <div class="spinner-border text-warning" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
         <h1 class="text-warning mt-4">Iscrizione completata con successo!</h1>
@@ -51,3 +68,4 @@
 </body>
 
 </html>
+
