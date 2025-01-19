@@ -61,10 +61,24 @@ footer a:hover {
   /* Sottolineatura per evidenziare */
 }
 
-body p,
-body a {
+body p, body a {
   color: #FFCC99;
+  text-align: center;         /* Centra il contenuto */
+  display: inline-flex;       /* Disposizione flessibile inline */
+  flex-direction: column;     /* Posiziona l'icona sopra il testo */
+  align-items: center;        /* Centra orizzontalmente */
+  justify-content: center;    /* Centra verticalmente */
 }
+
+body a i {
+  font-size: 2rem;            /* Dimensione dell'icona */
+  margin-bottom: 0.05rem;     /* Riduce lo spazio tra icona e testo */
+}
+
+body a span {
+  font-size: 1.5rem;          /* Dimensione del testo */
+}
+
 
 body a:focus {
   outline-offset: 3px;
@@ -142,12 +156,6 @@ button.btn {
   /* Transizione morbida */
 }
 
-button.btn:hover {
-  background-color: #FFA07A;
-  /* Colore di sfondo più scuro al passaggio del mouse */
-  transform: scale(1.05);
-  /* Leggero ingrandimento */
-}
 
 .btn-custom {
   background-color: #FFCC99;
@@ -163,7 +171,7 @@ button.btn:hover {
 .btn-custom:hover {
   background-color: #FFA366;
   /* Colore al passaggio del mouse */
-  transform: scale(1.5);
+  transform: scale(1.10);
   /* Leggero ingrandimento */
   border-color: #FFCC99;
   /* Bordo visibile */
@@ -172,21 +180,22 @@ button.btn:hover {
 }
 
 
-.nav-link i {
-  font-size: 1.5rem;
-  /* Mantiene la dimensione delle icone */
-  margin-bottom: 0.2rem;
-  /* Mantiene la spaziatura */
-}
-
 .nav-link.active {
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   padding: 0.5rem 1rem;
   /* Mantiene la spaziatura */
 }
+
+.nav-link i {
+  font-size: 2.0rem; /* Dimensione fissa per le icone */
+}
+
+.nav-link span {
+  font-size: 1.3rem; /* Dimensione fissa per il testo */
+}
+
 
 .navbar-brand {
   font-size: 1.5rem;
