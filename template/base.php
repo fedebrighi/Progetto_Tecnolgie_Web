@@ -141,7 +141,7 @@
                 <!-- Colonna Informazioni -->
                 <div class="col-md-4 mb-3">
                     <h5 class="fw-bold" style="color: #333333;">PHPINT</h5>
-                    <p style="color: #333333;">Via dell'Università, 18 - 47521 Cesena FC, Italia</p>
+                    <p style="color: #333333;">Via Famiglia Aspini 2 - 47122 Forlì FC, Italia</p>
                     <p style="color: #333333;">Email: supporto@phpint.it</p>
                     <p style="color: #333333;">Tel: +39 349 313 0068</p>
                 </div>
