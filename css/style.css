@@ -156,6 +156,13 @@ button.btn {
   /* Transizione morbida */
 }
 
+button.btn:hover {
+  background-color: #FFA07A;
+  /* Colore di sfondo più scuro al passaggio del mouse */
+  transform: scale(1.05);
+  /* Leggero ingrandimento */
+}
+
 
 .btn-custom {
   background-color: #FFCC99;
@@ -185,11 +192,16 @@ button.btn {
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1rem;
+  flex-direction: column;
   /* Mantiene la spaziatura */
 }
 
+
 .nav-link i {
-  font-size: 2.0rem; /* Dimensione fissa per le icone */
+  font-size: 1.5rem;
+  /* Mantiene la dimensione delle icone */
+  margin-bottom: 0.2rem;
+  /* Mantiene la spaziatura */
 }
 
 .nav-link span {
