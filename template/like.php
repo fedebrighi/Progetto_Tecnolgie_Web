@@ -7,7 +7,7 @@
             <?php else: ?>
                 <?php foreach ($templateParams["preferiti"] as $birra): ?>
                     <div class="col-md-4 text-center">
-                        <a href="dettagli_birra.php?codProdotto=<?php echo $birra["codProdotto"]; ?>">
+                        <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
                             <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>"
                                 class="img-fluid rounded">
                         </a>

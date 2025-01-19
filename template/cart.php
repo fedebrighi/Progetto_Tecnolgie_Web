@@ -78,10 +78,6 @@
             </ul>
         </div>
 
-
-
-
-
         <!-- Pulsanti -->
         <div class="d-flex justify-content-between mt-4">
             <button class="btn btn-outline-light" type="button"
