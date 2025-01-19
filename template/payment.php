@@ -6,9 +6,7 @@
                     <h1 class="text-center text-warning">Informazioni di Spedizione</h1>
                     <h2 class="text-center  fs-5">Completa con i tuoi dati per procedere alla spedizione e
                         al pagamento</h2>
-
-                    <form method="POST" action="simulation.php">
-                        <!-- Tipo di spedizione -->
+                    <form method="POST" action="checkout.php">
                         <div class="mb-3">
                             <label class="form-label">Tipo di spedizione:</label><br>
                             <input type="radio" id="standard" name="spedizione" value="standard" checked
@@ -21,14 +19,10 @@
                                 <i class="bi bi-lightning-charge"></i> Rapida (3-5 giorni, +€5)
                             </label>
                         </div>
-
-                        <!-- Note per il corriere -->
                         <div class="mb-3">
                             <label for="note" class="form-label">Note per il corriere:</label>
                             <textarea class="form-control" id="note" name="note" rows="3"></textarea>
                         </div>
-
-                        <!-- Metodo di pagamento -->
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta"
                                 value="carta" checked onchange="toggleCardForm()">
@@ -64,12 +58,10 @@
                                 <i class="bi bi-truck"></i> Pagamento alla consegna
                             </label>
                         </div>
-
-                        <!-- Dati della carta di credito -->
                         <div id="creditCardForm" style="display: none;">
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Numero Carta:</label>
-                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
+                                <input type="number" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
                                     placeholder="Inserisci il numero della carta" >
                             </div>
                             <div class="mb-3">
@@ -80,17 +72,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="cvv" class="form-label">CVV:</label>
-                                <input type="text" class="form-control" id="cvv" name="cvv" maxlength="3"
+                                <input type="number" class="form-control" id="cvv" name="cvv" maxlength="3"
                                     placeholder="CVV">
                             </div>
                         </div>
-
-                        <!-- Totale -->
                         <div class="text-center my-4">
                             <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"] ?> €</h4>
                         </div>
-
-                        <!-- Pulsante di pagamento -->
                         <button type="submit" class="btn btn-warning w-100">Procedi al pagamento</button>
                     </form>
                 </div>

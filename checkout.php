@@ -15,9 +15,8 @@ if (isset($_SESSION["username"])) {
         $note = $_POST["note"] ?? null;
         $tipoSpedizione = $_POST["spedizione"];
         $tipoPagamento = $_POST["pagamento"];
-        $totale = $templateParams["carrello"]["totale"]; // Calcolato dal carrello
+        $totale = $templateParams["carrello"]["totale"];
         try {
-            // Chiama la funzione salvaOrdine
             $dbh->salvaOrdine(
                 $username,
                 $indirizzo,
@@ -29,9 +28,7 @@ if (isset($_SESSION["username"])) {
                 $totale,
                 $templateParams["carrello"]["prodotti"]
             );
-
-            // Reindirizza alla pagina di conferma
-            header("Location: userarea.php");
+            header("Location: simulation.php");
             exit();
         } catch (Exception $e) {
             die("Errore durante il salvataggio dell'ordine: " . $e->getMessage());
