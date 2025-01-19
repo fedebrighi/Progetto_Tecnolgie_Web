@@ -13,32 +13,43 @@
                 </p>
                 <p><strong>INGREDIENTI: <?php echo $templateParams["birra"]["listaIngredienti"]; ?></strong></p>
 
-                <!-- Icona Preferiti -->
-                <div class="d-flex align-items-center mt-3">
-                    <button id="btn-favorite" class="btn btn-outline-danger"
-                        onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
-                        <i id="icon-favorite"
-                            class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></i>
-                        <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'Rimuovi dai Preferiti' : 'Aggiungi ai Preferiti'; ?>
-                    </button>
-                </div>
+                <!-- Contenitore per Quantità, Carrello e Preferiti -->
+                <div class="d-flex align-items-center gap-3 mt-4">
+                    <!-- Quantità -->
+                    <div class="d-flex align-items-center">
+                        <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>" class="form-label me-2">Quantità:</label>
+                        <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
+                            class="form-control me-2" style="width: 60px; height: 35px; border-radius: 5px;"
+                            min="1" value="1" />
+                    </div>
 
-                <!-- Aggiungi al carrello -->
-                <div class="d-flex align-items-center mt-3">
-                    <label for="quantity" class="form-label m-3 ">Quantità:</label>
-                    <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
-                        class="form-control me-3" style="width: 40px; height: 25px; border-radius: 50px; padding: 5px;"
-                        min="1" value="1" />
-                    <?php if (!empty($_SESSION["username"])): ?>
-                        <button class="btn btn-warning btn-sm mb-2 mt-2"
-                            style="height: 40px; font-weight: bold; padding: 0.5rem;"
-                            onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
-                            <?php echo $templateParams['birra']['codProdotto']; ?>,
-                            document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)"> Aggiungi </button>
-                    <?php else: ?>
-                        <button class="btn btn-warning btn-sm mb-2"
-                            style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
-                    <?php endif; ?>
+                    <!-- Aggiungi al Carrello -->
+                    <div>
+                        <?php if (!empty($_SESSION["username"])): ?>
+                            <button class="btn btn-warning d-flex align-items-center"
+                                style="font-weight: bold; padding: 0.5rem;"
+                                onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
+                                <?php echo $templateParams['birra']['codProdotto']; ?>,
+                                document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)">
+                                <i class="bi bi-cart me-2"></i> Aggiungi al Carrello
+                            </button>
+                        <?php else: ?>
+                            <button class="btn btn-warning d-flex align-items-center"
+                                style="font-weight: bold; padding: 0.5rem;">
+                                <i class="bi bi-cart me-2"></i> Aggiungi al Carrello
+                            </button>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- Pulsante Preferiti -->
+                    <div>
+                        <button id="btn-favorite" class="btn btn-outline-danger d-flex justify-content-center align-items-center"
+                            style="height: 50px; width: 50px;"
+                            onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
+                            <i id="icon-favorite"
+                                class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

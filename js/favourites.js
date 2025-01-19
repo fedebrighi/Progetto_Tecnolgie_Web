@@ -14,9 +14,11 @@ function toggleFavorite(codProdotto) {
                 if (data.action === "added") {
                     icon.classList.remove("bi-heart");
                     icon.classList.add("bi-heart-fill");
+                    alert("Prodotto aggiunto ai preferiti!");
                 } else {
                     icon.classList.remove("bi-heart-fill");
                     icon.classList.add("bi-heart");
+                    alert("Prodotto rimosso dai preferiti!");
                 }
             } else {
                 alert(data.message || "Errore nella gestione dei preferiti.");
