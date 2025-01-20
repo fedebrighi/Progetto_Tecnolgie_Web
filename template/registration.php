@@ -54,13 +54,6 @@
                             La password deve essere almeno "Forte" per procedere con la registrazione.
                         </div>
 
-                        <div class="mb-3">
-                            <label for="dataNascita" class="form-label">Data di Nascita:</label>
-                            <input type="date" name="dataNascita" class="form-control" id="dataNascita" required />
-                        </div>
-                        <div class="alert alert-danger d-none" id="dataNascitaError">
-                            Devi essere maggiorenne per registrarti!
-                        </div>
                         <div class="row mb-3">
                             <div class="col-8">
                                 <label for="citta" class="form-label">Città:</label>
@@ -69,7 +62,8 @@
                             </div>
                             <div class="col-4">
                                 <label for="cap" class="form-label">CAP:</label>
-                                <input type="text" name="cap" class="form-control" id="cap" placeholder="CAP" required />
+                                <input type="text" name="cap" class="form-control" id="cap" placeholder="CAP"
+                                    pattern="^\d{5}$" maxlength="5" required />
                             </div>
                         </div>
                         <div class="mb-3">
@@ -79,8 +73,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Telefono:</label>
-                            <input type="tel" name="telefono" class="form-control" id="telefono"
-                                placeholder="Inserisci il tuo numero di telefono" required />
+                            <input type="text" name="telefono" class="form-control" id="telefono"
+                                placeholder="Inserisci il tuo numero di telefono" pattern="^\d{10}$" maxlength="10"
+                                required />
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-warning w-100 fw-bold"
@@ -92,5 +87,5 @@
         </div>
     </div>
     <script src="js/gestionePassword.js"></script>
-    <script src="js/maggiorenne.js"></script>
+    <script src="js/checkdati.js"></script>
 </main>

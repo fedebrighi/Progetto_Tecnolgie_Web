@@ -12,19 +12,23 @@
                             <input type="text" class="form-control" id="indirizzo" name="indirizzo"
                                 placeholder="Inserisci il tuo indirizzo" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="citta" class="form-label">Città:</label>
-                            <input type="text" class="form-control" id="citta" name="citta"
-                                placeholder="Inserisci la città" required>
+                        <div class="row mb-3">
+                            <div class="col-8">
+                                <label for="citta" class="form-label">Città:</label>
+                                <input type="text" name="citta" class="form-control" id="citta"
+                                    placeholder="Inserisci la città" required />
+                            </div>
+                            <div class="col-4">
+                                <label for="cap" class="form-label">CAP:</label>
+                                <input type="text" name="cap" class="form-control" id="cap" placeholder="CAP"
+                                    pattern="^\d{5}$" maxlength="5" required />
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="cap" class="form-label">CAP:</label>
-                            <input type="number" class="form-control" id="cap" name="cap" placeholder="CAP" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="cellulare" class="form-label">Cellulare:</label>
-                            <input type="number" class="form-control" id="cellulare" name="cellulare"
-                                placeholder="Inserisci il tuo numero di cellulare" required>
+                            <label for="telefono" class="form-label">Cellulare:</label>
+                            <input type="text" name="telefono" class="form-control" id="telefono"
+                                placeholder="Inserisci il tuo numero di telefono" pattern="^\d{10}$" maxlength="10"
+                                required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tipo di spedizione:</label><br>
@@ -104,9 +108,8 @@
             </div>
         </div>
     </div>
-    <script>
-        const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;
-    </script>
+    <script>const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;</script>
+    <script src="js/checkdati.js"></script>
     <script src="js/spedizioneRapida.js"></script>
     <script src="js/spesaTotale.js"></script>
     <script src="js/cartaCredito.js"></script>
