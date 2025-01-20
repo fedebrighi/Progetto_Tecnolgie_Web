@@ -231,6 +231,9 @@ class DatabaseHelper
         $dataOrdine = date("Y-m-d");
         $dataPrevista = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
         $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine"); // Genera un codice ordine unico
+        if ($tipoSpedizione === "rapida") {
+            $totale += 5;
+        }
         $stato = "In Preparazione";
         try {
             // Inserisco le informazioni relative all'ordine
@@ -268,7 +271,7 @@ class DatabaseHelper
                 $codProdotto = $item["codProdotto"];
                 $stmt = $this->db->prepare("
                     UPDATE INFO_VENDITA
-                    SET quantitaVendute = quantitaVendute + ?, 
+                    SET quantitaVendute = quantitaVendute + ?,
                         ricavo = ricavo + ?
                     WHERE codInfo = ?
                     ");
@@ -532,8 +535,8 @@ class DatabaseHelper
         error_log("primi controlli passati");
 
         // Query per aggiornare lo stato, le date e la data prevista
-        $query = "UPDATE ORDINE SET 
-              stato = ?, 
+        $query = "UPDATE ORDINE SET
+              stato = ?,
               dataSpedizione = CASE WHEN ? = 'Spedito' THEN ? ELSE dataSpedizione END,
               dataArrivo = CASE WHEN ? = 'Consegnato' THEN ? ELSE dataArrivo END,
               dataPrevista = ?
@@ -558,10 +561,70 @@ class DatabaseHelper
 
     public function getAllSalesInfo()
     {
-        $query = "SELECT * FROM INFO_VENDITA";
+        $query = "SELECT I.*, P.nome FROM INFO_VENDITA I, PRODOTTO P
+                  WHERE P.codInfo = I.codInfo";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addReview($username, $codProdotto, $valutazione, $testo = null)
+    {
+        // Prepara la query SQL
+        $query = "INSERT INTO RECENSIONE (valutazione, testo, codProdotto, username) VALUES (?, ?, ?, ?)";
+        // Prepara lo statement
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            throw new Exception("Errore nella preparazione dello statement: " . $this->db->error);
+        }
+        // Collega i parametri con type hint
+        $stmt->bind_param("isis", $valutazione, $testo, $codProdotto, $username);
+        // Esegui lo statement
+        if (!$stmt->execute()) {
+            throw new Exception("Errore durante l'esecuzione dello statement: " . $stmt->error);
+        }
+        // Verifica se è stata aggiunta almeno una riga
+        $success = $stmt->affected_rows > 0;
+        // Chiudi lo statement
+        $stmt->close();
+        return $success;
+    }
+
+
+    public function updateReview($codRecensione, $valutazione, $testo = null)
+    {
+        $stmt = $this->db->prepare("UPDATE RECENSIONE SET valutazione = ?, testo = ?, dataModifica = NOW(), modificata = TRUE WHERE codRecensione = ?");
+        $stmt->bind_param("isi", $valutazione, $testo, $codRecensione);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function getUserReviews($username)
+    {
+        $stmt = $this->db->prepare("SELECT R.codRecensione, R.valutazione, R.testo, P.nome AS nomeProdotto, R.dataCreazione, R.dataModifica, R.modificata
+                                    FROM RECENSIONE R
+                                    JOIN PRODOTTO P ON R.codProdotto = P.codProdotto
+                                    WHERE R.username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProdottiNonRecensiti($username)
+    {
+        $query = "
+            SELECT DISTINCT p.codProdotto, p.nome
+            FROM composizioneOrdine co
+            JOIN prodotto p ON co.codProdotto = p.codProdotto
+            LEFT JOIN recensione r ON co.codProdotto = r.codProdotto AND co.username = r.username
+            WHERE co.username = ? AND r.codRecensione IS NULL
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+
 }
