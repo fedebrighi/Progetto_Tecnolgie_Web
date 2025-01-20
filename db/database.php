@@ -558,7 +558,6 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-
     public function getAllSalesInfo()
     {
         $query = "SELECT I.*, P.nome FROM INFO_VENDITA I, PRODOTTO P
@@ -611,8 +610,7 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProdottiNonRecensiti($username)
-    {
+    public function getProdottiNonRecensiti($username) {
         $query = "
             SELECT DISTINCT p.codProdotto, p.nome
             FROM composizioneOrdine co
@@ -626,6 +624,13 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getRandomReviews($num) {
+        $query = "SELECT * FROM RECENSIONE ORDER BY RAND() LIMIT ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $num);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
     public function getReviewsByProduct($codProdotto) {
         $stmt = $this->db->prepare("
             SELECT r.valutazione, r.testo, r.username

@@ -55,19 +55,12 @@
         <div class="container text-center text-light">
             <h2>COSA DICONO I NOSTRI CLIENTI</h2>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <p>"Birre fantastiche e servizio impeccabile! 🔥"</p>
-                    <small>- Mattia</small>
-                </div>
-                <div class="col-md-4">
-                    <p>"Il miglior negozio di birre artigianali che abbia mai trovato."</p>
-                    <small>- Monia</small>
-                </div>
-                <div class="col-md-4">
-                    <p>"Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!"
-                    </p>
-                    <small>- Dave</small>
-                </div>
+                <?php foreach ($templateParams["recensioni"] as $recensione): ?>
+                    <div class="col-md-4">
+                        <p>"<?php echo $recensione["testo"]; ?>"
+                        <br />- <?php echo $recensione["username"]; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
