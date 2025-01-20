@@ -231,6 +231,11 @@ class DatabaseHelper
         $dataOrdine = date("Y-m-d");
         $dataPrevista = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
         $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine"); // Genera un codice ordine unico
+
+        if ($tipoSpedizione === "rapida") {
+            $totale += 5;
+        }
+
         $stato = "In Preparazione";
         try {
             // Inserisco le informazioni relative all'ordine
