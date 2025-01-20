@@ -25,7 +25,7 @@
                     <h4 class="text-warning mb-3">Monitoraggio Vendite</h4>
                     <p class="text-light">Consulta i dati delle vendite e analizza le statistiche.</p>
                     <button class="btn btn-warning w-100 fw-bold"
-                        onclick="window.location.href='statistiche_vendite.html'">Visualizza Statistiche</button>
+                        onclick="window.location.href='statistichevendite.php'">Visualizza Statistiche</button>
                 </div>
             </div>
         </div>

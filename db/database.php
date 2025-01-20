@@ -233,20 +233,46 @@ class DatabaseHelper
         $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine"); // Genera un codice ordine unico
         $stato = "In Preparazione";
         try {
-            // Inserisci l'ordine nella tabella ORDINE
+            // Inserisco le informazioni relative all'ordine
             $stmt = $this->db->prepare("
                 INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
             $stmt->bind_param("sisssdsssiss", $username, $codiceOrdine, $dataOrdine, $dataPrevista, $stato, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
             $stmt->execute();
-            // Inserisci i dettagli dei prodotti nella tabella composizioneOrdine
+
+            // Inserisco i prodotti ordinati
             foreach ($prodotti as $item) {
                 $stmt = $this->db->prepare("
                     INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
                     VALUES (?,?,?,?)
                 ");
                 $stmt->bind_param("isii", $item["codProdotto"], $username, $codiceOrdine, $item["quantita"]);
+                $stmt->execute();
+            }
+
+            // Svuoto il carrello
+            $codCarrello = $this->getCart($username)["codCarrello"];
+            $stmt = $this->db->prepare("
+                    DELETE FROM composizioneCarrello WHERE codCarrello = ?");
+            $stmt->bind_param("i", $codCarrello);
+            $stmt->execute();
+            $stmt = $this->db->prepare("UPDATE CARRELLO SET totale = 0 WHERE codCarrello = ?");
+            $stmt->bind_param("i", $codCarrello);
+            $stmt->execute();
+
+            // Aggiorno le statistiche delle vendite
+            foreach ($prodotti as $item) {
+                $quantita = $item["quantita"];
+                $ricavo = $this->getBeerDetails($item["codProdotto"])["prezzo"] * $quantita;
+                $codProdotto = $item["codProdotto"];
+                $stmt = $this->db->prepare("
+                    UPDATE INFO_VENDITA
+                    SET quantitaVendute = quantitaVendute + ?, 
+                        ricavo = ricavo + ?
+                    WHERE codInfo = ?
+                    ");
+                $stmt->bind_param("isi", $quantita, $ricavo, $codProdotto);
                 $stmt->execute();
             }
         } catch (Exception $e) {
@@ -527,5 +553,15 @@ class DatabaseHelper
 
         error_log("faccio l'esecuzione");
         return $stmt->execute();
+    }
+
+
+    public function getAllSalesInfo()
+    {
+        $query = "SELECT * FROM INFO_VENDITA";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

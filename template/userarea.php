@@ -4,17 +4,25 @@
         <div class="text-center mb-4">
             <h2 class="text-warning">Profilo Utente</h2>
             <?php $user = $templateParams["cliente"] ?>
-            <p class="text-light">Benvenuto, <strong><?php echo $user["nome"] . " " . $user["cognome"]; ?></strong>!</p>
+            <p class="text-light">Benvenuto, <strong><?php echo $user["nome"] . " " . $user["cognome"] . "!"; ?></strong></p>
         </div>
 
         <!-- Sezione Dati Personali -->
         <div class="border border-secondary rounded p-4 mb-5">
             <h4 class="text-warning mb-3"> I tuoi dati personali</h4>
-            <p class="text-light"><strong> Email:</strong> <?php echo $user["email"]; ?></p>
-            <p class="text-light"><strong> Data di nascita:</strong> <?php echo $user["dataNascita"]; ?></p>
-            <p class="text-light"><strong> Indirizzo:</strong>
-                <?php echo $user["indirizzo"] . ", " . $user["citta"] . ", " . $user["cap"]; ?></p>
-            <p class="text-light"><strong> Telefono:</strong> <?php echo $user["telefono"]; ?> </p>
+            <div class="mb-2 text-light">
+                <strong>Email:</strong> <?php echo $user["email"]; ?>
+            </div>
+            <div class="mb-2 text-light">
+                <strong>Data di nascita:</strong> <?php echo $user["dataNascita"]; ?>
+            </div>
+            <div class="mb-2 text-light">
+                <strong>Indirizzo:</strong> <?php echo $user["indirizzo"] . ", " . $user["citta"] . ", " . $user["cap"]; ?>
+            </div>
+            <div class="mb-2 text-light">
+                <strong>Telefono:</strong> <?php echo $user["telefono"]; ?>
+            </div>
+
             <div class="text-center">
                 <button type="button" class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#modificaInfoUtenteModal">
                     Modifica Dati

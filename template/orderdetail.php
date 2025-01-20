@@ -9,25 +9,41 @@
 
         <!-- Sezione Dati Dell'Ordine -->
         <div class="border border-secondary rounded p-4 mb-5">
-            <h4 class="text-warning mb-3"> Dati dell'ordine</h4>
-            <p class="text-light"><strong> Data Ordine: <?php echo $order["dataOrdine"]; ?></strong> </p>
+            <h4 class="text-warning mb-3"> I dati dell'ordine:</h4>
+            <div class="mb-2 text-light">
+                <strong>Data Ordine:</strong> <?php echo $order["dataOrdine"]; ?>
+            </div>
             <?php if (isset($order["dataSpedizione"])): ?>
-                <p class="text-light"><strong> Data di Spedizione: <?php echo $order["dataSpedizione"]; ?></strong></p>
+                <div class="mb-2 text-light">
+                    <strong>Data di Spedizione:</strong> <?php echo $order["dataSpedizione"]; ?>
+                </div>
             <?php endif; ?>
-
             <?php if (isset($order["dataArrivo"])): ?>
-                <p class="text-light"><strong> Data di Arrivo: <?php echo $order["dataArrivo"]; ?></strong></p>
+                <div class="mb-2 text-light">
+                    <strong>Data di Arrivo:</strong> <?php echo $order["dataArrivo"]; ?>
+                </div>
             <?php elseif (isset($order["dataPrevista"])): ?>
-                <p class="text-light"><strong> Data di Arrivo Prevista: <?php echo $order["dataPrevista"]; ?></strong></p>
+                <div class="mb-2 text-light">
+                    <strong>Data di Arrivo Prevista:</strong> <?php echo $order["dataPrevista"]; ?>
+                </div>
             <?php endif; ?>
-
-            <p class="text-light"><strong> Pagamento utilizzato: <?php echo $order["tipoPagamento"]; ?></strong></p>
-            <p class="text-light"><strong> Indirizzo: <?php echo $order["indirizzo"] . ", " . $order["citta"] . ", " . $order["cap"]; ?></strong></p>
-            <p class="text-light"><strong> Tipo spedizione: <?php echo $order["tipo"]; ?></strong></p>
-            <p class="text-light"><strong> Note: <?php echo $order["note"]; ?></strong></p>
-
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trackingModal-<?php echo $order['codiceOrdine']; ?>">Stato</button>
-
+            <div class="mb-2 text-light">
+                <strong>Pagamento utilizzato:</strong> <?php echo $order["tipoPagamento"]; ?>
+            </div>
+            <div class="mb-2 text-light">
+                <strong>Indirizzo:</strong> <?php echo $order["indirizzo"] . ", " . $order["citta"] . ", " . $order["cap"]; ?>
+            </div>
+            <div class="mb-2 text-light">
+                <strong>Tipo spedizione:</strong> <?php echo $order["tipo"]; ?>
+            </div>
+            <?php if ($order["note"] != ""): ?>
+                <div class="mb-2 text-light">
+                    <strong>Note:</strong> <?php echo $order["note"]; ?>
+                </div>
+            <?php endif; ?>
+            <div class="mb-2">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#trackingModal-<?php echo $order['codiceOrdine']; ?>">Stato</button>
+            </div>
             <div class="text-center">
                 <h5 class="text-warning mb-3"><strong> Totale: <?php echo $order["totale"]; ?> €</strong></h5>
             </div>

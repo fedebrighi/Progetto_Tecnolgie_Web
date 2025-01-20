@@ -36,12 +36,6 @@ VALUES
 ('standard', 0),
 ('rapida', 5);
 
-INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
-VALUES
-('giovanni_rossi', 1, '2025-01-05', '2025-01-06', '2025-01-10', NULL, 'Consegnato', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'standard'),
-('giovanni_rossi', 2, '2025-01-05', '2025-01-07', '2025-01-12', NULL, 'Consegnato', 75.50, 'PayPal', 'Via Milano 10', 'Milano', '20100', 'Richiesta di imballaggio regalo', 'rapida'),
-('giovanni_rossi', 3, '2025-01-05', '2025-01-06', NULL, '2025-01-10','Spedito', 50.00, 'Carta di credito', 'Via Milano 10', 'Milano', '20100', 'Ordine urgente', 'Standard');
-
 INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
 VALUES
 (1, 0, 2, 0),
@@ -74,17 +68,3 @@ VALUES
 (1, 5, 'Birre fantastiche e servizio impeccabile! 🔥', 1, 'mattia'),
 (2, 5, 'Il miglior negozio di birre artigianali che abbia mai trovato.', 2, 'monia'),
 (3, 5, 'Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!', 3, 'dave');
-
-
-INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
-VALUES
-(1, 'giovanni_rossi', 1, 1),
-(2, 'giovanni_rossi', 1, 1),
-(3, 'giovanni_rossi', 2, 1),
-(4, 'giovanni_rossi', 2, 1);
-
-INSERT INTO composizioneCarrello (codProdotto, codCarrello, quantita)
-VALUES
-(1, 1, 5),
-(2, 1, 6),
-(3, 1, 2);
