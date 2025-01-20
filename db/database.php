@@ -626,5 +626,15 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getReviewsByProduct($codProdotto) {
+        $stmt = $this->db->prepare("
+            SELECT r.valutazione, r.testo, r.username
+            FROM RECENSIONE r
+            WHERE r.codProdotto = ?
+        ");
+        $stmt->bind_param("i", $codProdotto);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 
 }

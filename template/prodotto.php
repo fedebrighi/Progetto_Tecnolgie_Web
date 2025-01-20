@@ -17,10 +17,11 @@
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <!-- Quantità -->
                     <div class="d-flex align-items-center">
-                        <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>" class="form-label me-2">Quantità:</label>
+                        <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
+                            class="form-label me-2">Quantità:</label>
                         <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
-                            class="form-control me-2" style="width: 60px; height: 35px; border-radius: 5px;"
-                            min="1" value="1" />
+                            class="form-control me-2" style="width: 60px; height: 35px; border-radius: 5px;" min="1"
+                            value="1" />
                     </div>
 
                     <!-- Aggiungi al Carrello -->
@@ -43,13 +44,40 @@
 
                     <!-- Pulsante Preferiti -->
                     <div>
-                        <button id="btn-favorite" class="btn btn-outline-danger d-flex justify-content-center align-items-center"
+                        <button id="btn-favorite"
+                            class="btn btn-outline-danger d-flex justify-content-center align-items-center"
                             style="height: 50px; width: 50px;"
                             onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
                             <i id="icon-favorite"
                                 class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></i>
                         </button>
                     </div>
+                </div>
+
+                <!-- Riquadro per le recensioni -->
+                <div class="mt-5 border border-secondary rounded p-4">
+                    <h4 class="text-warning">Recensioni</h4>
+                    <?php if (!empty($templateParams["recensioni"])): ?>
+                        <ul class="list-unstyled">
+                            <?php foreach ($templateParams["recensioni"] as $recensione): ?>
+                                <li class="border-bottom pb-3 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                                            <i
+                                                class="bi <?php echo $i <= $recensione["valutazione"] ? 'bi-star-fill text-warning' : 'bi-star text-secondary'; ?>"></i>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <p class="text-light mb-1">
+                                        <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?></p>
+                                    <small class="text-muted">Da
+                                        <?php echo htmlspecialchars($recensione["username"]); ?></small>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p class="text-light">Non ci sono recensioni per questa birra. Sii il primo a lasciare una
+                            recensione!</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
