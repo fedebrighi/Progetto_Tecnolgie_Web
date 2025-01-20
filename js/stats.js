@@ -1,22 +1,29 @@
-// Configura e crea il grafico
-const ctx = document.getElementById('graficoVendite').getContext('2d');
-const graficoVendite = new Chart(ctx, {
-    type: 'bar', // Tipo di grafico (bar, line, pie, ecc.)
-    data: {
-        labels: ['Prodotto 1', 'Prodotto 2'], // Etichette asse X
-        datasets: [{
-            label: 'Quantità Venduta',
-            data: [200, 150], // Dati asse Y
-            backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+// Funzione per creare un grafico dinamico
+function creaGraficoVendite(idCanvas, prodotti) {
+    const ctx = document.getElementById(idCanvas).getContext('2d');
+    const labels = prodotti.map(prodotto => prodotto.nome);
+    const data = prodotti.map(prodotto => prodotto.quantita);
+    const backgroundColors = prodotti.map(() => `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.2)`);
+    const borderColors = prodotti.map(() => `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 1)`);
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Quantità Venduta',
+                data: data,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
+}
