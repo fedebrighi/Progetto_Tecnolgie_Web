@@ -45,13 +45,17 @@
                     <!-- Pulsante Preferiti -->
                     <div>
                         <button id="btn-favorite"
-                            class="btn btn-outline-danger d-flex justify-content-center align-items-center"
-                            style="height: 50px; width: 50px;"
+                            class="btn btn-outline-danger d-flex justify-content-center align-items-center gap-2"
+                            style="height: 50px;"
                             onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
                             <i id="icon-favorite"
                                 class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></i>
+                            <span id="favorite-text">
+                                <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'; ?>
+                            </span>
                         </button>
                     </div>
+
                 </div>
 
                 <!-- Riquadro per le recensioni -->
@@ -68,7 +72,8 @@
                                         <?php endfor; ?>
                                     </div>
                                     <p class="text-light mb-1">
-                                        <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?></p>
+                                        <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?>
+                                    </p>
                                     <small class="text-muted">Da
                                         <?php echo htmlspecialchars($recensione["username"]); ?></small>
                                 </li>

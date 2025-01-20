@@ -225,6 +225,9 @@ button.btn:hover {
   /* Colore del testo chiaro */
 }
 
+.text-muted {
+  color: #FFCC99 !important; /* Adatta al colore pesca del tuo tema */
+}
 
 .badge#notification-count {
   font-size: 0.75rem;
