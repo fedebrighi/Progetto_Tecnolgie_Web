@@ -558,7 +558,8 @@ class DatabaseHelper
 
     public function getAllSalesInfo()
     {
-        $query = "SELECT * FROM INFO_VENDITA";
+        $query = "SELECT I.*, P.nome FROM INFO_VENDITA I, PRODOTTO P
+                  WHERE P.codInfo = I.codInfo";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();

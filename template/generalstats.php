@@ -44,7 +44,7 @@
                 <tbody>
                     <?php foreach ($templateParams["info"] as $prodotto): ?>
                         <tr>
-                            <td><?php echo $dbh->getBeerDetails($prodotto["codInfo"])["nome"]; ?></td>
+                            <td><?php echo $prodotto["nome"]; ?></td>
                             <td><?php echo htmlspecialchars($prodotto["quantitaVendute"]); ?></td>
                             <td>€<?php echo number_format($prodotto["ricavo"], 2, ',', '.'); ?></td>
                         </tr>
@@ -58,5 +58,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/stats.js"></script>
+    <script>
+        // Recupera i dati dal backend come JSON
+        const salesData = <?php echo json_encode($templateParams["info"]); ?>;
+
+        // Mappa i dati per il grafico
+        const prodotti = salesData.map(item => ({
+            nome: item.nome,               // Nome del prodotto
+            quantita: item.quantitaVendute // Quantità vendute
+        }));
+
+        // Chiama la funzione per creare il grafico
+        creaGraficoVendite('graficoVendite', prodotti);
+    </script>
 
 </body>
