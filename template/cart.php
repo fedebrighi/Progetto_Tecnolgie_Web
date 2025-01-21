@@ -4,7 +4,8 @@
         <!-- Scritta introduttiva -->
         <div class="text-center mb-4">
             <h2 class="text-warning">Ecco il tuo carrello!</h2>
-            <p class="text-light fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare l'acquisto.</p>
+            <p class="text-light fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
+                l'acquisto.</p>
         </div>
 
         <?php if (empty($templateParams["elementicarrello"])): ?>
@@ -42,8 +43,10 @@
                         <div class="d-flex flex-column align-items-center">
                             <div class="d-flex align-items-center mb-2">
                                 <label for="quantita-<?php echo $item['codProdotto']; ?>" class="me-2">Quantità:</label>
-                                <input type="number" id="quantita-<?php echo $item['codProdotto']; ?>" class="form-control form-control-sm text-center quantita"
-                                    min="1" value="<?php echo $item['quantita']; ?>" style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;" data-quantity="true"
+                                <input type="number" id="quantita-<?php echo $item['codProdotto']; ?>"
+                                    class="form-control form-control-sm text-center quantita" min="1"
+                                    value="<?php echo $item['quantita']; ?>"
+                                    style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;" data-quantity="true"
                                     onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                             </div>
                             <button class="btn btn-warning btn-sm w-100 remove-from-cart"
@@ -92,14 +95,20 @@
             </div>
 
             <!-- Pulsanti -->
-            <div class="d-flex justify-content-between mt-4">
-                <button class="btn btn-outline-light" type="button"
-                    onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
+            <div id="button-container" class="d-flex flex-column gap-3 mt-4">
+                <!-- Pulsante "Continua a fare acquisti" -->
+                <button class="btn" type="button" onclick="window.location.href='catalogo_prodotti.php';">
+                    <i class="bi bi-cart"></i>
+                    Continua a fare acquisti
+                </button>
 
-                <button class="btn btn-warning" type="button" onclick="window.location.href='checkout.php';">
+                <!-- Pulsante "Procedi al pagamento" -->
+                <button class="btn" type="button" onclick="window.location.href='checkout.php';">
+                    <i class="bi bi-credit-card"></i>
                     Procedi al pagamento
                 </button>
             </div>
+
         <?php endif; ?>
     </div>
     <script src="js/rimuoviDalCarrello.js"></script>

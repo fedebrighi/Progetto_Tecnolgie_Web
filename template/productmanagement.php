@@ -113,3 +113,7 @@
     <script src="js/confermaEliminazione.js"></script>
     <script src="js/modificaProdotto.js"></script>
 </main>
+ù
+
+<script src="js/confermaEliminazione.js"></script>
+<script src="js/modificaProdotto.js"></script>
