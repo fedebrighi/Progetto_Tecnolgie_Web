@@ -20,7 +20,7 @@ main label {
 }
 
 body main h1 {
-  font-size: 6rem;
+  font-size: 2rem;
   font-weight: bold;
   text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
   color: #ffcc00;
@@ -154,6 +154,7 @@ button.btn {
   /* Spaziatura maggiore */
   transition: background-color 0.3s ease, transform 0.2s ease;
   /* Transizione morbida */
+  display: inline-block;
 }
 
 button.btn:hover {
@@ -434,3 +435,32 @@ input[type="range"]::-ms-thumb {
 .progress-bar.bg-primary {
   background-color: #FFCC99 !important;
 }
+
+
+h3 {
+  font-size: clamp(1rem, 3vw, 2rem);
+  line-height: 1.2;
+}
+
+/* Contenitore dei pulsanti */
+#button-container {
+  display: flex;
+  flex-wrap: wrap; /* Permette ai pulsanti di andare a capo se necessario */
+  gap: 1rem; /* Aggiunge spazio tra i pulsanti */
+  justify-content: flex-start; /* Allinea a sinistra in desktop */
+}
+
+/* Stile responsive per i pulsanti */
+@media (max-width: 768px) {
+  #button-container {
+    flex-direction: column; /* Disposizione verticale in mobile */
+    align-items: center; /* Centra i pulsanti */
+  }
+  #button-container button,
+  #button-container a {
+    width: 100%; /* Larghezza piena per pulsanti in mobile */
+    text-align: center; /* Centra il testo */
+  }
+}
+
+
