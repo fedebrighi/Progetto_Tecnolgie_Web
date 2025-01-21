@@ -1,4 +1,5 @@
-/* Body e Layout Generale */
+/* Layout Generale */
+
 body {
   display: flex;
   flex-direction: column;
@@ -14,9 +15,7 @@ main label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Distribuzione uniforme */
   color: #ffcc99;
-  /* Testo pesca */
 }
 
 body main h1 {
@@ -32,10 +31,6 @@ body main p {
   color: #FFFFFF;
 }
 
-.carousel img {
-  border-radius: 8px;
-}
-
 body main section h2 {
   text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
   margin-bottom: 2rem;
@@ -45,7 +40,6 @@ body main section p {
   font-size: 1.25rem;
 }
 
-/* Navigazione e Link */
 nav a,
 .navbar-brand,
 footer a {
@@ -56,27 +50,25 @@ footer a {
 nav a:hover,
 footer a:hover {
   color: #FFFFFF;
-  /* Colore più chiaro per hover */
   text-decoration: underline;
-  /* Sottolineatura per evidenziare */
 }
 
 body p, body a {
   color: #FFCC99;
-  text-align: center;         /* Centra il contenuto */
-  display: inline-flex;       /* Disposizione flessibile inline */
-  flex-direction: column;     /* Posiziona l'icona sopra il testo */
-  align-items: center;        /* Centra orizzontalmente */
-  justify-content: center;    /* Centra verticalmente */
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 body a i {
-  font-size: 2rem;            /* Dimensione dell'icona */
-  margin-bottom: 0.05rem;     /* Riduce lo spazio tra icona e testo */
+  font-size: 2rem;
+  margin-bottom: 0.05rem;
 }
 
 body a span {
-  font-size: 1.5rem;          /* Dimensione del testo */
+  font-size: 1.5rem;
 }
 
 
@@ -84,24 +76,15 @@ body a:focus {
   outline-offset: 3px;
 }
 
-/* Banner Promozionale */
-.bg-warning {
-  background-color: #FFA500;
-  /* Colore arancione chiaro */
-  color: #000;
-  font-size: 1.2rem;
-  padding: 1rem 0;
-  text-align: center;
+h3 {
+  font-size: clamp(1rem, 3vw, 2rem);
+  line-height: 1.2;
 }
-
-/* Footer */
 
 footer {
   padding: 20px 10px;
   background-color: #ffcc99;
-  /* Colore pesca chiaro */
   color: #333333;
-  /* Testo grigio scuro */
   text-align: center;
 }
 
@@ -114,11 +97,10 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Social Icons */
+
 footer .social-icons a,
 footer .payment-icons a {
   font-size: 2rem;
-  /* Icone più grandi */
   margin: 0 1rem;
   color: #333333;
   transition: color 0.3s ease;
@@ -127,66 +109,69 @@ footer .payment-icons a {
 footer .social-icons a:hover,
 footer .payment-icons a:hover {
   color: #000000;
-  /* Colore nero al passaggio del mouse */
 }
 
 footer .col-md-4.text-center.text-md-start p,
 footer .col-md-4.text-center.text-md-start h6 {
   color: #333333 !important;
-  /* Forza il colore corretto */
 }
+
+
 
 /* Pulsanti */
 button.btn {
   background-color: #FFCC99;
-  /* Colore di sfondo coordinato con il tema */
   color: #000;
-  /* Colore del testo */
   border-radius: 8px;
-  /* Bordi arrotondati */
   font-family: 'Arial', sans-serif;
-  /* Font leggibile e moderno */
   font-weight: 700;
-  /* Testo più spesso */
   font-size: 1.2rem;
-  /* Testo più grande per leggibilità */
   padding: 0.8rem 1.5rem;
-  /* Spaziatura maggiore */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Transizione morbida */
   display: inline-block;
 }
 
 button.btn:hover {
   background-color: #FFA07A;
-  /* Colore di sfondo più scuro al passaggio del mouse */
   transform: scale(1.01);
-  /* Leggero ingrandimento */
 }
-
 
 .btn-custom {
   background-color: #FFCC99;
-  /* Colore iniziale */
   color: #000;
-  /* Colore del testo */
   border: 2px solid transparent;
-  /* Nessun bordo iniziale */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Animazione fluida */
 }
 
 .btn-custom:hover {
   background-color: #FFA366;
-  /* Colore al passaggio del mouse */
   transform: scale(1.10);
-  /* Leggero ingrandimento */
   border-color: #FFCC99;
-  /* Bordo visibile */
   color: #000;
-  /* Testo rimane leggibile */
 }
 
+/* Contenitore dei pulsanti */
+#button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* Stile responsive per i pulsanti */
+@media (max-width: 768px) {
+  #button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #button-container button,
+  #button-container a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* NAVBAR */
 
 .nav-link.active {
   display: flex;
@@ -194,21 +179,17 @@ button.btn:hover {
   justify-content: center;
   padding: 0.5rem 1rem;
   flex-direction: column;
-  /* Mantiene la spaziatura */
 }
 
 
 .nav-link i {
   font-size: 1.5rem;
-  /* Mantiene la dimensione delle icone */
   margin-bottom: 0.2rem;
-  /* Mantiene la spaziatura */
 }
 
 .nav-link span {
-  font-size: 1.3rem; /* Dimensione fissa per il testo */
+  font-size: 1.3rem;
 }
-
 
 .navbar-brand {
   font-size: 1.5rem;
@@ -221,13 +202,11 @@ button.btn:hover {
 
 .dropdown-menu .dropdown-item:hover {
   background-color: #343a40 !important;
-  /* Colore di sfondo scuro */
   color: #f8f9fa;
-  /* Colore del testo chiaro */
 }
 
 .text-muted {
-  color: #FFCC99 !important; /* Adatta al colore pesca del tuo tema */
+  color: #FFCC99 !important;
 }
 
 .badge#notification-count {
@@ -239,79 +218,66 @@ button.btn:hover {
 
 
 /* Carosello */
+
+.carousel img {
+  border-radius: 8px;
+}
+
 .carousel-inner {
   position: relative;
   overflow: hidden;
-  /* Evita che le immagini escano dal contenitore */
 }
 
 .carousel-inner img {
   width: 100%;
   height: auto;
-  /* Mantiene le proporzioni */
   max-height: 450px;
-  /* Limita l'altezza per evitare immagini troppo grandi */
   object-fit: contain;
-  /* Assicura che l'intera immagine sia visibile */
   border-radius: 8px;
-  /* Aggiunge angoli arrotondati */
 }
 
 .carousel-item {
   display: none;
-  /* Nasconde le immagini non attive */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-  /* Transizioni fluide */
   opacity: 0;
-  /* Imposta l'opacità a zero per immagini non attive */
   z-index: 0;
-  /* Immagini non attive sono sullo sfondo */
 }
 
 .carousel-item.active {
   display: block;
-  /* Mostra l'immagine attiva */
   position: relative;
   opacity: 1;
-  /* Rende visibile l'immagine attiva */
   z-index: 1;
-  /* Porta l'immagine attiva in primo piano */
 }
 
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
-  /* Rende visibili le immagini in transizione */
   opacity: 0;
-  /* Partono come invisibili */
   z-index: 0;
-  /* Sono dietro l'immagine attiva */
 }
 
 .carousel-item-next.active,
 .carousel-item-prev.active {
   opacity: 1;
-  /* Diventano visibili durante la transizione */
   z-index: 1;
-  /* Passano in primo piano */
 }
 
-/* Sezione Testimonianze */
+
+/* Sezione Recensioni della sola homepage penso */
 section.bg-dark {
   margin-bottom: 0.7rem;
-  /* Riduce lo spazio sotto la sezione */
+
 }
 
 section.bg-dark p {
   font-size: 1.4rem;
-  /* Font più grande */
   font-style: italic;
-  /* Stile citazione */
 }
 
 section.bg-dark h2 {
@@ -319,40 +285,33 @@ section.bg-dark h2 {
   margin-bottom: 0.8rem;
 }
 
-/* Linea di separazione */
+/* Linea di separazione DIVIDER */
 .divider {
   width: 80%;
-  /* Larghezza della linea */
   height: 2px;
-  /* Altezza della linea */
   background-color: #FFCC99;
-  /* Colore coordinato con il tema */
   margin: 0.8rem auto;
-  /* Spaziatura sopra e sotto */
   border: none;
 }
 
 .input-group-text {
   border: none;
-  /* Rimuove il bordo extra intorno alle icone */
   cursor: pointer;
-  /* Cambia il cursore sopra le icone */
   background-color: #fff !important;
-  /* Sfondo bianco per le icone */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
 }
 
+/* PASSWORD STRENGTH METER */
+
 .toggle-password {
   color: #6c757d;
-  /* Colore grigio per l'icona dell'occhio */
 }
 
 .toggle-password:hover {
   color: #000;
-  /* Colore nero al passaggio del mouse */
 }
 
 #passwordStrength {
@@ -361,47 +320,37 @@ section.bg-dark h2 {
 
 .strength-very-weak {
   color: #ff0000;
-  /* Rosso */
 }
 
 .strength-weak {
   color: #ffc107;
-  /* Giallo */
 }
 
 .strength-strong {
   color: #8bc34a;
-  /* Verdino */
 }
 
 .strength-very-strong {
   color: #388e3c;
-  /* Verde scuro */
 }
 
 /* Stile per il track dello slider */
 input[type="range"]::-webkit-slider-runnable-track {
   background: #FFCC99;
-  /* Colore del track */
   height: 5px;
-  /* Spessore del track */
   border-radius: 5px;
   border: none;
 }
 
-/* Stile per il thumb (il puntatore dello slider) */
+/* Slider del filtro del catalogo */
 input[type="range"]::-webkit-slider-thumb {
   width: 15px;
   height: 15px;
   background: #FFCC99;
-  /* Colore del thumb */
   border-radius: 50%;
-  /* Forma circolare */
   border: 2px solid #FFFFFF;
-  /* Bordo bianco per contrasto */
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  /* Leggera ombra */
 }
 
 input[type="range"]::-ms-fill-lower {
@@ -421,9 +370,8 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
-
 .bg-light {
-  background-color: #343a40 !important;
+  background-color: #333333 !important;
   color: #ffffff !important;
 }
 
@@ -431,36 +379,8 @@ input[type="range"]::-ms-thumb {
   color: #FFCC99 !important;
 }
 
-
 .progress-bar.bg-primary {
   background-color: #FFCC99 !important;
-}
-
-
-h3 {
-  font-size: clamp(1rem, 3vw, 2rem);
-  line-height: 1.2;
-}
-
-/* Contenitore dei pulsanti */
-#button-container {
-  display: flex;
-  flex-wrap: wrap; /* Permette ai pulsanti di andare a capo se necessario */
-  gap: 1rem; /* Aggiunge spazio tra i pulsanti */
-  justify-content: flex-start; /* Allinea a sinistra in desktop */
-}
-
-/* Stile responsive per i pulsanti */
-@media (max-width: 768px) {
-  #button-container {
-    flex-direction: column; /* Disposizione verticale in mobile */
-    align-items: center; /* Centra i pulsanti */
-  }
-  #button-container button,
-  #button-container a {
-    width: 100%; /* Larghezza piena per pulsanti in mobile */
-    text-align: center; /* Centra il testo */
-  }
 }
 
 

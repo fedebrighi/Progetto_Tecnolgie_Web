@@ -12,9 +12,9 @@
                             <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" class="img-fluid me-3" style="width: 150px;">
                         </a>
                         <div>
-                            <h6 class="m-0 fs-4"><?php echo $birra["nome"]; ?></h6>
-                            <p class="m-0 fs-5">alc. <?php echo $birra["alc"]; ?> % vol</p>
-                            <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
+                            <h3 class="m-0"><?php echo $birra["nome"]; ?></h3>
+                            <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol</p>
+                            <p class="m-0 fw-bold fs-6"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità in magazzino: <?php echo $birra["quantitaMagazzino"]; ?></label>
@@ -113,7 +113,3 @@
     <script src="js/confermaEliminazione.js"></script>
     <script src="js/modificaProdotto.js"></script>
 </main>
-ù
-
-<script src="js/confermaEliminazione.js"></script>
-<script src="js/modificaProdotto.js"></script>
