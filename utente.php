@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 
 // Reindirizza il venditore alla pagina venditore
-if ($dbh->getSellerByUsername($_SESSION["username"]) != "") {
+if ($dbh->getSeller()["username"] === $_SESSION["username"]) {
     header("Location: venditore.php");
     exit();
 }

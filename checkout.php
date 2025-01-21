@@ -28,6 +28,7 @@ if (isset($_SESSION["username"])) {
                 $totale,
                 $dbh->getCartFromUser($username)
             );
+            $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuovo ordine ricevuto");
             header("Location: simulation.php");
             exit();
         } catch (Exception $e) {

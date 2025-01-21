@@ -81,13 +81,14 @@
                                 <span>Area Personale</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                                <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light text-center"
+                                <?php if ($_SESSION["username"] == $_SESSION["venditore"]["username"]): ?>
+                                    <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light text-center"
+                                            href="venditore.php"><i class="bi bi-archive"></i><span>Management</span></a></li>
+                                <?php else: ?>
+                                    <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light text-center"
                                         href="utente.php"><i class="bi bi-person-circle"></i><span>Profilo</span></a></li>
-                                <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light text-center"
-                                        href="venditore.php"><i class="bi bi-archive"></i><span>Ordini</span></a></li>
-                                <li>
+                                <?php endif; ?>
                                     <hr class="dropdown-divider">
-                                </li>
                                 <li><a <?php isActive("logout.php"); ?> class="dropdown-item text-light text-center"
                                         href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
                             </ul>
@@ -106,30 +107,11 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
-                                        href="#">
+                                        href="notifiche.php">
                                         <span>Nuovo ordine ricevuto</span>
                                         <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
-                                        href="#">
-                                        <span>Promozione scaduta</span>
-                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
-                                        href="#">
-                                        <span>Prodotto esaurito</span>
-                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item text-light text-center" href="#">Visualizza tutte le
-                                        notifiche</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>

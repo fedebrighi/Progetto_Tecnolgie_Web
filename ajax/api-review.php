@@ -26,6 +26,7 @@ if (!$codProdotto || !$valutazione || $valutazione < 1 || $valutazione > 5) {
 try {
     // Inserisce la recensione nel database
     $result = $dbh->addReview($username, $codProdotto, $valutazione, $testo);
+    $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuova recensione ricevuta");
     if ($result) {
         echo json_encode(['success' => true, 'message' => 'Recensione aggiunta con successo.']);
     } else {

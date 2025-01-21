@@ -38,7 +38,7 @@ class DatabaseHelper
 
     public function getCart($username)
     {
-        $query = "SELECT CL.codCarrello, CA.totale FROM CLIENTE CL, CARRELLO CA WHERE username = ? AND CL.codCarrello = CA.codCarrello";
+        $query = "SELECT CL.codCarrello, CA.totale FROM UTENTE CL, CARRELLO CA WHERE username = ? AND CL.codCarrello = CA.codCarrello";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -51,7 +51,7 @@ class DatabaseHelper
         $query = "SELECT CA.codCarrello, CA.totale,
                              P.codProdotto, P.nome,
                              P.alc, CC.quantita
-                      FROM CARRELLO CA, COMPOSIZIONECARRELLO CC, PRODOTTO P, CLIENTE CL
+                      FROM CARRELLO CA, COMPOSIZIONECARRELLO CC, PRODOTTO P, UTENTE CL
                       WHERE CL.username = ?
                       AND CA.codCarrello = CL.codCarrello
                       AND CC.codCarrello = CA.codCarrello
@@ -65,7 +65,7 @@ class DatabaseHelper
 
     public function updateTotalCart($tot, $username)
     {
-        $query = "UPDATE CARRELLO SET totale = ? WHERE codCarrello = (SELECT codCarrello FROM CLIENTE WHERE username = ?)";
+        $query = "UPDATE CARRELLO SET totale = ? WHERE codCarrello = (SELECT codCarrello FROM UTENTE WHERE username = ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ds', $tot, $username);
         $success = $stmt->execute();
@@ -175,8 +175,8 @@ class DatabaseHelper
     public function saveNewUser($nome, $cognome, $email, $username, $pw, $dataNascita, $citta, $cap, $indirizzo, $telefono): bool
     {
         $codCarrello = $this->createEmptyCart();
-        $query = "INSERT INTO CLIENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO UTENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello, tipo)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, cliente)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
             'sssssssisis',
@@ -198,7 +198,7 @@ class DatabaseHelper
 
     public function updateUser($username, $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
     {
-        $query = "UPDATE CLIENTE
+        $query = "UPDATE UTENTE
               SET nome = ?, cognome = ?, email = ?, pw = ?, indirizzo = ?, citta = ?, cap = ?, telefono = ?, dataNascita = ?
               WHERE username = ?";
         $stmt = $this->db->prepare($query);
@@ -286,7 +286,7 @@ class DatabaseHelper
 
     public function isClientLogged($username): bool
     {
-        $query = "SELECT 1 FROM CLIENTE WHERE username = ? LIMIT 1";
+        $query = "SELECT 1 FROM UTENTE WHERE username = ? LIMIT 1";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
@@ -298,20 +298,9 @@ class DatabaseHelper
     }
 
 
-    public function getClientIfRegistered($username, $password)
+    public function getUserIfRegistered($username, $password)
     {
-        $query = "SELECT * FROM CLIENTE WHERE username = ? AND pw = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss", $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getSellerIfRegistered($username, $password)
-    {
-        $query = "SELECT * FROM VENDITORE WHERE username = ? AND pw = ?";
+        $query = "SELECT * FROM UTENTE WHERE username = ? AND pw = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $username, $password);
         $stmt->execute();
@@ -322,7 +311,7 @@ class DatabaseHelper
 
     public function getClientByUsername($username)
     {
-        $query = "SELECT * FROM CLIENTE WHERE username = ?";
+        $query = "SELECT * FROM UTENTE WHERE username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -331,14 +320,12 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
-    public function getSellerByUsername($username)
+    public function getSeller()
     {
-        $query = "SELECT * FROM VENDITORE WHERE username = ?";
+        $query = "SELECT * FROM UTENTE WHERE tipo = 'venditore'";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
         return $result->fetch_assoc();
     }
 
@@ -640,6 +627,39 @@ class DatabaseHelper
         $stmt->bind_param("i", $codProdotto);
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createNotification($mittente, $destinatario, $message)
+    {
+        $query = "INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio)
+                    VALUES (?, ?, ?, NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sss", $mittente, $destinatario, $message);
+        $stmt->execute();
+    }
+
+    public function getUnreadNotifications($username)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE destinatario = ? AND letto = FALSE");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getClientUsernameFromOrder($codOrdine) {
+        $query = "SELECT username FROM ORDINE WHERE codiceOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $codOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function markAsRead($idNotifica) : bool{
+        $query = "UPDATE NOTIFICA SET letto = TRUE WHERE idNotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idNotifica);
+        return $stmt->execute();
     }
 
 }

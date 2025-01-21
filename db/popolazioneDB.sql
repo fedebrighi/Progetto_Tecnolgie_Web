@@ -1,6 +1,6 @@
 INSERT INTO CARRELLO (codCarrello, totale)
 VALUES
-(1, 133),
+(1, 0),
 (2, 0),
 (3, 0),
 (4, 0),
@@ -12,23 +12,25 @@ VALUES
 (10, 0),
 (11, 0),
 (12, 0),
-(13, 0);
+(13, 0),
+(14, 0);
 
-INSERT INTO CLIENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap, telefono)
+INSERT INTO UTENTE (username, codCarrello, pw, email, nome, cognome, dataNascita, indirizzo, citta, cap, telefono, tipo)
 VALUES
-('giovanni_rossi', 1, 'Giovanni123!', 'giovanni.rossi@example.com', 'Giovanni', 'Rossi', '1985-04-15', 'Via Milano 10', 'Milano', 20100,3332989455),
-('maria_bianchi', 2, 'Maria456!', 'maria.bianchi@example.com', 'Maria', 'Bianchi', '1990-07-20', 'Via Roma 25', 'Roma', 00100,3332989454),
-('luca_verdi', 3, 'Luca789!', 'luca.verdi@example.com', 'Luca', 'Verdi', '1992-11-05', 'Via Torino 40', 'Torino', 10100,3332989453),
-('chiara_zanetti', 4, 'Chiara987!', 'chiara.zanetti@example.com', 'Chiara', 'Zanetti', '1987-02-12', 'Viale Europa 15', 'Napoli', 80100, 3332989452 ),
-('francesco_martini', 5, 'Francesco123!', 'francesco.martini@example.com', 'Francesco', 'Martini', '1983-03-25', 'Corso Italia 5', 'Bologna', 40100,3332989451),
-('valentina_ferrari', 6, 'Valentina321!', 'valentina.ferrari@example.com', 'Valentina', 'Ferrari', '1994-06-30', 'Via San Francesco 18', 'Firenze', 50100,3332989450),
-('andrea_conti', 7, 'Andrea654!', 'andrea.conti@example.com', 'Andrea', 'Conti', '1991-08-10', 'Piazza Garibaldi 12', 'Verona',37100,3332989456),
-('giulia_marini', 8, 'Giulia456!', 'giulia.marini@example.com', 'Giulia', 'Marini', '1995-12-25', 'Viale Vittorio Emanuele 60', 'Genova', 16100,3332989457),
-('matteo_neri', 9, 'Matteo789!', 'matteo.neri@example.com', 'Matteo', 'Neri', '1989-09-18', 'Via Giuseppe Mazzini 45', 'Palermo', 90100,3332989458),
-('laura_bellucci', 10, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', 70100,3332989459),
-('mattia', 11, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', 40121, 2137685381),
-('monia', 12, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', 20121, 2134769011),
-('dave', 13, 'davide1234', 'davide.samorani@example.com', 'Davide', 'Samorani', '1995-08-27', 'Piazza Duomo 7', 'Firenze', 50122, 2132198763);
+('marco_massa', 1, '1234567890', 'marcomassa@gmail.com', 'Marco', 'Massa', '2003-12-12', 'Via Aspini 10', 'Milano', 20100, 3332222882, 'venditore'),
+('giovanni_rossi', 2, 'Giovanni123!', 'giovanni.rossi@example.com', 'Giovanni', 'Rossi', '1985-04-15', 'Via Milano 10', 'Milano', 20100, 3332989455, 'cliente'),
+('maria_bianchi', 3, 'Maria456!', 'maria.bianchi@example.com', 'Maria', 'Bianchi', '1990-07-20', 'Via Roma 25', 'Roma', 00100,3332989454, 'cliente'),
+('luca_verdi', 4, 'Luca789!', 'luca.verdi@example.com', 'Luca', 'Verdi', '1992-11-05', 'Via Torino 40', 'Torino', 10100,3332989453, 'cliente'),
+('chiara_zanetti', 5, 'Chiara987!', 'chiara.zanetti@example.com', 'Chiara', 'Zanetti', '1987-02-12', 'Viale Europa 15', 'Napoli', 80100, 3332989452, 'cliente'),
+('francesco_martini', 6, 'Francesco123!', 'francesco.martini@example.com', 'Francesco', 'Martini', '1983-03-25', 'Corso Italia 5', 'Bologna', 40100,3332989451, 'cliente'),
+('valentina_ferrari', 7, 'Valentina321!', 'valentina.ferrari@example.com', 'Valentina', 'Ferrari', '1994-06-30', 'Via San Francesco 18', 'Firenze', 50100,3332989450, 'cliente'),
+('andrea_conti', 8, 'Andrea654!', 'andrea.conti@example.com', 'Andrea', 'Conti', '1991-08-10', 'Piazza Garibaldi 12', 'Verona',37100,3332989456, 'cliente'),
+('giulia_marini', 9, 'Giulia456!', 'giulia.marini@example.com', 'Giulia', 'Marini', '1995-12-25', 'Viale Vittorio Emanuele 60', 'Genova', 16100,3332989457, 'cliente'),
+('matteo_neri', 10, 'Matteo789!', 'matteo.neri@example.com', 'Matteo', 'Neri', '1989-09-18', 'Via Giuseppe Mazzini 45', 'Palermo', 90100,3332989458, 'cliente'),
+('laura_bellucci', 11, 'Laura1234!', 'laura.bellucci@example.com', 'Laura', 'Bellucci', '1992-01-22', 'Piazza del Popolo 8', 'Bari', 70100,3332989459, 'cliente'),
+('mattia', 12, 'password123', 'mattia.massara@example.com', 'Mattia', 'Massara', '1990-05-15', 'Via Roma 10', 'Bologna', 40121, 2137685381, 'cliente'),
+('monia', 13, 'securePass', 'monia.gorini@example.com', 'Monia', 'Gorini', '1985-11-03', 'Corso Garibaldi 23', 'Milano', 20121, 2134769011, 'cliente'),
+('dave', 14, 'davide1234', 'davide.samorani@example.com', 'Davide', 'Samorani', '1995-08-27', 'Piazza Duomo 7', 'Firenze', 50122, 2132198763, 'cliente');
 
 
 INSERT INTO SPEDIZIONE( tipo, sovrapprezzo)
@@ -55,13 +57,6 @@ VALUES
 (5, 5, 'CONFIDENTIAL', 6.0, 'Birra in stile West Coast IPA creata con una nuova tecnica di estrazione della luppolina da parte della farm Crosby Hop. I luppoli Strata, Nelson Sauvin e Nugget sono usati nella loro versione CGX . Processo criogenico avanzato che separa la luppolina dalla materia vegetativa del luppolo in un ambiente ad ossigeno zero e a temperature bassisime -30/-45 °C. Ne esce una birra con una notevole parte aromatica di frutta gialla e tropicale. Con note di pesca e papaya. In bocca è setosa e piacevolmente equilibrata con un amaro delicato sul finale.','acqua, malto d\'orzo, orzo, luppolo, lievito.', 4.00, 100, 'confidential.png',FALSE),
 (6, 6, 'PANDA', 5.0, 'American Ipa luppolata con Ekuanot, Amarillo e Nuggets su una base di malti Pale. In aroma spicca la componente agrumata con note di arancia, pompelmo e limone seguita da sentori floreali ed erbacei. L’amaro è equilibrato e persistente. GLUTEN FREE','acqua, malto d\'orzo, orzo, luppolo, lievito.', 3.50, 100, 'panda.png', TRUE),
 (7, 7, 'MOLLY', 4.0, 'Birra di stampo British da bere in quantità. Prodotta con malti Maris Otter e Crystal, e fermentata con un ceppo di lievito Inglese. Di color ambrato, in aroma spiccano note di nocciola e mou. In bocca è morbida e scorrevole, con note di malto e biscotto in evidenza, seguite da richiami terrosi che accompagnano in un finale lievemente amaro.','acqua, malto d\'orzo, orzo, luppolo, lievito.', 3.50, 100, 'molly.png',FALSE);
-
-
-INSERT INTO VENDITORE (username, pw, email, telefono, indirizzo, citta, cap)
-VALUES
-('marco_massa', '1234567890', 'marco.massa@example.com', '1234567890', 'via forli 19', 'forli', '47121'),
-('mattia_saponaro', '1234567890', 'mattia.saponaro@example.com', '3456789012', 'via cesena 12', 'forli', '47122'),
-('federico_brighi', '1234567890', 'federico.brighi@example.com', '7890123456', 'via faenza 22', 'forli', '47121');
 
 INSERT INTO RECENSIONE (codRecensione, valutazione, testo, codProdotto, username)
 VALUES

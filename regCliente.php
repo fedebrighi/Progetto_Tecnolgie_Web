@@ -24,7 +24,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Errore nella creazione dell'utente!";
     }
 }
-
-// Includi il template per la registrazione cliente
 require 'template/base.php';
 ?>
