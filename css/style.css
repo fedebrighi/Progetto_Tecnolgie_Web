@@ -160,7 +160,7 @@ button.btn {
 button.btn:hover {
   background-color: #FFA07A;
   /* Colore di sfondo più scuro al passaggio del mouse */
-  transform: scale(1.05);
+  transform: scale(1.01);
   /* Leggero ingrandimento */
 }
 

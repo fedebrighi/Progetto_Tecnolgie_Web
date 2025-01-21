@@ -10,8 +10,10 @@
             <button class="btn btn-warning w-100 d-flex align-items-center justify-content-center" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
                 aria-controls="filterContainer">
-                <i class="bi bi-filter me-2"></i> <!-- Icona del filtro con spaziatura a destra -->
-                Mostra Filtri
+                    <i class="bi bi-filter me-2"></i> <!-- Icona del filtro -->
+                    Mostra i Filtri Disponibili (Prezzo, Alcol, Gluten Free)
+                </button>
+
             </button>
         </div>
         <!-- Contenitore dei filtri -->
