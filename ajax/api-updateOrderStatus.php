@@ -11,11 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nuovoStato = $input["nuovoStato"];
         $data = $input["data"];
         $dataPrevista = $input["dataPrevista"];
+        $cliente = $dbh->getClientUsernameFromOrder($codiceOrdine);
         try {
             error_log("chiamo update status");
             // Aggiorna lo stato dell'ordine nel database
             $result = $dbh->updateOrderStatus($codiceOrdine, $nuovoStato, $data, $dataPrevista);
-
+            $dbh->createNotification($_SESSION["username"], $cliente["username"], "Stato ordine aggiornato");
             if ($result) {
                 echo json_encode(["success" => true]);
             } else {
