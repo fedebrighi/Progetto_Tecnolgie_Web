@@ -1,7 +1,7 @@
 <main>
     <div class="container py-5">
         <div class="text-center mb-5">
-            <h2 class="text-warning">Benvenuto su PHPint!</h2>
+            <h1 class="text-warning">Benvenuto su PHPint!</h1>
             <p class="text-light">Accedi per scoprire il mondo delle birre artigianali.</p>
         </div>
 

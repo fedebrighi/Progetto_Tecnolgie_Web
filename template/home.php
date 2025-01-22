@@ -2,8 +2,8 @@
     <div class="container py-5">
         <!-- Titolo -->
         <div class="main-title text-center mb-5">
-            <h1>PHPint</h1>
-            <p>{WHEN CODING HITS HARD}</p>
+            <h1 class="display-1 fw-bold text-center">PHPint</h1>
+            <p class="fs-2 fw-bold text-center">{WHEN CODING HITS HARD}</p>
         </div>
 
         <div class="row align-items-center">
@@ -53,12 +53,13 @@
     <!-- Sezione Testimonianze -->
     <section class="bg-dark py-5">
         <div class="container text-center text-light">
-            <h2>COSA DICONO I NOSTRI CLIENTI</h2>
+            <h2>COSA PENSANO I NOSTRI CLIENTI ?</h2>
             <div class="row g-4">
                 <?php foreach ($templateParams["recensioni"] as $recensione): ?>
                     <div class="col-md-4">
                         <p>"<?php echo $recensione["testo"]; ?>"
-                        <br />- <?php echo $recensione["username"]; ?></p>
+                            <br />- <?php echo $recensione["username"]; ?>
+                        </p>
                     </div>
                 <?php endforeach; ?>
             </div>
