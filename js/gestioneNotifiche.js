@@ -24,3 +24,28 @@ function segnaComeLetta(idNotifica) {
             alert('Si è verificato un errore. Riprova più tardi.');
         });
 }
+
+function checkNewNotifications() {
+    fetch('ajax/api-checkNotifications.php')
+        .then(response => response.json())
+        .then(data => {
+            const badge = document.querySelector('.nav-item .badge');
+            const unreadCount = data.count; // Cambiato da unreadCount a count
+
+            if (unreadCount > 0) {
+                if (!badge) {
+                    const bellIcon = document.querySelector('.bi-bell');
+                    const badgeHTML = `<span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">${unreadCount}</span>`;
+                    bellIcon.insertAdjacentHTML('afterend', badgeHTML);
+                } else {
+                    badge.textContent = unreadCount;
+                    badge.style.display = 'inline';
+                }
+            } else if (badge) {
+                badge.style.display = 'none';
+            }
+        })
+        .catch(error => console.error('Errore durante il controllo delle notifiche:', error));
+}
+
+setInterval(checkNewNotifications, 2000);
