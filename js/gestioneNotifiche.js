@@ -49,3 +49,4 @@ function checkNewNotifications() {
 }
 
 setInterval(checkNewNotifications, 2000);
+checkNewNotifications();

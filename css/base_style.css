@@ -39,18 +39,13 @@ body p, body a {
   color: #FFCC99;
 }
 
-body a i {
-  font-size: 2rem;
-  margin-bottom: 0.05rem;
-}
-
 body a span {
   font-size: 1.4rem;
 }
 
 
 body a:focus {
-  outline-offset: 3px;
+  outline-offset: 10px;
 }
 
 h3 {
@@ -78,7 +73,7 @@ button.btn {
 }
 
 button.btn:hover {
-  background-color: #FFA07A;
+  background-color: #FFCC99;
   transform: scale(1.01);
 }
 
@@ -90,7 +85,7 @@ button.btn:hover {
 }
 
 .btn-custom:hover {
-  background-color: #FFA366;
+  background-color: #FFCC99;
   transform: scale(1.10);
   border-color: #FFCC99;
   color: #000;
@@ -148,6 +143,10 @@ button.btn:hover {
 .dropdown-menu .dropdown-item:hover {
   background-color: #333333 !important;
   color: #f8f9fa;
+}
+
+.dropdown-menu {
+  text-align: center !important; /* Sovrascrive il text-align: left */
 }
 
 .badge#notification-count {
