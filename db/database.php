@@ -297,7 +297,7 @@ class DatabaseHelper
 
     public function isClientLogged($username): bool
     {
-        $query = "SELECT 1 FROM UTENTE WHERE username = ? LIMIT 1";
+        $query = "SELECT 1 FROM UTENTE WHERE username = ? AND tipo = 'cliente' LIMIT 1";
 
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $username);
