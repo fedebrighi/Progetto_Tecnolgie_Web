@@ -4,8 +4,7 @@
         <!-- Scritta introduttiva -->
         <div class="text-center mb-4">
             <h1 class="text-warning">IL TUO CARRELLO</h1>
-            <p class="fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
-                l'acquisto.</p>
+
         </div>
 
         <?php if (isset($_SESSION["error_message"])): ?>
@@ -14,7 +13,8 @@
                     <div class="modal-content bg-dark text-light">
                         <div class="modal-header border-secondary">
                             <h5 class="modal-title text-warning" id="errorModalLabel">Errore!</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <p class="text-danger"><?php echo $_SESSION["error_message"]; ?></p>
@@ -46,13 +46,15 @@
         <?php else: ?>
             <!-- Elenco Prodotti nel Carrello -->
             <div class="row gy-3">
+                <p class="fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
+                    l'acquisto.</p>
                 <?php
                 $total = 0; // Inizializza il totale
                 foreach ($templateParams["elementicarrello"] as $item):
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                ?>
+                    ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">

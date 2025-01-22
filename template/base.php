@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="paginainformativa.html">
+            <a class="navbar-brand d-flex align-items-center" href="paginainformativa.php">
                 <img src="img/logo1.jpg" alt="PHPint Logo" width="130" class="me-2">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
