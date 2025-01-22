@@ -16,6 +16,18 @@ if (isset($_SESSION["username"])) {
         $tipoSpedizione = $_POST["spedizione"];
         $tipoPagamento = $_POST["pagamento"];
         $totale = $templateParams["carrello"]["totale"];
+        $prodotti = $dbh->getCartFromUser($username);
+
+        foreach ($prodotti as $item) {
+            $quantitaMagazzino = $dbh->getBeerDetails($item["codProdotto"])["quantitaMagazzino"];
+            if ($item["quantita"] > $quantitaMagazzino) {
+                $_SESSION["error_message"] = "La quantità richiesta per il prodotto '" . $dbh->getBeerDetails($item["codProdotto"])["nome"] . "' supera la disponibilità in magazzino.";
+                header("Location: carrello.php");
+                exit();
+            }
+        }
+
+
         try {
             $dbh->salvaOrdine(
                 $username,
@@ -26,7 +38,7 @@ if (isset($_SESSION["username"])) {
                 $tipoSpedizione,
                 $tipoPagamento,
                 $totale,
-                $dbh->getCartFromUser($username)
+                $prodotti
             );
             $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuovo ordine ricevuto");
             header("Location: simulation.php");
@@ -37,4 +49,3 @@ if (isset($_SESSION["username"])) {
     }
 }
 require 'template/base.php';
-?>

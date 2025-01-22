@@ -8,6 +8,30 @@
                 l'acquisto.</p>
         </div>
 
+        <?php if (isset($_SESSION["error_message"])): ?>
+            <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark text-light">
+                        <div class="modal-header border-secondary">
+                            <h5 class="modal-title text-warning" id="errorModalLabel">Errore!</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-danger"><?php echo $_SESSION["error_message"]; ?></p>
+                        </div>
+                        <div class="modal-footer border-secondary justify-content-center">
+                            <form method="post" action="">
+                                <button type="submit" name="reset_error" class="btn btn-primary">OK</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <?php unset($_SESSION["error_message"]); ?>
+        <?php endif; ?>
+
+
         <?php if (empty($templateParams["elementicarrello"])): ?>
             <!-- Carrello vuoto -->
             <div class="text-center my-5">
@@ -28,7 +52,7 @@
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                    ?>
+                ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
@@ -114,4 +138,5 @@
     <script src="js/rimuoviDalCarrello.js"></script>
     <script src="js/spesaTotale.js"></script>
     <script src="js/aggiornaQuantita.js"></script>
+    <script src="js/erroreOrdine.js"></script>
 </main>

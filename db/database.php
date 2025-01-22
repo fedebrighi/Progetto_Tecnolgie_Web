@@ -264,6 +264,17 @@ class DatabaseHelper
             $stmt->bind_param("i", $codCarrello);
             $stmt->execute();
 
+            // Elimino i prodotti ordinati dal magazzino
+            foreach ($prodotti as $item) {
+                $stmt = $this->db->prepare("
+                    UPDATE PRODOTTO 
+                    SET quantitaMagazzino = quantitaMagazzino - ? 
+                    WHERE codProdotto = ?
+                ");
+                $stmt->bind_param("ii", $item["quantita"], $item["codProdotto"]);
+                $stmt->execute();
+            }
+
             // Aggiorno le statistiche delle vendite
             foreach ($prodotti as $item) {
                 $quantita = $item["quantita"];
@@ -597,7 +608,8 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProdottiNonRecensiti($username) {
+    public function getProdottiNonRecensiti($username)
+    {
         $query = "
             SELECT DISTINCT p.codProdotto, p.nome
             FROM composizioneOrdine co
@@ -611,14 +623,16 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRandomReviews($num) {
+    public function getRandomReviews($num)
+    {
         $query = "SELECT * FROM RECENSIONE ORDER BY RAND() LIMIT ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $num);
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
-    public function getReviewsByProduct($codProdotto) {
+    public function getReviewsByProduct($codProdotto)
+    {
         $stmt = $this->db->prepare("
             SELECT r.valutazione, r.testo, r.username
             FROM RECENSIONE r
@@ -646,7 +660,8 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getClientUsernameFromOrder($codOrdine) {
+    public function getClientUsernameFromOrder($codOrdine)
+    {
         $query = "SELECT username FROM ORDINE WHERE codiceOrdine = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $codOrdine);
@@ -655,11 +670,22 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
-    public function markAsRead($idNotifica) : bool{
+    public function markAsRead($idNotifica): bool
+    {
         $query = "UPDATE NOTIFICA SET letto = TRUE WHERE idNotifica = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $idNotifica);
         return $stmt->execute();
     }
 
+    public function addToStorage($codProdotto, $quantita): bool
+    {
+        $query = "
+            UPDATE PRODOTTO 
+            SET quantitaMagazzino = quantitaMagazzino + ? 
+            WHERE codProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $quantita, $codProdotto);
+        return $stmt->execute();
+    }
 }

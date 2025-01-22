@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="modal-footer border-secondary">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                            <button type="button" class="btn btn-warning" onclick="salvaAggiunta()">Aggiungi</button>
+                                            <button type="button" class="btn btn-warning" onclick="salvaAggiunta('<?php echo $birra['codProdotto']; ?>')">Aggiungi</button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,4 +112,5 @@
     </div>
     <script src="js/confermaEliminazione.js"></script>
     <script src="js/modificaProdotto.js"></script>
+    <script src="js/salvaAggiunta.js"></script>
 </main>

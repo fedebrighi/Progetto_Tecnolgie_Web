@@ -24,5 +24,7 @@ if (empty($templateParams["elementicarrello"])) {
     $templateParams["carrelloVuoto"] = false;
 }
 
+
+
 // Mostra il template del carrello
 require 'template/base.php';

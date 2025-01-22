@@ -85,7 +85,7 @@
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Numero Carta:</label>
                                 <input type="number" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
-                                    placeholder="Inserisci il numero della carta" >
+                                    placeholder="Inserisci il numero della carta">
                             </div>
                             <div class="mb-3">
                                 <label for="expiryDate" class="form-label">Scadenza (MM/YYYY):</label>
@@ -108,7 +108,9 @@
             </div>
         </div>
     </div>
-    <script>const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;</script>
+    <script>
+        const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;
+    </script>
     <script src="js/checkdati.js"></script>
     <script src="js/spedizioneRapida.js"></script>
     <script src="js/spesaTotale.js"></script>
