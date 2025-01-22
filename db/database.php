@@ -660,6 +660,16 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUnreadNotificationsNum($username)
+    {
+        $query = "SELECT COUNT(*) AS numero FROM NOTIFICA WHERE destinatario = ? AND letto = FALSE";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function getClientUsernameFromOrder($codOrdine)
     {
         $query = "SELECT username FROM ORDINE WHERE codiceOrdine = ?";

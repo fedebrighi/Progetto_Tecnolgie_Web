@@ -95,36 +95,21 @@
                         </li>
 
                         <!-- Notifiche -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-secondary d-flex align-items-center" href="#"
-                                role="button" data-bs-toggle="dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary d-flex align-items-center position-relative" href="notifiche.php">
                                 <i class="bi bi-bell"></i>
-                                <span class="badge bg-danger rounded-pill ms-1" id="notification-count">3</span>
+                                <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle" style="display: none;">0</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                                <li>
-                                    <h2 class="dropdown-header text-warning">Notifiche</h2>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-light d-flex justify-content-between align-items-center"
-                                        href="notifiche.php">
-                                        <span>Nuovo ordine ricevuto</span>
-                                        <button class="btn btn-sm btn-success ms-2">Segna come letto</button>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
-
     <?php if (isset($templateParams["nome"])) {
         require($templateParams["nome"]);
     }
     ?>
-
     <footer class="py-4" style="background-color: #FFCC99;">
         <div class="container">
             <div class="row text-center">
@@ -178,6 +163,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/gestioneNotifiche.js"></script>
 </body>
 
 </html>
