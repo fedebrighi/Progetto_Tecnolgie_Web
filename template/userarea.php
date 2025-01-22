@@ -186,9 +186,8 @@
             <?php endif; ?>
         </div>
     </div>
-
-
     </div>
+    <link href="css/password_style.css" rel="stylesheet" />
     <script src="js/modificaUtente.js"></script>
     <script src="js/gestionePassword.js"></script>
     <script src="js/recensioni.js"></script>

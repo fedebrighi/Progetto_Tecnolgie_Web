@@ -108,6 +108,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <link href="css/filter_style.css" rel="stylesheet">
     <script src="js/filtro.js"></script>
     <script src="js/aggiungiAlCarrello.js"></script>
 </main>

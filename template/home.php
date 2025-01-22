@@ -64,4 +64,5 @@
             </div>
         </div>
     </section>
+    <link href="css/carousel.css" rel="stylesheet">
 </main>
