@@ -2,7 +2,7 @@
     <div class="container py-5">
         <div class="text-center mb-5">
             <h1 class="text-warning">Benvenuto su PHPint!</h1>
-            <p class="text-light">Accedi per scoprire il mondo delle birre artigianali.</p>
+            <p>Accedi per scoprire il mondo delle birre artigianali.</p>
         </div>
 
         <?php if (isset($templateParams["errorelogin"]) && !empty($templateParams["errorelogin"])): ?>

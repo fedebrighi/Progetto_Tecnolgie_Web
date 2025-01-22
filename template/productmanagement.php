@@ -25,7 +25,7 @@
                             <!-- Modale unico per la birra -->
                             <div class="modal fade" id="aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="aggiuntaBirraLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <div class="modal-content bg-dark text-light">
+                                    <div class="modal-content bg-dark">
                                         <div class="modal-header border-secondary">
                                             <h5 class="modal-title text-warning" id="aggiuntaBirraModalLabel-<?php echo $birra['codProdotto']; ?>">Aggiungi <?php echo $birra["nome"]; ?></h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -55,7 +55,7 @@
                             <!-- Modale unico per la birra -->
                             <div class="modal fade" id="modificaProdottoModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="modificaProdottoLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <div class="modal-content bg-dark text-light">
+                                    <div class="modal-content bg-dark">
                                         <div class="modal-header border-secondary">
                                             <h5 class="modal-title text-warning" id="modificaProdottoModalLabel-<?php echo $birra['codProdotto']; ?>">Modifica <?php echo $birra["nome"]; ?></h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>

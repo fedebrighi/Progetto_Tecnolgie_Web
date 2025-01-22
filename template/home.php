@@ -52,7 +52,7 @@
 
     <!-- Sezione Testimonianze -->
     <section class="bg-dark py-5">
-        <div class="container text-center text-light">
+        <div class="container text-center">
             <h2>COSA PENSANO I NOSTRI CLIENTI ?</h2>
             <div class="row g-4">
                 <?php foreach ($templateParams["recensioni"] as $recensione): ?>

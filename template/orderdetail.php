@@ -10,40 +10,40 @@
         <!-- Sezione Dati Dell'Ordine -->
         <div class="border border-secondary rounded p-4 mb-5">
             <h4 class="text-warning mb-3"> I dati dell'ordine:</h4>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Data Ordine:</strong> <?php echo $order["dataOrdine"]; ?>
             </div>
             <?php if (isset($order["dataSpedizione"])): ?>
-                <div class="mb-2 text-light">
+                <div class="mb-2">
                     <strong>Data di Spedizione:</strong> <?php echo $order["dataSpedizione"]; ?>
                 </div>
             <?php endif; ?>
             <?php if (isset($order["dataArrivo"])): ?>
-                <div class="mb-2 text-light">
+                <div class="mb-2">
                     <strong>Data di Arrivo:</strong> <?php echo $order["dataArrivo"]; ?>
                 </div>
             <?php elseif (isset($order["dataPrevista"])): ?>
-                <div class="mb-2 text-light">
+                <div class="mb-2">
                     <strong>Data di Arrivo Prevista:</strong> <?php echo $order["dataPrevista"]; ?>
                 </div>
             <?php endif; ?>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Pagamento utilizzato:</strong> <?php echo $order["tipoPagamento"]; ?>
             </div>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Indirizzo:</strong>
                 <?php echo $order["indirizzo"] . ", " . $order["citta"] . ", " . $order["cap"]; ?>
             </div>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Tipo spedizione:</strong> <?php echo $order["tipo"]; ?>
             </div>
             <?php if ($order["note"] != ""): ?>
-                <div class="mb-2 text-light">
+                <div class="mb-2">
                     <strong>Note:</strong> <?php echo $order["note"]; ?>
                 </div>
             <?php endif; ?>
             <div class="mb-2">
-                <button class="btn btn-primary" data-bs-toggle="modal"
+                <button class="btn " data-bs-toggle="modal"
                     data-bs-target="#trackingModal-<?php echo $order['codiceOrdine']; ?>">Visualizza lo Stato dell'Ordine</button>
             </div>
             <div class="text-center">
@@ -56,7 +56,7 @@
     <div class="modal fade" id="trackingModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1"
         aria-labelledby="trackingModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content bg-dark text-light">
+            <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <h5 class="modal-title" id="trackingModalLabel-<?php echo $order['codiceOrdine']; ?>">Stato
                         dell'Ordine #<?php echo $order['codiceOrdine']; ?></h5>
@@ -174,7 +174,7 @@
                 <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1"
                     aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content bg-dark text-light">
+                        <div class="modal-content bg-dark">
                             <div class="modal-header border-secondary">
                                 <h5 class="modal-title text-warning"
                                     id="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>">Seleziona il nuovo stato:

@@ -18,7 +18,7 @@
         </div>
         <!-- Contenitore dei filtri -->
         <div class="collapse" id="filterContainer">
-            <div class="card card-body bg-dark text-light border-0">
+            <div class="card card-body bg-dark border-0">
                 <div class="row">
                     <!-- Barra di ricerca -->
                     <div class="mb-4">
@@ -27,7 +27,7 @@
                     </div>
                     <!-- Prezzo -->
                     <div class="col-12 col-md-4 mb-3">
-                        <label class="form-label text-light">Prezzo (€):</label>
+                        <label class="form-label">Prezzo (€):</label>
                         <div class="range-slider">
                             <input type="range" id="priceMin" class="form-range" min="0" max="5" step="0.01" value="0"
                                 oninput="updatePriceLabel(); filterProducts();">
@@ -42,7 +42,7 @@
 
                     <!-- Alcol -->
                     <div class="col-12 col-md-4 mb-3">
-                        <label class="form-label text-light">Alcol (%):</label>
+                        <label class="form-label">Alcol (%):</label>
                         <div class="range-slider">
                             <input type="range" id="alcoholMin" class="form-range" min="0" max="10" step="0.1" value="0"
                                 oninput="updateAlcoholLabel(); filterProducts();">
@@ -69,7 +69,7 @@
         <!-- Elenco birre -->
         <div id="productList" class="row row-cols-1 row-cols-md-2 g-4">
             <?php foreach ($templateParams["birre"] as $birra): ?>
-                <div class="col product-item" data-name="<?php echo strtolower($birra["nome"]); ?>"
+                <div class="col product-item text-warning" data-name="<?php echo strtolower($birra["nome"]); ?>"
                     data-glutenfree="<?php echo $birra["glutenFree"] ? 'glutenFree' : 'withGluten'; ?>"
                     data-price="<?php echo $birra["prezzo"]; ?>" data-alcohol="<?php echo $birra["alc"]; ?>">
                     <div class="d-flex align-items-center border-bottom border-secondary pb-3">
@@ -79,8 +79,8 @@
                         </a>
                         <div>
                             <h3 class="m-0"><?php echo $birra["nome"]; ?></h3>
-                            <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol</p>
-                            <p class="m-0 fw-bold fs-6"><?php echo $birra["prezzo"]; ?> €</p>
+                            <p class="m-0 fs-4">alc. <?php echo $birra["alc"]; ?> % vol, </p>
+                            <p class="m-0 fw-bold fs-4"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <div class="d-flex align-items-center mb-2">

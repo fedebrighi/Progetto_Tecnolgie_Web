@@ -1,4 +1,4 @@
-<main class="bg-dark text-light">
+<main class="bg-dark">
     <!-- Carrello -->
     <div class="container py-5">
         <!-- Scritta introduttiva -->
@@ -10,7 +10,7 @@
         <?php if (isset($_SESSION["error_message"])): ?>
             <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="modal-content bg-dark text-light">
+                    <div class="modal-content bg-dark ">
                         <div class="modal-header border-secondary">
                             <h5 class="modal-title text-warning" id="errorModalLabel">Errore!</h5>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -86,15 +86,15 @@
 
             <!-- Sezione Totale e Riepilogo -->
             <div class="mt-4 p-3 border border-secondary rounded">
-                <h5 class="text-light mb-3 fs-4">RIEPILOGO DELL'ORDINE:</h5>
+                <h5 class="mb-3 fs-4 text-warning">RIEPILOGO DELL'ORDINE:</h5>
                 <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
-                        <span class="text-light fs-4">Tipologie di birre presenti nel carrello:</span>
-                        <span class="text-warning fs-4"><?php echo count($templateParams["elementicarrello"]); ?></span>
+                        <span class="fs-4">Tipologie di birre presenti nel carrello:</span>
+                        <span class="fs-4"><?php echo count($templateParams["elementicarrello"]); ?></span>
                     </li>
                     <li class="d-flex justify-content-between">
-                        <span class="text-light fs-4">Quantità totale di birre presenti nel carrello:</span>
-                        <span class="text-warning fs-4" id="quantita-totale">
+                        <span class="fs-4">Quantità totale di birre presenti nel carrello:</span>
+                        <span class="fs-4" id="quantita-totale">
                             <?php
                             $quantitaTotale = 0;
                             foreach ($templateParams["elementicarrello"] as $item) {
@@ -105,7 +105,7 @@
                         </span>
                     </li>
                     <li class="d-flex justify-content-between border-top pt-2 mt-2">
-                        <strong class="text-light fs-4">TOTALE:</strong>
+                        <strong class="fs-4 text-warning">TOTALE:</strong>
                         <strong class="text-warning fs-3" id="totale-carrello">
                             <?php
                             $total = 0;

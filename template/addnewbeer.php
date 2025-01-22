@@ -4,7 +4,7 @@
             <div class="col-12 col-md-10 col-lg-8">
                 <div>
                     <h2 class="text-warning text-center mb-4">Informazioni del Prodotto</h2>
-                    <p class="text-center text-light">Completa i campi per aggiungere un nuovo prodotto al catalogo</p>
+                    <p class="text-center">Completa i campi per aggiungere un nuovo prodotto al catalogo</p>
 
                     <!-- Messaggio informativo -->
                     <?php if (!empty($message)): ?>

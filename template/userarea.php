@@ -4,25 +4,25 @@
         <div class="text-center mb-4">
             <h1 class="text-warning">PROFILO UTENTE</h1>
             <?php $user = $templateParams["cliente"] ?>
-            <p class="text-light">Benvenuto,
+            <p>Benvenuto,
                 <strong><?php echo $user["nome"] . " " . $user["cognome"] . "!"; ?></strong>
             </p>
         </div>
 
         <!-- Sezione Dati Personali -->
-        <div class="border border-secondary rounded p-4 mb-5">
+        <div class="border rounded p-4 mb-5">
             <h2 class="text-warning mb-3"> I tuoi dati personali</h2>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Email:</strong> <?php echo $user["email"]; ?>
             </div>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Data di nascita:</strong> <?php echo $user["dataNascita"]; ?>
             </div>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Indirizzo:</strong>
                 <?php echo $user["indirizzo"] . ", " . $user["citta"] . ", " . $user["cap"]; ?>
             </div>
-            <div class="mb-2 text-light">
+            <div class="mb-2">
                 <strong>Telefono:</strong> <?php echo $user["telefono"]; ?>
             </div>
 
@@ -36,8 +36,8 @@
                 <div class="modal fade" id="modificaInfoUtenteModal" tabindex="-1"
                     aria-labelledby="modificaInfoUtenteLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content bg-dark text-light">
-                            <div class="modal-header border-secondary">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
                                 <h5 class="modal-title text-warning" id="modificaInfoUtenteModalLabel">Modifica
                                     Informazioni</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -117,8 +117,8 @@
 
                                 </form>
                             </div>
-                            <div class="modal-footer border-secondary">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
                                 <button type="button" class="btn btn-warning" onclick="salvaModifiche()">Salva
                                     Modifiche</button>
                             </div>
@@ -129,15 +129,15 @@
         </div>
 
         <!-- Ordini Recenti -->
-        <div class="border border-secondary rounded p-4">
+        <div class="border rounded p-4">
             <h4 class="text-warning mb-3">Ordini Recenti</h4>
             <ul class="list-group bg-dark">
                 <?php foreach ($templateParams["ordini"] as $order): ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white">
                         Ordine #<?php echo $order["codiceOrdine"]; ?> - Totale: <?php echo $order["totale"]; ?>€
                         <form action="dettagliordine.php" method="POST">
                             <input type="hidden" name="codiceOrdine" value="<?php echo $order["codiceOrdine"]; ?>">
-                            <button type="submit" class="btn btn-primary btn-sm">Dettagli</button>
+                            <button type="submit" class="btn btn-sm">Dettagli</button>
                         </form>
                     </li>
                 <?php endforeach; ?>
@@ -145,10 +145,10 @@
         </div>
 
         <!-- Lascia una Recensione -->
-        <div class="border border-secondary rounded p-4 mt-5">
+        <div class="border rounded p-4 mt-5">
             <h4 class="text-warning mb-3">Lascia una Recensione</h4>
             <?php if (!empty($templateParams["prodottiNonRecensiti"])): ?>
-                <p class="text-light">Scegli un prodotto acquistato e lascia una recensione!</p>
+                <p>Scegli un prodotto acquistato e lascia una recensione!</p>
                 <div id="conferma-recensione"></div> <!-- Spazio per il messaggio di conferma -->
                 <form id="recensioneForm">
                     <div class="mb-3">
@@ -180,7 +180,7 @@
                     <button type="submit" class="btn btn-warning">Invia Recensione</button>
                 </form>
             <?php else: ?>
-                <p class="text-light">Non ci sono prodotti disponibili per la recensione.</p>
+                <p>Non ci sono prodotti disponibili per la recensione.</p>
             <?php endif; ?>
         </div>
     </div>
