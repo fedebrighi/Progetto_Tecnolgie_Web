@@ -3,9 +3,8 @@
     <div class="container py-5">
         <!-- Scritta introduttiva -->
         <div class="text-center mb-4">
-            <h2 class="text-warning">Ecco il tuo carrello!</h2>
-            <p class="text-light fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
-                l'acquisto.</p>
+            <h1 class="text-warning">IL TUO CARRELLO</h1>
+
         </div>
 
         <?php if (isset($_SESSION["error_message"])): ?>
@@ -14,7 +13,8 @@
                     <div class="modal-content bg-dark text-light">
                         <div class="modal-header border-secondary">
                             <h5 class="modal-title text-warning" id="errorModalLabel">Errore!</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <p class="text-danger"><?php echo $_SESSION["error_message"]; ?></p>
@@ -36,8 +36,8 @@
             <!-- Carrello vuoto -->
             <div class="text-center my-5">
                 <i class="bi bi-cart-x text-danger" style="font-size: 6rem;"></i> <!-- Icona carrello vuoto -->
-                <h3 class="text-warning mt-4">Il tuo carrello è vuoto!</h3>
-                <p class="fs-4 text-light">Torna al catalogo per aggiungere dei prodotti e iniziare a riempirlo.</p>
+                <h2 class="text-warning mt-4">IL TUO CARRELLO E' VUOTO!</h2>
+                <p class="fs-4">Torna al catalogo per aggiungere dei prodotti e iniziare a riempirlo.</p>
                 <button class="btn btn-warning btn-lg mt-3" onclick="window.location.href='catalogo_prodotti.php';">
                     <i class="bi bi-arrow-right"></i> Vai al Catalogo
                 </button>
@@ -46,13 +46,15 @@
         <?php else: ?>
             <!-- Elenco Prodotti nel Carrello -->
             <div class="row gy-3">
+                <p class="fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
+                    l'acquisto.</p>
                 <?php
                 $total = 0; // Inizializza il totale
                 foreach ($templateParams["elementicarrello"] as $item):
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                ?>
+                    ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">

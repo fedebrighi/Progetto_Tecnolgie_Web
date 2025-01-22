@@ -1,10 +1,10 @@
 <main class="bg-dark">
     <div class="container py-5">
-        <h1 class="text-warning text-center mb-4">Le tue Birre Preferite</h1>
+        <h1 class="text-warning text-center mb-4">LE TUE BIRRE PREFERITE</h1>
         <div class="row gy-4">
             <?php if (empty($templateParams["preferiti"])): ?>
-                <p class="text-light text-center">
-                    <i class="bi bi-heartbreak text-warning" style="font-size: 10rem;"></i>
+                <p class="text-center">
+                    <i class="bi bi-heartbreak text-danger" style="font-size: 8rem;"></i>
                     <br>
                     Non hai ancora aggiunto nessuna birra ai tuoi preferiti.
                 </p>

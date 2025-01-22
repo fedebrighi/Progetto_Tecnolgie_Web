@@ -1,8 +1,8 @@
 <main>
     <div class="container py-4">
         <div class="text-center mb-4">
-            <h2 class="text-warning">Scopri le nostre birre artigianali!</h2>
-            <p class="text-light">Scegli la tua preferita e abbinala ai tuoi momenti speciali.</p>
+            <h1 class="text-warning">SCOPRI LE NOSTRE BIRRE ARTIGIANALI!</h1>
+            <p>Scegli la tua preferita e abbinala ai tuoi momenti speciali.</p>
         </div>
 
         <!-- Bottone per il menu a tendina -->

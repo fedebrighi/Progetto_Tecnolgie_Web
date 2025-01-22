@@ -2,7 +2,7 @@
     <!-- Intestazione -->
     <div class="container py-4">
         <div class="text-center mb-4">
-            <h2 class="text-warning">Profilo Utente</h2>
+            <h1 class="text-warning">PROFILO UTENTE</h1>
             <?php $user = $templateParams["cliente"] ?>
             <p class="text-light">Benvenuto,
                 <strong><?php echo $user["nome"] . " " . $user["cognome"] . "!"; ?></strong>
@@ -11,7 +11,7 @@
 
         <!-- Sezione Dati Personali -->
         <div class="border border-secondary rounded p-4 mb-5">
-            <h4 class="text-warning mb-3"> I tuoi dati personali</h4>
+            <h2 class="text-warning mb-3"> I tuoi dati personali</h2>
             <div class="mb-2 text-light">
                 <strong>Email:</strong> <?php echo $user["email"]; ?>
             </div>

@@ -1,17 +1,18 @@
+<main>
 <!-- Contenuto principale -->
 <div class="container py-5">
     <!-- Intestazione -->
     <div class="text-center mb-4">
         <img src="img/logo1.jpg" alt="PHPint Logo" class="img-fluid mb-3" style="width: 400px;">
-        <h1 class="text-warning">Benvenuti su PHPint</h1>
-        <p class="lead text-light">Il tuo negozio di fiducia per birre artigianali di qualità.</p>
+        <h1 class="text-warning">BENVENUTO SU PHPint!</h1>
+        <p class="leadD">Il tuo negozio di fiducia per birre artigianali di qualità.</p>
     </div>
 
     <!-- Sezione Chi Siamo -->
     <section class="mb-5" id="chi-siamo">
         <div class="row align-items-center">
             <div class="col-md-12">
-                <h2 class="text-warning">Chi Siamo</h2>
+                <h2 class="text-warning">CHI SIAMO?</h2>
                 <p>
                     PHPint è nato dalla passione per la birra artigianale e l'amore per la qualità. Da anni
                     selezioniamo le migliori birre artigianali da tutto il mondo per offrirti
@@ -33,20 +34,20 @@
     </section>
 
 
-    <section class="py-5 bg-dark text-light" id="birre-evidenza">
+    <section class="py-5 bg-dark" id="birre-evidenza">
         <div class="container">
-            <h2 class="text-center text-warning mb-4">Birre in Evidenza</h2>
+            <h2 class="text-center text-warning mb-4">I NOSTRI BEST SELLERS</h2>
             <div class="row gy-4">
                 <?php foreach ($templateParams["miglioriBirre"] as $item): ?>
                     <div class="col-md-4 d-flex">
                         <div class="card bg-dark border border-secondary text-light w-100">
-                            <img src="img/beers/<?php echo htmlspecialchars($item["immagine"]); ?>"
-                                class="card-img-top"
+                            <img src="img/beers/<?php echo htmlspecialchars($item["immagine"]); ?>" class="card-img-top"
                                 alt="<?php echo htmlspecialchars($item["nome"]); ?>">
                             <div class="card-body d-flex flex-column">
                                 <!-- Nome e Stelline -->
                                 <div class="d-flex align-items-center mb-2">
-                                    <h5 class="card-title text-warning me-2 mb-0"><?php echo htmlspecialchars($item["nome"]); ?></h5>
+                                    <h5 class="card-title text-warning me-2 mb-0">
+                                        <?php echo htmlspecialchars($item["nome"]); ?></h5>
 
                                     <!-- Stelline -->
                                     <div>
@@ -90,7 +91,7 @@
     <!-- Certificazioni e Qualità -->
     <section class="py-5" id="certificazioni">
         <div class="container border border-secondary rounded p-4 bg-dark text-light">
-            <h2 class="text-center text-warning mb-4">Certificazioni e Qualità</h2>
+            <h2 class="text-center text-warning mb-4">CERTIFICAZIONI E QUALITA'</h2>
             <p class="text-center mb-4">
                 Le nostre birre sono prodotte rispettando i più alti standard di qualità, utilizzando ingredienti
                 100% naturali e seguendo processi certificati.
@@ -98,19 +99,19 @@
             <div class="row gy-4 text-center">
                 <div class="col-md-4">
                     <div class="p-3">
-                        <h5 class="text-warning">Ingredienti Bio</h5>
+                        <h5 class="text-warning">INGREDIENTI BIO</h5>
                         <p>Solo materie prime biologiche e sostenibili.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3">
-                        <h5 class="text-warning">Controllo Qualità</h5>
+                        <h5 class="text-warning">CONTROLLO QUALITA'</h5>
                         <p>Ogni lotto è testato per garantire la perfezione del prodotto.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3">
-                        <h5 class="text-warning">Produzione Artigianale</h5>
+                        <h5 class="text-warning">PRODUZIONE ARTIGIANALE</h5>
                         <p>Realizzate con passione dai nostri mastri birrai.</p>
                     </div>
                 </div>
@@ -123,34 +124,39 @@
     <!-- Contatti diretti -->
     <section class="mb-5" id="contatti">
         <div class="container border border-secondary rounded p-4 bg-dark text-light">
-            <h2 class="text-warning text-center mb-4">Contattaci</h2>
+            <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
             <div class="row">
                 <div class="col-md-6">
                     <h5 class="text-warning">Email e Telefono</h5>
                     <p><i class="bi bi-envelope"></i> Email: <a href="mailto:info@phpint.com"
                             class="text-warning">info@phpint.com</a></p>
-                    <p><i class="bi bi-telephone"></i> Telefono: <a href="tel:+391234567890"
-                            class="text-warning">+39 123 456 7890</a></p>
+                    <p><i class="bi bi-telephone"></i> Telefono: <a href="tel:+391234567890" class="text-warning">+39
+                            123 456 7890</a></p>
                 </div>
                 <div class="col-md-6">
-                    <h5 class="text-warning">Modulo di Contatto</h5>
-                    <form>
+                    <h5 class="text-warning">Modulo di Contatto:</h5>
+                    <form id="contactForm">
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome">
+                            <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email"
-                                placeholder="Inserisci la tua email">
+                            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="messaggio" class="form-label">Messaggio</label>
-                            <textarea class="form-control" id="messaggio" rows="3"
-                                placeholder="Scrivi il tuo messaggio"></textarea>
+                            <textarea class="form-control" id="messaggio" rows="3" placeholder="Scrivi il tuo messaggio"
+                                required></textarea>
                         </div>
                         <button type="submit" class="btn btn-warning">Invia</button>
                     </form>
+                    <!-- Messaggio di conferma -->
+                    <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center" role="alert">
+                        Grazie per averci contattato, ti contatteremo presto!
+                    </div>
                 </div>
             </div>
         </div>
@@ -220,3 +226,22 @@
         </div>
     </div>
 </section>
+</main>
+
+<script>
+        // Funzione per gestire l'invio del modulo
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previene il comportamento di invio predefinito del modulo
+
+            // Mostra il messaggio di conferma
+            document.getElementById('confirmationMessage').classList.remove('d-none');
+
+            // Pulisce i campi del modulo
+            document.getElementById('contactForm').reset();
+
+            // Simula il ricaricamento della pagina
+            setTimeout(function () {
+                window.location.reload();
+            }, 2000); // Aspetta 2 secondi prima di ricaricare
+        });
+    </script>
