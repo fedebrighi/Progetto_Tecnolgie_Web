@@ -1,5 +1,6 @@
-<main><!-- Ordini Recenti -->
-    <div class="border border-secondary rounded p-4">
+<main>
+    <
+        <div class="border border-secondary rounded p-4">
         <h4 class="text-warning mb-3">Ordini Recenti</h4>
         <ul class="list-group bg-dark">
             <?php foreach ($templateParams["ordini"] as $order): ?>
@@ -7,10 +8,8 @@
                     <span>Ordine #<?php echo $order["codiceOrdine"]; ?> - Totale: <?php echo $order["totale"]; ?>€</span>
                     <div class="d-flex">
                         <?php if ($order["dataArrivo"] === NULL): ?>
-                            <!-- Pulsante Modifica Stato -->
                             <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modificaStatoModal-<?php echo $order['codiceOrdine']; ?>">Modifica Stato</button>
 
-                            <!-- Modale -->
                             <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1" aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark text-light">
@@ -50,7 +49,6 @@
 
                         <?php endif; ?>
 
-                        <!-- Pulsante Dettagli -->
                         <form action="dettagliordine.php" method="POST">
                             <input type="hidden" name="codiceOrdine" value="<?php echo $order["codiceOrdine"]; ?>">
                             <button type="submit" class="btn btn-primary btn-sm">Dettagli</button>
@@ -60,6 +58,6 @@
 
             <?php endforeach; ?>
         </ul>
-    </div>
-    <script src="js/modificaStato.js"></script>
+        </div>
+        <script src="js/modificaStato.js"></script>
 </main>

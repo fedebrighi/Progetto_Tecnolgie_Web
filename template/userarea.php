@@ -67,7 +67,7 @@
                                         <div class="input-group">
                                             <input type="password" name="modificaPassword" class="form-control pe-5"
                                                 id="password" value="<?php echo $user["pw"]; ?>" required />
-                                            <!-- Icona perstrare/nascondere la password -->
+                                            <!-- Icona per vedere/nascondere la password -->
                                             <span class="input-group-text bg-white">
                                                 <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
                                             </span>
@@ -82,8 +82,6 @@
                                             <small id="passwordStrength" class="form-text"></small>
                                         </div>
                                     </div>
-
-
 
                                     <div class="mb-2">
                                         <label for="modificaIndirizzo"

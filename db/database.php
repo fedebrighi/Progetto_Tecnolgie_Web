@@ -698,4 +698,54 @@ class DatabaseHelper
         $stmt->bind_param("ii", $quantita, $codProdotto);
         return $stmt->execute();
     }
+
+    public function getTopClients()
+    {
+        $query = "
+        SELECT username, SUM(totale) AS totale_speso
+        FROM ORDINE
+        GROUP BY username
+        HAVING totale_speso > 0
+        ORDER BY totale_speso DESC
+        LIMIT 3";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $users = [];
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+        return $users;
+    }
+
+    public function getBestBeers(): array
+    {
+        $query = "
+            SELECT 
+                P.*,
+                AVG(R.valutazione) AS mediaValutazione,
+                COUNT(R.codRecensione) AS numeroRecensioni
+            FROM 
+                PRODOTTO P
+            JOIN 
+                RECENSIONE R ON R.codProdotto = P.codProdotto
+            GROUP BY 
+                P.codProdotto
+            ORDER BY 
+                mediaValutazione DESC,
+                numeroRecensioni DESC
+            LIMIT 3
+        ";
+
+        $stmt = $this->db->prepare($query);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        return [];
+    }
 }

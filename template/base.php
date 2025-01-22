@@ -61,38 +61,38 @@
                             <span>Preferiti</span>
                         </a>
 
-                    <?php if (!isset($_SESSION["username"])): ?>
-                        <!-- Link Login -->
-                        <li class="nav-item text-center">
-                            <a <?php isActive("login.php"); ?>
-                                class="nav-link text-secondary d-flex flex-column align-items-center" href="login.php">
-                                <i class="bi bi-box-arrow-in-right"></i>
-                                <span>Login</span>
-                            </a>
-                        </li>
-                    <?php endif; ?>
+                        <?php if (!isset($_SESSION["username"])): ?>
+                            <!-- Link Login -->
+                    <li class="nav-item text-center">
+                        <a <?php isActive("login.php"); ?>
+                            class="nav-link text-secondary d-flex flex-column align-items-center" href="login.php">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
-                    <?php if (isset($_SESSION["username"])): ?>
-                        <!-- Area Personale -->
-                        <li class="nav-item dropdown text-center">
-                            <a class="nav-link dropdown-toggle text-secondary d-flex flex-column align-items-center"
-                                href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-person"></i>
-                                <span>Area Personale</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
-                                <?php if ($_SESSION["username"] == $_SESSION["venditore"]["username"]): ?>
-                                    <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light text-center"
-                                            href="venditore.php"><i class="bi bi-archive"></i><span>Management</span></a></li>
-                                <?php else: ?>
-                                    <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light text-center"
+                <?php if (isset($_SESSION["username"])): ?>
+                    <!-- Area Personale -->
+                    <li class="nav-item dropdown text-center">
+                        <a class="nav-link dropdown-toggle text-secondary d-flex flex-column align-items-center"
+                            href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person"></i>
+                            <span>Area Personale</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
+                            <?php if ($_SESSION["username"] == $_SESSION["venditore"]["username"]): ?>
+                                <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light text-center"
+                                        href="venditore.php"><i class="bi bi-archive"></i><span>Management</span></a></li>
+                            <?php else: ?>
+                                <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light text-center"
                                         href="utente.php"><i class="bi bi-person-circle"></i><span>Profilo</span></a></li>
-                                <?php endif; ?>
-                                    <hr class="dropdown-divider">
-                                <li><a <?php isActive("logout.php"); ?> class="dropdown-item text-light text-center"
-                                        href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
-                            </ul>
-                        </li>
+                            <?php endif; ?>
+                            <hr class="dropdown-divider">
+                            <li><a <?php isActive("logout.php"); ?> class="dropdown-item text-light text-center"
+                                    href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
+                        </ul>
+                    </li>
 
                         <!-- Notifiche -->
                         <li class="nav-item">
@@ -125,11 +125,11 @@
                 <div class="col-md-4 mb-3">
                     <h5 class="fw-bold" style="color: #333333;">SU DI NOI</h5>
                     <ul class="list-unstyled">
-                        <li><a href="paginainformativa.html#chi-siamo" class="text-decoration-none"
+                        <li><a href="paginainformativa.php#chi-siamo" class="text-decoration-none"
                                 style="color: #333333;">Chi siamo?</a></li>
-                        <li><a href="paginainformativa.html#certificazioni" class="text-decoration-none"
+                        <li><a href="paginainformativa.php#certificazioni" class="text-decoration-none"
                                 style="color: #333333;">Certificazioni di Qualità</a></li>
-                        <li><a href="paginainformativa.html#contatti" class="text-decoration-none"
+                        <li><a href="paginainformativa.php#contatti" class="text-decoration-none"
                                 style="color: #333333;">Contattaci</a></li>
                     </ul>
                 </div>
