@@ -10,14 +10,14 @@
         endforeach; ?>
         <div class="row">
             <div class="col-md-6">
-                <div class="bg-dark text-light border border-secondary p-4 rounded">
+                <div class="bg-dark border border-secondary p-4 rounded">
                     <h4 class="text-warning">Totale Vendite</h4>
 
                     <p class="fs-4">€<?php echo $totaleVendite; ?></p>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="bg-dark text-light border border-secondary p-4 rounded">
+                <div class="bg-dark border border-secondary p-4 rounded">
                     <h4 class="text-warning">Prodotti Venduti</h4>
                     <p class="fs-4"><?php echo $prodottiVenduti; ?></p>
                 </div>

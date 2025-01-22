@@ -70,7 +70,7 @@
                                                 class="bi <?php echo $i <= $recensione["valutazione"] ? 'bi-star-fill text-warning' : 'bi-star text-secondary'; ?>"></i>
                                         <?php endfor; ?>
                                     </div>
-                                    <p class="text-light mb-1">
+                                    <p class="mb-1">
                                         <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?>
                                     </p>
                                     <small class="text-muted">Da
@@ -79,7 +79,7 @@
                             <?php endforeach; ?>
                         </ul>
                     <?php else: ?>
-                        <p class="text-light">Non ci sono recensioni per questa birra. Sii il primo a lasciare una
+                        <p>Non ci sono recensioni per questa birra. Sii il primo a lasciare una
                             recensione!</p>
                     <?php endif; ?>
                 </div>

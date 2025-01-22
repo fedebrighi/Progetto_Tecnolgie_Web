@@ -12,9 +12,9 @@
     <section class="mb-5" id="chi-siamo">
         <div class="row align-items-center">
             <div class="col-md-12">
-                <h2 class="text-warning">CHI SIAMO?</h2>
+                <h2 class="text-warning text-center">CHI SIAMO?</h2>
                 <p>
-                    PHPint è nato dalla passione per la birra artigianale e l'amore per la qualità. Da anni
+                    PHPint nasce dalla passione di 3 studenti per la birra artigianale e l'amore per la qualità. Da anni
                     selezioniamo le migliori birre artigianali da tutto il mondo per offrirti
                     un'esperienza unica e irripetibile. La nostra missione è portare il gusto autentico e
                     inconfondibile delle birre artigianali direttamente nelle case dei nostri clienti.
@@ -23,11 +23,6 @@
                     Collaboriamo con birrifici indipendenti che condividono i nostri valori di autenticità,
                     innovazione e rispetto per l'ambiente. Ogni birra del nostro catalogo è stata accuratamente
                     scelta per garantire la massima qualità e per soddisfare i palati più esigenti.
-                </p>
-                <p>
-                    Oltre alla vendita di birre, ci impegniamo a educare i nostri clienti sulla cultura birraria,
-                    offrendo consigli sugli abbinamenti, guide sulle diverse tipologie di birre e suggerimenti per
-                    godere appieno di ogni sorso.
                 </p>
             </div>
         </div>
@@ -123,44 +118,42 @@
 
     <!-- Contatti diretti -->
     <section class="mb-5" id="contatti">
-        <div class="container border border-secondary rounded p-4 bg-dark text-light">
-            <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="text-warning">Email e Telefono</h5>
-                    <p><i class="bi bi-envelope"></i> Email: <a href="mailto:info@phpint.com"
-                            class="text-warning">info@phpint.com</a></p>
-                    <p><i class="bi bi-telephone"></i> Telefono: <a href="tel:+391234567890" class="text-warning">+39
-                            123 456 7890</a></p>
+    <div class="container border border-secondary rounded p-4 bg-dark text-light">
+        <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-warning">Email e Telefono:</h5>
+                <div class="d-flex flex-column"> <!-- Utilizzo d-flex per impilare gli elementi -->
+                    <p><i class="bi bi-envelope"></i> Email: <a href="mailto:info@phpint.com" class="text-warning">info@phpint.com</a></p>
+                    <p><i class="bi bi-telephone"></i> Telefono: <a href="tel:+391234567890" class="text-warning">+39 123 456 7890</a></p>
                 </div>
-                <div class="col-md-6">
-                    <h5 class="text-warning">Modulo di Contatto:</h5>
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="messaggio" class="form-label">Messaggio</label>
-                            <textarea class="form-control" id="messaggio" rows="3" placeholder="Scrivi il tuo messaggio"
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-warning">Invia</button>
-                    </form>
-                    <!-- Messaggio di conferma -->
-                    <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center" role="alert">
-                        Grazie per averci contattato, ti contatteremo presto!
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-warning">Modulo di Contatto:</h5>
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="messaggio" class="form-label">Messaggio</label>
+                        <textarea class="form-control" id="messaggio" rows="3" placeholder="Scrivi il tuo messaggio" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Invia</button>
+                </form>
+                <!-- Messaggio di conferma -->
+                <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center" role="alert">
+                    Grazie per averci contattato, ti contatteremo presto!
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 </div>
 
 

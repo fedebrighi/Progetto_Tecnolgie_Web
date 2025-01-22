@@ -4,7 +4,7 @@
         <h4 class="text-warning mb-3">Ordini Recenti</h4>
         <ul class="list-group bg-dark">
             <?php foreach ($templateParams["ordini"] as $order): ?>
-                <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light">
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
                     <span>Ordine #<?php echo $order["codiceOrdine"]; ?> - Totale: <?php echo $order["totale"]; ?>€</span>
                     <div class="d-flex">
                         <?php if ($order["dataArrivo"] === NULL): ?>
@@ -12,7 +12,7 @@
 
                             <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1" aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <div class="modal-content bg-dark text-light">
+                                    <div class="modal-content bg-dark">
                                         <div class="modal-header border-secondary">
                                             <h5 class="modal-title text-warning" id="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>">Seleziona il nuovo stato:</h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
