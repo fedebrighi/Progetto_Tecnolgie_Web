@@ -53,6 +53,11 @@ body a:focus {
   outline-offset: 3px;
 }
 
+.list-group-item {
+  color: #FFCC99; 
+}
+
+
 h3 {
   font-size: clamp(1rem, 3vw, 2rem);
   line-height: 1.2;

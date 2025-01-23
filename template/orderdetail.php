@@ -85,24 +85,24 @@
                     <!-- Barra di progresso -->
                     <div class="progress" style="height: 8px;">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?php
-                        if ($order['stato'] === 'In Preparazione')
-                            echo '33%';
-                        elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                            echo '66%';
-                        elseif ($order['stato'] === 'Consegnato')
-                            echo '100%';
-                        else
-                            echo '0%';
-                        ?>;" aria-valuenow="<?php
-                        if ($order['stato'] === 'In Preparazione')
-                            echo '33';
-                        elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                            echo '66';
-                        elseif ($order['stato'] === 'Consegnato')
-                            echo '100';
-                        else
-                            echo '0';
-                        ?>"
+                                                                                                if ($order['stato'] === 'In Preparazione')
+                                                                                                    echo '33%';
+                                                                                                elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                                                                                    echo '66%';
+                                                                                                elseif ($order['stato'] === 'Consegnato')
+                                                                                                    echo '100%';
+                                                                                                else
+                                                                                                    echo '0%';
+                                                                                                ?>;" aria-valuenow="<?php
+                                                                                                                    if ($order['stato'] === 'In Preparazione')
+                                                                                                                        echo '33';
+                                                                                                                    elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                                                                                                        echo '66';
+                                                                                                                    elseif ($order['stato'] === 'Consegnato')
+                                                                                                                        echo '100';
+                                                                                                                    else
+                                                                                                                        echo '0';
+                                                                                                                    ?>"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- Messaggio di stato -->
@@ -121,7 +121,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal">Chiudi</button>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
         <div class="row gy-3">
             <?php foreach ($templateParams["elementiordine"] as $item):
                 $birra = $dbh->getBeerDetails($item["codProdotto"]);
-                ?>
+            ?>
                 <div
                     style="display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #6c757d; padding-bottom: 1rem;">
 
@@ -214,8 +214,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                <button type="button" class="btn btn-primary conferma-stato-button"
+                                <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
+                                <button type="button" class="btn conferma-stato-button"
                                     id="confermaStatoButton-<?php echo $order['codiceOrdine']; ?>"
                                     data-ordine-id="<?php echo $order['codiceOrdine']; ?>">Conferma Stato</button>
                             </div>

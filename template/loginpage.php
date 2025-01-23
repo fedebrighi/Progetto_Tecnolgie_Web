@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-warning w-100 fw-bold">Accedi!</button>
+                            <button type="submit" class="btn w-100 fw-bold">Accedi!</button>
                         </div>
                     </form>
                 </div>
@@ -46,7 +46,7 @@
                     <aside class="border border-secondary rounded p-4 text-center">
                         <h2 class="text-warning mb-4"><i class="bi bi-person-plus"></i> Prima volta sul sito?</h2>
                         <form>
-                            <button type="button" class="btn btn-warning w-100 fw-bold"
+                            <button type="button" class="btn w-100 fw-bold"
                                 onclick="window.location.href='regCliente.php';">Registrati!</button>
                         </form>
                     </aside>

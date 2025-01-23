@@ -19,7 +19,7 @@
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità in magazzino: <?php echo $birra["quantitaMagazzino"]; ?></label>
                             <!-- Bottone che apre il modale -->
-                            <button class="btn btn-warning btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                            <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
                                 data-bs-toggle="modal" data-bs-target="#aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>">Aggiungi</button>
 
                             <!-- Modale unico per la birra -->
@@ -41,15 +41,15 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer border-secondary">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                            <button type="button" class="btn btn-warning" onclick="salvaAggiunta('<?php echo $birra['codProdotto']; ?>')">Aggiungi</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
+                                            <button type="button" class="btn" onclick="salvaAggiunta('<?php echo $birra['codProdotto']; ?>')">Aggiungi</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Bottone che apre il modale -->
-                            <button class="btn btn-warning btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                            <button class="btn btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;"
                                 data-bs-toggle="modal" data-bs-target="#modificaProdottoModal-<?php echo $birra['codProdotto']; ?>">Modifica</button>
 
                             <!-- Modale unico per la birra -->
@@ -96,9 +96,9 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer border-secondary">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                                            <button type="button" class="btn btn-secondary" onclick="confermaEliminazione(() => eliminaProdotto(<?php echo $birra['codProdotto']; ?>))">Elimina</button>
-                                            <button type="button" class="btn btn-warning" onclick="salvaModificheProdotto()">Salva Modifiche</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
+                                            <button type="button" class="btn" onclick="confermaEliminazione(() => eliminaProdotto(<?php echo $birra['codProdotto']; ?>))">Elimina</button>
+                                            <button type="button" class="btn" onclick="salvaModificheProdotto()">Salva Modifiche</button>
                                         </div>
                                     </div>
                                 </div>
