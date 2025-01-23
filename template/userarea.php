@@ -27,7 +27,7 @@
             </div>
 
             <div class="text-center">
-                <button type="button" class="btn btn-warning fw-bold" data-bs-toggle="modal"
+                <button type="button" class="btn fw-bold" data-bs-toggle="modal"
                     data-bs-target="#modificaInfoUtenteModal">
                     Modifica Dati
                 </button>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
-                                <button type="button" class="btn btn-warning" onclick="salvaModifiche()">Salva
+                                <button type="button" class="btn" onclick="salvaModifiche()">Salva
                                     Modifiche</button>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                         <label for="testo" class="form-label text-warning">Commento (opzionale)</label>
                         <textarea id="testo" name="testo" class="form-control" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-warning">Invia Recensione</button>
+                    <button type="submit" class="btn">Invia Recensione</button>
                 </form>
             <?php else: ?>
                 <p>Non ci sono prodotti disponibili per la recensione.</p>

@@ -45,12 +45,28 @@ body a span {
 
 
 body a:focus {
-  outline-offset: 10px;
+  outline-offset: 3px;
+}
+
+.list-group-item {
+  color: #FFCC99; 
+}
+
+.text-muted {
+  color: #ffcc99 !important;
 }
 
 h3 {
   font-size: clamp(1rem, 3vw, 2rem);
   line-height: 1.2;
+}
+
+.text-primary {
+  color: #FFA07A !important;
+}
+
+.bg-primary {
+  background-color: #FFA07A !important;
 }
 
 footer {
@@ -74,7 +90,8 @@ button.btn {
 
 button.btn:hover {
   background-color: #FFCC99;
-  transform: scale(1.01);
+  color: #000;
+  transform: scale(1.03);
 }
 
 .btn-custom {

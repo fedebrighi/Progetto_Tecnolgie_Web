@@ -78,7 +78,7 @@
                                 required />
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-warning w-100 fw-bold"
+                            <button type="submit" class="btn w-100 fw-bold"
                                 id="submitButton">Registrati!</button>
                         </div>
                     </form>

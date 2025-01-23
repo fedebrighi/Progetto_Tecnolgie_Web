@@ -7,12 +7,12 @@
 
         <!-- Bottone per il menu a tendina -->
         <div class="mb-4">
-            <button class="btn btn-warning w-100 d-flex align-items-center justify-content-center" type="button"
+            <button class="btn w-100 d-flex align-items-center justify-content-center" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
                 aria-controls="filterContainer">
-                    <i class="bi bi-filter me-2"></i> <!-- Icona del filtro -->
-                    Mostra i Filtri Disponibili (Prezzo, Alcol, Gluten Free)
-                </button>
+                <i class="bi bi-filter me-2"></i> <!-- Icona del filtro -->
+                Mostra i Filtri Disponibili (Prezzo, Alcol, Gluten Free)
+            </button>
 
             </button>
         </div>
@@ -90,13 +90,13 @@
                                     style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;">
                             </div>
                             <?php if (!empty($_SESSION["username"])): ?>
-                                <button class="btn btn-warning btn-sm mb-2"
+                                <button class="btn btn-sm mb-2"
                                     style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                                 <?php echo $birra['codProdotto']; ?>,
                                 document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
                                     Aggiungi </button>
                             <?php else: ?>
-                                <button class="btn btn-warning btn-sm mb-2"
+                                <button class="btn btn-sm mb-2"
                                     style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
                             <?php endif; ?>
                             <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>"

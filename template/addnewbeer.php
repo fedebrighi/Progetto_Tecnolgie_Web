@@ -82,7 +82,7 @@
 
                         <!-- Pulsante per inviare -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-warning fw-bold" style="width: 100%;">Aggiungi Prodotto</button>
+                            <button type="submit" class="btn fw-bold" style="width: 100%;">Aggiungi Prodotto</button>
                         </div>
                     </form>
                 </div>

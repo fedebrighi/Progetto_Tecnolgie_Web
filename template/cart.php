@@ -21,7 +21,7 @@
                         </div>
                         <div class="modal-footer border-secondary justify-content-center">
                             <form method="post" action="">
-                                <button type="submit" name="reset_error" class="btn btn-primary">OK</button>
+                                <button type="submit" name="reset_error" class="btn">OK</button>
                             </form>
                         </div>
 
@@ -38,7 +38,7 @@
                 <i class="bi bi-cart-x text-danger" style="font-size: 6rem;"></i> <!-- Icona carrello vuoto -->
                 <h2 class="text-warning mt-4">IL TUO CARRELLO E' VUOTO!</h2>
                 <p class="fs-4">Torna al catalogo per aggiungere dei prodotti e iniziare a riempirlo.</p>
-                <button class="btn btn-warning btn-lg mt-3" onclick="window.location.href='catalogo_prodotti.php';">
+                <button class="btn btn-lg mt-3" onclick="window.location.href='catalogo_prodotti.php';">
                     <i class="bi bi-arrow-right"></i> Vai al Catalogo
                 </button>
             </div>
@@ -54,7 +54,7 @@
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                    ?>
+                ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
@@ -75,7 +75,7 @@
                                     style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;" data-quantity="true"
                                     onchange="aggiornaQuantitaCartAPI(<?php echo $item['codProdotto']; ?>, this.value)">
                             </div>
-                            <button class="btn btn-warning btn-sm w-100 remove-from-cart"
+                            <button class="btn btn-sm w-100 remove-from-cart"
                                 onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
                                 <i class="bi bi-trash me-1"></i>Rimuovi
                             </button>
