@@ -653,6 +653,33 @@ class DatabaseHelper
         $stmt->execute();
     }
 
+    public function getAllUsers() {
+        $query = "SELECT * FROM UTENTE";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createNotificationBroadcast($mittente, $message, $ref, $cod) {
+        error_log("entro");
+        try {
+            $utenti = $this->getAllUsers();
+             $query ="INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
+                    VALUES (?, ?, ?, NOW(), ?,?)";
+            $stmt = $this->db->prepare($query);
+            error_log("entro");
+            foreach ($utenti as $utente) {
+                $stmt->bind_param("ssssi", $mittente, $utente['username'], $message, $ref, $cod);
+                $stmt->execute();
+            }
+        $stmt->close();
+        }
+        catch (Exception $e) {
+            error_log($e->getMessage());
+        }
+    }
+
     public function getUnreadNotifications($username)
     {
         $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE destinatario = ? AND letto = FALSE");
