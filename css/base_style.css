@@ -49,7 +49,7 @@ body a:focus {
 }
 
 .list-group-item {
-  color: #FFCC99; 
+  color: #FFCC99;
 }
 
 .text-muted {
@@ -89,7 +89,7 @@ button.btn {
 }
 
 button.btn:hover {
-  background-color: #FFCC99;
+  background-color: #FFA07A;
   color: #000;
   transform: scale(1.03);
 }
@@ -102,31 +102,9 @@ button.btn:hover {
 }
 
 .btn-custom:hover {
-  background-color: #FFCC99;
+  background-color: #FFA07A;
   transform: scale(1.10);
-  border-color: #FFCC99;
   color: #000;
-}
-
-/* Contenitore dei pulsanti */
-#button-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
-}
-
-/* Stile responsive per i pulsanti */
-@media (max-width: 768px) {
-  #button-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  #button-container button,
-  #button-container a {
-    width: 100%;
-    text-align: center;
-  }
 }
 
 /* NAVBAR */
@@ -151,6 +129,20 @@ button.btn:hover {
 .navbar-brand {
   font-size: 1.5rem;
 }
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.navbar-brand:hover {
+  color: #ffffff !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+}
+
 
 .badge {
   font-size: 0.8rem;

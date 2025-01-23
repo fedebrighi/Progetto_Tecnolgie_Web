@@ -78,9 +78,9 @@
                                 class="img-fluid me-3" style="width: 150px;">
                         </a>
                         <div>
-                            <h3 class="m-0"><?php echo $birra["nome"]; ?></h3>
-                            <p class="m-0 fs-4">alc. <?php echo $birra["alc"]; ?> % vol, </p>
-                            <p class="m-0 fw-bold fs-4"><?php echo $birra["prezzo"]; ?> €</p>
+                            <h3 class="m-0 fs-5"><?php echo $birra["nome"]; ?></h3>
+                            <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol, </p>
+                            <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <div class="d-flex align-items-center mb-2">

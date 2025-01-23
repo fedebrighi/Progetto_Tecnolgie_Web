@@ -14,7 +14,8 @@
                 <div class="col-md-12">
                     <h2 class="text-warning text-center">CHI SIAMO?</h2>
                     <p>
-                        PHPint nasce dalla passione di 3 studenti per la birra artigianale e l'amore per la qualità. Da anni
+                        PHPint nasce dalla passione di 3 studenti per la birra artigianale e l'amore per la qualità. Da
+                        anni
                         selezioniamo le migliori birre artigianali da tutto il mondo per offrirti
                         un'esperienza unica e irripetibile. La nostra missione è portare il gusto autentico e
                         inconfondibile delle birre artigianali direttamente nelle case dei nostri clienti.
@@ -42,7 +43,8 @@
                                     <!-- Nome e Stelline -->
                                     <div class="d-flex align-items-center mb-2">
                                         <h5 class="card-title text-warning me-2 mb-0">
-                                            <?php echo htmlspecialchars($item["nome"]); ?></h5>
+                                            <?php echo htmlspecialchars($item["nome"]); ?>
+                                        </h5>
 
                                         <!-- Stelline -->
                                         <div>
@@ -72,7 +74,8 @@
                                         Alc. <?php echo htmlspecialchars(number_format($item["alc"], 1)); ?>% vol.
                                         <?php echo htmlspecialchars($item["descrizione"]); ?>
                                     </p>
-                                    <p class="fw-bold">Prezzo: <?php echo number_format($item["prezzo"], 2, ',', ''); ?> €</p>
+                                    <p class="fw-bold">Prezzo: <?php echo number_format($item["prezzo"], 2, ',', ''); ?> €
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -114,45 +117,40 @@
             </div>
         </section>
 
-
-
         <!-- Contatti diretti -->
-        <section class="mb-5" id="contatti">
-            <div class="container border border-secondary rounded p-4 bg-dark text-light">
-                <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="text-warning">Email e Telefono:</h5>
-                        <div class="d-flex flex-column"> <!-- Utilizzo d-flex per impilare gli elementi -->
-                            <p><i class="bi bi-envelope"></i> Email: <a href="mailto:info@phpint.com" class="text-warning">info@phpint.com</a></p>
-                            <p><i class="bi bi-telephone"></i> Telefono: <a href="tel:+391234567890" class="text-warning">+39 123 456 7890</a></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+        <section class="mb-6" id="contatti">
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="border border-secondary rounded p-4 bg-dark text-light">
+                        <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
                         <h5 class="text-warning">Modulo di Contatto:</h5>
                         <form id="contactForm">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome" required>
+                                <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email" required>
+                                <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email"
+                                    required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <label for="messaggio" class="form-label">Messaggio</label>
-                                <textarea class="form-control" id="messaggio" rows="3" placeholder="Scrivi il tuo messaggio" required></textarea>
+                                <textarea class="form-control" id="messaggio" rows="3"
+                                    placeholder="Scrivi il tuo messaggio" required></textarea>
                             </div>
-                            <button type="submit" class="btn">Invia</button>
+                            <button type="submit" class="btn btn-warning w-100">Invia</button>
                         </form>
                         <!-- Messaggio di conferma -->
                         <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center" role="alert">
-                            Grazie per averci contattato, ti contatteremo presto!
+                            Grazie per averci scritto, ti contatteremo presto!
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
     </div>
 
@@ -223,7 +221,7 @@
 
 <script>
     // Funzione per gestire l'invio del modulo
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Previene il comportamento di invio predefinito del modulo
 
         // Mostra il messaggio di conferma
@@ -233,7 +231,7 @@
         document.getElementById('contactForm').reset();
 
         // Simula il ricaricamento della pagina
-        setTimeout(function() {
+        setTimeout(function () {
             window.location.reload();
         }, 2000); // Aspetta 2 secondi prima di ricaricare
     });
