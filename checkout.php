@@ -26,8 +26,7 @@ if (isset($_SESSION["username"])) {
                 exit();
             }
         }
-
-
+        
         try {
             $codiceOrdine = $dbh->salvaOrdine(
                 $username,

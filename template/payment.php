@@ -84,19 +84,22 @@
                         <div id="creditCardForm" style="display: none;">
                             <div class="mb-3">
                                 <label for="cardNumber" class="form-label">Numero Carta:</label>
-                                <input type="number" class="form-control" id="cardNumber" name="cardNumber" maxlength="16"
-                                    placeholder="Inserisci il numero della carta">
+                                <input type="number" class="form-control" id="cardNumber" name="cardNumber"
+                                    placeholder="Inserisci il numero della carta" required
+                                    oninput="this.value = this.value.slice(0, 16);">
+                                <small id="cardNumberError" class="text-danger"></small>
                             </div>
                             <div class="mb-3">
                                 <label for="expiryDate" class="form-label">Scadenza (MM/YYYY):</label>
                                 <input type="text" class="form-control" id="expiryDate" name="expiryDate"
-                                    placeholder="MM/YYYY">
+                                    placeholder="MM/YYYY" pattern="^(0[1-9]|1[0-2])\/\d{4}$" required>
                                 <small id="expiryError" class="text-danger"></small>
                             </div>
                             <div class="mb-3">
                                 <label for="cvv" class="form-label">CVV:</label>
-                                <input type="number" class="form-control" id="cvv" name="cvv" maxlength="3"
-                                    placeholder="CVV">
+                                <input type="number" class="form-control" id="cvv" name="cvv" placeholder="CVV" required
+                                    oninput="this.value = this.value.slice(0, 3);">
+                                <small id="cvvError" class="text-danger"></small>
                             </div>
                         </div>
                         <div class="text-center my-4">

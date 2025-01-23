@@ -14,7 +14,7 @@
             align-items: center; /* Centro verticale */
             min-height: 100vh;
             background-color: #212529; /* Sfondo scuro */
-            color: #f8f9fa; /* Testo chiaro */
+            color: #FFCC99; /* Testo chiaro */
             margin: 0;
         }
 
@@ -35,17 +35,15 @@
         .thank-you-message {
             font-size: 1.8rem;
             margin-top: 20px;
+            color: #FFCC99;
         }
 
         a {
             font-size: 1.5rem;
-            color: #17a2b8; /* Cambiato per essere più leggibile */
+            color: #FFCC99
             text-decoration: underline;
         }
 
-        a:hover {
-            color: #138496;
-        }
     </style>
     <script>
         // Reindirizza alla pagina personale dopo 5 secondi
@@ -63,7 +61,7 @@
         </div>
         <h1 class="text-warning mt-4">Iscrizione completata con successo!</h1>
         <p class="thank-you-message">Grazie per esserti iscritto al nostro sito. Ora accedi con le tue credenziali e scopri i nostri prodotti!</p>
-        <p>Se il reindirizzamento non avviene automaticamente, <a href="login.php" class="text-info">clicca qui</a>.</p>
+        <p>Se il reindirizzamento non avviene automaticamente, <a href="login.php" class="text-warning" style="color: #FFCC99">clicca qui</a>.</p>
     </div>
 </body>
 

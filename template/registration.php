@@ -53,7 +53,15 @@
                         <div class="alert alert-danger d-none" id="passwordError">
                             La password deve essere almeno "Forte" per procedere con la registrazione.
                         </div>
-
+                        <div class="mb-2">
+                                        <label for="dataNascita" class="form-label fs-6">Data di
+                                            Nascita:</label>
+                                        <input type="date" name="dataNascita" class="form-control" id="dataNascita"
+                                            required />
+                                    </div>
+                                    <div class="alert alert-danger d-none" id="dataNascitaError">
+                                        Devi essere maggiorenne per registrarti!
+                                    </div>
                         <div class="row mb-3">
                             <div class="col-8">
                                 <label for="citta" class="form-label">Città:</label>

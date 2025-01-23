@@ -176,7 +176,7 @@ class DatabaseHelper
     {
         $codCarrello = $this->createEmptyCart();
         $query = "INSERT INTO UTENTE (nome, cognome, email, username, pw, dataNascita, citta, cap, indirizzo, telefono, codCarrello, tipo)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, cliente)";
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'cliente')";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param(
             'sssssssisis',
@@ -267,8 +267,8 @@ class DatabaseHelper
             // Elimino i prodotti ordinati dal magazzino
             foreach ($prodotti as $item) {
                 $stmt = $this->db->prepare("
-                    UPDATE PRODOTTO 
-                    SET quantitaMagazzino = quantitaMagazzino - ? 
+                    UPDATE PRODOTTO
+                    SET quantitaMagazzino = quantitaMagazzino - ?
                     WHERE codProdotto = ?
                 ");
                 $stmt->bind_param("ii", $item["quantita"], $item["codProdotto"]);
@@ -719,8 +719,8 @@ class DatabaseHelper
     public function addToStorage($codProdotto, $quantita): bool
     {
         $query = "
-            UPDATE PRODOTTO 
-            SET quantitaMagazzino = quantitaMagazzino + ? 
+            UPDATE PRODOTTO
+            SET quantitaMagazzino = quantitaMagazzino + ?
             WHERE codProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $quantita, $codProdotto);
@@ -751,17 +751,17 @@ class DatabaseHelper
     public function getBestBeers(): array
     {
         $query = "
-            SELECT 
+            SELECT
                 P.*,
                 AVG(R.valutazione) AS mediaValutazione,
                 COUNT(R.codRecensione) AS numeroRecensioni
-            FROM 
+            FROM
                 PRODOTTO P
-            JOIN 
+            JOIN
                 RECENSIONE R ON R.codProdotto = P.codProdotto
-            GROUP BY 
+            GROUP BY
                 P.codProdotto
-            ORDER BY 
+            ORDER BY
                 mediaValutazione DESC,
                 numeroRecensioni DESC
             LIMIT 3
