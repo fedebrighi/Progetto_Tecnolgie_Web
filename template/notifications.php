@@ -22,10 +22,10 @@
                                 <div class="d-flex flex-column">
                                     <form action="<?php echo $notifica["riferimento"]; ?>" method="POST" class="mb-2">
                                         <input type="hidden" name="codice" value="<?php echo $notifica["codiceRiferimento"]; ?>">
-                                        <button type="submit" class="btn btn-sm">Dettagli</button>
+                                        <button type="submit" class="btn btn-sm bi bi-info-circle" style="width: 100%;"> </button>
                                     </form>
                                     <button class="btn btn-sm" onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
-                                        <i class="bi bi-check-circle me-1"></i>Segna come letta
+                                        <i class="bi bi-check-circle me-1"></i>
                                     </button>
                                 </div>
                             </div>

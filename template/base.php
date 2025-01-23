@@ -117,7 +117,7 @@
     ?>
     <footer class="py-4" style="background-color: #FFCC99;">
         <div class="container">
-            <div class="row text-center">
+            <div class="row text-center mt-3">
                 <!-- Colonna Informazioni -->
                 <div class="col-md-4 mb-3">
                     <h5 class="fw-bold" style="color: #333333;">PHPINT</h5>

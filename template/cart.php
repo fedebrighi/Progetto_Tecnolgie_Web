@@ -34,7 +34,7 @@
 
         <?php if (empty($templateParams["elementicarrello"])): ?>
             <!-- Carrello vuoto -->
-            <div class="text-center my-5">
+            <div class="text-center my-5 d-flex flex-column justify-content-center align-items-center">
                 <i class="bi bi-cart-x text-danger" style="font-size: 6rem;"></i> <!-- Icona carrello vuoto -->
                 <h2 class="text-warning mt-4">IL TUO CARRELLO E' VUOTO!</h2>
                 <p class="fs-4">Torna al catalogo per aggiungere dei prodotti e iniziare a riempirlo.</p>
@@ -42,6 +42,7 @@
                     <i class="bi bi-arrow-right"></i> Vai al Catalogo
                 </button>
             </div>
+
 
         <?php else: ?>
             <!-- Elenco Prodotti nel Carrello -->
@@ -54,7 +55,7 @@
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                ?>
+                    ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">

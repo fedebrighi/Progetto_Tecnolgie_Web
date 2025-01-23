@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             error_log("chiamo update status");
             // Aggiorna lo stato dell'ordine nel database
             $result = $dbh->updateOrderStatus($codiceOrdine, $nuovoStato, $data, $dataPrevista);
-            $dbh->createNotification($_SESSION["username"], $cliente["username"], "Stato ordine aggiornato");
+            $dbh->createNotification($_SESSION["username"], $cliente["username"], "Stato ordine aggiornato", "dettagliordine.php", $codiceOrdine);
             if ($result) {
                 echo json_encode(["success" => true]);
             } else {

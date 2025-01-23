@@ -14,7 +14,7 @@
             align-items: center;
             min-height: 100vh;
             background-color: #212529; /* Sfondo scuro */
-            color: #f8f9fa; /* Testo chiaro */
+            color: #FFCC99; /* Testo chiaro */
             margin: 0;
         }
 
