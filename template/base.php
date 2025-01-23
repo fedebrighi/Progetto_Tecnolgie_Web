@@ -44,6 +44,7 @@
                     </li>
 
                     <!-- Link Carrello -->
+                    <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                     <li class="nav-item text-center">
                         <a <?php isActive("carrello.php"); ?>
                             class="nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
@@ -59,6 +60,8 @@
                             <i class="bi bi-heart"></i>
                             <span>Preferiti</span>
                         </a>
+                    </li>
+                    <?php endif; ?>
 
                         <?php if (!isset($_SESSION["username"])): ?>
                             <!-- Link Login -->

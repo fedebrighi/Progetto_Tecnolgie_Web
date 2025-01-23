@@ -15,6 +15,7 @@
 
                 <!-- Contenitore per Quantità, Carrello e Preferiti -->
                 <div class="d-flex align-items-center gap-3 mt-4">
+                <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                     <!-- Quantità -->
                     <div class="d-flex align-items-center">
                         <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
@@ -29,12 +30,12 @@
                         <div>
                             <?php if (!empty($_SESSION["username"])): ?>
                                 <button class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
-                <?php echo $templateParams['birra']['codProdotto']; ?>,
-                document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)">
+                                        <?php echo $templateParams['birra']['codProdotto']; ?>,
+                                        document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)">
                                     <i class="bi bi-cart me-2"></i> Aggiungi il prodotto al tuo Carrello
                                 </button>
                             <?php else: ?>
-                                <button class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;">
+                                <button onclick="window.location.href='login.php';" class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;">
                                     <i class="bi bi-cart me-2"></i> Aggiungi il prodotto al tuo Carrello
                                 </button>
                             <?php endif; ?>
@@ -42,7 +43,7 @@
 
                         <!-- Aggiungi ai Preferiti -->
                         <div>
-                            <button id="btn-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
+                            <button onclick="window.location.href='login.php';" id="btn-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
                                 class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;"
                                 onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
                                 <i id="icon-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
@@ -53,7 +54,7 @@
                             </button>
                         </div>
                     </div>
-
+                <?php endif; ?>
                 </div>
 
                 <!-- Riquadro per le recensioni -->

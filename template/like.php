@@ -4,7 +4,7 @@
         <div class="row gy-4">
             <?php if (empty($templateParams["preferiti"])): ?>
                 <p class="text-center">
-                    <i class="bi bi-heartbreak" style="font-size: 8rem;"></i>
+                    <i class="bi bi-heartbreak text-danger" style="font-size: 8rem;"></i>
                     <br>
                     Non hai ancora aggiunto nessuna birra ai tuoi preferiti.
                 </p>

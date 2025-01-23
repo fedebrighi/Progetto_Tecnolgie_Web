@@ -73,42 +73,45 @@
                     data-glutenfree="<?php echo $birra["glutenFree"] ? 'glutenFree' : 'withGluten'; ?>"
                     data-price="<?php echo $birra["prezzo"]; ?>" data-alcohol="<?php echo $birra["alc"]; ?>">
                     <div class="d-flex align-items-center border-bottom border-secondary pb-3">
-                    <form action="prodotto_in_dettaglio.php" method="POST" class="d-inline">
-                        <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
-                        <button type="submit" style="border: none; background: none; padding: 0;">
-                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" 
-                                class="img-fluid me-3" style="width: 150px;">
-                        </button>
-                    </form>
+                        <form action="prodotto_in_dettaglio.php" method="POST" class="d-inline">
+                            <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
+                            <button type="submit" style="border: none; background: none; padding: 0;">
+                                <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>"
+                                    class="img-fluid me-3" style="width: 150px;">
+                            </button>
+                        </form>
                         <div>
                             <h3 class="m-0 fs-5"><?php echo $birra["nome"]; ?></h3>
                             <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol, </p>
                             <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
-                            <div class="d-flex align-items-center mb-2">
-                                <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="me-2">Quantità:</label>
-                                <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>"
-                                    class="form-control text-center" min="1" value="1"
-                                    style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;">
-                            </div>
-                            <?php if (!empty($_SESSION["username"])): ?>
-                                <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
-                                    onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
+                            <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
+                                <div class="d-flex align-items-center mb-2">
+                                    <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="me-2">Quantità:</label>
+                                    <input type="number" id="quantity-<?php echo $birra['codProdotto']; ?>"
+                                        class="form-control text-center" min="1" value="1"
+                                        style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;">
+                                </div>
+                                <?php if (!empty($_SESSION["username"])): ?>
+                                    <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                                        onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                                     <?php echo $birra['codProdotto']; ?>,
                                     document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
-                                    Aggiungi
-                                </button>
-                            <?php else: ?>
-                                <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;">
-                                    Aggiungi
-                                </button>
+                                        Aggiungi
+                                    </button>
+                                <?php else: ?>
+                                    <button onclick="window.location.href='login.php';" class="btn btn-sm mb-2"
+                                        style="height: 40px; font-weight: bold; padding: 0.5rem;">
+                                        Aggiungi
+                                    </button>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">
                                 <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
                                 <!-- Applicando lo stesso stile del pulsante Aggiungi -->
                                 <button type="submit" class="btn btn-sm mb-2"
-                                    style="height: 40px; font-weight: bold; padding: 0.5rem;">
+                                    style="height: 40px; font-weight: bold; padding: 0.5rem; width: 100%;">
                                     Scoprila
                                 </button>
                             </form>

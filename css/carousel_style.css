@@ -1,48 +1,17 @@
-/* Stile per il track dello slider */
-input[type="range"]::-webkit-slider-runnable-track {
-    background: #FFCC99;
-    height: 5px;
-    border-radius: 5px;
-    border: none;
-  }
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.carousel-item {
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
 
-  /* Slider del filtro del catalogo */
-  input[type="range"]::-webkit-slider-thumb {
-    width: 15px;
-    height: 15px;
-    background: #FFCC99;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  input[type="range"]::-ms-fill-lower {
-    background: #FFCC99;
-  }
-
-  input[type="range"]::-ms-fill-upper {
-    background: #FFCC99;
-  }
-
-  input[type="range"]::-ms-thumb {
-    width: 15px;
-    height: 15px;
-    background: #FFCC99;
-    border-radius: 50%;
-    border: 2px solid #FFFFFF;
-    cursor: pointer;
-  }
-
-  .bg-light {
-    background-color: #333333 !important;
-    color: #ffffff !important;
-  }
-
-  .text-primary {
-    color: #FFCC99 !important;
-  }
-
-  .progress-bar.bg-primary {
-    background-color: #FFCC99 !important;
-  }
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+  opacity: 0;
+  z-index: 0;
+}

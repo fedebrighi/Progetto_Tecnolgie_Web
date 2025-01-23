@@ -8,29 +8,32 @@
 
         <div class="row align-items-center">
             <!-- Colonna Carosello -->
-            <div class="col-md-6 text-center mb-4 mb-md-0">
-                <!-- Carousel -->
-                <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                    <div class="carousel-inner">
-                        <?php foreach ($templateParams["birre"] as $index => $birra): ?>
-                            <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                                <img src="img/beers/<?php echo $birra["immagine"]; ?>"
-                                    class="d-block w-100 img-fluid rounded" alt="<?php echo $birra["nome"]; ?>">
-                            </div>
-                        <?php endforeach; ?>
+            <div class="row align-items-center">
+                <!-- Colonna Carosello -->
+                <div class="col-md-6 text-center mb-4 mb-md-0">
+                    <!-- Carousel -->
+                    <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner">
+                            <?php foreach ($templateParams["birre"] as $index => $birra): ?>
+                                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                                    <img src="img/beers/<?php echo $birra["immagine"]; ?>" class="d-block img-fluid rounded"
+                                        alt="<?php echo $birra["nome"]; ?>">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#beerCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#beerCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#beerCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-            </div>
+
 
             <!-- Colonna Pulsanti -->
             <div class="col-md-6">
