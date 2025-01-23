@@ -90,18 +90,24 @@
                                     style="width: 40px; height: 25px; border-radius: 50px; padding: 2px;">
                             </div>
                             <?php if (!empty($_SESSION["username"])): ?>
-                                <button class="btn btn-sm mb-2"
-                                    style="height: 40px; font-weight: bold; padding: 0.5rem;" onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
-                                <?php echo $birra['codProdotto']; ?>,
-                                document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
-                                    Aggiungi </button>
+                                <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
+                                    onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
+                                    <?php echo $birra['codProdotto']; ?>,
+                                    document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
+                                    Aggiungi
+                                </button>
                             <?php else: ?>
-                                <button class="btn btn-sm mb-2"
-                                    style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
+                                <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;">
+                                    Aggiungi
+                                </button>
                             <?php endif; ?>
                             <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">
                                 <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
-                                <button type="submit" class="btn btn-warning btn-sm">Scopri</button>
+                                <!-- Applicando lo stesso stile del pulsante Aggiungi -->
+                                <button type="submit" class="btn btn-sm mb-2"
+                                    style="height: 40px; font-weight: bold; padding: 0.5rem;">
+                                    Scoprila
+                                </button>
                             </form>
                         </div>
                     </div>
