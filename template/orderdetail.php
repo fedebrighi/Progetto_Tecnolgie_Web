@@ -159,7 +159,7 @@
 
         <?php if ($templateParams["clienteLoggato"]): ?>
             <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-outline-light" type="button"
+                <button class="btn" type="button"
                     onclick="window.location.href='catalogo_prodotti.php';">Continua a fare acquisti</button>
             </div>
         <?php else: ?>
