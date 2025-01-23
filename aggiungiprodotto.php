@@ -1,7 +1,6 @@
 <?php
 require_once 'bootstrap.php';
 
-//Base Template
 $templateParams["titolo"] = "PHPint - Aggiungi Birra";
 $templateParams["nome"] = "addnewbeer.php";
 
@@ -30,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // Salva la nuova birra
     if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree)) {
+        $dbh->createNotificationBroadcast($_SESSION["username"], "Nuova birra aggiunta al catalogo!", "prodotto_in_dettaglio.php", $codProdotto);
         header("Location: venditore.php");
         exit();
     } else {

@@ -73,10 +73,13 @@
                     data-glutenfree="<?php echo $birra["glutenFree"] ? 'glutenFree' : 'withGluten'; ?>"
                     data-price="<?php echo $birra["prezzo"]; ?>" data-alcohol="<?php echo $birra["alc"]; ?>">
                     <div class="d-flex align-items-center border-bottom border-secondary pb-3">
-                        <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
-                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>"
+                    <form action="prodotto_in_dettaglio.php" method="POST" class="d-inline">
+                        <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
+                        <button type="submit" style="border: none; background: none; padding: 0;">
+                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" 
                                 class="img-fluid me-3" style="width: 150px;">
-                        </a>
+                        </button>
+                    </form>
                         <div>
                             <h3 class="m-0 fs-5"><?php echo $birra["nome"]; ?></h3>
                             <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol, </p>

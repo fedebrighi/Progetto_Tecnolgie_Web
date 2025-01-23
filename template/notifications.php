@@ -5,24 +5,19 @@
             <h2 class="text-warning">Le tue notifiche</h2>
             <p class="fs-5">Visualizza le notifiche ricevute e gestiscile facilmente.</p>
         </div>
-
         <?php if (empty($templateParams["notifiche"])): ?>
-            <!-- Nessuna notifica -->
             <div class="text-center my-5">
                 <i class="bi bi-bell-slash text-danger" style="font-size: 6rem;"></i> <!-- Icona notifiche vuote -->
                 <h3 class="text-warning mt-4">Non hai nuove notifiche!</h3>
                 <p class="fs-4">Torna più tardi per verificare se ci sono aggiornamenti.</p>
             </div>
         <?php else: ?>
-            <!-- Elenco Notifiche -->
             <div class="row gy-3">
                 <?php foreach ($templateParams["notifiche"] as $notifica): ?>
                     <div class="col-12 border-bottom border-secondary pb-3" data-id="<?php echo $notifica['idNotifica']; ?>">
                         <p class="m-0 text-warning fw-bold">Da: <?php echo $notifica['mittente']; ?></p>
                         <div class="d-flex justify-content-between align-items-center mt-2">
                             <p class="m-0" style="overflow: hidden; text-overflow: ellipsis; max-width: 70%;">Messaggio: <?php echo $notifica['messaggio']; ?></p>
-
-
                             <div class="d-flex justify-content-between align-items-center mt-2">
                                 <div class="d-flex flex-column">
                                     <form action="<?php echo $notifica["riferimento"]; ?>" method="POST" class="mb-2">
@@ -34,17 +29,13 @@
                                     </button>
                                 </div>
                             </div>
-
-
                         </div>
-
                         <div class="d-flex justify-content-between align-items-center mt-2">
                             <small style="color: #ffcc99;">Ricevuta: <?php echo $notifica['dataInvio']; ?></small>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-
         <?php endif; ?>
     </div>
 
