@@ -292,6 +292,7 @@ class DatabaseHelper
         } catch (Exception $e) {
             throw new Exception("Errore durante il salvataggio dell'ordine: " . $e->getMessage());
         }
+        return $codiceOrdine;
     }
 
 
@@ -643,12 +644,12 @@ class DatabaseHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createNotification($mittente, $destinatario, $message)
+    public function createNotification($mittente, $destinatario, $message, $ref, $cod)
     {
-        $query = "INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio)
-                    VALUES (?, ?, ?, NOW())";
+        $query = "INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
+                    VALUES (?, ?, ?, NOW(), ?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sss", $mittente, $destinatario, $message);
+        $stmt->bind_param("ssssi", $mittente, $destinatario, $message, $ref, $cod);
         $stmt->execute();
     }
 

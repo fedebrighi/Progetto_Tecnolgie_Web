@@ -29,7 +29,7 @@ if (isset($_SESSION["username"])) {
 
 
         try {
-            $dbh->salvaOrdine(
+            $codiceOrdine = $dbh->salvaOrdine(
                 $username,
                 $indirizzo,
                 $citta,
@@ -40,7 +40,8 @@ if (isset($_SESSION["username"])) {
                 $totale,
                 $prodotti
             );
-            $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuovo ordine ricevuto");
+            $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuovo ordine ricevuto", "dettagliordine.php", $codiceOrdine);
+            $dbh->createNotification($_SESSION["venditore"]["username"], $_SESSION["username"], "Grazie per aver effettuato l'ordine!", "dettagliordine.php", $codiceOrdine);
             header("Location: simulation.php");
             exit();
         } catch (Exception $e) {

@@ -17,22 +17,34 @@
             <!-- Elenco Notifiche -->
             <div class="row gy-3">
                 <?php foreach ($templateParams["notifiche"] as $notifica): ?>
-                    <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3"
-                        data-id="<?php echo $notifica['idNotifica']; ?>">
-                        <div class="flex-grow-1">
-                            <p class="m-0 text-warning fw-bold">Da: <?php echo $notifica['mittente']; ?></p>
-                            <p class="m-0">Messaggio: <?php echo $notifica['messaggio']; ?></p>
-                            <small class="text-muted">Ricevuta: <?php echo $notifica['dataInvio']; ?></small>
+                    <div class="col-12 border-bottom border-secondary pb-3" data-id="<?php echo $notifica['idNotifica']; ?>">
+                        <p class="m-0 text-warning fw-bold">Da: <?php echo $notifica['mittente']; ?></p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <p class="m-0" style="overflow: hidden; text-overflow: ellipsis; max-width: 70%;">Messaggio: <?php echo $notifica['messaggio']; ?></p>
+
+
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div class="d-flex flex-column">
+                                    <form action="<?php echo $notifica["riferimento"]; ?>" method="POST" class="mb-2">
+                                        <input type="hidden" name="codice" value="<?php echo $notifica["codiceRiferimento"]; ?>">
+                                        <button type="submit" class="btn btn-sm">Dettagli</button>
+                                    </form>
+                                    <button class="btn btn-sm" onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
+                                        <i class="bi bi-check-circle me-1"></i>Segna come letta
+                                    </button>
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div class="d-flex flex-column align-items-center">
-                            <button class="btn btn-sm mb-2"
-                                onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
-                                <i class="bi bi-check-circle me-1"></i>Segna come letta
-                            </button>
+
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small style="color: #ffcc99;">Ricevuta: <?php echo $notifica['dataInvio']; ?></small>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
+
         <?php endif; ?>
     </div>
 

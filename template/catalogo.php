@@ -99,9 +99,10 @@
                                 <button class="btn btn-sm mb-2"
                                     style="height: 40px; font-weight: bold; padding: 0.5rem;"> Aggiungi </button>
                             <?php endif; ?>
-                            <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>"
-                                class="btn btn-warning btn-sm text-center"
-                                style="height: 40px; font-weight: bold; padding: 0.5rem;">Scopri</a>
+                            <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">
+                                <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
+                                <button type="submit" class="btn btn-warning btn-sm">Scopri</button>
+                            </form>
                         </div>
                     </div>
                 </div>

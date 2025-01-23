@@ -26,7 +26,7 @@ if (!$codProdotto || !$valutazione || $valutazione < 1 || $valutazione > 5) {
 try {
     // Inserisce la recensione nel database
     $result = $dbh->addReview($username, $codProdotto, $valutazione, $testo);
-    $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuova recensione ricevuta");
+    $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuova recensione ricevuta", "prodotto_in_dettaglio.php", $codProdotto);
     if ($result) {
         echo json_encode(['success' => true, 'message' => 'Recensione aggiunta con successo.']);
     } else {
@@ -36,4 +36,3 @@ try {
     error_log('Errore nell\'aggiunta della recensione: ' . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Errore interno al server.']);
 }
-?>

@@ -10,6 +10,7 @@ function segnaComeLetta(idNotifica) {
             if (!response.ok) {
                 throw new Error('Errore nella risposta del server');
             }
+            location.reload();
             return response.json();
         })
         .then(data => {

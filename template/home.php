@@ -35,7 +35,7 @@
             <!-- Colonna Pulsanti -->
             <div class="col-md-6">
                 <div class="d-grid gap-3">
-                    <a href="paginainformativa.html" class="btn btn-custom btn-lg fw-bold">
+                    <a href="paginainformativa.php" class="btn btn-custom btn-lg fw-bold">
                         <i class="bi bi-info-circle"></i> SCOPRI CHI SIAMO
                     </a>
                     <a <?php isActive("catalogo_prodotti.php"); ?> href="catalogo_prodotti.php"
