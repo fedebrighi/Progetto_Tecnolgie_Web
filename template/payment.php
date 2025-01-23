@@ -10,17 +10,17 @@
                         <div class="mb-3">
                             <label for="indirizzo" class="form-label">Indirizzo:</label>
                             <input type="text" class="form-control" id="indirizzo" name="indirizzo"
-                                placeholder="Inserisci il tuo indirizzo" required>
+                                placeholder="Via Cesare Pavese 50" required>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8">
                                 <label for="citta" class="form-label">Città:</label>
                                 <input type="text" name="citta" class="form-control" id="citta"
-                                    placeholder="Inserisci la città" required />
+                                    placeholder="Cesena" required />
                             </div>
                             <div class="col-4">
                                 <label for="cap" class="form-label">CAP:</label>
-                                <input type="text" name="cap" class="form-control" id="cap" placeholder="CAP"
+                                <input type="text" name="cap" class="form-control" id="cap" placeholder="47521"
                                     pattern="^\d{5}$" maxlength="5" required />
                             </div>
                         </div>
