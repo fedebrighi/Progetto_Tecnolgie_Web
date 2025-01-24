@@ -1,12 +1,8 @@
 <main class="bg-dark">
-    <!-- Carrello -->
     <div class="container py-5">
-        <!-- Scritta introduttiva -->
         <div class="text-center mb-4">
             <h1 class="text-warning">IL TUO CARRELLO</h1>
-
         </div>
-
         <?php if (isset($_SESSION["error_message"])): ?>
             <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -30,10 +26,7 @@
             </div>
             <?php unset($_SESSION["error_message"]); ?>
         <?php endif; ?>
-
-
         <?php if (empty($templateParams["elementicarrello"])): ?>
-            <!-- Carrello vuoto -->
             <div class="text-center my-5 d-flex flex-column justify-content-center align-items-center">
                 <i class="bi bi-cart-x text-danger" style="font-size: 6rem;"></i> <!-- Icona carrello vuoto -->
                 <h2 class="text-warning mt-4">IL TUO CARRELLO E' VUOTO!</h2>
@@ -42,19 +35,16 @@
                     <i class="bi bi-arrow-right"></i> Vai al Catalogo
                 </button>
             </div>
-
-
         <?php else: ?>
-            <!-- Elenco Prodotti nel Carrello -->
             <div class="row gy-3">
                 <p class="fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
                     l'acquisto.</p>
                 <?php
-                $total = 0; // Inizializza il totale
+                $total = 0;
                 foreach ($templateParams["elementicarrello"] as $item):
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
-                    $total += $itemTotal; // Somma il prezzo totale del prodotto
+                    $total += $itemTotal;
                 ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
@@ -87,7 +77,6 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-
             <div class="mt-4 p-3 border border-secondary rounded">
                 <h5 class="mb-3 fs-4 text-warning">RIEPILOGO DELL'ORDINE:</h5>
                 <ul class="list-unstyled">
@@ -123,22 +112,16 @@
                     </li>
                 </ul>
             </div>
-
-            <!-- Pulsanti -->
             <div id="button-container" class="d-flex flex-column gap-3 mt-4">
-                <!-- Pulsante "Continua a fare acquisti" -->
                 <button class="btn" type="button" onclick="window.location.href='catalogo_prodotti.php';">
                     <i class="bi bi-cart"></i>
                     Continua a fare acquisti
                 </button>
-
-                <!-- Pulsante "Procedi al pagamento" -->
                 <button class="btn" type="button" onclick="window.location.href='checkout.php';">
                     <i class="bi bi-credit-card"></i>
                     Procedi al pagamento
                 </button>
             </div>
-
         <?php endif; ?>
     </div>
     <script src="js/rimuoviDalCarrello.js"></script>

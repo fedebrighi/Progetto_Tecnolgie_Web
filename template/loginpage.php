@@ -10,8 +10,6 @@
                 <?php echo $templateParams["errorelogin"]; ?>
             </div>
         <?php endif; ?>
-
-        <!-- Sezione Login -->
         <div class="row justify-content-center align-items-center d-flex">
             <div class="col-md-6">
                 <div class="border border-secondary rounded p-4">
@@ -38,8 +36,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Registrazione -->
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
                     <aside class="border border-secondary rounded p-4 text-center">

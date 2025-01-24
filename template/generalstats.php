@@ -16,20 +16,17 @@
                     <p class="fs-4">€<?php echo $totaleVendite; ?></p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-4">
                 <div class="bg-dark border border-secondary p-4 rounded">
                     <h4 class="text-warning">Prodotti Venduti</h4>
                     <p class="fs-4"><?php echo $prodottiVenduti; ?></p>
                 </div>
             </div>
         </div>
-
         <div class="mt-5">
             <h4 class="text-warning mb-3">Grafico Vendite per Prodotto</h4>
             <canvas id="graficoVendite" width="400" height="200"></canvas>
         </div>
-
-
         <div class="mt-5">
             <h4 class="text-warning mb-3">Migliori Clienti</h4>
             <table class="table table-dark table-bordered">
@@ -49,7 +46,6 @@
                 </tbody>
             </table>
         </div>
-
         <div class="mt-5">
             <h4 class="text-warning mb-3">Migliori Birre</h4>
             <table class="table table-dark table-bordered">
@@ -113,12 +109,10 @@
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-
                 </tbody>
             </table>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/stats.js"></script>
     <script>
@@ -129,5 +123,4 @@
         }));
         creaGraficoVendite('graficoVendite', prodotti);
     </script>
-
 </main>

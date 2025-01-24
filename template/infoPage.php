@@ -5,8 +5,6 @@
             <h1 class="text-warning">BENVENUTO SU PHPint!</h1>
             <p class="leadD">Il tuo negozio di fiducia per birre artigianali di qualità.</p>
         </div>
-
-        <!-- Sezione Chi Siamo -->
         <section class="mb-5" id="chi-siamo">
             <div class="row align-items-center">
                 <div class="col-md-12">
@@ -26,8 +24,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Sezione Birre in Evidenza -->
         <section class="py-5 bg-dark" id="birre-evidenza">
             <div class="container">
                 <h2 class="text-center text-warning mb-4">I NOSTRI BEST SELLERS</h2>
@@ -44,19 +40,19 @@
                                         </h5>
                                         <div>
                                             <?php
-                                            $media = $item["mediaValutazione"];
-                                            $stellePiene = floor($media);
-                                            $mezzeStelle = ($media - $stellePiene) >= 0.5 ? 1 : 0;
-                                            $stelleVuote = 5 - ($stellePiene + $mezzeStelle);
-                                            for ($i = 0; $i < $stellePiene; $i++) {
-                                                echo '<i class="bi bi-star-fill text-warning"></i>';
-                                            }
-                                            if ($mezzeStelle) {
-                                                echo '<i class="bi bi-star-half text-warning"></i>';
-                                            }
-                                            for ($i = 0; $i < $stelleVuote; $i++) {
-                                                echo '<i class="bi bi-star text-secondary"></i>';
-                                            }
+                                                $media = $item["mediaValutazione"];
+                                                $stellePiene = floor($media);
+                                                $mezzeStelle = ($media - $stellePiene) >= 0.5 ? 1 : 0;
+                                                $stelleVuote = 5 - ($stellePiene + $mezzeStelle);
+                                                for ($i = 0; $i < $stellePiene; $i++) {
+                                                    echo '<i class="bi bi-star-fill text-warning"></i>';
+                                                }
+                                                if ($mezzeStelle) {
+                                                    echo '<i class="bi bi-star-half text-warning"></i>';
+                                                }
+                                                for ($i = 0; $i < $stelleVuote; $i++) {
+                                                    echo '<i class="bi bi-star text-secondary"></i>';
+                                                }
                                             ?>
                                         </div>
                                     </div>
@@ -73,10 +69,6 @@
                 </div>
             </div>
         </section>
-
-
-
-        <!-- Certificazioni e Qualità -->
         <section class="py-5" id="certificazioni">
             <div class="container border border-secondary rounded p-4 bg-dark text-light">
                 <h2 class="text-center text-warning mb-4">CERTIFICAZIONI E QUALITA'</h2>
@@ -106,8 +98,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Contatti diretti -->
         <section class="mb-6" id="contatti">
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="col-md-6">
@@ -139,12 +129,7 @@
                 </div>
             </div>
         </section>
-
-
     </div>
-
-
-    <!-- FAQ -->
     <section class="mb-5" id="faq">
         <div class="container" style="max-width: 1300px;">
             <h2 class="text-warning text-center mb-4">FAQ</h2>
@@ -206,7 +191,6 @@
         </div>
     </section>
 </main>
-
 <script>
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();

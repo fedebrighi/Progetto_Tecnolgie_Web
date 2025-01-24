@@ -2,15 +2,14 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $templateParams["titolo"]; ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
         rel="stylesheet" />
     <link href="css/base_style.css" rel="stylesheet" />
 </head>
-
 <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary">
         <div class="container">
@@ -20,10 +19,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <!-- Link Home -->
                     <li class="nav-item text-center">
                         <a <?php isActive("homepage.php"); ?>
                             class="nav-link text-secondary d-flex flex-column align-items-center" href="homepage.php">
@@ -31,8 +28,6 @@
                             <span>Home</span>
                         </a>
                     </li>
-
-                    <!-- Link Prodotti -->
                     <li class="nav-item text-center">
                         <a <?php isActive("catalogo_prodotti.php"); ?>
                             class="nav-link text-secondary d-flex flex-column align-items-center"
@@ -41,8 +36,6 @@
                             <span>Prodotti</span>
                         </a>
                     </li>
-
-                    <!-- Link Carrello -->
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                         <li class="nav-item text-center">
                             <a <?php isActive("carrello.php"); ?>
@@ -51,8 +44,6 @@
                                 <span>Carrello</span>
                             </a>
                         </li>
-
-                        <!-- Link Preferiti -->
                         <li class="nav-item text-center">
                             <a <?php isActive("preferiti.php"); ?>
                                 class="nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
@@ -61,7 +52,6 @@
                             </a>
                         </li>
                     <?php endif; ?>
-
                     <?php if (!isset($_SESSION["username"])): ?>
                         <li class="nav-item text-center">
                             <a <?php isActive("login.php"); ?>
@@ -71,9 +61,7 @@
                             </a>
                         </li>
                     <?php endif; ?>
-
                     <?php if (isset($_SESSION["username"])): ?>
-                        <!-- Area Personale -->
                         <li class="nav-item dropdown text-center">
                             <a class="nav-link dropdown-toggle text-secondary d-flex flex-column align-items-center"
                                 href="#" role="button" data-bs-toggle="dropdown">
@@ -93,8 +81,6 @@
                                         href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
                             </ul>
                         </li>
-
-                        <!-- Notifiche -->
                         <li class="nav-item">
                             <a class="nav-link text-secondary d-flex align-items-center position-relative"
                                 href="notifiche.php">
@@ -116,15 +102,12 @@
     <footer class="py-4" style="background-color: #FFCC99;">
         <div class="container">
             <div class="row text-center mt-3">
-                <!-- Colonna Informazioni -->
                 <div class="col-md-4 mb-3">
                     <h5 class="fw-bold" style="color: #333333;">PHPINT</h5>
                     <p style="color: #333333;">Via Aspini 2 - 47122 Forlì FC, Italia</p>
                     <p style="color: #333333;">Email: supporto@phpint.it</p>
                     <p style="color: #333333;">Tel: +39 349 313 0068</p>
                 </div>
-
-                <!-- Colonna Navigazione -->
                 <div class="col-md-4 mb-3">
                     <h5 class="fw-bold" style="color: #333333;">SU DI NOI</h5>
                     <ul class="list-unstyled">
@@ -136,8 +119,6 @@
                                 style="color: #333333; text-decoration: underline;">Contattaci</a></li>
                     </ul>
                 </div>
-
-                <!-- Colonna Social e Pagamenti -->
                 <div class="col-md-4">
                     <h5 class="fw-bold" style="color: #333333;">SEGUICI SU</h5>
                     <div class="d-flex justify-content-center mb-3">
@@ -168,5 +149,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/gestioneNotifiche.js"></script>
 </body>
-
 </html>

@@ -87,24 +87,24 @@
                     </div>
                     <div class="progress" style="height: 8px;">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?php
-                                                                                                if ($order['stato'] === 'In Preparazione')
-                                                                                                    echo '33%';
-                                                                                                elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                                                                                                    echo '66%';
-                                                                                                elseif ($order['stato'] === 'Consegnato')
-                                                                                                    echo '100%';
-                                                                                                else
-                                                                                                    echo '0%';
-                                                                                                ?>;" aria-valuenow="<?php
-                                                                                                                    if ($order['stato'] === 'In Preparazione')
-                                                                                                                        echo '33';
-                                                                                                                    elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                                                                                                                        echo '66';
-                                                                                                                    elseif ($order['stato'] === 'Consegnato')
-                                                                                                                        echo '100';
-                                                                                                                    else
-                                                                                                                        echo '0';
-                                                                                                                    ?>"
+                                if ($order['stato'] === 'In Preparazione')
+                                    echo '33%';
+                                elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                    echo '66%';
+                                elseif ($order['stato'] === 'Consegnato')
+                                    echo '100%';
+                                else
+                                    echo '0%';
+                                ?>;" aria-valuenow="<?php
+                                    if ($order['stato'] === 'In Preparazione')
+                                        echo '33';
+                                    elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                        echo '66';
+                                    elseif ($order['stato'] === 'Consegnato')
+                                        echo '100';
+                                    else
+                                        echo '0';
+                                    ?>"
                             aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
@@ -128,8 +128,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Ordine -->
     <div class="container py-4">
         <div class="row gy-3">
             <?php foreach ($templateParams["elementiordine"] as $item):

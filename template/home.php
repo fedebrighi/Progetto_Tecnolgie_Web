@@ -4,7 +4,6 @@
             <h1 class="display-1 fw-bold text-center">PHPint</h1>
             <p class="fs-2 fw-bold text-center">{WHEN CODING HITS HARD}</p>
         </div>
-
         <div class="row align-items-center">
             <div class="col-md-6 text-center mb-4 mb-md-0">
                 <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -28,8 +27,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Colonna Pulsanti -->
             <div class="col-md-6">
                 <div class="d-grid gap-3">
                     <a href="paginainformativa.php" class="btn btn-custom btn-lg fw-bold">
@@ -45,9 +42,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- Sezione Testimonianze -->
         <section class="bg-dark py-5">
             <div class="container text-center">
                 <h2>COSA PENSANO I NOSTRI CLIENTI ?</h2>

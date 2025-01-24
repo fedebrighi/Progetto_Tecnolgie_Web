@@ -17,8 +17,6 @@
                                     data-bs-target="#modificaStatoModal-<?php echo $order['codiceOrdine']; ?>">
                                     Modifica Stato
                                 </button>
-
-                                <!-- Modal -->
                                 <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1" aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content bg-dark text-white">
