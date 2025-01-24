@@ -10,7 +10,7 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
     fetch("ajax/api-applyCoupon.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ couponCode: couponCode, updatedTotal: newTotal }) // Passa il nuovo totale
+        body: JSON.stringify({couponCode: couponCode}) // Passa il nuovo totale
     })
     .then(response => response.json())
     .then(data => {

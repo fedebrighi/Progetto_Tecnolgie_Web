@@ -19,6 +19,7 @@ if (isset($_SESSION["username"])) {
         $tipoPagamento = $_POST["pagamento"];
         $totale = $templateParams["carrello"]["totale"];
         $prodotti = $dbh->getCartFromUser($username);
+        $scontoUsato = 0;
 
         // Verifica se l'utente ha inserito un codice coupon
         $couponCode = $_POST['couponCode'] ?? ''; // codice del coupon inserito dall'utente
@@ -37,6 +38,7 @@ if (isset($_SESSION["username"])) {
             // Se il coupon è valido e c'è uno sconto
             if ($discountAmount != 0) {
                 // Applica lo sconto al totale
+                $scontoUsato = $discountAmount;
                 $totale -= $discountAmount;
                 error_log("Nuovo Totale: " . $totale);
 
@@ -70,13 +72,16 @@ if (isset($_SESSION["username"])) {
                 $tipoSpedizione,
                 $tipoPagamento,
                 $totale,
-                $prodotti
+                $prodotti,
+                $scontoUsato
             );
             $dbh->markCouponAsUsed($couponCode);
             // Crea notifiche per il venditore e per l'utente
             $dbh->createNotification($_SESSION["username"], $_SESSION["venditore"]["username"], "Nuovo ordine ricevuto", "dettagliordine.php", $codiceOrdine);
             $dbh->createNotification($_SESSION["venditore"]["username"], $_SESSION["username"], "Grazie per aver effettuato l'ordine!", "dettagliordine.php", $codiceOrdine);
-            $couponCode = $dbh->createDiscountCoupon($username, $totale);
+            if($totale > 20) {
+                $couponCode = $dbh->createDiscountCoupon($username, $totale);
+            }
 
             // Aggiungi un messaggio di conferma del coupon
             $_SESSION["success_message"] .= " Il tuo coupon di sconto del 10% è stato creato con successo! Codice: $couponCode";

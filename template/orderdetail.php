@@ -37,6 +37,11 @@
             <div class="mb-2">
                 <strong>Tipo spedizione:</strong> <?php echo $order["tipo"]; ?>
             </div>
+            <?php if ($order["scontoUsato"] > 0): ?>
+                <div class="mb-2">
+                <strong>Coupon Applicato:</strong> <?php echo $order["scontoUsato"]; ?> €</strong></h5>
+            </div>
+            <?php endif; ?>
             <?php if ($order["note"] != ""): ?>
                 <div class="mb-2">
                     <strong>Note:</strong> <?php echo $order["note"]; ?>

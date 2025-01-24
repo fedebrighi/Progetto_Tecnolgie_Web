@@ -226,7 +226,7 @@ class DatabaseHelper
         return $nextCod;
     }
 
-    public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti)
+    public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti,$scontoUsato)
     {
         $dataOrdine = date("Y-m-d");
         $dataPrevista = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
@@ -238,10 +238,10 @@ class DatabaseHelper
         try {
             // Inserisco le informazioni relative all'ordine
             $stmt = $this->db->prepare("
-                INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo,scontoUsato)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
             ");
-            $stmt->bind_param("sisssdsssiss", $username, $codiceOrdine, $dataOrdine, $dataPrevista, $stato, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione);
+            $stmt->bind_param("sisssdsssissi", $username, $codiceOrdine, $dataOrdine, $dataPrevista, $stato, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $scontoUsato);
             $stmt->execute();
 
             // Inserisco i prodotti ordinati
@@ -817,7 +817,7 @@ class DatabaseHelper
 
     public function createDiscountCoupon($username, $totalAmount)
     {
-        // Calcola il 10% dell'importo totale speso
+        // Calcola il 20% dell'importo totale speso
         $discountAmount = $totalAmount * 0.20;
 
         // Genera un codice coupon univoco

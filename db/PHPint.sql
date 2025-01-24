@@ -74,6 +74,7 @@ CREATE TABLE ORDINE (
     cap CHAR(5) NOT NULL,
     note TEXT,
     tipo VARCHAR(50) NOT NULL,
+    scontoUsato INT,
     CONSTRAINT ID_ORDINE_ID PRIMARY KEY (username, codiceOrdine)
 );
 
