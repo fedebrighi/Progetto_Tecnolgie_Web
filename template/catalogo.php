@@ -8,22 +8,27 @@
             <button id="toggleFilterButton" class="btn w-100 d-flex align-items-center justify-content-center" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
                 aria-controls="filterContainer">
-                <i class="bi bi-filter me-2"></i>
+                <em class="bi bi-filter me-2"></em>
                 Mostra i Filtri Disponibili (Prezzo, Alcol, Gluten Free)
             </button>
         </div>
         <div class="collapse" id="filterContainer">
             <div class="card card-body bg-dark border-0">
                 <div class="row">
+                    <!-- Input per la ricerca -->
                     <div class="mb-4">
+                        <label for="searchBar" class="form-label">Cerca birra:</label>
                         <input type="text" id="searchBar" class="form-control" placeholder="Cerca birra..."
                             oninput="filterProducts()" />
                     </div>
+                    <!-- Filtri prezzo -->
                     <div class="col-12 col-md-4 mb-3">
                         <label class="form-label">Prezzo (€):</label>
                         <div class="range-slider">
+                            <label for="priceMin" class="form-label">Prezzo Minimo:</label>
                             <input type="range" id="priceMin" class="form-range" min="0" max="5" step="0.01" value="0"
                                 oninput="updatePriceLabel(); filterProducts();" />
+                            <label for="priceMax" class="form-label">Prezzo Massimo:</label>
                             <input type="range" id="priceMax" class="form-range" min="0" max="5" step="0.01" value="5"
                                 oninput="updatePriceLabel(); filterProducts();" />
                             <div class="d-flex justify-content-between">
@@ -32,11 +37,14 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Filtri alcol -->
                     <div class="col-12 col-md-4 mb-3">
                         <label class="form-label">Alcol (%):</label>
                         <div class="range-slider">
+                            <label for="alcoholMin" class="form-label">Alcol Minimo:</label>
                             <input type="range" id="alcoholMin" class="form-range" min="0" max="10" step="0.1" value="0"
                                 oninput="updateAlcoholLabel(); filterProducts();" />
+                            <label for="alcoholMax" class="form-label">Alcol Massimo:</label>
                             <input type="range" id="alcoholMax" class="form-range" min="0" max="10" step="0.1"
                                 value="10" oninput="updateAlcoholLabel(); filterProducts();" />
                             <div class="d-flex justify-content-between">
@@ -45,10 +53,11 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Filtro gluten free -->
                     <div class="col-12 col-md-4 d-flex align-items-center">
                         <input type="checkbox" id="glutenFreeFilter" class="form-check-input me-2"
                             onchange="filterProducts()" />
-                        <label for="glutenFreeFilter" class="form-check-label">GLUTEN FREE</label>
+                        <label for="glutenFreeFilter" class="form-check-label">Gluten Free</label>
                     </div>
                 </div>
             </div>
@@ -67,12 +76,12 @@
                             </button>
                         </form>
                         <div>
-                            <h3 class="m-0 fs-5"><?php echo $birra["nome"]; ?></h3>
+                            <h2 class="m-0 fs-5"><?php echo $birra["nome"]; ?></h2>
                             <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol, </p>
                             <div>
                                 <p class="m-0 fw-bold fs-5"><?php echo $birra["prezzo"]; ?> €</p>
                             </div>
-                            </div>
+                        </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                                 <div class="d-flex align-items-center mb-2">
@@ -86,12 +95,12 @@
                                         onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                                             <?php echo $birra['codProdotto']; ?>,
                                             document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
-                                        <i class="bi bi-cart-plus"></i>
+                                        <em class="bi bi-cart-plus"></em>
                                     </button>
                                 <?php else: ?>
                                     <button onclick="window.location.href='login.php';" class="btn btn-sm mb-2"
                                         style="height: 40px; font-weight: bold; padding: 0.5rem;">
-                                        <i class="bi bi-cart-plus"></i>
+                                        <em class="bi bi-cart-plus"></em>
                                     </button>
                                 <?php endif; ?>
                             <?php endif; ?>
@@ -99,7 +108,7 @@
                                 <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>" />
                                 <button type="submit" class="btn btn-sm mb-2"
                                     style="height: 40px; font-weight: bold; padding: 0.5rem; width: 100%;">
-                                    <i class="bi bi-info-circle"></i>
+                                    <em class="bi bi-info-circle"></em>
                                 </button>
                             </form>
                         </div>

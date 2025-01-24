@@ -28,11 +28,11 @@
         <?php endif; ?>
         <?php if (empty($templateParams["elementicarrello"])): ?>
             <div class="text-center my-5 d-flex flex-column justify-content-center align-items-center">
-                <i class="bi bi-cart-x text-danger" style="font-size: 6rem;"></i> <!-- Icona carrello vuoto -->
+                <em class="bi bi-cart-x text-danger" style="font-size: 6rem;"></em> <!-- Icona carrello vuoto -->
                 <h2 class="text-warning mt-4">IL TUO CARRELLO E' VUOTO!</h2>
                 <p class="fs-4">Torna al catalogo per aggiungere dei prodotti e iniziare a riempirlo.</p>
                 <button class="btn btn-lg mt-3" onclick="window.location.href='catalogo_prodotti.php';">
-                    <i class="bi bi-arrow-right"></i> Vai al Catalogo
+                    <em class="bi bi-arrow-right"></em> Vai al Catalogo
                 </button>
             </div>
         <?php else: ?>
@@ -71,7 +71,7 @@
                             </div>
                             <button class="btn btn-sm w-100 remove-from-cart"
                                 onclick="removeFromCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,<?php echo $item['codProdotto']; ?>)">
-                                <i class="bi bi-trash me-1"></i>Rimuovi
+                                <em class="bi bi-trash me-1"></em>Rimuovi
                             </button>
                         </div>
                     </div>
@@ -114,11 +114,11 @@
             </div>
             <div id="button-container" class="d-flex flex-column gap-3 mt-4">
                 <button class="btn" type="button" onclick="window.location.href='catalogo_prodotti.php';">
-                    <i class="bi bi-cart"></i>
+                    <em class="bi bi-cart"></em>
                     Continua a fare acquisti
                 </button>
                 <button class="btn" type="button" onclick="window.location.href='checkout.php';">
-                    <i class="bi bi-credit-card"></i>
+                    <em class="bi bi-credit-card"></em>
                     Procedi al pagamento
                 </button>
             </div>

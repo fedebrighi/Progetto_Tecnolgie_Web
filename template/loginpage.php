@@ -26,7 +26,7 @@
                                 <input type="password" name="password" class="form-control pe-5" id="password"
                                     placeholder="Inserisci una password" required />
                                 <span class="input-group-text bg-white">
-                                    <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
+                                    <em class="bi bi-eye toggle-password" style="cursor: pointer;"></em>
                                 </span>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
                     <aside class="border border-secondary rounded p-4 text-center">
-                        <h2 class="text-warning mb-4"><i class="bi bi-person-plus"></i> Prima volta sul sito?</h2>
+                        <h2 class="text-warning mb-4"><em class="bi bi-person-plus"></em> Prima volta sul sito?</h2>
                         <form>
                             <button type="button" class="btn w-100 fw-bold"
                                 onclick="window.location.href='regCliente.php';">Registrati!</button>

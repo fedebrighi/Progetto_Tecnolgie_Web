@@ -24,27 +24,27 @@
                     <li class="nav-item text-center">
                         <a class=" <?php isActive("homepage.php"); ?> nav-link text-secondary d-flex flex-column align-items-center"
                             href="homepage.php">
-                            <i class="bi bi-house"></i>
+                            <em class="bi bi-house"></em>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="nav-item text-center">
                         <a class=" <?php isActive("catalogo_prodotti.php"); ?> nav-link text-secondary d-flex flex-column align-items-center"
                             href="catalogo_prodotti.php">
-                            <i class="bi bi-shop-window"></i>
+                            <em class="bi bi-shop-window"></em>
                             <span>Prodotti</span>
                         </a>
                     </li>
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                         <li class="nav-item text-center">
                             <a class=" <?php isActive("carrello.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
-                                <i class="bi bi-cart3"></i>
+                                <em class="bi bi-cart3"></em>
                                 <span>Carrello</span>
                             </a>
                         </li>
                         <li class="nav-item text-center">
                             <a class=" <?php isActive("preferiti.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
-                                <i class="bi bi-heart"></i>
+                                <em class="bi bi-heart"></em>
                                 <span>Preferiti</span>
                             </a>
                         </li>
@@ -52,7 +52,7 @@
                     <?php if (!isset($_SESSION["username"])): ?>
                         <li class="nav-item text-center">
                             <a class=" <?php isActive("login.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="login.php">
-                                <i class="bi bi-box-arrow-in-right"></i>
+                                <em class="bi bi-box-arrow-in-right"></em>
                                 <span>Login</span>
                             </a>
                         </li>
@@ -61,25 +61,25 @@
                         <li class="nav-item dropdown text-center">
                             <a class="nav-link dropdown-toggle text-secondary d-flex flex-column align-items-center"
                                 href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="bi bi-person"></i>
+                                <em class="bi bi-person"></em>
                                 <span>Area Personale</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
                                 <?php if ($_SESSION["username"] == $_SESSION["venditore"]["username"]): ?>
                                     <li><a class="<?php isActive("venditore.php"); ?> dropdown-item text-light text-center"
-                                            href="venditore.php"><i class="bi bi-archive"></i><span>Management</span></a></li>
+                                            href="venditore.php"><em class="bi bi-archive"></em><span>Management</span></a></li>
                                 <?php else: ?>
                                     <li><a class="<?php isActive("utente.php"); ?> dropdown-item text-light text-center"
-                                            href="utente.php"><i class="bi bi-person-circle"></i><span>Profilo</span></a></li>
+                                            href="utente.php"><em class="bi bi-person-circle"></em><span>Profilo</span></a></li>
                                 <?php endif; ?>
                                 <li><a class="<?php isActive("logout.php"); ?> dropdown-item text-light text-center"
-                                        href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
+                                        href="logout.php"><em class="bi bi-box-arrow-right"></em><span>Logout</span></a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-secondary d-flex align-items-center position-relative"
                                 href="notifiche.php">
-                                <i class="bi bi-bell"></i>
+                                <em class="bi bi-bell"></em>
                                 <span
                                     class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle"
                                     style="display: none;">0</span>
@@ -98,13 +98,13 @@
         <div class="container">
             <div class="row text-center mt-3">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold" style="color: #333333;">PHPINT</h5>
+                    <h3 class="fw-bold" style="color: #333333;">PHPINT</h3>
                     <p style="color: #333333;">Via Aspini 2 - 47122 Forlì FC, Italia</p>
                     <p style="color: #333333;">Email: supporto@phpint.it</p>
                     <p style="color: #333333;">Tel: +39 349 313 0068</p>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold" style="color: #333333;">SU DI NOI</h5>
+                    <h3 class="fw-bold" style="color: #333333;">SU DI NOI</h3>
                     <ul class="list-unstyled">
                         <li><a href="paginainformativa.php#chi-siamo" class="text-decoration-none"
                                 style="color: #333333; text-decoration: underline;">Chi siamo?</a></li>
@@ -115,23 +115,32 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="fw-bold" style="color: #333333;">SEGUICI SU</h5>
+                    <h3 class="fw-bold" style="color: #333333;">SEGUICI SU</h3>
                     <div class="d-flex justify-content-center mb-3">
-                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;"><i
-                                class="bi bi-instagram"></i></a>
-                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;"><i
-                                class="bi bi-twitter"></i></a>
-                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;"><i
-                                class="bi bi-youtube"></i></a>
+                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;" title="Facebook">
+                            <em class="bi bi-facebook" aria-hidden="true"></em>
+                            <span class="visually-hidden">Facebook</span>
+                        </a>
+                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;" title="Instagram">
+                            <em class="bi bi-instagram" aria-hidden="true"></em>
+                            <span class="visually-hidden">Instagram</span>
+                        </a>
+                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;" title="Twitter">
+                            <em class="bi bi-twitter" aria-hidden="true"></em>
+                            <span class="visually-hidden">Twitter</span>
+                        </a>
+                        <a href="#" class="mx-2" style="color: #333333; font-size: 1.5rem;" title="YouTube">
+                            <em class="bi bi-youtube" aria-hidden="true"></em>
+                            <span class="visually-hidden">YouTube</span>
+                        </a>
                     </div>
-                    <h5 class="fw-bold" style="color: #333333;">PAGAMENTI ACCETTATI</h5>
+
+                    <h3 class="fw-bold" style="color: #333333;">PAGAMENTI ACCETTATI</h3>
                     <div class="d-flex justify-content-center">
-                        <i class="bi bi-credit-card mx-2" style="color: #333333; font-size: 1.5rem;"></i>
-                        <i class="bi bi-apple mx-2" style="color: #333333; font-size: 1.5rem;"></i>
-                        <i class="bi bi-google mx-2" style="color: #333333; font-size: 1.5rem;"></i>
-                        <i class="bi bi-paypal mx-2" style="color: #333333; font-size: 1.5rem;"></i>
+                        <em class="bi bi-credit-card mx-2" style="color: #333333; font-size: 1.5rem;"></em>
+                        <em class="bi bi-apple mx-2" style="color: #333333; font-size: 1.5rem;"></em>
+                        <em class="bi bi-google mx-2" style="color: #333333; font-size: 1.5rem;"></em>
+                        <em class="bi bi-paypal mx-2" style="color: #333333; font-size: 1.5rem;"></em>
                     </div>
                 </div>
             </div>

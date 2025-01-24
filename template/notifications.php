@@ -6,7 +6,7 @@
         </div>
         <?php if (empty($templateParams["notifiche"])): ?>
             <div class="text-center my-5">
-                <i class="bi bi-bell-slash text-danger" style="font-size: 6rem;"></i> <!-- Icona notifiche vuote -->
+                <em class="bi bi-bell-slash text-danger" style="font-size: 6rem;"></em> <!-- Icona notifiche vuote -->
                 <h3 class="text-warning mt-4">Non hai nuove notifiche!</h3>
                 <p class="fs-4">Torna più tardi per verificare se ci sono aggiornamenti.</p>
             </div>
@@ -24,7 +24,7 @@
                                         <button type="submit" class="btn btn-sm bi bi-info-circle" style="width: 100%;"></button>
                                     </form>
                                     <button class="btn btn-sm" onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
-                                        <i class="bi bi-check-circle me-1"></i>
+                                        <em class="bi bi-check-circle me-1"></em>
                                     </button>
                                 </div>
                             </div>

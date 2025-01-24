@@ -1,24 +1,28 @@
 function salvaModificheProdotto() {
+    // Trova l'ID del prodotto dal modale aperto
     const modaleAperto = document.querySelector('.modal.show');
-    const idProdotto = modaleAperto.id.split('-')[1];
+    const codProdotto = modaleAperto.id.split('-')[1];
 
-    const nome = modaleAperto.querySelector('#modificaNome').value;
-    const alc = modaleAperto.querySelector('#modificaAlc').value;
-    const prezzo = modaleAperto.querySelector('#modificaPrezzo').value;
-    const descrizione = modaleAperto.querySelector('#descrizioneProdotto').value;
-    const listaIngredienti = modaleAperto.querySelector('#modificaListaIngredienti').value;
-    const glutenFree = modaleAperto.querySelector('#glutenFree').checked ? 1 : 0;
+    // Recupera i dati dal form corrispondente, usando gli ID dinamici
+    const nome = modaleAperto.querySelector(`#modificaNome-${codProdotto}`).value;
+    const alc = modaleAperto.querySelector(`#modificaAlc-${codProdotto}`).value;
+    const prezzo = modaleAperto.querySelector(`#modificaPrezzo-${codProdotto}`).value;
+    const descrizione = modaleAperto.querySelector(`#descrizioneProdotto-${codProdotto}`).value;
+    const listaIngredienti = modaleAperto.querySelector(`#modificaListaIngredienti-${codProdotto}`).value;
+    const glutenFree = modaleAperto.querySelector(`#glutenFree-${codProdotto}`).checked ? 1 : 0;
 
+    // Creazione del payload
     const dati = {
-        idProdotto: idProdotto,
+        codProdotto: codProdotto,
         nome: nome,
         alc: alc,
         prezzo: prezzo,
         descrizione: descrizione,
         listaIngredienti: listaIngredienti,
-        glutenFree: glutenFree
+        glutenFree: glutenFree,
     };
 
+    // Invia i dati al server tramite fetch
     fetch('ajax/api-updateProduct.php', {
         method: 'POST',
         headers: {
@@ -30,7 +34,7 @@ function salvaModificheProdotto() {
         .then(data => {
             if (data.success) {
                 alert('Modifiche salvate con successo!');
-                location.reload();
+                location.reload(); // Ricarica la pagina per riflettere le modifiche
             } else {
                 alert('Errore nel salvataggio: ' + data.error);
             }

@@ -31,12 +31,12 @@
                                         onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
                                         <?php echo $templateParams['birra']['codProdotto']; ?>,
                                         document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)">
-                                        <i class="bi bi-cart me-2"></i> Aggiungi il prodotto al tuo Carrello
+                                        <em class="bi bi-cart me-2"></em> Aggiungi il prodotto al tuo Carrello
                                     </button>
                                 <?php else: ?>
                                     <button onclick="window.location.href='login.php';" class="btn w-100 w-sm-auto"
                                         style="font-weight: bold; padding: 0.5rem;">
-                                        <i class="bi bi-cart me-2"></i> Aggiungi il prodotto al tuo Carrello
+                                        <em class="bi bi-cart me-2"></em> Aggiungi il prodotto al tuo Carrello
                                     </button>
                                 <?php endif; ?>
                             </div>
@@ -45,8 +45,8 @@
                                     <button id="btn-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
                                         class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;"
                                         onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
-                                        <i id="icon-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
-                                            class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></i>
+                                        <em id="icon-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
+                                            class="bi <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'bi-heart-fill' : 'bi-heart'; ?>"></em>
                                         <span id="favorite-text-<?php echo $templateParams['birra']['codProdotto']; ?>">
                                             <?php echo (isset($templateParams["preferiti"]) && is_array($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'Rimuovi il prodotto dai tuoi preferiti' : 'Aggiungi il prodotto ai tuoi Preferiti'; ?>
                                         </span>
@@ -54,7 +54,7 @@
                                 <?php else: ?>
                                     <button onclick="window.location.href='login.php';" class="btn w-100 w-sm-auto"
                                         style="font-weight: bold; padding: 0.5rem;">
-                                        <i class="bi bi-heart me-2"></i> Aggiungi il prodotto ai tuoi Preferiti
+                                        <em class="bi bi-heart me-2"></em> Aggiungi il prodotto ai tuoi Preferiti
                                     </button>
                                 <?php endif; ?>
                             </div>
@@ -69,8 +69,8 @@
                                 <li class="border-bottom pb-3 mb-3">
                                     <div class="d-flex align-items-center mb-2">
                                         <?php for ($i = 1; $i <= 5; $i++): ?>
-                                            <i
-                                                class="bi <?php echo $i <= $recensione["valutazione"] ? 'bi-star-fill text-warning' : 'bi-star text-secondary'; ?>"></i>
+                                            <em
+                                                class="bi <?php echo $i <= $recensione["valutazione"] ? 'bi-star-fill text-warning' : 'bi-star text-secondary'; ?>"></em>
                                         <?php endfor; ?>
                                     </div>
                                     <div class="d-flex align-items-center mb-2">

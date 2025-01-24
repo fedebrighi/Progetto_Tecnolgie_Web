@@ -4,7 +4,7 @@
         <div class="row gy-4">
             <?php if (empty($templateParams["preferiti"])): ?>
                 <p class="text-center">
-                    <i class="bi bi-heartbreak text-danger" style="font-size: 8rem;"></i>
+                    <em class="bi bi-heartbreak text-danger" style="font-size: 8rem;"></em>
                     <br>
                     Non hai ancora aggiunto nessuna birra ai tuoi preferiti.
                 </p>
@@ -19,7 +19,7 @@
                         <button id="btn-favorite-<?php echo $birra['codProdotto']; ?>"
                             class="btn d-flex justify-content-center align-items-center gap-2 w-100"
                             style="height: 50px;" onclick="toggleFavorite(<?php echo $birra['codProdotto']; ?>)">
-                            <i id="icon-favorite-<?php echo $birra['codProdotto']; ?>" class="bi bi-heartbreak"></i>
+                            <em id="icon-favorite-<?php echo $birra['codProdotto']; ?>" class="bi bi-heartbreak"></em>
                             <span id="favorite-text-<?php echo $birra['codProdotto']; ?>">Rimuovi dai preferiti</span>
                         </button>
                     </div>

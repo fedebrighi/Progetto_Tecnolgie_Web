@@ -62,11 +62,11 @@
                                             <input type="password" name="password" class="form-control pe-5"
                                                 id="password" value="<?php echo $user["pw"]; ?>" required />
                                             <span class="input-group-text bg-white">
-                                                <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
+                                                <em class="bi bi-eye toggle-password" style="cursor: pointer;"></em>
                                             </span>
                                             <span class="input-group-text bg-white">
-                                                <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
-                                                    title="Genera password casuale"></i>
+                                                <em class="bi bi-shuffle generate-password" style="cursor: pointer;"
+                                                    title="Genera password casuale"></em>
                                             </span>
                                         </div>
                                         <div class="mt-2">
@@ -190,7 +190,7 @@
                                         value="<?php echo $i; ?>"
                                         data-codprodotto="<?php echo $codProdotto; ?>"
                                         hidden>
-                                    <i class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></i>
+                                    <em class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></em>
                                 </label>
                             <?php endfor; ?>
                         </div>

@@ -71,13 +71,13 @@
                                 $mezzeStelle = ($media - $stellePiene) >= 0.5 ? 1 : 0;
                                 $stelleVuote = 5 - ($stellePiene + $mezzeStelle);
                                 for ($i = 0; $i < $stellePiene; $i++) {
-                                    echo '<i class="bi bi-star-fill text-warning"></i>';
+                                    echo '<em class="bi bi-star-fill text-warning"></em>';
                                 }
                                 if ($mezzeStelle) {
-                                    echo '<i class="bi bi-star-half text-warning"></i>';
+                                    echo '<em class="bi bi-star-half text-warning"></em>';
                                 }
                                 for ($i = 0; $i < $stelleVuote; $i++) {
-                                    echo '<i class="bi bi-star text-warning"></i>';
+                                    echo '<em class="bi bi-star text-warning"></em>';
                                 }
                                 ?>
                                 <?php echo number_format($birra["mediaValutazione"], 2, ',', '.'); ?>

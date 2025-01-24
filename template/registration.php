@@ -36,11 +36,11 @@
                                 <input type="password" name="password" class="form-control pe-5" id="password"
                                     placeholder="Inserisci una password" required />
                                 <span class="input-group-text bg-white">
-                                    <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
+                                    <em class="bi bi-eye toggle-password" style="cursor: pointer;"></em>
                                 </span>
                                 <span class="input-group-text bg-white">
-                                    <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
-                                        title="Genera password casuale"></i>
+                                    <em class="bi bi-shuffle generate-password" style="cursor: pointer;"
+                                        title="Genera password casuale"></em>
                                 </span>
                             </div>
                             <small id="passwordStrength" class="form-text mt-2"></small>

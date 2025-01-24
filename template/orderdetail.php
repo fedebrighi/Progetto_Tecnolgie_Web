@@ -70,18 +70,18 @@
                 <div class="modal-body text-center">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="text-center">
-                            <i
-                                class="bi bi-box-seam fs-2 <?php echo $order['stato'] === 'In Preparazione' || $order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna' || $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></i>
+                            <em
+                                class="bi bi-box-seam fs-2 <?php echo $order['stato'] === 'In Preparazione' || $order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna' || $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></em>
                             <p class="mt-2">In preparazione</p>
                         </div>
                         <div class="text-center">
-                            <i
-                                class="bi bi-truck fs-2 <?php echo $order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna' || $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></i>
+                            <em
+                                class="bi bi-truck fs-2 <?php echo $order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna' || $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></em>
                             <p class="mt-2">Spedito</p>
                         </div>
                         <div class="text-center">
-                            <i
-                                class="bi bi-person-check fs-2 <?php echo $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></i>
+                            <em
+                                class="bi bi-person-check fs-2 <?php echo $order['stato'] === 'Consegnato' ? 'text-primary' : 'text-secondary'; ?>"></em>
                             <p class="mt-2">Consegnato</p>
                         </div>
                     </div>

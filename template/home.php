@@ -30,14 +30,14 @@
             <div class="col-md-6">
                 <div class="d-grid gap-3">
                     <a href="paginainformativa.php" class="btn btn-custom btn-lg fw-bold">
-                        <i class="bi bi-info-circle"></i> SCOPRI CHI SIAMO
+                        <em class="bi bi-info-circle"></em>  SCOPRI CHI SIAMO
                     </a>
                     <a <?php isActive("catalogo_prodotti.php"); ?> href="catalogo_prodotti.php"
                         class="btn btn-custom btn-lg fw-bold">
-                        <i class="bi bi-basket"></i> SCOPRI I NOSTRI PRODOTTI
+                        <em class="bi bi-basket"></em>  SCOPRI I NOSTRI PRODOTTI
                     </a>
                     <a <?php isActive("carrello.php"); ?> href="carrello.php" class="btn btn-custom btn-lg fw-bold">
-                        <i class="bi bi-cart-check"></i> CONTROLLA LO STATO DEL TUO CARRELLO
+                        <em class="bi bi-cart-check"></em>  CONTROLLA LO STATO DEL TUO CARRELLO
                     </a>
                 </div>
             </div>

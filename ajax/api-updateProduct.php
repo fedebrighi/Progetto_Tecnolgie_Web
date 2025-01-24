@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$idProdotto = $data['idProdotto'];
+$idProdotto = $data['codProdotto'];
 $nome = $data['nome'];
 $alc = $data['alc'];
 $prezzo = $data['prezzo'];

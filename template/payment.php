@@ -35,11 +35,11 @@
                             <input type="radio" id="standard" name="spedizione" value="standard" checked
                                 onclick="updateTotal()">
                             <label for="standard">
-                                <i class="bi bi-box"></i> Standard (7-10 giorni lavorativi)
+                                <em class="bi bi-box"></em> Standard (7-10 giorni lavorativi)
                             </label><br>
                             <input type="radio" id="rapida" name="spedizione" value="rapida" onclick="updateTotal()">
                             <label for="rapida">
-                                <i class="bi bi-lightning-charge"></i> Rapida (3-5 giorni, +€5)
+                                <em class="bi bi-lightning-charge"></em> Rapida (3-5 giorni, +€5)
                             </label>
                         </div>
                         <div class="mb-3">
@@ -50,35 +50,35 @@
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoCarta"
                                 value="carta" checked onchange="toggleCardForm()">
                             <label for="pagamentoCarta" class="form-check-label">
-                                <i class="bi bi-credit-card"></i> Carta di credito
+                                <em class="bi bi-credit-card"></em> Carta di credito
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoApplePay"
                                 value="applepay" onchange="toggleCardForm()">
                             <label for="pagamentoApplePay" class="form-check-label">
-                                <i class="bi bi-apple"></i> ApplePay
+                                <em class="bi bi-apple"></em> ApplePay
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoGooglePay"
                                 value="googlepay" onchange="toggleCardForm()">
                             <label for="pagamentoGooglePay" class="form-check-label">
-                                <i class="bi bi-google"></i> GooglePay
+                                <em class="bi bi-google"></em> GooglePay
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoPayPal"
                                 value="paypal" onchange="toggleCardForm()">
                             <label for="pagamentoPayPal" class="form-check-label">
-                                <i class="bi bi-paypal"></i> PayPal
+                                <em class="bi bi-paypal"></em> PayPal
                             </label>
                         </div>
                         <div class="form-check">
                             <input type="radio" class="form-check-input" name="pagamento" id="pagamentoContrassegno"
                                 value="contrassegno" onchange="toggleCardForm()">
                             <label for="pagamentoContrassegno" class="form-check-label">
-                                <i class="bi bi-truck"></i> Pagamento alla consegna
+                                <em class="bi bi-truck"></em> Pagamento alla consegna
                             </label>
                         </div>
                         <div id="creditCardForm" style="display: none;">
