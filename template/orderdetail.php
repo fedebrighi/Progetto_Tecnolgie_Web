@@ -1,5 +1,4 @@
 <main>
-    <!-- Intestazione -->
     <div class="container py-4">
         <div class="text-center mb-4">
             <?php $order = $templateParams["infoordine"]; ?>
@@ -39,8 +38,8 @@
             </div>
             <?php if ($order["scontoUsato"] > 0): ?>
                 <div class="mb-2">
-                <strong>Coupon Applicato:</strong> <?php echo $order["scontoUsato"]; ?> €</strong></h5>
-            </div>
+                    <strong>Coupon Applicato:</strong> <?php echo $order["scontoUsato"]; ?> €</strong></h5>
+                </div>
             <?php endif; ?>
             <?php if ($order["note"] != ""): ?>
                 <div class="mb-2">
@@ -69,7 +68,6 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <!-- Timeline Icone -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="text-center">
                             <i
@@ -87,7 +85,6 @@
                             <p class="mt-2">Consegnato</p>
                         </div>
                     </div>
-                    <!-- Barra di progresso -->
                     <div class="progress" style="height: 8px;">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?php
                                                                                                 if ($order['stato'] === 'In Preparazione')
@@ -108,9 +105,9 @@
                                                                                                                     else
                                                                                                                         echo '0';
                                                                                                                     ?>"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            aria-valuemin="0" aria-valuemax="100">
+                        </div>
                     </div>
-                    <!-- Messaggio di stato -->
                     <p class="mt-3">
                         <?php
                         if ($order['stato'] === 'In Preparazione') {
@@ -140,27 +137,19 @@
             ?>
                 <div
                     style="display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid #6c757d; padding-bottom: 1rem;">
-
-                    <!-- Immagine della birra -->
                     <img src="img/beers/<?php echo $birra["immagine"] ?>" alt="<?php echo $birra["nome"] ?>"
                         style="width: 150px; height: auto; display: block;" />
-
-                    <!-- Dettagli della birra -->
                     <div style="flex-grow: 1;">
                         <h6 style="margin: 0; font-size: 1.25rem;"><?php echo $birra["nome"] ?></h6>
                         <p style="margin: 0; font-size: 1rem;">alc. <?php echo $birra["alc"] ?>% vol</p>
                         <p style="margin: 0; font-weight: bold; font-size: 1rem;"><?php echo $birra["prezzo"] ?> €</p>
                     </div>
-
-                    <!-- Quantità -->
                     <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
                         <p style="margin: 0; font-size: 1rem;">Quantità: <?php echo $item["quantita"] ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-
-
 
         <?php if ($templateParams["clienteLoggato"]): ?>
             <div class="d-flex justify-content-center mt-4">
@@ -169,13 +158,10 @@
             </div>
         <?php else: ?>
             <?php if ($order["dataArrivo"] === NULL): ?>
-                <!-- Pulsante Modifica Stato -->
                 <div class="text-center mt-4">
                     <button class="btn " data-bs-toggle="modal"
                         data-bs-target="#modificaStatoModal-<?php echo $order['codiceOrdine']; ?>">Modifica Stato</button>
                 </div>
-
-                <!-- Modale -->
                 <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1"
                     aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                     <div class="modal-dialog">

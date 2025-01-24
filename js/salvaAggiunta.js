@@ -1,15 +1,12 @@
 function salvaAggiunta(codProdotto) {
-    // Ottieni il valore della quantità da aggiungere
     const quantityInput = document.getElementById(`quantity-${codProdotto}`);
     const quantity = parseInt(quantityInput.value);
 
-    // Controlla che la quantità sia valida
     if (isNaN(quantity) || quantity <= 0) {
         alert("Inserisci una quantità valida.");
         return;
     }
 
-    // Invia la richiesta POST al server
     fetch('ajax/api-aggiungiBirra.php', {
         method: 'POST',
         headers: {
@@ -24,7 +21,7 @@ function salvaAggiunta(codProdotto) {
         .then(data => {
             if (data.success) {
                 alert("Birra aggiunta al magazzino con successo!");
-                location.reload(); // Ricarica la pagina per aggiornare i dati
+                location.reload();
             } else {
                 alert("Errore durante l'aggiunta al magazzino: " + data.error);
             }

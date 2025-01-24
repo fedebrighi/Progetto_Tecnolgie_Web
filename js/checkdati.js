@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const capField = document.querySelector("#cap");
     const telefonoField = document.querySelector("#telefono");
 
-    // Validazione in tempo reale per CAP e Telefono
     if (capField) {
         capField.addEventListener("input", function () {
             capField.value = capField.value.replace(/[^0-9]/g, "").slice(0, 5);
@@ -18,46 +17,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Validazione al clic del pulsante di submit
     if (submitButton) {
         submitButton.addEventListener("click", function (event) {
-            let isValid = true; // Variabile per tracciare la validità del form
+            let isValid = true;
 
-            // Validazione Data di Nascita
             if (dataNascitaField) {
-                const dataNascita = new Date(dataNascitaField.value); // Valore della data inserita
-                const oggi = new Date(); // Data attuale
+                const dataNascita = new Date(dataNascitaField.value);
+                const oggi = new Date();
                 const maggioreEta = new Date(
                     oggi.getFullYear() - 18,
                     oggi.getMonth(),
                     oggi.getDate()
-                ); // Calcolo della data per i maggiorenni
+                );
 
                 if (dataNascita > maggioreEta) {
-                    isValid = false; // Il form non è valido
+                    isValid = false;
                     if (dataNascitaError) {
-                        dataNascitaError.classList.remove("d-none"); // Mostra il messaggio di errore
+                        dataNascitaError.classList.remove("d-none");
                     }
                 } else {
                     if (dataNascitaError) {
-                        dataNascitaError.classList.add("d-none"); // Nascondi il messaggio di errore
+                        dataNascitaError.classList.add("d-none");
                     }
                 }
             }
 
-            // Validazione CAP
             if (capField && !/^\d{5}$/.test(capField.value)) {
                 alert("Il CAP deve contenere esattamente 5 cifre.");
                 isValid = false;
             }
 
-            // Validazione Telefono
             if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
                 alert("Il numero di telefono deve contenere esattamente 10 cifre.");
                 isValid = false;
             }
 
-            // Blocca l'invio del form se i dati non sono validi
             if (!isValid) {
                 event.preventDefault();
             }

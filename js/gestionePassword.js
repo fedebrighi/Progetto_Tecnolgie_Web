@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordError = document.querySelector("#passwordError");
     const submitButton = document.querySelector("#submitButton");
 
-    // Mostra/nascondi password
     if (togglePasswordIcons.length > 0) {
         togglePasswordIcons.forEach(icon => {
             icon.addEventListener("click", function () {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Genera una password casuale
     if (generatePassword && passwordField) {
         generatePassword.addEventListener("click", function () {
             const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]";
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Valutare la forza della password
     if (passwordField) {
         passwordField.addEventListener("input", function () {
             const password = passwordField.value;
@@ -40,14 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Controllo prima dell'invio del form
     if (submitButton && passwordField) {
         submitButton.addEventListener("click", function (event) {
             const password = passwordField.value;
             const strength = calcolaForzaPassword(password);
 
             if (strength < 4) {
-                event.preventDefault(); // Blocca l'invio del form
+                event.preventDefault();
                 if (passwordError) {
                     passwordError.classList.remove("d-none");
                 }
@@ -59,11 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Funzione per aggiornare l'indicatore di forza della password
     function evaluatePasswordStrength(password) {
         const strength = calcolaForzaPassword(password);
 
-        // Aggiorna l'indicatore di forza
         if (passwordStrength) {
             if (strength <= 2) {
                 passwordStrength.textContent = "Molto debole";
@@ -84,15 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Funzione per calcolare la forza della password
 function calcolaForzaPassword(password) {
     let strength = 0;
 
-    if (password.length >= 8) strength++; // Lunghezza minima
-    if (/[a-z]/.test(password)) strength++; // Lettere minuscole
-    if (/[A-Z]/.test(password)) strength++; // Lettere maiuscole
-    if (/[0-9]/.test(password)) strength++; // Numeri
-    if (/[^a-zA-Z0-9]/.test(password)) strength++; // Caratteri speciali
+    if (password.length >= 8) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^a-zA-Z0-9]/.test(password)) strength++;
 
     return strength;
 }

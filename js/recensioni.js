@@ -1,4 +1,3 @@
-// Funzione per aggiungere una recensione
 function aggiungiRecensione(codProdotto) {
     const valutazione = document.getElementById(`valutazione-${codProdotto}`)?.value;
     const testo = document.getElementById(`testo-${codProdotto}`)?.value;
@@ -21,7 +20,7 @@ function aggiungiRecensione(codProdotto) {
                     <div class="alert alert-success" role="alert">
                         Recensione aggiunta con successo! Grazie per il tuo feedback.
                     </div>`;
-                setTimeout(() => confermaDiv.innerHTML = "", 5000); // Rimuove il messaggio dopo 5 secondi
+                setTimeout(() => confermaDiv.innerHTML = "", 5000);
 
             } else {
                 confermaDiv.innerHTML = `
@@ -39,7 +38,6 @@ function aggiungiRecensione(codProdotto) {
         });
 }
 
-// Funzione per modificare una recensione
 function modificaRecensione(codRecensione) {
     const valutazione = document.querySelector(`#valutazione-modifica-${codRecensione}`)?.value;
     const testo = document.querySelector(`#testo-modifica-${codRecensione}`)?.value;
@@ -52,7 +50,6 @@ function modificaRecensione(codRecensione) {
     inviaRecensione({ codRecensione, valutazione, testo }, "modifica");
 }
 
-// Funzione generale per inviare una recensione al server
 function inviaRecensione(dati, tipo) {
     fetch("ajax/api-review.php", {
         method: "POST",
@@ -74,7 +71,79 @@ function inviaRecensione(dati, tipo) {
         });
 }
 
-// Funzione per gestire il cambio di stato delle stelle
+function selectRating(value) {
+    const stars = document.querySelectorAll(".star-icon");
+
+    stars.forEach((star) => {
+        const starValue = parseInt(star.getAttribute("data-value"));
+        if (starValue <= value) {
+            star.classList.remove("text-secondary");
+            star.classList.add("text-warning");
+        } else {
+            star.classList.remove("text-warning");
+            star.classList.add("text-secondary");
+        }
+    });
+
+    const input = document.querySelector(`input[name="valutazione"][value="${value}"]`);
+    if (input) {
+        input.checked = true;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.querySelectorAll(".star-icon");
+
+    stars.forEach((star) => {
+        star.addEventListener("mouseenter", () => {
+            const value = parseInt(star.getAttribute("data-value"));
+            selectRating(value);
+        });
+
+        star.addEventListener("mouseleave", () => {
+            const selectedValue = parseInt(
+                document.querySelector('input[name="valutazione"]:checked')?.value || 0
+            );
+            selectRating(selectedValue);
+        });
+
+        star.addEventListener("click", () => {
+            const value = parseInt(star.getAttribute("data-value"));
+            selectRating(value);
+        });
+    });
+});
+
+document.getElementById('recensioneForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const codProdotto = document.getElementById('prodotto').value;
+    const valutazione = document.querySelector('input[name="valutazione"]:checked').value;
+    const testo = document.getElementById('testo').value;
+
+    fetch('ajax/api-review.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codProdotto, valutazione, testo }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            const confermaRecensione = document.getElementById('conferma-recensione');
+            if (data.success) {
+                confermaRecensione.innerHTML = '<p class="text-success">Grazie per la tua recensione!</p>';
+                setTimeout(() => {
+                    document.getElementById('recensioneForm').reset();
+                    location.reload();
+                }, 5000);
+            } else {
+                confermaRecensione.innerHTML = `<p class="text-danger">Errore: ${data.error}</p>`;
+            }
+        })
+        .catch(error => {
+            document.getElementById('conferma-recensione').innerHTML = '<p class="text-danger">Errore di rete. Riprova più tardi.</p>';
+        });
+});
+
 function selectRating(value) {
     const stars = document.querySelectorAll('.star-icon');
 
@@ -82,24 +151,20 @@ function selectRating(value) {
         const starValue = parseInt(star.getAttribute('data-value'), 10);
 
         if (starValue <= value) {
-            // Cambia le stelle selezionate in piene
             star.classList.remove('bi-star', 'text-secondary');
             star.classList.add('bi-star-fill', 'text-warning');
         } else {
-            // Cambia le stelle non selezionate in vuote
             star.classList.remove('bi-star-fill', 'text-warning');
             star.classList.add('bi-star', 'text-secondary');
         }
     });
 
-    // Imposta il valore della valutazione nell'input radio
     const input = document.querySelector(`input[name="valutazione"][value="${value}"]`);
     if (input) {
         input.checked = true;
     }
 }
 
-// Inizializza le interazioni solo dopo che il DOM è caricato
 document.addEventListener('DOMContentLoaded', () => {
     // Gestione delle stelle
     const stars = document.querySelectorAll('.star-icon');

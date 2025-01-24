@@ -1,7 +1,5 @@
 <main>
-    <!-- Contenuto principale -->
     <div class="container py-5">
-        <!-- Intestazione -->
         <div class="text-center mb-4">
             <img src="img/logo1.jpg" alt="PHPint Logo" class="img-fluid mb-3" style="width: 400px;">
             <h1 class="text-warning">BENVENUTO SU PHPint!</h1>
@@ -29,7 +27,7 @@
             </div>
         </section>
 
-
+        <!-- Sezione Birre in Evidenza -->
         <section class="py-5 bg-dark" id="birre-evidenza">
             <div class="container">
                 <h2 class="text-center text-warning mb-4">I NOSTRI BEST SELLERS</h2>
@@ -40,36 +38,28 @@
                                 <img src="img/beers/<?php echo htmlspecialchars($item["immagine"]); ?>" class="card-img-top"
                                     alt="<?php echo htmlspecialchars($item["nome"]); ?>">
                                 <div class="card-body d-flex flex-column">
-                                    <!-- Nome e Stelline -->
                                     <div class="d-flex align-items-center mb-2">
                                         <h5 class="card-title text-warning me-2 mb-0">
                                             <?php echo htmlspecialchars($item["nome"]); ?>
                                         </h5>
-
-                                        <!-- Stelline -->
                                         <div>
                                             <?php
                                             $media = $item["mediaValutazione"];
                                             $stellePiene = floor($media);
                                             $mezzeStelle = ($media - $stellePiene) >= 0.5 ? 1 : 0;
                                             $stelleVuote = 5 - ($stellePiene + $mezzeStelle);
-
-                                            // Mostra stelle piene
                                             for ($i = 0; $i < $stellePiene; $i++) {
                                                 echo '<i class="bi bi-star-fill text-warning"></i>';
                                             }
-                                            // Mostra mezza stella
                                             if ($mezzeStelle) {
                                                 echo '<i class="bi bi-star-half text-warning"></i>';
                                             }
-                                            // Mostra stelle vuote
                                             for ($i = 0; $i < $stelleVuote; $i++) {
                                                 echo '<i class="bi bi-star text-secondary"></i>';
                                             }
                                             ?>
                                         </div>
                                     </div>
-
                                     <p class="card-text">
                                         Alc. <?php echo htmlspecialchars(number_format($item["alc"], 1)); ?>% vol.
                                         <?php echo htmlspecialchars($item["descrizione"]); ?>
@@ -142,7 +132,6 @@
                             </div>
                             <button type="submit" class="btn btn-warning w-100">Invia</button>
                         </form>
-                        <!-- Messaggio di conferma -->
                         <div id="confirmationMessage" class="alert alert-success mt-3 d-none text-center" role="alert">
                             Grazie per averci scritto, ti contatteremo presto!
                         </div>
@@ -219,19 +208,12 @@
 </main>
 
 <script>
-    // Funzione per gestire l'invio del modulo
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Previene il comportamento di invio predefinito del modulo
-
-        // Mostra il messaggio di conferma
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
         document.getElementById('confirmationMessage').classList.remove('d-none');
-
-        // Pulisce i campi del modulo
         document.getElementById('contactForm').reset();
-
-        // Simula il ricaricamento della pagina
-        setTimeout(function () {
+        setTimeout(function() {
             window.location.reload();
-        }, 2000); // Aspetta 2 secondi prima di ricaricare
+        }, 2000);
     });
 </script>

@@ -18,7 +18,7 @@ function eliminaProdotto(codProdotto) {
         .then(data => {
             if (data.trim() === "success") {
                 alert("Prodotto eliminato con successo!");
-                location.reload(); // Ricarica la pagina
+                location.reload();
             } else {
                 alert("Errore durante l'eliminazione del prodotto!");
             }

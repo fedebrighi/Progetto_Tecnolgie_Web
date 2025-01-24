@@ -1,5 +1,3 @@
-/* Layout Generale */
-
 body {
   display: flex;
   flex-direction: column;
@@ -30,7 +28,8 @@ body main h2 {
   font-weight: bold;
 }
 
-body p, body a {
+body p,
+body a {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +71,7 @@ h3 {
 
 .coupon-section table th,
 .coupon-section table td {
-  color: #FFCC99 !important; /* Forza il colore nelle celle della tabella */
+  color: #FFCC99 !important;
 }
 
 
@@ -85,7 +84,6 @@ footer {
   text-decoration: underline !important;
 }
 
-/* Pulsanti */
 button.btn {
   background-color: #FFCC99;
   color: #000;
@@ -120,8 +118,6 @@ button.btn:active {
   transform: scale(1.10);
   color: #000;
 }
-
-/* NAVBAR */
 
 .nav-link.active {
   display: flex;
@@ -163,7 +159,8 @@ button.btn:active {
 }
 
 .dropdown-menu {
-  text-align: center !important; /* Sovrascrive il text-align: left */
+  text-align: center !important;
+  /* Sovrascrive il text-align: left */
 }
 
 .badge#notification-count {
@@ -172,4 +169,3 @@ button.btn:active {
   position: relative;
   top: -2px;
 }
-

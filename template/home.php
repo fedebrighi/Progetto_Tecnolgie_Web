@@ -1,15 +1,12 @@
 <main>
     <div class="container py-5">
-        <!-- Titolo -->
         <div class="main-title text-center mb-5">
             <h1 class="display-1 fw-bold text-center">PHPint</h1>
             <p class="fs-2 fw-bold text-center">{WHEN CODING HITS HARD}</p>
         </div>
 
         <div class="row align-items-center">
-            <!-- Colonna Carosello -->
             <div class="col-md-6 text-center mb-4 mb-md-0">
-                <!-- Carousel -->
                 <div id="beerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner">
                         <?php foreach ($templateParams["birre"] as $index => $birra): ?>
@@ -65,5 +62,5 @@
                 </div>
             </div>
         </section>
-        <link href="css/carousel_style.css" rel="stylesheet">
 </main>
+<link href="css/carousel_style.css" rel="stylesheet">

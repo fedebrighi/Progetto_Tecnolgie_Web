@@ -102,18 +102,13 @@
                                 <small id="cvvError" class="text-danger"></small>
                             </div>
                         </div>
-                        <!-- Sezione Coupon -->
                         <div class="mb-3">
                             <label for="couponCode" class="form-label">Codice Coupon</label>
                             <input type="text" class="form-control" id="couponCode" name="couponCode"
                                 placeholder="Inserisci il codice coupon">
                         </div>
                         <button type="button" class="btn" id="applyCouponButton">Applica Coupon</button>
-
-                        <!-- Messaggio di conferma -->
                         <div id="couponMessage" class="alert d-none mt-3 text-center"></div>
-
-
                         <div class="text-center my-4">
                             <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"] ?> €</h4>
                         </div>

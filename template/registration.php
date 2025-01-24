@@ -35,33 +35,28 @@
                             <div class="input-group">
                                 <input type="password" name="password" class="form-control pe-5" id="password"
                                     placeholder="Inserisci una password" required />
-                                <!-- Icona per mostrare/nascondere la password -->
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
                                 </span>
-                                <!-- Pulsante per generare una password casuale -->
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
                                         title="Genera password casuale"></i>
                                 </span>
                             </div>
-                            <!-- Indicatore della forza della password -->
                             <small id="passwordStrength" class="form-text mt-2"></small>
                         </div>
-
-                        <!-- Messaggio di errore -->
                         <div class="alert alert-danger d-none" id="passwordError">
                             La password deve essere almeno "Forte" per procedere con la registrazione.
                         </div>
                         <div class="mb-2">
-                                        <label for="dataNascita" class="form-label fs-6">Data di
-                                            Nascita:</label>
-                                        <input type="date" name="dataNascita" class="form-control" id="dataNascita"
-                                            required />
-                                    </div>
-                                    <div class="alert alert-danger d-none" id="dataNascitaError">
-                                        Devi essere maggiorenne per registrarti!
-                                    </div>
+                            <label for="dataNascita" class="form-label fs-6">Data di
+                                Nascita:</label>
+                            <input type="date" name="dataNascita" class="form-control" id="dataNascita"
+                                required />
+                        </div>
+                        <div class="alert alert-danger d-none" id="dataNascitaError">
+                            Devi essere maggiorenne per registrarti!
+                        </div>
                         <div class="row mb-3">
                             <div class="col-8">
                                 <label for="citta" class="form-label">Città:</label>

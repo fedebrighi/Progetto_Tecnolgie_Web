@@ -55,7 +55,7 @@
                     $birra = $dbh->getBeerDetails($item["codProdotto"]);
                     $itemTotal = $birra["prezzo"] * $item["quantita"];
                     $total += $itemTotal; // Somma il prezzo totale del prodotto
-                    ?>
+                ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
                         <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">

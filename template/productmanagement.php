@@ -18,11 +18,8 @@
                         </div>
                         <div class="ms-auto d-flex flex-column align-items-stretch">
                             <label for="quantity-<?php echo $birra['codProdotto']; ?>" class="form-label text-center">Quantità in magazzino: <?php echo $birra["quantitaMagazzino"]; ?></label>
-                            <!-- Bottone che apre il modale -->
                             <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
                                 data-bs-toggle="modal" data-bs-target="#aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>">Aggiungi</button>
-
-                            <!-- Modale unico per la birra -->
                             <div class="modal fade" id="aggiuntaBirraModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="aggiuntaBirraLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark">
@@ -47,12 +44,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Bottone che apre il modale -->
                             <button class="btn btn-sm mb-2 w-100" style="height: 40px; font-weight: bold; padding: 0.5rem;"
                                 data-bs-toggle="modal" data-bs-target="#modificaProdottoModal-<?php echo $birra['codProdotto']; ?>">Modifica</button>
-
-                            <!-- Modale unico per la birra -->
                             <div class="modal fade" id="modificaProdottoModal-<?php echo $birra['codProdotto']; ?>" tabindex="-1" aria-labelledby="modificaProdottoLabel-<?php echo $birra['codProdotto']; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark">

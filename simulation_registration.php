@@ -11,10 +11,10 @@
         body {
             display: flex;
             justify-content: center;
-            align-items: center; /* Centro verticale */
+            align-items: center;
             min-height: 100vh;
-            background-color: #212529; /* Sfondo scuro */
-            color: #FFCC99; /* Testo chiaro */
+            background-color: #212529;
+            color: #FFCC99;
             margin: 0;
         }
 
@@ -43,10 +43,9 @@
             color: #FFCC99
             text-decoration: underline;
         }
-
     </style>
+
     <script>
-        // Reindirizza alla pagina personale dopo 5 secondi
         setTimeout(function () {
             window.location.href = "login.php";
         }, 5000);
@@ -55,7 +54,6 @@
 
 <body>
     <div class="content">
-        <!-- Icona animata -->
         <div class="spinner-border text-warning" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>

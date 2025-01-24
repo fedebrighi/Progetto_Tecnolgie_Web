@@ -2,7 +2,6 @@
 require_once '../bootstrap.php';
 header('Content-Type: application/json');
 
-// Decodifica i dati inviati tramite POST
 $data = json_decode(file_get_contents('php://input'), true);
 
 $nome = $data['nome'] ?? null;
@@ -15,10 +14,8 @@ $cap = $data['cap'] ?? null;
 $telefono = $data['telefono'] ?? null;
 $dataNascita = $data['dataNascita'] ?? null;
 
-// Validazione dei dati
 if ($nome && $cognome && $email && $pw && $indirizzo && $citta && $cap && $telefono && $dataNascita) {
     try {
-        // Aggiorna i dati dell'utente nel database
         $dbh->updateUser($_SESSION['username'], $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita);
 
         echo json_encode(['success' => true]);
@@ -26,7 +23,6 @@ if ($nome && $cognome && $email && $pw && $indirizzo && $citta && $cap && $telef
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 } else {
-    // Per debug, mostra quali campi mancano o sono nulli
     echo json_encode([
         'success' => false,
         'error' => 'Dati mancanti o non validi.',

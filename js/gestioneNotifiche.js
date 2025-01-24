@@ -31,7 +31,7 @@ function checkNewNotifications() {
         .then(response => response.json())
         .then(data => {
             const badge = document.querySelector('.nav-item .badge');
-            const unreadCount = data.count; // Cambiato da unreadCount a count
+            const unreadCount = data.count;
 
             if (unreadCount > 0) {
                 if (!badge) {

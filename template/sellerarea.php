@@ -4,10 +4,7 @@
             <h2 class="text-warning">Benvenuto!</h2>
             <p>Gestisci i tuoi prodotti e monitora le vendite direttamente da questa pagina.</p>
         </div>
-
-        <!-- Sezioni principali -->
         <div class="row gy-4">
-            <!-- Gestione Prodotti -->
             <div class="col-md-6">
                 <div class="border border-secondary rounded p-4 bg-dark">
                     <h4 class="text-warning mb-3">Gestione Prodotti</h4>
@@ -18,8 +15,6 @@
                         onclick="window.location.href='gestioneprodotti.php'">Gestisci Prodotti</button>
                 </div>
             </div>
-
-            <!-- Monitoraggio Vendite -->
             <div class="col-md-6">
                 <div class="border border-secondary rounded p-4 bg-dark">
                     <h4 class="text-warning mb-3">Monitoraggio Vendite</h4>
@@ -29,8 +24,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Storico Ordini -->
         <div class="row gy-4 mt-4">
             <div class="col-md-12">
                 <div class="border border-secondary rounded p-4 bg-dark">

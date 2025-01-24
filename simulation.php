@@ -13,8 +13,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #212529; /* Sfondo scuro */
-            color: #FFCC99; /* Testo chiaro */
+            background-color: #212529;
+            color: #FFCC99;
             margin: 0;
         }
 
@@ -48,7 +48,6 @@
         }
     </style>
     <script>
-        // Reindirizza alla homepage dopo 5 secondi
         setTimeout(function () {
             window.location.href = "utente.php";
         }, 5000);
@@ -57,7 +56,6 @@
 
 <body>
     <div class="content">
-        <!-- Icona animata -->
         <div class="spinner-border text-warning" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
