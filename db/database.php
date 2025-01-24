@@ -517,7 +517,6 @@ class DatabaseHelper
 
     public function updateOrderStatus($codiceOrdine, $nuovoStato, $data, $dataPrevista): bool
     {
-        error_log("inizio update");
         $validStates = ["In Preparazione", "Spedito", "In Consegna", "Consegnato"];
         if (!in_array($nuovoStato, $validStates, true)) {
             return false; // Stato non valido
@@ -530,8 +529,6 @@ class DatabaseHelper
         if (!DateTime::createFromFormat('Y-m-d', $dataPrevista)) {
             return false; // Data prevista non valida
         }
-
-        error_log("primi controlli passati");
 
         // Query per aggiornare lo stato, le date e la data prevista
         $query = "UPDATE ORDINE SET
@@ -553,7 +550,6 @@ class DatabaseHelper
             $codiceOrdine
         );
 
-        error_log("faccio l'esecuzione");
         return $stmt->execute();
     }
 
@@ -653,7 +649,8 @@ class DatabaseHelper
         $stmt->execute();
     }
 
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $query = "SELECT * FROM UTENTE";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -661,21 +658,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createNotificationBroadcast($mittente, $message, $ref, $cod) {
-        error_log("entro");
+    public function createNotificationBroadcast($mittente, $message, $ref, $cod)
+    {
         try {
             $utenti = $this->getAllUsers();
-             $query ="INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
+            $query = "INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
                     VALUES (?, ?, ?, NOW(), ?,?)";
             $stmt = $this->db->prepare($query);
-            error_log("entro");
             foreach ($utenti as $utente) {
                 $stmt->bind_param("ssssi", $mittente, $utente['username'], $message, $ref, $cod);
                 $stmt->execute();
             }
-        $stmt->close();
-        }
-        catch (Exception $e) {
+            $stmt->close();
+        } catch (Exception $e) {
             error_log($e->getMessage());
         }
     }

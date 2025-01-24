@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Recupera i dati JSON inviati dalla richiesta
     $input = json_decode(file_get_contents("php://input"), true);
-    error_log("entro nell'isset");
     if (isset($input["codiceOrdine"]) && isset($input["nuovoStato"]) && isset($input["data"])) {
         $codiceOrdine = intval($input["codiceOrdine"]);
         $nuovoStato = $input["nuovoStato"];
@@ -13,8 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $dataPrevista = $input["dataPrevista"];
         $cliente = $dbh->getClientUsernameFromOrder($codiceOrdine);
         try {
-            error_log("chiamo update status");
-            // Aggiorna lo stato dell'ordine nel database
             $result = $dbh->updateOrderStatus($codiceOrdine, $nuovoStato, $data, $dataPrevista);
             $dbh->createNotification($_SESSION["username"], $cliente["username"], "Stato ordine aggiornato", "dettagliordine.php", $codiceOrdine);
             if ($result) {
@@ -27,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo json_encode(["success" => false, "error" => "Errore interno del server."]);
         }
     } else {
-        error_log("non entrato nell'isset");
         echo json_encode(["success" => false, "error" => "Dati non validi."]);
     }
 }

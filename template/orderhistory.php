@@ -6,7 +6,7 @@
                 <?php foreach ($templateParams["ordini"] as $order): ?>
                     <li class="list-group-item bg-dark  d-flex justify-content-between align-items-center ">
                         <span>
-                            <strong>Ordine #<?php echo $order["codiceOrdine"]; ?></strong><br/>
+                            <strong>Ordine #<?php echo $order["codiceOrdine"]; ?></strong><br />
                             <small>Totale: <?php echo $order["totale"]; ?>€</small>
                         </span>
                         <div class="d-flex flex-column flex-md-row align-items-center">
@@ -67,7 +67,7 @@
                             <?php endif; ?>
 
                             <form action="dettagliordine.php" method="POST" class="ms-md-2">
-                                <input type="hidden" name="codiceOrdine" value="<?php echo $order["codiceOrdine"]; ?>">
+                                <input type="hidden" name="codice" value="<?php echo $order["codiceOrdine"]; ?>">
                                 <button type="submit" class="btn btn-sm ">Dettagli</button>
                             </form>
                         </div>
