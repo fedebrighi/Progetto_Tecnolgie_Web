@@ -17,7 +17,7 @@ function aggiungiRecensione(codProdotto) {
                         Recensione aggiunta con successo! Grazie per il tuo feedback.
                     </div>`;
                 setTimeout(() => confermaDiv.innerHTML = "", 5000); // Rimuove il messaggio dopo 5 secondi
-                location.reload();
+
             } else {
                 confermaDiv.innerHTML = `
                     <div class="alert alert-danger" role="alert">
@@ -129,7 +129,10 @@ document.getElementById('recensioneForm').addEventListener('submit', function (e
             const confermaRecensione = document.getElementById('conferma-recensione');
             if (data.success) {
                 confermaRecensione.innerHTML = '<p class="text-success">Grazie per la tua recensione!</p>';
-                document.getElementById('recensioneForm').reset();
+                setTimeout(() => {
+                    document.getElementById('recensioneForm').reset(); // Resetta il form
+                    location.reload(); // Ricarica la pagina
+                }, 5000); // Timeout di 5 secondi
             } else {
                 confermaRecensione.innerHTML = `<p class="text-danger">Errore: ${data.error}</p>`;
             }

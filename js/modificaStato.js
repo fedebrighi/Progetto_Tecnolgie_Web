@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const ordineId = button.getAttribute("data-ordine-id");
             const selectedStato = document.querySelector(`input[name="stato-${ordineId}"]:checked`);
             const tipoSpedizione = button.getAttribute("data-tipo-spedizione");
-
             if (selectedStato) {
                 const stato = selectedStato.value;
 
@@ -19,14 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 let dataPrevista;
 
                 if (stato === "Spedito") {
-                    if (tipoSpedizione === "standard") {
-                        // Clona la data di oggi
-                        const dataPrevistaObj = new Date(oggi);
 
-                        // Aggiungi 5 giorni
+                    if (tipoSpedizione === "standard") {
+
+                        const dataPrevistaObj = new Date(oggi);
                         dataPrevistaObj.setDate(dataPrevistaObj.getDate() + 8);
 
-                        // Formatta la data in YYYY-MM-DD
                         const annoPrevisto = dataPrevistaObj.getFullYear();
                         const mesePrevisto = String(dataPrevistaObj.getMonth() + 1).padStart(2, '0');
                         const giornoPrevisto = String(dataPrevistaObj.getDate()).padStart(2, '0');
@@ -35,13 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         console.log("Data prevista:", dataPrevista); // Debug: Verifica la data prevista
                     }
                     else {
-                        // Clona la data di oggi
                         const dataPrevistaObj = new Date(oggi);
-
-                        // Aggiungi 5 giorni
                         dataPrevistaObj.setDate(dataPrevistaObj.getDate() + 4);
-
-                        // Formatta la data in YYYY-MM-DD
                         const annoPrevisto = dataPrevistaObj.getFullYear();
                         const mesePrevisto = String(dataPrevistaObj.getMonth() + 1).padStart(2, '0');
                         const giornoPrevisto = String(dataPrevistaObj.getDate()).padStart(2, '0');
