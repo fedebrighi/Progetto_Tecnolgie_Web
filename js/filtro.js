@@ -52,10 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterContainer = document.getElementById("filterContainer");
 
     filterButton.addEventListener("click", () => {
-        // Aggiungi/rimuovi la classe "show" per gestire l'apertura
         filterContainer.classList.toggle("show");
 
-        // Cambia il testo del pulsante in base allo stato
         if (filterContainer.classList.contains("show")) {
             filterButton.innerText = "Nascondi Filtri";
         } else {
@@ -63,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Funzioni esistenti
     updatePriceLabel();
     updateAlcoholLabel();
 });

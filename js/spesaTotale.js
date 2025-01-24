@@ -7,13 +7,12 @@ function aggiornaTotaleCarrello() {
         const quantitaInput = prodotto.querySelector('.quantita');
         let quantita = parseInt(quantitaInput.value, 10);
 
-        // Gestione valore vuoto o non valido
         if (isNaN(quantita) || quantita < 0) {
-            quantita = 0; // Imposta un valore predefinito
-            quantitaInput.value = 0; // Corregge il valore nel campo input
+            quantita = 0;
+            quantitaInput.value = 0;
         }
 
-        totale += prezzo * quantita; // Calcolo totale
+        totale += prezzo * quantita;
     });
 
     const totaleElement = document.querySelector('#totale-carrello');
@@ -49,10 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputsQuantita = document.querySelectorAll('.quantita');
 
     inputsQuantita.forEach(input => {
-        // Aggiorna il totale in tempo reale
+
         input.addEventListener('input', aggiornaTotaleCarrello);
 
-        // Aggiorna il database quando l'utente termina l'input
         input.addEventListener('blur', () => {
             const prodotto = input.closest('.carrello-item');
             const codProdotto = prodotto.dataset.id;
@@ -61,5 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    aggiornaTotaleCarrello(); // Calcola il totale all'inizio
+    aggiornaTotaleCarrello();
 });

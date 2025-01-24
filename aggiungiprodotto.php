@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$dbh->saveNewSalesInfo($codProdotto, $spesaUnitaria)) {
         echo "Errore nella creazione del prodotto!";
     }
-    // Salva la nuova birra
+
     if ($dbh->saveNewBeer($codProdotto, $codProdotto, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree)) {
         $dbh->createNotificationBroadcast($_SESSION["username"], "Nuova birra aggiunta al catalogo!", "prodotto_in_dettaglio.php", $codProdotto);
         header("Location: venditore.php");

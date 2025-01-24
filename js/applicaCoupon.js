@@ -6,11 +6,10 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
         return;
     }
 
-    // Crea una richiesta per il coupon
     fetch("ajax/api-applyCoupon.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({couponCode: couponCode}) // Passa il nuovo totale
+        body: JSON.stringify({couponCode: couponCode})
     })
     .then(response => response.json())
     .then(data => {
@@ -21,19 +20,16 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
             couponMessage.classList.add("alert-success");
             couponMessage.textContent = `Coupon applicato con successo! Hai risparmiato ${data.discount_amount} EUR.`;
 
-            // Controlla se l'elemento con id "totalAmount" esiste
             const totalAmountElement = document.getElementById("totale");
             if (totalAmountElement) {
                 const totalAmountText = totalAmountElement.innerText.trim();
 
-                // Verifica se totalAmountText è un numero valido
-                const currentTotal = parseFloat(totalAmountText.replace('€', '').trim()); // Rimuovi '€' e spazi
+                const currentTotal = parseFloat(totalAmountText.replace('€', '').trim());
 
                 if (!isNaN(currentTotal)) {
-                    // Calcola il nuovo totale, ma non permettere che scenda sotto zero
                     let newTotal = currentTotal - parseFloat(data.discount_amount);
                     if (newTotal < 0) {
-                        newTotal = 0; // Impedisce che il totale diventi negativo
+                        newTotal = 0;
                     }
 
                     totalAmountElement.innerText = newTotal.toFixed(2) + " €";

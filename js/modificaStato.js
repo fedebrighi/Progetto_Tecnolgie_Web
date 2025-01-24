@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const giornoPrevisto = String(dataPrevistaObj.getDate()).padStart(2, '0');
                         dataPrevista = `${annoPrevisto}-${mesePrevisto}-${giornoPrevisto}`;
 
-                        console.log("Data prevista:", dataPrevista); // Debug: Verifica la data prevista
+                        console.log("Data prevista:", dataPrevista);
                     }
                     else {
                         const dataPrevistaObj = new Date(oggi);
@@ -39,13 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         const giornoPrevisto = String(dataPrevistaObj.getDate()).padStart(2, '0');
                         dataPrevista = `${annoPrevisto}-${mesePrevisto}-${giornoPrevisto}`;
 
-                        console.log("Data prevista:", dataPrevista); // Debug: Verifica la data prevista
+                        console.log("Data prevista:", dataPrevista);
                     }
                 } else {
                     dataPrevista = data;
                 }
 
-                // Effettua la richiesta POST per aggiornare lo stato
                 fetch("ajax/api-updateOrderStatus.php", {
                     method: "POST",
                     headers: {

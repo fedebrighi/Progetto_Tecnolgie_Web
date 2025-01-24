@@ -10,11 +10,11 @@ function addToCart(codCarrello, codProdotto, quantita) {
         if (!response.ok) {
             throw new Error(`Errore HTTP: ${response.status}`);
         }
-        return response.text(); // Leggi come testo per diagnosticare eventuali errori
+        return response.text();
     })
     .then(responseText => {
         try {
-            const data = JSON.parse(responseText); // Prova a fare il parsing
+            const data = JSON.parse(responseText);
             if (data.success) {
                 alert('Prodotto aggiunto al carrello!');
             } else {
@@ -29,5 +29,5 @@ function addToCart(codCarrello, codProdotto, quantita) {
         console.error('Errore:', error);
         alert('Errore durante la comunicazione con il server.');
     });
-    
+
 }

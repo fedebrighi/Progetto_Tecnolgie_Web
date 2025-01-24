@@ -1,4 +1,3 @@
-// Funzione per creare un grafico dinamico
 function creaGraficoVendite(idCanvas, prodotti) {
     const canvas = document.getElementById(idCanvas);
 
@@ -6,22 +5,21 @@ function creaGraficoVendite(idCanvas, prodotti) {
     const labels = prodotti.map(prodotto => prodotto.nome);
     const data = prodotti.map(prodotto => prodotto.quantita);
 
-    // Genera colori accesi e brillanti
     const generateBrightColor = () => {
-        const r = Math.floor(Math.random() * 156) + 100; // Valore rosso tra 100 e 255
-        const g = Math.floor(Math.random() * 156) + 100; // Valore verde tra 100 e 255
-        const b = Math.floor(Math.random() * 156) + 100; // Valore blu tra 100 e 255
+        const r = Math.floor(Math.random() * 156) + 100;
+        const g = Math.floor(Math.random() * 156) + 100;
+        const b = Math.floor(Math.random() * 156) + 100;
         return { r, g, b };
     };
 
     const backgroundColors = prodotti.map(() => {
         const { r, g, b } = generateBrightColor();
-        return `rgba(${r}, ${g}, ${b}, 0.6)`; // Colori brillanti con opacità moderata
+        return `rgba(${r}, ${g}, ${b}, 0.6)`;
     });
 
     const borderColors = prodotti.map(() => {
         const { r, g, b } = generateBrightColor();
-        return `rgba(${r}, ${g}, ${b}, 1)`; // Colori brillanti completamente opachi
+        return `rgba(${r}, ${g}, ${b}, 1)`;
     });
 
     new Chart(ctx, {
@@ -41,27 +39,27 @@ function creaGraficoVendite(idCanvas, prodotti) {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        color: 'white' // Colore delle scritte sull'asse Y
+                        color: 'white'
                     },
                     grid: {
-                        color: 'white', // Colore della griglia orizzontale
-                        z: 1 // La griglia rimane sotto il grafico
+                        color: 'white',
+                        z: 1
                     }
                 },
                 x: {
                     ticks: {
-                        color: 'white' // Colore delle scritte sull'asse X
+                        color: 'white'
                     },
                     grid: {
-                        color: 'white', // Colore della griglia verticale
-                        z: 1 // La griglia rimane sotto il grafico
+                        color: 'white',
+                        z: 1
                     }
                 }
             },
             plugins: {
                 legend: {
                     labels: {
-                        color: 'white' // Colore della legenda
+                        color: 'white'
                     }
                 }
             },
@@ -70,9 +68,9 @@ function creaGraficoVendite(idCanvas, prodotti) {
                     backgroundColor: function(context) {
                         const index = context.dataIndex;
                         const color = backgroundColors[index];
-                        return color; // Mantiene visibili le barre sopra le righe
+                        return color;
                     },
-                    borderSkipped: false // Evita bordi mancanti
+                    borderSkipped: false
                 }
             }
         }

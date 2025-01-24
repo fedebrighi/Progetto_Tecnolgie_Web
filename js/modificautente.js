@@ -11,13 +11,11 @@ function salvaModifiche() {
         dataNascita: document.getElementById("dataNascita").value.trim(),
     };
 
-    // Controlla se i campi obbligatori sono vuoti
     if (!dati.nome || !dati.cognome || !dati.email || !dati.pw || !dati.indirizzo || !dati.citta || !dati.cap || !dati.telefono || !dati.dataNascita) {
         alert("Compila tutti i campi obbligatori!");
         return;
     }
 
-    // Verifica l'età
     const oggi = new Date();
     const dataNascita = new Date(dati.dataNascita);
     const maggioreEta = new Date(oggi.getFullYear() - 18, oggi.getMonth(), oggi.getDate()); // Calcolo della data per i maggiorenni
@@ -28,14 +26,12 @@ function salvaModifiche() {
         return;
     }
 
-    // Verifica la forza della password
     const strength = calcolaForzaPassword(dati.pw);
     if (strength < 4) {
         alert("La password è troppo debole!");
         return;
     }
 
-    // Se tutti i controlli sono validi, invia i dati al server
     fetch("ajax/api-updateUser.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
