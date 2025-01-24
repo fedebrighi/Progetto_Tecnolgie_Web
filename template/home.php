@@ -1,12 +1,3 @@
-<div class="age-verification-slider">
-    <div class="banner-content">
-        <h2>HAI 18 ANNI?</h2>
-        <p>La vendita di alcolici è vietata ai minorenni. Continuando la navigazione sul sito, dichiari di essere maggiorenne.</p>
-        <button class="yes-btn">Sì, Sono Maggiorenne</button>
-        <button class="no-btn">No, sono minorenne</button>
-    </div>
-</div>
-
 <main>
     <div class="container py-5">
         <!-- Titolo -->
