@@ -88,13 +88,13 @@
                 <?php endforeach; ?>
             </div>
 
-            <!-- Sezione Totale e Riepilogo -->
             <div class="mt-4 p-3 border border-secondary rounded">
                 <h5 class="mb-3 fs-4 text-warning">RIEPILOGO DELL'ORDINE:</h5>
                 <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                         <span class="fs-4">Tipologie di birre presenti nel carrello:</span>
-                        <span class="fs-4"><?php echo count($templateParams["elementicarrello"]); ?></span>
+                        <span class="fs-4"
+                            id="tipologie-carrello"><?php echo count($templateParams["elementicarrello"]); ?></span>
                     </li>
                     <li class="d-flex justify-content-between">
                         <span class="fs-4">Quantità totale di birre presenti nel carrello:</span>

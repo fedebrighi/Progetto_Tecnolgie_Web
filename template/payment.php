@@ -117,7 +117,7 @@
                         <div class="text-center my-4">
                             <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"] ?> €</h4>
                         </div>
-                        <button type="submit" class="btn w-100">Procedi al pagamento</button>
+                        <button type="submitButton" class="btn w-100">Procedi al pagamento</button>
                     </form>
                 </div>
             </div>

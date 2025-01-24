@@ -13,11 +13,7 @@ function aggiornaTotaleCarrello() {
             quantitaInput.value = 0; // Corregge il valore nel campo input
         }
 
-        const codProdotto = prodotto.dataset.id;
-        totale += prezzo * quantita;
-
-        // Aggiorna la quantità nel database
-        aggiornaQuantitaCartAPI(codProdotto, quantita);
+        totale += prezzo * quantita; // Calcolo totale
     });
 
     const totaleElement = document.querySelector('#totale-carrello');
@@ -39,18 +35,31 @@ function aggiornaQuantitaCartAPI(codProdotto, quantita) {
         if (!data.success) {
             console.error('Errore nell\'aggiornamento del database:', data.error);
             alert('Errore durante l\'aggiornamento del carrello. Riprova.');
+        } else {
+            console.log(`Aggiornamento riuscito per prodotto ${codProdotto}.`);
         }
     })
     .catch(error => {
         console.error('Errore durante la comunicazione con il server:', error);
         alert('Errore durante la comunicazione con il server. Controlla la tua connessione.');
     });
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.quantita').forEach(input => {
+    const inputsQuantita = document.querySelectorAll('.quantita');
+
+    inputsQuantita.forEach(input => {
+        // Aggiorna il totale in tempo reale
         input.addEventListener('input', aggiornaTotaleCarrello);
+
+        // Aggiorna il database quando l'utente termina l'input
+        input.addEventListener('blur', () => {
+            const prodotto = input.closest('.carrello-item');
+            const codProdotto = prodotto.dataset.id;
+            const quantita = parseInt(input.value, 10) || 0;
+            aggiornaQuantitaCartAPI(codProdotto, quantita);
+        });
     });
-    aggiornaTotaleCarrello();
+
+    aggiornaTotaleCarrello(); // Calcola il totale all'inizio
 });
