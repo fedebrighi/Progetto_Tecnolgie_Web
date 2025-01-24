@@ -1,5 +1,4 @@
 <main class="bg-dark">
-    <!-- Sezione Notifiche -->
     <div class="container py-5">
         <div class="text-center mb-4">
             <h2 class="text-warning">LE TUE NOTIFICHE</h2>
@@ -38,6 +37,5 @@
             </div>
         <?php endif; ?>
     </div>
-
     <script src="js/gestioneNotifiche.js"></script>
 </main>

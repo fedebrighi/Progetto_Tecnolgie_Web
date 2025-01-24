@@ -8,15 +8,13 @@ $quantita = $data["quantita"] ?? null;
 $carrello = $dbh->getCart($_SESSION["username"]);
 if (!empty($codProdotto) && is_numeric($quantita)) {
     try {
-        // Aggiorna la quantità nel database
         $dbh->updateCartQuantity($carrello["codCarrello"], $codProdotto, $quantita);
-        // Ricalcola il totale del carrello
         $elementiCarrello = $dbh->getCartFromUser($_SESSION["username"]);
         $totale = 0;
         foreach ($elementiCarrello as $item) {
             $birra = $dbh->getBeerDetails($item["codProdotto"]);
             $totale += $birra["prezzo"] * $item["quantita"];
-            $dbh->updateTotalCart( $totale, $_SESSION['username']);
+            $dbh->updateTotalCart($totale, $_SESSION['username']);
         }
 
         echo json_encode(["success" => true, "totale" => number_format($totale, 2)]);

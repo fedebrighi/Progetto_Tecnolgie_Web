@@ -14,7 +14,6 @@
 <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary">
         <div class="container">
-            <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="paginainformativa.php">
                 <img src="img/logo1.jpg" alt="PHPint Logo" width="130" class="me-2">
             </a>
@@ -45,26 +44,25 @@
 
                     <!-- Link Carrello -->
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
-                    <li class="nav-item text-center">
-                        <a <?php isActive("carrello.php"); ?>
-                            class="nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
-                            <i class="bi bi-cart3"></i>
-                            <span>Carrello</span>
-                        </a>
-                    </li>
+                        <li class="nav-item text-center">
+                            <a <?php isActive("carrello.php"); ?>
+                                class="nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
+                                <i class="bi bi-cart3"></i>
+                                <span>Carrello</span>
+                            </a>
+                        </li>
 
-                    <!-- Link Preferiti -->
-                    <li class="nav-item text-center">
-                        <a <?php isActive("preferiti.php"); ?>
-                            class="nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
-                            <i class="bi bi-heart"></i>
-                            <span>Preferiti</span>
-                        </a>
-                    </li>
+                        <!-- Link Preferiti -->
+                        <li class="nav-item text-center">
+                            <a <?php isActive("preferiti.php"); ?>
+                                class="nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
+                                <i class="bi bi-heart"></i>
+                                <span>Preferiti</span>
+                            </a>
+                        </li>
                     <?php endif; ?>
 
-                        <?php if (!isset($_SESSION["username"])): ?>
-                            <!-- Link Login -->
+                    <?php if (!isset($_SESSION["username"])): ?>
                         <li class="nav-item text-center">
                             <a <?php isActive("login.php"); ?>
                                 class="nav-link text-secondary d-flex flex-column align-items-center" href="login.php">

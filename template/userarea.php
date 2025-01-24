@@ -95,15 +95,15 @@
                                             value="<?php echo $user["citta"]; ?>" required />
                                     </div>
                                     <div class="mb-2">
-                                        <label for="modificaCAP" class="form-label text-warning fs-6">CAP</label>
-                                        <input type="number" class="form-control" id="modificaCAP"
-                                            value="<?php echo $user["cap"]; ?>" required />
+                                        <label for="cap" class="form-label text-warning fs-6">CAP</label>
+                                        <input type="number" class="form-control" id="cap"
+                                            value="<?php echo $user["cap"]; ?>" pattern="^\d{5}$" maxlength="5" required />
                                     </div>
                                     <div class="mb-2">
-                                        <label for="modificaTelefono"
+                                        <label for="telefono"
                                             class="form-label text-warning fs-6">Telefono</label>
-                                        <input type="number" class="form-control" id="modificaTelefono"
-                                            value="<?php echo $user["telefono"]; ?>" required />
+                                        <input type="number" class="form-control" id="telefono"
+                                            value="<?php echo $user["telefono"]; ?>" pattern="^\d{10}$" maxlength="10" required />
                                     </div>
                                     <div class="mb-2">
                                         <label for="dataNascita" class="form-label text-warning fs-6">Data di
@@ -222,4 +222,5 @@
     <script src="js/modificaUtente.js"></script>
     <script src="js/gestionePassword.js"></script>
     <script src="js/recensioni.js"></script>
+    <script src="js/checkdati.js"></script>
 </main>

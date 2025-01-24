@@ -27,7 +27,6 @@
                             <div class="input-group">
                                 <input type="password" name="password" class="form-control pe-5" id="password"
                                     placeholder="Inserisci una password" required />
-                                <!-- Icona per mostrare/nascondere la password -->
                                 <span class="input-group-text bg-white">
                                     <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
                                 </span>

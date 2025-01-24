@@ -6,8 +6,8 @@ function salvaModifiche() {
         pw: document.getElementById("password").value.trim(),
         indirizzo: document.getElementById("modificaIndirizzo").value.trim(),
         citta: document.getElementById("modificaCitta").value.trim(),
-        cap: document.getElementById("modificaCAP").value.trim(),
-        telefono: document.getElementById("modificaTelefono").value.trim(),
+        cap: document.getElementById("cap").value.trim(),
+        telefono: document.getElementById("telefono").value.trim(),
         dataNascita: document.getElementById("dataNascita").value.trim(),
     };
 
@@ -18,7 +18,7 @@ function salvaModifiche() {
 
     const oggi = new Date();
     const dataNascita = new Date(dati.dataNascita);
-    const maggioreEta = new Date(oggi.getFullYear() - 18, oggi.getMonth(), oggi.getDate()); // Calcolo della data per i maggiorenni
+    const maggioreEta = new Date(oggi.getFullYear() - 18, oggi.getMonth(), oggi.getDate());
 
 
     if (dataNascita > maggioreEta) {

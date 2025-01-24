@@ -2,13 +2,10 @@
 require_once '../bootstrap.php';
 header('Content-Type: application/json');
 
-// Decodifica il corpo della richiesta JSON
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Estrai il codice prodotto dalla richiesta
 $codProdotto = $data['codProdotto'] ?? null;
 
-// Controlla se l'utente è autenticato e se il codice prodotto è fornito
 if (!isset($_SESSION["username"]) || !$codProdotto) {
     echo json_encode([
         'success' => false,
@@ -46,4 +43,3 @@ try {
     error_log("Errore nella gestione dei preferiti per l'utente $username: " . $e->getMessage());
     exit();
 }
-?>

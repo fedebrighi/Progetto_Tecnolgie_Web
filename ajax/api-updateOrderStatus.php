@@ -3,7 +3,6 @@ require_once "../bootstrap.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // Recupera i dati JSON inviati dalla richiesta
     $input = json_decode(file_get_contents("php://input"), true);
     if (isset($input["codiceOrdine"]) && isset($input["nuovoStato"]) && isset($input["data"])) {
         $codiceOrdine = intval($input["codiceOrdine"]);

@@ -75,7 +75,7 @@ class DatabaseHelper
     public function createEmptyCart(): string
     {
         do {
-            $cartId = bin2hex(random_bytes(8)); // Genera un ID univoco
+            $cartId = bin2hex(random_bytes(8));
             $queryCheck = "SELECT COUNT(*) AS count FROM CARRELLO WHERE codCarrello = ?";
             $stmtCheck = $this->db->prepare($queryCheck);
             $stmtCheck->bind_param('s', $cartId);
@@ -104,9 +104,8 @@ class DatabaseHelper
 
     public function addProductToCart($codCarrello, $codProdotto, $quantita): bool
     {
-        $success = false; // Inizializza $success come false
+        $success = false;
         try {
-            // Verifica se il prodotto è già presente nel carrello
             $query = "SELECT quantita FROM COMPOSIZIONECARRELLO WHERE codCarrello = ? AND codProdotto = ?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii', $codCarrello, $codProdotto);
@@ -193,7 +192,7 @@ class DatabaseHelper
             $codCarrello
         );
 
-        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+        return $stmt->execute();
     }
 
     public function updateUser($username, $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
@@ -209,34 +208,30 @@ class DatabaseHelper
 
     public function getNextCod($tableName, $columnName)
     {
-        // Proteggi il nome della tabella e della colonna da SQL injection
         $tableName = $this->db->real_escape_string($tableName);
         $columnName = $this->db->real_escape_string($columnName);
 
-        // Prepara la query dinamica
         $query = "SELECT MAX($columnName) AS maxCod FROM $tableName";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        // Calcola il prossimo codice
         $nextCod = isset($row['maxCod']) ? $row['maxCod'] + 1 : 1;
 
         return $nextCod;
     }
 
-    public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti,$scontoUsato)
+    public function salvaOrdine($username, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $tipoPagamento, $totale, $prodotti, $scontoUsato)
     {
         $dataOrdine = date("Y-m-d");
         $dataPrevista = ($tipoSpedizione === "rapida") ? date("Y-m-d", strtotime("+5 days")) : date("Y-m-d", strtotime("+10 days"));
-        $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine"); // Genera un codice ordine unico
+        $codiceOrdine = $this->getNextCod("ORDINE", "codiceOrdine");
         if ($tipoSpedizione === "rapida") {
             $totale += 5;
         }
         $stato = "In Preparazione";
         try {
-            // Inserisco le informazioni relative all'ordine
             $stmt = $this->db->prepare("
                 INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo,scontoUsato)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
@@ -244,7 +239,6 @@ class DatabaseHelper
             $stmt->bind_param("sisssdsssissi", $username, $codiceOrdine, $dataOrdine, $dataPrevista, $stato, $totale, $tipoPagamento, $indirizzo, $citta, $cap, $note, $tipoSpedizione, $scontoUsato);
             $stmt->execute();
 
-            // Inserisco i prodotti ordinati
             foreach ($prodotti as $item) {
                 $stmt = $this->db->prepare("
                     INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
@@ -254,7 +248,6 @@ class DatabaseHelper
                 $stmt->execute();
             }
 
-            // Svuoto il carrello
             $codCarrello = $this->getCart($username)["codCarrello"];
             $stmt = $this->db->prepare("
                     DELETE FROM composizioneCarrello WHERE codCarrello = ?");
@@ -264,7 +257,6 @@ class DatabaseHelper
             $stmt->bind_param("i", $codCarrello);
             $stmt->execute();
 
-            // Elimino i prodotti ordinati dal magazzino
             foreach ($prodotti as $item) {
                 $stmt = $this->db->prepare("
                     UPDATE PRODOTTO
@@ -275,7 +267,6 @@ class DatabaseHelper
                 $stmt->execute();
             }
 
-            // Aggiorno le statistiche delle vendite
             foreach ($prodotti as $item) {
                 $quantita = $item["quantita"];
                 $ricavo = $this->getBeerDetails($item["codProdotto"])["prezzo"] * $quantita;
@@ -305,7 +296,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Restituisce true se viene trovato almeno un risultato, false altrimenti
         return $result->num_rows > 0;
     }
 
@@ -350,7 +340,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Restituisce tutti gli ordini come array associativo multidimensionale
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -363,7 +352,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Restituisce tutti gli ordini come array associativo multidimensionale
         return $result->fetch_assoc();
     }
 
@@ -375,7 +363,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Restituisce tutti gli ordini come array associativo multidimensionale
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -388,7 +375,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Restituisce tutti gli ordini come array associativo multidimensionale
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -400,7 +386,6 @@ class DatabaseHelper
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        // Calcola il nuovo codProdotto
         $nextCodProdotto = isset($row['maxCodProdotto']) ? $row['maxCodProdotto'] + 1 : 1;
 
         return $nextCodProdotto;
@@ -417,7 +402,7 @@ class DatabaseHelper
             $spesaUnitaria
         );
 
-        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+        return $stmt->execute();
     }
 
     public function saveNewBeer($codProdotto, $codInfo, $nome, $alc, $descrizione, $listaIngredienti, $prezzo, $quantita, $immagine, $glutenFree): bool
@@ -439,7 +424,7 @@ class DatabaseHelper
             $glutenFree
         );
 
-        return $stmt->execute(); // Restituisce true se l'inserimento ha avuto successo
+        return $stmt->execute();
     }
 
     public function updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree)
@@ -519,18 +504,17 @@ class DatabaseHelper
     {
         $validStates = ["In Preparazione", "Spedito", "In Consegna", "Consegnato"];
         if (!in_array($nuovoStato, $validStates, true)) {
-            return false; // Stato non valido
+            return false;
         }
 
         if (!DateTime::createFromFormat('Y-m-d', $data)) {
-            return false; // Data non valida
+            return false;
         }
 
         if (!DateTime::createFromFormat('Y-m-d', $dataPrevista)) {
-            return false; // Data prevista non valida
+            return false;
         }
 
-        // Query per aggiornare lo stato, le date e la data prevista
         $query = "UPDATE ORDINE SET
               stato = ?,
               dataSpedizione = CASE WHEN ? = 'Spedito' THEN ? ELSE dataSpedizione END,
@@ -565,22 +549,16 @@ class DatabaseHelper
 
     public function addReview($username, $codProdotto, $valutazione, $testo = null)
     {
-        // Prepara la query SQL
         $query = "INSERT INTO RECENSIONE (valutazione, testo, codProdotto, username) VALUES (?, ?, ?, ?)";
-        // Prepara lo statement
         $stmt = $this->db->prepare($query);
         if (!$stmt) {
             throw new Exception("Errore nella preparazione dello statement: " . $this->db->error);
         }
-        // Collega i parametri con type hint
         $stmt->bind_param("isis", $valutazione, $testo, $codProdotto, $username);
-        // Esegui lo statement
         if (!$stmt->execute()) {
             throw new Exception("Errore durante l'esecuzione dello statement: " . $stmt->error);
         }
-        // Verifica se è stata aggiunta almeno una riga
         $success = $stmt->affected_rows > 0;
-        // Chiudi lo statement
         $stmt->close();
         return $success;
     }
@@ -731,11 +709,9 @@ class DatabaseHelper
         HAVING totale_speso > 0
         ORDER BY totale_speso DESC
         LIMIT 3";
-
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-
         $users = [];
         while ($row = $result->fetch_assoc()) {
             $users[] = $row;
@@ -759,79 +735,52 @@ class DatabaseHelper
             ORDER BY
                 mediaValutazione DESC,
                 numeroRecensioni DESC
-            LIMIT 3
-        ";
-
+            LIMIT 3";
         $stmt = $this->db->prepare($query);
-
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-
         return [];
     }
 
     public function verifyAndApplyCoupon($username, $couponCode)
     {
-        // Prepara la query per cercare il coupon non utilizzato per l'utente
         $query = "SELECT * FROM coupons WHERE coupon_code = ? AND username = ? AND is_used = 0";
         $stmt = $this->db->prepare($query);
-
-        // Lega i parametri alla query
-        $stmt->bind_param("ss", $couponCode, $username); // "ss" indica che entrambi sono stringhe
-
-        // Esegui la query
+        $stmt->bind_param("ss", $couponCode, $username);
         $stmt->execute();
-
-        // Recupera il risultato della query
         $result = $stmt->get_result();
-
-        // Se c'è una riga, ritorna l'importo dello sconto come intero
         if ($result->num_rows > 0) {
-            $coupon = $result->fetch_assoc(); // Ottieni il primo (e unico) risultato
-            return (int) $coupon['discount_amount']; // Restituisci lo sconto come intero
+            $coupon = $result->fetch_assoc();
+            return (int) $coupon['discount_amount'];
         } else {
-            return 0; // Se non c'è un coupon valido, restituisci 0
+            return 0;
         }
     }
 
     public function markCouponAsUsed($couponCode)
     {
-        // Prepara la query per aggiornare il coupon come utilizzato
         $query = "UPDATE coupons SET is_used = 1 WHERE coupon_code = ?";
         $stmt = $this->db->prepare($query);
-
-        // Lega il parametro alla query
-        $stmt->bind_param("s", $couponCode); // "s" indica che il parametro è una stringa
-
-        // Esegui la query e restituisci il risultato
+        $stmt->bind_param("s", $couponCode);
         return $stmt->execute();
     }
 
     public function createDiscountCoupon($username, $totalAmount)
     {
-        // Calcola il 20% dell'importo totale speso
         $discountAmount = $totalAmount * 0.20;
-
-        // Genera un codice coupon univoco
-        $couponCode = "DISCOUNT_" . strtoupper(bin2hex(random_bytes(5))); // Usa un codice casuale
-
-        // Inserisci il coupon nel database
+        $couponCode = "DISCOUNT_" . strtoupper(bin2hex(random_bytes(5)));
         $query = "INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
               VALUES (?, ?, ?, 0)";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$username, $couponCode, $discountAmount]);
-
-        return $couponCode; // Restituisci il codice coupon per la conferma
+        return $couponCode;
     }
 
     public function getClientCoupons($username)
     {
-        // Prepara la query per recuperare tutti i coupon per l'utente specificato
         $query = "SELECT * FROM coupons WHERE username = ?";
-
-        // Prepara e esegue la query
         $stmt = $this->db->prepare($query);
         $stmt->execute([$username]);
 
@@ -841,12 +790,4 @@ class DatabaseHelper
         }
         return;
     }
-
-
-
-
-
-
-
-
 }

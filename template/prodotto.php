@@ -12,11 +12,11 @@
                     <?php echo $templateParams["birra"]["descrizione"] ?>
                 </p>
                 <p><strong>INGREDIENTI: <?php echo $templateParams["birra"]["listaIngredienti"]; ?></strong></p>
-
-                <!-- Contenitore per Quantità, Carrello e Preferiti -->
+                <p>
+                    Prezzo: €<?php echo $templateParams["birra"]["prezzo"] ?>
+                </p>
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
-                        <!-- Quantità -->
                         <div class="d-flex align-items-center">
                             <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
                                 class="form-label me-2">Quantità:</label>
@@ -24,9 +24,7 @@
                                 class="form-control me-2" style="width: 60px; height: 35px; border-radius: 5px;" min="1"
                                 value="1" />
                         </div>
-
                         <div id="button-container" class="d-flex flex-column gap-3">
-                            <!-- Aggiungi al Carrello -->
                             <div>
                                 <?php if (!empty($_SESSION["username"])): ?>
                                     <button class="btn w-100 w-sm-auto" style="font-weight: bold; padding: 0.5rem;"
@@ -42,8 +40,6 @@
                                     </button>
                                 <?php endif; ?>
                             </div>
-
-                            <!-- Aggiungi ai Preferiti -->
                             <div>
                                 <?php if (!empty($_SESSION["username"])): ?>
                                     <button id="btn-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>"
@@ -65,8 +61,6 @@
                         </div>
                     <?php endif; ?>
                 </div>
-
-                <!-- Riquadro per le recensioni -->
                 <div class="mt-5 border border-secondary rounded p-4">
                     <h4 class="text-warning">Recensioni</h4>
                     <?php if (!empty($templateParams["recensioni"])): ?>
@@ -80,13 +74,13 @@
                                         <?php endfor; ?>
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
-                                    <p class="mb-1">
-                                        <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?>
-                                    </p>
+                                        <p class="mb-1">
+                                            <?php echo htmlspecialchars($recensione["testo"] ?: "Nessun commento."); ?>
+                                        </p>
                                     </div>
                                     <div class="d-flex align-items-center mb-2">
-                                    <small class="text-muted">Da
-                                        <?php echo htmlspecialchars($recensione["username"]); ?></small>
+                                        <small class="text-muted">Da
+                                            <?php echo htmlspecialchars($recensione["username"]); ?></small>
                                     </div>
                                 </li>
                             <?php endforeach; ?>
@@ -100,6 +94,5 @@
         </div>
     </div>
 </main>
-
 <script src="js/aggiungiAlCarrello.js"></script>
 <script src="js/favourites.js"></script>

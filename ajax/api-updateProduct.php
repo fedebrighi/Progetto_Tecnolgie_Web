@@ -12,7 +12,6 @@ $descrizione = $data['descrizione'];
 $listaIngredienti = $data['listaIngredienti'];
 $glutenFree = $data['glutenFree'];
 
-// Esegui l'aggiornamento del prodotto nel database
 try {
     $dbh->updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree);
     echo json_encode(['success' => true]);

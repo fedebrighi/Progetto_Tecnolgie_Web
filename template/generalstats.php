@@ -71,21 +71,16 @@
                             <td><?php echo htmlspecialchars($birra["nome"]); ?></td>
                             <td>
                                 <?php
-                                // Calcola stelle piene, mezze e vuote
                                 $media = $birra["mediaValutazione"];
                                 $stellePiene = floor($media);
                                 $mezzeStelle = ($media - $stellePiene) >= 0.5 ? 1 : 0;
                                 $stelleVuote = 5 - ($stellePiene + $mezzeStelle);
-
-                                // Mostra stelle piene
                                 for ($i = 0; $i < $stellePiene; $i++) {
                                     echo '<i class="bi bi-star-fill text-warning"></i>';
                                 }
-                                // Mostra mezza stella
                                 if ($mezzeStelle) {
                                     echo '<i class="bi bi-star-half text-warning"></i>';
                                 }
-                                // Mostra stelle vuote
                                 for ($i = 0; $i < $stelleVuote; $i++) {
                                     echo '<i class="bi bi-star text-warning"></i>';
                                 }
@@ -98,9 +93,6 @@
                 </tbody>
             </table>
         </div>
-
-
-
         <div class="mt-5">
             <h4 class="text-warning mb-3">Vendite per Prodotto</h4>
             <table class="table table-dark table-bordered">
@@ -130,16 +122,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/stats.js"></script>
     <script>
-        // Recupera i dati dal backend come JSON
         const salesData = <?php echo json_encode($templateParams["info"]); ?>;
-
-        // Mappa i dati per il grafico
         const prodotti = salesData.map(item => ({
-            nome: item.nome, // Nome del prodotto
-            quantita: item.quantitaVendute // Quantità vendute
+            nome: item.nome,
+            quantita: item.quantitaVendute
         }));
-
-        // Chiama la funzione per creare il grafico
         creaGraficoVendite('graficoVendite', prodotti);
     </script>
 
