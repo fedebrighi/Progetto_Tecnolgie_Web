@@ -28,7 +28,7 @@
                     Modifica Dati
                 </button>
                 <div class="modal fade" id="modificaInfoUtenteModal" tabindex="-1"
-                    aria-labelledby="modificaInfoUtenteLabel" aria-hidden="true">
+                    aria-labelledby="modificaInfoUtenteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
@@ -56,10 +56,10 @@
                                             value="<?php echo $user["email"]; ?> " required />
                                     </div>
                                     <div class="mb-2">
-                                        <label for="modificaPassword"
+                                        <label for="password"
                                             class="form-label text-warning fs-6">Password</label>
                                         <div class="input-group">
-                                            <input type="password" name="modificaPassword" class="form-control pe-5"
+                                            <input type="password" name="password" class="form-control pe-5"
                                                 id="password" value="<?php echo $user["pw"]; ?>" required />
                                             <span class="input-group-text bg-white">
                                                 <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
@@ -87,13 +87,13 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="cap" class="form-label text-warning fs-6">CAP</label>
-                                        <input type="number" class="form-control" id="cap"
+                                        <input type="text" class="form-control" id="cap"
                                             value="<?php echo $user["cap"]; ?>" pattern="^\d{5}$" maxlength="5" required />
                                     </div>
                                     <div class="mb-2">
                                         <label for="telefono"
                                             class="form-label text-warning fs-6">Telefono</label>
-                                        <input type="number" class="form-control" id="telefono"
+                                        <input type="text" class="form-control" id="telefono"
                                             value="<?php echo $user["telefono"]; ?>" pattern="^\d{10}$" maxlength="10" required />
                                     </div>
                                     <div class="mb-2">
@@ -165,28 +165,38 @@
                 <p>Scegli un prodotto acquistato e lascia una recensione!</p>
                 <div id="conferma-recensione"></div>
                 <form id="recensioneForm">
-                    <div class="mb-3">
-                        <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
-                        <select id="prodotto" name="codProdotto" class="form-select" required>
-                            <?php foreach ($templateParams["prodottiNonRecensiti"] as $prodotto): ?>
-                                <option value="<?php echo htmlspecialchars($prodotto["codProdotto"]); ?>">
-                                    <?php echo htmlspecialchars($prodotto["nome"]); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="valutazione" class="form-label text-warning">Valutazione</label>
+                <div class="mb-3">
+                    <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
+                    <select id="prodotto" name="codProdotto" class="form-select" required>
+                        <option value="" disabled selected>Seleziona un prodotto</option> <!-- Opzione placeholder -->
+                        <?php foreach ($templateParams["prodottiNonRecensiti"] as $prodotto): ?>
+                            <option value="<?php echo $prodotto["codProdotto"]; ?>">
+                                <?php echo htmlspecialchars($prodotto["nome"], ENT_QUOTES, 'UTF-8'); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <fieldset>
+                        <legend class="form-label text-warning">Valutazione</legend>
                         <div id="rating" class="d-flex gap-2">
                             <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <label>
-                                    <input type="radio" id="valutazione-<?php echo $i; ?>" name="valutazione"
-                                        value="<?php echo $i; ?>" hidden>
+                                <label for="valutazione-<?php echo $i; ?>" class="d-flex align-items-center">
+                                    <input
+                                        type="radio"
+                                        id="valutazione-<?php echo $i; ?>"
+                                        name="valutazione"
+                                        value="<?php echo $i; ?>"
+                                        data-codprodotto="<?php echo $codProdotto; ?>"
+                                        hidden>
                                     <i class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></i>
                                 </label>
                             <?php endfor; ?>
                         </div>
-                    </div>
+                    </fieldset>
+                </div>
+
                     <div class="mb-3">
                         <label for="testo" class="form-label text-warning">Commento (opzionale)</label>
                         <textarea id="testo" name="testo" class="form-control" rows="3"></textarea>
@@ -197,7 +207,6 @@
                 <p>Non ci sono prodotti disponibili per la recensione.</p>
             <?php endif; ?>
         </div>
-    </div>
     </div>
     <link href="css/password_style.css" rel="stylesheet" />
     <script src="js/modificaUtente.js"></script>

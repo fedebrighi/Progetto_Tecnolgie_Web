@@ -40,7 +40,7 @@
 
         a {
             font-size: 1.5rem;
-            color: #FFCC99
+            color: #FFCC99;
             text-decoration: underline;
         }
     </style>

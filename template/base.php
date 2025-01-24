@@ -22,15 +22,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item text-center">
-                        <a <?php isActive("homepage.php"); ?>
-                            class="nav-link text-secondary d-flex flex-column align-items-center" href="homepage.php">
+                        <a class=" <?php isActive("homepage.php"); ?> nav-link text-secondary d-flex flex-column align-items-center"
+                            href="homepage.php">
                             <i class="bi bi-house"></i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="nav-item text-center">
-                        <a <?php isActive("catalogo_prodotti.php"); ?>
-                            class="nav-link text-secondary d-flex flex-column align-items-center"
+                        <a class=" <?php isActive("catalogo_prodotti.php"); ?> nav-link text-secondary d-flex flex-column align-items-center"
                             href="catalogo_prodotti.php">
                             <i class="bi bi-shop-window"></i>
                             <span>Prodotti</span>
@@ -38,15 +37,13 @@
                     </li>
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                         <li class="nav-item text-center">
-                            <a <?php isActive("carrello.php"); ?>
-                                class="nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
+                            <a class=" <?php isActive("carrello.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="carrello.php">
                                 <i class="bi bi-cart3"></i>
                                 <span>Carrello</span>
                             </a>
                         </li>
                         <li class="nav-item text-center">
-                            <a <?php isActive("preferiti.php"); ?>
-                                class="nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
+                            <a class=" <?php isActive("preferiti.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="preferiti.php">
                                 <i class="bi bi-heart"></i>
                                 <span>Preferiti</span>
                             </a>
@@ -54,8 +51,7 @@
                     <?php endif; ?>
                     <?php if (!isset($_SESSION["username"])): ?>
                         <li class="nav-item text-center">
-                            <a <?php isActive("login.php"); ?>
-                                class="nav-link text-secondary d-flex flex-column align-items-center" href="login.php">
+                            <a class=" <?php isActive("login.php"); ?> nav-link text-secondary d-flex flex-column align-items-center" href="login.php">
                                 <i class="bi bi-box-arrow-in-right"></i>
                                 <span>Login</span>
                             </a>
@@ -70,14 +66,13 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary">
                                 <?php if ($_SESSION["username"] == $_SESSION["venditore"]["username"]): ?>
-                                    <li><a <?php isActive("venditore.php"); ?> class="dropdown-item text-light text-center"
+                                    <li><a class="<?php isActive("venditore.php"); ?> dropdown-item text-light text-center"
                                             href="venditore.php"><i class="bi bi-archive"></i><span>Management</span></a></li>
                                 <?php else: ?>
-                                    <li><a <?php isActive("utente.php"); ?> class="dropdown-item text-light text-center"
+                                    <li><a class="<?php isActive("utente.php"); ?> dropdown-item text-light text-center"
                                             href="utente.php"><i class="bi bi-person-circle"></i><span>Profilo</span></a></li>
                                 <?php endif; ?>
-                                <hr class="dropdown-divider">
-                                <li><a <?php isActive("logout.php"); ?> class="dropdown-item text-light text-center"
+                                <li><a class="<?php isActive("logout.php"); ?> dropdown-item text-light text-center"
                                         href="logout.php"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a></li>
                             </ul>
                         </li>

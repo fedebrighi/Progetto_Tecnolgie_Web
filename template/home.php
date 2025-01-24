@@ -56,5 +56,6 @@
                 </div>
             </div>
         </section>
+    </div>
+    <link href="css/carousel_style.css" rel="stylesheet">
 </main>
-<link href="css/carousel_style.css" rel="stylesheet">
