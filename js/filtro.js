@@ -51,17 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterButton = document.getElementById("toggleFilterButton");
     const filterContainer = document.getElementById("filterContainer");
 
-    filterButton.addEventListener("click", () => {
-        filterContainer.classList.toggle("show");
+    // Aggiorna il testo del pulsante in base allo stato del collapse
+    filterContainer.addEventListener('shown.bs.collapse', () => {
+        filterButton.innerHTML = '<em class="bi bi-filter me-2"></em> Nascondi i Filtri sui Prodotti';
+    });
 
-        if (filterContainer.classList.contains("show")) {
-            filterButton.innerText = "Nascondi Filtri";
-        } else {
-            filterButton.innerText = "Mostra Filtri";
-        }
+    filterContainer.addEventListener('hidden.bs.collapse', () => {
+        filterButton.innerHTML = '<em class="bi bi-filter me-2"></em> Mostrami i Filtri sui Prodotti';
     });
 
     updatePriceLabel();
     updateAlcoholLabel();
 });
-

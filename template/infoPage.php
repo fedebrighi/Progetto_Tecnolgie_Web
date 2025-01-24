@@ -35,9 +35,9 @@
                                     alt="<?php echo htmlspecialchars($item["nome"]); ?>">
                                 <div class="card-body d-flex flex-column">
                                     <div class="d-flex align-items-center mb-2">
-                                        <h5 class="card-title text-warning me-2 mb-0">
+                                        <h3 class="card-title text-warning me-2 mb-0">
                                             <?php echo htmlspecialchars($item["nome"]); ?>
-                                        </h5>
+                                        </h3>
                                         <div>
                                             <?php
                                                 $media = $item["mediaValutazione"];
@@ -79,19 +79,19 @@
                 <div class="row gy-4 text-center">
                     <div class="col-md-4">
                         <div class="p-3">
-                            <h5 class="text-warning">INGREDIENTI BIO</h5>
+                            <h3 class="text-warning">INGREDIENTI BIO</h3>
                             <p>Solo materie prime biologiche e sostenibili.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-3">
-                            <h5 class="text-warning">CONTROLLO QUALITA'</h5>
+                            <h3 class="text-warning">CONTROLLO QUALITA'</h3>
                             <p>Ogni lotto è testato per garantire la perfezione del prodotto.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-3">
-                            <h5 class="text-warning">PRODUZIONE ARTIGIANALE</h5>
+                            <h3 class="text-warning">PRODUZIONE ARTIGIANALE</h3>
                             <p>Realizzate con passione dai nostri mastri birrai.</p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="col-md-6">
                     <div class="border border-secondary rounded p-4 bg-dark text-light">
                         <h2 class="text-warning text-center mb-4">CONTATTACI</h2>
-                        <h5 class="text-warning">Modulo di Contatto:</h5>
+                        <h3 class="text-warning">Modulo di Contatto:</h3>
                         <form id="contactForm">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome</label>

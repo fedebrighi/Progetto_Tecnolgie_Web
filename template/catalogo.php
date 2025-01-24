@@ -4,14 +4,18 @@
             <h1 class="text-warning">SCOPRI LE NOSTRE BIRRE ARTIGIANALI!</h1>
             <p>Scegli la tua preferita e abbinala ai tuoi momenti speciali.</p>
         </div>
-        <div class="mb-4">
-            <button id="toggleFilterButton" class="btn w-100 d-flex align-items-center justify-content-center" type="button"
+
+        <div class="container text-center mb-4">
+            <!-- Bottone per attivare il filtro -->
+            <button id="toggleFilterButton"
+                class="btn d-flex align-items-center justify-content-center mx-auto" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
                 aria-controls="filterContainer">
                 <em class="bi bi-filter me-2"></em>
-                Mostra i Filtri Disponibili (Prezzo, Alcol, Gluten Free)
+                Mostra i Filtri sui Prodotti
             </button>
         </div>
+
         <div class="collapse" id="filterContainer">
             <div class="card card-body bg-dark border-0">
                 <div class="row">

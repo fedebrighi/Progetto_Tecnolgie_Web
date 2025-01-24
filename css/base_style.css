@@ -42,7 +42,6 @@ body a span {
   font-size: 1.4rem;
 }
 
-
 body a:focus {
   outline-offset: 3px;
 }
@@ -68,12 +67,10 @@ h3 {
   background-color: #FFA07A !important;
 }
 
-
 .coupon-section table th,
 .coupon-section table td {
   color: #FFCC99 !important;
 }
-
 
 footer {
   padding: 20px 10px;
@@ -119,52 +116,75 @@ button.btn:active {
   color: #000;
 }
 
-.nav-link.active {
+.nav-link {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
   flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #FFCC99;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-link i {
-  font-size: 1.5rem;
+.nav-link em {
+  font-size: 2rem;
   margin-bottom: 0.2rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-link span {
-  font-size: 1.3rem;
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-link:hover {
-  color: #ffffff !important;
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
-.navbar-brand:hover {
-  color: #ffffff !important;
+.nav-link:hover em,
+.nav-link:hover span {
+  color: #ffffff;
 }
 
-.badge {
-  font-size: 0.8rem;
-  padding: 0.25em 0.5em;
+.nav-link.active {
+  color: #FFA07A;
+  font-weight: bold;
+  transform: scale(1.1);
 }
 
-.dropdown-menu .dropdown-item:hover {
-  background-color: #333333 !important;
-  color: #ffffff !important;
+.nav-link.active em,
+.nav-link.active span {
+  color: #FFA07A;
 }
+
 
 .dropdown-menu {
-  text-align: center !important;
-  /* Sovrascrive il text-align: left */
+  background-color: #333333 !important;
+  border: 1px solid #333333
+}
+
+.dropdown-item {
+  color: #FFFFFF !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #333333 !important;
+  color: #FFFFFF !important;
+}
+
+.dropdown-item.active {
+  background-color: #333333 !important;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .badge#notification-count {
-  font-size: 0.75rem;
+  font-size: 0.4rem;
   padding: 0.2rem 0.5rem;
   position: relative;
   top: -2px;

@@ -8,7 +8,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content bg-dark ">
                         <div class="modal-header border-secondary">
-                            <h5 class="modal-title text-warning" id="errorModalLabel">Errore!</h5>
+                            <h2 class="modal-title text-warning" id="errorModalLabel">Errore!</h2>
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -20,12 +20,12 @@
                                 <button type="submit" name="reset_error" class="btn">OK</button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
             <?php unset($_SESSION["error_message"]); ?>
         <?php endif; ?>
+
         <?php if (empty($templateParams["elementicarrello"])): ?>
             <div class="text-center my-5 d-flex flex-column justify-content-center align-items-center">
                 <em class="bi bi-cart-x text-danger" style="font-size: 6rem;"></em> <!-- Icona carrello vuoto -->
@@ -37,8 +37,8 @@
             </div>
         <?php else: ?>
             <div class="row gy-3">
-                <p class="fs-5">Controlla i prodotti selezionati e procedi al pagamento per completare
-                    l'acquisto.</p>
+                <h2 class="fs-4 mb-3">Controlla i prodotti selezionati e procedi al pagamento per completare
+                    l'acquisto.</h2>
                 <?php
                 $total = 0;
                 foreach ($templateParams["elementicarrello"] as $item):
@@ -56,7 +56,7 @@
                             </button>
                         </form>
                         <div class="flex-grow-1">
-                            <h6 class="m-0"><?php echo $birra["nome"] ?></h6>
+                            <h3 class="m-0"><?php echo $birra["nome"] ?></h3>
                             <p class="m-0">alc. <?php echo $birra["alc"] ?>% vol</p>
                             <p class="m-0 fw-bold prezzo"><?php echo $birra["prezzo"] ?> €</p>
                         </div>
@@ -78,7 +78,7 @@
                 <?php endforeach; ?>
             </div>
             <div class="mt-4 p-3 border border-secondary rounded">
-                <h5 class="mb-3 fs-4 text-warning">RIEPILOGO DELL'ORDINE:</h5>
+                <h4 class="mb-3 fs-4 text-warning">RIEPILOGO DELL'ORDINE:</h4>
                 <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                         <span class="fs-4">Tipologie di birre presenti nel carrello:</span>
