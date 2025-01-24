@@ -58,10 +58,13 @@
                     ?>
                     <div class="col-12 d-flex align-items-center border-bottom border-secondary pb-3 carrello-item"
                         data-id="<?php echo $item['codProdotto']; ?>">
-                        <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
-                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>"
-                                class="img-fluid me-3" style="width: 80px;">
-                        </a>
+                        <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">
+                            <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
+                            <button type="submit" class="p-0 border-0 bg-transparent">
+                                <img src="img/beers/<?php echo $birra['immagine']; ?>" alt="<?php echo $birra['nome']; ?>"
+                                    class="img-fluid me-3" style="width: 80px;">
+                            </button>
+                        </form>
                         <div class="flex-grow-1">
                             <h6 class="m-0"><?php echo $birra["nome"] ?></h6>
                             <p class="m-0">alc. <?php echo $birra["alc"] ?>% vol</p>

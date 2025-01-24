@@ -96,23 +96,24 @@
                                 <?php if (!empty($_SESSION["username"])): ?>
                                     <button class="btn btn-sm mb-2" style="height: 40px; font-weight: bold; padding: 0.5rem;"
                                         onclick="addToCart(<?php echo $templateParams['codCarrello']['codCarrello']; ?>,
-                                    <?php echo $birra['codProdotto']; ?>,
-                                    document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
-                                        Aggiungi
+        <?php echo $birra['codProdotto']; ?>,
+        document.getElementById('quantity-<?php echo $birra['codProdotto']; ?>').value)">
+                                        <i class="bi bi-cart-plus"></i> <!-- Icona del carrello -->
                                     </button>
                                 <?php else: ?>
                                     <button onclick="window.location.href='login.php';" class="btn btn-sm mb-2"
                                         style="height: 40px; font-weight: bold; padding: 0.5rem;">
-                                        Aggiungi
+                                        <i class="bi bi-cart-plus"></i> <!-- Icona del carrello -->
                                     </button>
                                 <?php endif; ?>
+
                             <?php endif; ?>
                             <form action="prodotto_in_dettaglio.php" method="POST" class="mb-2">
                                 <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>">
                                 <!-- Applicando lo stesso stile del pulsante Aggiungi -->
                                 <button type="submit" class="btn btn-sm mb-2"
                                     style="height: 40px; font-weight: bold; padding: 0.5rem; width: 100%;">
-                                    Scoprila
+                                    <i class="bi bi-info-circle"></i>
                                 </button>
                             </form>
                         </div>
