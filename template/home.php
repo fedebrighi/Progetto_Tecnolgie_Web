@@ -66,6 +66,4 @@
             </div>
         </section>
         <link href="css/carousel_style.css" rel="stylesheet">
-        <link href="css/slider_style.css" rel="stylesheet">
-        <script src="js/slider.js"></script>
 </main>
