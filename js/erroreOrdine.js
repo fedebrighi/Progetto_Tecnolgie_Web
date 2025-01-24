@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-    errorModal.show();
+    const errorModalElement = document.getElementById('errorModal');
+    if (errorModalElement) {
+        const errorModal = new bootstrap.Modal(errorModalElement);
+        errorModal.show();
+    }
 });

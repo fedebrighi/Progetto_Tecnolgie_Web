@@ -4,11 +4,22 @@ function aggiornaTotaleCarrello() {
 
     prodotti.forEach(prodotto => {
         const prezzo = parseFloat(prodotto.querySelector('.prezzo').textContent.replace('€', '').trim());
-        const quantita = parseInt(prodotto.querySelector('.quantita').value, 10);
+        const quantitaInput = prodotto.querySelector('.quantita');
+        let quantita = parseInt(quantitaInput.value, 10);
+
+        // Gestione valore vuoto o non valido
+        if (isNaN(quantita) || quantita < 0) {
+            quantita = 0; // Imposta un valore predefinito
+            quantitaInput.value = 0; // Corregge il valore nel campo input
+        }
+
         const codProdotto = prodotto.dataset.id;
         totale += prezzo * quantita;
+
+        // Aggiorna la quantità nel database
         aggiornaQuantitaCartAPI(codProdotto, quantita);
     });
+
     const totaleElement = document.querySelector('#totale-carrello');
     if (totaleElement) {
         totaleElement.textContent = totale.toFixed(2) + ' €';
