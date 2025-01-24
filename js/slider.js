@@ -23,3 +23,4 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+localStorage.removeItem('ageVerified');

@@ -157,7 +157,7 @@
 
     <!-- FAQ -->
     <section class="mb-5" id="faq">
-        <div class="container" style="max-width: 1300px;"> <!-- Contenitore centrale con larghezza limitata -->
+        <div class="container" style="max-width: 1300px;">
             <h2 class="text-warning text-center mb-4">FAQ</h2>
             <div class="accordion" id="faqAccordion">
                 <div class="accordion-item">
@@ -169,7 +169,7 @@
                     </h2>
                     <div id="collapse1" class="accordion-collapse collapse show">
                         <div class="accordion-body">
-                            Accettiamo pagamenti tramite carte di credito, PayPal e bonifici bancari.
+                            Accettiamo pagamenti tramite carte di credito, PayPal, GooglePay, ApplePay e pagamenti alla consegna.
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                     </h2>
                     <div id="collapse2" class="accordion-collapse collapse">
                         <div class="accordion-body">
-                            I tempi di spedizione variano tra 2 e 5 giorni lavorativi.
+                            I tempi di spedizione variano tra 3 e 10 giorni lavorativi in base al tipo di spedizione scelto.
                         </div>
                     </div>
                 </div>
@@ -204,13 +204,12 @@
                     <h2 class="accordion-header" id="faq4">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse4">
-                            Offrite sconti per ordini all'ingrosso?
+                            Offrite sconti o coupon?
                         </button>
                     </h2>
                     <div id="collapse4" class="accordion-collapse collapse">
                         <div class="accordion-body">
-                            Sì, contattaci direttamente per discutere sconti personalizzati per ordini di grandi
-                            dimensioni.
+                            Sì, con un ordine di almeno 20€ riceverai uno sconto del 20% su un nuovo ordine.
                         </div>
                     </div>
                 </div>

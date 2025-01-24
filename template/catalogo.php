@@ -7,7 +7,7 @@
 
         <!-- Bottone per il menu a tendina -->
         <div class="mb-4">
-            <button class="btn w-100 d-flex align-items-center justify-content-center" type="button"
+            <button id="toggleFilterButton" class="btn w-100 d-flex align-items-center justify-content-center" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
                 aria-controls="filterContainer">
                 <i class="bi bi-filter me-2"></i> <!-- Icona del filtro -->
