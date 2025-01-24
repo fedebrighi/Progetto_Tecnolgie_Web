@@ -1,5 +1,4 @@
 <main>
-    <!-- Intestazione -->
     <div class="container py-4">
         <div class="text-center mb-4">
             <h1 class="text-warning">PROFILO UTENTE</h1>
@@ -8,8 +7,6 @@
                 <strong><?php echo $user["nome"] . " " . $user["cognome"] . "!"; ?></strong>
             </p>
         </div>
-
-        <!-- Sezione Dati Personali -->
         <div class="border rounded p-4 mb-5">
             <h2 class="text-warning mb-3"> I tuoi dati personali</h2>
             <div class="mb-2">
@@ -25,14 +22,11 @@
             <div class="mb-2">
                 <strong>Telefono:</strong> <?php echo $user["telefono"]; ?>
             </div>
-
             <div class="text-center">
                 <button type="button" class="btn fw-bold" data-bs-toggle="modal"
                     data-bs-target="#modificaInfoUtenteModal">
                     Modifica Dati
                 </button>
-
-                <!-- Modale per modificare info utente -->
                 <div class="modal fade" id="modificaInfoUtenteModal" tabindex="-1"
                     aria-labelledby="modificaInfoUtenteLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -67,17 +61,14 @@
                                         <div class="input-group">
                                             <input type="password" name="modificaPassword" class="form-control pe-5"
                                                 id="password" value="<?php echo $user["pw"]; ?>" required />
-                                            <!-- Icona per vedere/nascondere la password -->
                                             <span class="input-group-text bg-white">
                                                 <i class="bi bi-eye toggle-password" style="cursor: pointer;"></i>
                                             </span>
-                                            <!-- Pulsante per generare una password casuale -->
                                             <span class="input-group-text bg-white">
                                                 <i class="bi bi-shuffle generate-password" style="cursor: pointer;"
                                                     title="Genera password casuale"></i>
                                             </span>
                                         </div>
-                                        <!-- Indicatore della forza della password -->
                                         <div class="mt-2">
                                             <small id="passwordStrength" class="form-text"></small>
                                         </div>
@@ -127,8 +118,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Ordini Recenti -->
         <div class="border rounded p-4">
             <h4 class="text-warning mb-3">Ordini Recenti</h4>
             <ul class="list-group bg-dark">
@@ -143,8 +132,6 @@
                 <?php endforeach; ?>
             </ul>
         </div>
-
-        <!-- Sezione Coupon Utente -->
         <div class="border rounded p-4 mt-5 coupon-section">
             <h4 class="text-warning mb-3">I tuoi Coupon</h4>
             <?php if (!empty($templateParams["coupons"])): ?>
@@ -172,17 +159,11 @@
                 <p>Non hai ancora nessun coupon disponibile.</p>
             <?php endif; ?>
         </div>
-
-
-
-
-
-        <!-- Lascia una Recensione -->
         <div class="border rounded p-4 mt-5">
             <h4 class="text-warning mb-3">Lascia una Recensione</h4>
             <?php if (!empty($templateParams["prodottiNonRecensiti"])): ?>
                 <p>Scegli un prodotto acquistato e lascia una recensione!</p>
-                <div id="conferma-recensione"></div> <!-- Spazio per il messaggio di conferma -->
+                <div id="conferma-recensione"></div>
                 <form id="recensioneForm">
                     <div class="mb-3">
                         <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
