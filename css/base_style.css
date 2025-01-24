@@ -69,6 +69,13 @@ h3 {
   background-color: #FFA07A !important;
 }
 
+
+.coupon-section table th,
+.coupon-section table td {
+  color: #FFCC99 !important; /* Forza il colore nelle celle della tabella */
+}
+
+
 footer {
   padding: 20px 10px;
   background-color: #FFCC99;

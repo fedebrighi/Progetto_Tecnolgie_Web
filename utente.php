@@ -22,6 +22,7 @@ $templateParams["nome"] = "userarea.php";
 $templateParams["cliente"] = $dbh->getClientByUsername($_SESSION["username"]);
 $templateParams["ordini"] = $dbh->getOrdersByClientUsername($_SESSION["username"]);
 $templateParams["prodottiNonRecensiti"] = $dbh->getProdottiNonRecensiti($_SESSION["username"]);
+$templateParams["coupons"] = $dbh->getClientCoupons($_SESSION["username"]);
 
 
 // Gestione recensioni
@@ -30,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["codProdotto"], $_POST
     $valutazione = intval($_POST["valutazione"]); // Converte la valutazione in intero
     $testo = isset($_POST["testo"]) ? trim($_POST["testo"]) : null; // Rimuove spazi inutili
     $username = $_SESSION["username"];
+
 
     // Validazione input
     if ($valutazione < 1 || $valutazione > 5) {

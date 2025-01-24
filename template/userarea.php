@@ -144,6 +144,39 @@
             </ul>
         </div>
 
+        <!-- Sezione Coupon Utente -->
+        <div class="border rounded p-4 mt-5 coupon-section">
+            <h4 class="text-warning mb-3">I tuoi Coupon</h4>
+            <?php if (!empty($templateParams["coupons"])): ?>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codice</th>
+                            <th>Importo Sconto</th>
+                            <th>Stato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($templateParams["coupons"] as $coupon): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($coupon["coupon_code"]); ?></td>
+                                <td><?php echo htmlspecialchars($coupon["discount_amount"]); ?> €</td>
+                                <td>
+                                    <?php echo $coupon["is_used"] == 1 ? '<span>Già Usato</span>' : '<span>Non Usato</span>'; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>Non hai ancora nessun coupon disponibile.</p>
+            <?php endif; ?>
+        </div>
+
+
+
+
+
         <!-- Lascia una Recensione -->
         <div class="border rounded p-4 mt-5">
             <h4 class="text-warning mb-3">Lascia una Recensione</h4>

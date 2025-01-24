@@ -4,7 +4,7 @@
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="border border-secondary rounded p-4">
                     <h1 class="text-center text-warning">Informazioni di Spedizione</h1>
-                    <h2 class="text-center  fs-5">Completa con i tuoi dati per procedere alla spedizione e
+                    <h2 class="text-center fs-5" style="color: #FFCC99">Completa con i tuoi dati per procedere alla spedizione e
                         al pagamento</h2>
                     <form method="POST" action="checkout.php">
                         <div class="mb-3">
@@ -15,8 +15,8 @@
                         <div class="row mb-3">
                             <div class="col-8">
                                 <label for="citta" class="form-label">Città:</label>
-                                <input type="text" name="citta" class="form-control" id="citta"
-                                    placeholder="Cesena" required />
+                                <input type="text" name="citta" class="form-control" id="citta" placeholder="Cesena"
+                                    required />
                             </div>
                             <div class="col-4">
                                 <label for="cap" class="form-label">CAP:</label>
@@ -102,6 +102,18 @@
                                 <small id="cvvError" class="text-danger"></small>
                             </div>
                         </div>
+                        <!-- Sezione Coupon -->
+                        <div class="mb-3">
+                            <label for="couponCode" class="form-label">Codice Coupon</label>
+                            <input type="text" class="form-control" id="couponCode" name="couponCode"
+                                placeholder="Inserisci il codice coupon">
+                        </div>
+                        <button type="button" class="btn" id="applyCouponButton">Applica Coupon</button>
+
+                        <!-- Messaggio di conferma -->
+                        <div id="couponMessage" class="alert d-none mt-3 text-center"></div>
+
+
                         <div class="text-center my-4">
                             <h4 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"] ?> €</h4>
                         </div>
@@ -116,6 +128,7 @@
     </script>
     <script src="js/checkdati.js"></script>
     <script src="js/spedizioneRapida.js"></script>
+    <script src="js/applicaCoupon.js"></script>
     <script src="js/spesaTotale.js"></script>
     <script src="js/cartaCredito.js"></script>
 </main>

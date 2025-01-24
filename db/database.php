@@ -653,7 +653,8 @@ class DatabaseHelper
         $stmt->execute();
     }
 
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $query = "SELECT * FROM UTENTE";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -661,11 +662,12 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createNotificationBroadcast($mittente, $message, $ref, $cod) {
+    public function createNotificationBroadcast($mittente, $message, $ref, $cod)
+    {
         error_log("entro");
         try {
             $utenti = $this->getAllUsers();
-             $query ="INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
+            $query = "INSERT INTO NOTIFICA (mittente, destinatario, messaggio, dataInvio, riferimento, codiceRiferimento)
                     VALUES (?, ?, ?, NOW(), ?,?)";
             $stmt = $this->db->prepare($query);
             error_log("entro");
@@ -673,9 +675,8 @@ class DatabaseHelper
                 $stmt->bind_param("ssssi", $mittente, $utente['username'], $message, $ref, $cod);
                 $stmt->execute();
             }
-        $stmt->close();
-        }
-        catch (Exception $e) {
+            $stmt->close();
+        } catch (Exception $e) {
             error_log($e->getMessage());
         }
     }
@@ -776,4 +777,82 @@ class DatabaseHelper
 
         return [];
     }
+
+    public function verifyAndApplyCoupon($username, $couponCode)
+    {
+        // Prepara la query per cercare il coupon non utilizzato per l'utente
+        $query = "SELECT * FROM coupons WHERE coupon_code = ? AND username = ? AND is_used = 0";
+        $stmt = $this->db->prepare($query);
+
+        // Lega i parametri alla query
+        $stmt->bind_param("ss", $couponCode, $username); // "ss" indica che entrambi sono stringhe
+
+        // Esegui la query
+        $stmt->execute();
+
+        // Recupera il risultato della query
+        $result = $stmt->get_result();
+
+        // Se c'è una riga, ritorna l'importo dello sconto come intero
+        if ($result->num_rows > 0) {
+            $coupon = $result->fetch_assoc(); // Ottieni il primo (e unico) risultato
+            return (int) $coupon['discount_amount']; // Restituisci lo sconto come intero
+        } else {
+            return 0; // Se non c'è un coupon valido, restituisci 0
+        }
+    }
+
+    public function markCouponAsUsed($couponCode)
+    {
+        // Prepara la query per aggiornare il coupon come utilizzato
+        $query = "UPDATE coupons SET is_used = 1 WHERE coupon_code = ?";
+        $stmt = $this->db->prepare($query);
+
+        // Lega il parametro alla query
+        $stmt->bind_param("s", $couponCode); // "s" indica che il parametro è una stringa
+
+        // Esegui la query e restituisci il risultato
+        return $stmt->execute();
+    }
+
+    public function createDiscountCoupon($username, $totalAmount)
+    {
+        // Calcola il 10% dell'importo totale speso
+        $discountAmount = $totalAmount * 0.20;
+
+        // Genera un codice coupon univoco
+        $couponCode = "DISCOUNT_" . strtoupper(bin2hex(random_bytes(5))); // Usa un codice casuale
+
+        // Inserisci il coupon nel database
+        $query = "INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
+              VALUES (?, ?, ?, 0)";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$username, $couponCode, $discountAmount]);
+
+        return $couponCode; // Restituisci il codice coupon per la conferma
+    }
+
+    public function getClientCoupons($username)
+    {
+        // Prepara la query per recuperare tutti i coupon per l'utente specificato
+        $query = "SELECT * FROM coupons WHERE username = ?";
+
+        // Prepara e esegue la query
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$username]);
+
+        if ($stmt->execute()) {
+            $coupons = $stmt->get_result();
+            return $coupons->fetch_all(MYSQLI_ASSOC);
+        }
+        return;
+    }
+
+
+
+
+
+
+
+
 }

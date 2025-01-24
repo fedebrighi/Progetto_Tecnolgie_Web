@@ -62,3 +62,9 @@ VALUES
 (1, 5, 'Birre fantastiche e servizio impeccabile! 🔥', 1, 'mattia'),
 (2, 5, 'Il miglior negozio di birre artigianali che abbia mai trovato.', 2, 'monia'),
 (3, 5, 'Birre fantastiche, perfette da abbinare ad una buona pizza! 🍕🍺 Qualità top, consigliatissimo!', 3, 'dave');
+
+INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
+VALUES
+('giovanni_rossi', 'DISCOUNT10', 5, 0),
+('dave', 'WELCOME5', 5, 0),
+('luca_verdi', 'FREESHIP', 0, 0);
