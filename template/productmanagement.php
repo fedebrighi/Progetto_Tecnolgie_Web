@@ -1,7 +1,7 @@
 <main>
     <div class="container py-4">
         <div class="text-center mb-4">
-            <h2 class="text-warning">Le nostre birre presenti!</h2>
+            <h1 class="text-warning">Le nostre birre presenti!</h1>
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -12,7 +12,7 @@
                             <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" class="img-fluid me-3" style="width: 150px;">
                         </a>
                         <div>
-                            <h3 class="m-0 fs-5 text-warning"><?php echo $birra["nome"]; ?></h3>
+                            <h2 class="m-0 fs-5 text-warning"><?php echo $birra["nome"]; ?></h2>
                             <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol</p>
                             <p class="m-0 fw-bold fs-6"><?php echo $birra["prezzo"]; ?> €</p>
                         </div>
@@ -24,7 +24,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark">
                                         <div class="modal-header border-secondary">
-                                            <h5 class="modal-title text-warning" id="aggiuntaBirraModalLabel-<?php echo $birra['codProdotto']; ?>">Aggiungi <?php echo $birra["nome"]; ?></h5>
+                                            <h3 class="modal-title text-warning" id="aggiuntaBirraModalLabel-<?php echo $birra['codProdotto']; ?>">Aggiungi <?php echo $birra["nome"]; ?></h3>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -50,7 +50,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-dark">
                                         <div class="modal-header border-secondary">
-                                            <h5 class="modal-title text-warning" id="modificaProdottoModalLabel-<?php echo $birra['codProdotto']; ?>">Modifica <?php echo $birra["nome"]; ?></h5>
+                                            <h3 class="modal-title text-warning" id="modificaProdottoModalLabel-<?php echo $birra['codProdotto']; ?>">Modifica <?php echo $birra["nome"]; ?></h3>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">

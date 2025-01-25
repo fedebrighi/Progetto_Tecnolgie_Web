@@ -1,6 +1,6 @@
 <main class="bg-dark">
     <div class="container py-5">
-        <h2 class="text-warning text-center mb-4">STATISTICHE DELLE VENDITE</h2>
+        <h3 class="text-warning text-center mb-4">STATISTICHE DELLE VENDITE</h3>
         <?php
         $totaleVendite = 0;
         $prodottiVenduti = 0;

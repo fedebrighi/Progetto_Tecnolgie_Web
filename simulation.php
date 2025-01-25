@@ -48,7 +48,7 @@
         }
     </style>
     <script>
-        setTimeout(function () {
+        setTimeout(function() {
             window.location.href = "utente.php";
         }, 5000);
     </script>
@@ -61,7 +61,7 @@
         </div>
         <h1 class="text-warning mt-4">Pagamento completato con successo!</h1>
         <p class="thank-you-message">Grazie per aver acquistato da PHPint! Verrai reindirizzato alla tua area personale tra poco.</p>
-        <p>Se il reindirizzamento non avviene automaticamente, <a href="homepage.php" class="text-warning">clicca qui</a>.</p>
+        <p>Se il reindirizzamento non avviene automaticamente, <a href="utente.php" class="text-warning">clicca qui</a>.</p>
     </div>
 </body>
 

@@ -23,9 +23,11 @@
                                         <input type="hidden" name="codice" value="<?php echo $notifica["codiceRiferimento"]; ?>">
                                         <button type="submit" class="btn btn-sm bi bi-info-circle" style="width: 100%;"></button>
                                     </form>
-                                    <button class="btn btn-sm" onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
-                                        <em class="bi bi-check-circle me-1"></em>
-                                    </button>
+                                    <?php if ($notifica["letto"] != true): ?>
+                                        <button class="btn btn-sm" onclick="segnaComeLetta(<?php echo $notifica['idNotifica']; ?>)">
+                                            <em class="bi bi-check-circle me-1"></em>
+                                        </button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-2">

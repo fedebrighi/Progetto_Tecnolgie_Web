@@ -9,44 +9,35 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
     fetch("ajax/api-applyCoupon.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({couponCode: couponCode})
+        body: JSON.stringify({ couponCode: couponCode })
     })
-    .then(response => response.json())
-    .then(data => {
-        const couponMessage = document.getElementById("couponMessage");
+        .then(response => response.json())
+        .then(data => {
+            const couponMessage = document.getElementById("couponMessage");
 
-        if (data.success) {
-            couponMessage.classList.remove("d-none");
-            couponMessage.classList.add("alert-success");
-            couponMessage.textContent = `Coupon applicato con successo! Hai risparmiato ${data.discount_amount} EUR.`;
+            if (data.success) {
+                couponMessage.classList.remove("d-none", "alert-danger", "border-danger"); // Rimuovi classi di errore
+                couponMessage.classList.add("alert", "alert-success", "border", "border-success"); // Aggiungi classi di successo
+                couponMessage.textContent = `Coupon applicato con successo! Hai risparmiato ${data.discount_amount} EUR.`;
 
-            const totalAmountElement = document.getElementById("totale");
-            if (totalAmountElement) {
-                const totalAmountText = totalAmountElement.innerText.trim();
-
-                const currentTotal = parseFloat(totalAmountText.replace('€', '').trim());
-
-                if (!isNaN(currentTotal)) {
-                    let newTotal = currentTotal - parseFloat(data.discount_amount);
-                    if (newTotal < 0) {
-                        newTotal = 0;
+                const totalAmountElement = document.getElementById("totale");
+                if (totalAmountElement) {
+                    const currentTotal = parseFloat(totalAmountElement.innerText.replace('€', '').trim());
+                    if (!isNaN(currentTotal)) {
+                        let newTotal = currentTotal - parseFloat(data.discount_amount);
+                        totalAmountElement.innerText = newTotal < 0 ? "0.00 €" : `${newTotal.toFixed(2)} €`;
                     }
-
-                    totalAmountElement.innerText = newTotal.toFixed(2) + " €";
-                } else {
-                    console.error("Totale corrente non valido:", totalAmountText);
                 }
             } else {
-                console.error("Elemento con id 'totalAmount' non trovato.");
+                couponMessage.classList.remove("d-none", "alert-success", "border-success"); // Rimuovi classi di successo
+                couponMessage.classList.add("alert", "alert-danger", "border", "border-danger"); // Aggiungi classi di errore
+                couponMessage.textContent = `Errore: ${data.message}`;
             }
-        } else {
-            couponMessage.classList.remove("d-none");
-            couponMessage.classList.add("alert-danger");
-            couponMessage.textContent = `Errore: ${data.message}`;
-        }
-    })
-    .catch(error => {
-        alert("Errore durante l'applicazione del coupon.");
-        console.error("Errore di rete:", error);
-    });
+
+
+        })
+        .catch(error => {
+            alert("Errore durante l'applicazione del coupon.");
+            console.error("Errore di rete:", error);
+        });
 });

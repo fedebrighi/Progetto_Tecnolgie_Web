@@ -123,7 +123,10 @@
             <ul class="list-group bg-dark">
                 <?php foreach ($templateParams["ordini"] as $order): ?>
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
-                        Ordine #<?php echo $order["codiceOrdine"]; ?> - Totale: <?php echo $order["totale"]; ?>€
+                        <div>
+                            Ordine #<?php echo $order["codiceOrdine"]; ?><br />
+                            <span>Totale: <?php echo $order["totale"]; ?>€</span>
+                        </div>
                         <form action="dettagliordine.php" method="POST">
                             <input type="hidden" name="codice" value="<?php echo $order["codiceOrdine"]; ?>">
                             <button type="submit" class="btn btn-sm">Dettagli</button>
@@ -165,37 +168,37 @@
                 <p>Scegli un prodotto acquistato e lascia una recensione!</p>
                 <div id="conferma-recensione"></div>
                 <form id="recensioneForm">
-                <div class="mb-3">
-                    <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
-                    <select id="prodotto" name="codProdotto" class="form-select" required>
-                        <option value="" disabled selected>Seleziona un prodotto</option> <!-- Opzione placeholder -->
-                        <?php foreach ($templateParams["prodottiNonRecensiti"] as $prodotto): ?>
-                            <option value="<?php echo $prodotto["codProdotto"]; ?>">
-                                <?php echo htmlspecialchars($prodotto["nome"], ENT_QUOTES, 'UTF-8'); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+                    <div class="mb-3">
+                        <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
+                        <select id="prodotto" name="codProdotto" class="form-select" required>
+                            <option value="" disabled selected>Seleziona un prodotto</option> <!-- Opzione placeholder -->
+                            <?php foreach ($templateParams["prodottiNonRecensiti"] as $prodotto): ?>
+                                <option value="<?php echo $prodotto["codProdotto"]; ?>">
+                                    <?php echo htmlspecialchars($prodotto["nome"], ENT_QUOTES, 'UTF-8'); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
-                <div class="mb-3">
-                    <fieldset>
-                        <legend class="form-label text-warning">Valutazione</legend>
-                        <div id="rating" class="d-flex gap-2">
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <label for="valutazione-<?php echo $i; ?>" class="d-flex align-items-center">
-                                    <input
-                                        type="radio"
-                                        id="valutazione-<?php echo $i; ?>"
-                                        name="valutazione"
-                                        value="<?php echo $i; ?>"
-                                        data-codprodotto="<?php echo $codProdotto; ?>"
-                                        hidden>
-                                    <em class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></em>
-                                </label>
-                            <?php endfor; ?>
-                        </div>
-                    </fieldset>
-                </div>
+                    <div class="mb-3">
+                        <fieldset>
+                            <legend class="form-label text-warning">Valutazione</legend>
+                            <div id="rating" class="d-flex gap-2">
+                                <?php for ($i = 1; $i <= 5; $i++): ?>
+                                    <label for="valutazione-<?php echo $i; ?>" class="d-flex align-items-center">
+                                        <input
+                                            type="radio"
+                                            id="valutazione-<?php echo $i; ?>"
+                                            name="valutazione"
+                                            value="<?php echo $i; ?>"
+                                            data-codprodotto="<?php echo $codProdotto; ?>"
+                                            hidden>
+                                        <em class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></em>
+                                    </label>
+                                <?php endfor; ?>
+                            </div>
+                        </fieldset>
+                    </div>
 
                     <div class="mb-3">
                         <label for="testo" class="form-label text-warning">Commento (opzionale)</label>

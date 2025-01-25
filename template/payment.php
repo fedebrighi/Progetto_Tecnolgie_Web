@@ -128,6 +128,7 @@
                             <button type="button" class="btn mt-2" id="applyCouponButton">Applica
                                 Coupon</button>
                         </fieldset>
+                        <div id="couponMessage" class="d-none mt-3"></div>
 
                         <div class="text-center my-4">
                             <h3 id="totale">Tot: <?php echo $templateParams["carrello"]["totale"]; ?> €</h3>
@@ -141,7 +142,6 @@
     <script>
         const totaleBase = <?php echo $templateParams['carrello']['totale']; ?>;
     </script>
-    <script src="js/checkdati.js"></script>
     <script src="js/spedizioneRapida.js"></script>
     <script src="js/applicaCoupon.js"></script>
     <script src="js/spesaTotale.js"></script>

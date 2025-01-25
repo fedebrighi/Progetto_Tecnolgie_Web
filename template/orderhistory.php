@@ -22,30 +22,33 @@
                                         <div class="modal-content bg-dark text-white">
                                             <div class="modal-header border-secondary">
                                                 <h5 class="modal-title text-warning" id="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>">
-                                                    Seleziona il nuovo stato:
+                                                    Modifica stato dell'ordine #<?php echo $order['codiceOrdine']; ?>
                                                 </h5>
                                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form id="modificaStatoForm-<?php echo $order['codiceOrdine']; ?>">
-                                                    <?php if ($order["stato"] === "In Preparazione"): ?>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="spedito-<?php echo $order['codiceOrdine']; ?>" value="Spedito">
-                                                            <label class="form-check-label" for="spedito-<?php echo $order['codiceOrdine']; ?>">Spedito</label>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                    <?php if ($order["stato"] === "Spedito"): ?>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="inConsegna-<?php echo $order['codiceOrdine']; ?>" value="In Consegna">
-                                                            <label class="form-check-label" for="inConsegna-<?php echo $order['codiceOrdine']; ?>">In Consegna</label>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                    <?php if ($order["stato"] === "Spedito" || $order["stato"] === "In Consegna"): ?>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="consegnato-<?php echo $order['codiceOrdine']; ?>" value="Consegnato">
-                                                            <label class="form-check-label" for="consegnato-<?php echo $order['codiceOrdine']; ?>">Consegnato</label>
-                                                        </div>
-                                                    <?php endif; ?>
+                                                    <fieldset>
+                                                        <legend class="form-label" style="color:#FFCC99">Seleziona il nuovo stato per l'ordine:</legend>
+                                                        <?php if ($order["stato"] === "In Preparazione"): ?>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="spedito-<?php echo $order['codiceOrdine']; ?>" value="Spedito">
+                                                                <label class="form-check-label" for="spedito-<?php echo $order['codiceOrdine']; ?>">Spedito</label>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if ($order["stato"] === "Spedito"): ?>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="inConsegna-<?php echo $order['codiceOrdine']; ?>" value="In Consegna">
+                                                                <label class="form-check-label" for="inConsegna-<?php echo $order['codiceOrdine']; ?>">In Consegna</label>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if ($order["stato"] === "Spedito" || $order["stato"] === "In Consegna"): ?>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="consegnato-<?php echo $order['codiceOrdine']; ?>" value="Consegnato">
+                                                                <label class="form-check-label" for="consegnato-<?php echo $order['codiceOrdine']; ?>">Consegnato</label>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </fieldset>
                                                 </form>
                                             </div>
                                             <div class="modal-footer border-secondary">

@@ -25,10 +25,16 @@
                             <input type="email" name="email" class="form-control" id="email"
                                 placeholder="Inserisci la tua email" required />
                         </div>
+                        <div class="alert alert-danger d-none" id="emailError">
+                            L'email inserita è già in utilizzo.
+                        </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username:</label>
                             <input type="text" name="username" class="form-control" id="username"
                                 placeholder="Inserisci un username" required />
+                        </div>
+                        <div class="alert alert-danger d-none" id="usernameError">
+                            L'username inserito è già in utilizzo.
                         </div>
                         <div class="mb-3 position-relative">
                             <label for="password" class="form-label">Password:</label>

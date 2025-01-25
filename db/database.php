@@ -311,6 +311,18 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
+    public function isEmailLogged($email): bool
+    {
+        $query = "SELECT 1 FROM UTENTE WHERE email = ? LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
+    }
+
+
     public function getSeller()
     {
         $query = "SELECT * FROM UTENTE WHERE tipo = 'venditore'";
@@ -644,11 +656,17 @@ class DatabaseHelper
 
     public function getUnreadNotifications($username)
     {
-        $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE destinatario = ? AND letto = FALSE");
+        $stmt = $this->db->prepare("
+        SELECT * 
+        FROM NOTIFICA 
+        WHERE destinatario = ? 
+        ORDER BY dataInvio DESC
+    ");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
 
     public function getUnreadNotificationsNum($username)
     {

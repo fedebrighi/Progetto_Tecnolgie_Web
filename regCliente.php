@@ -17,6 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono = $_POST['telefono'];
 
     if ($dbh->saveNewUser($nome, $cognome, $email, $username, $password, $dataNascita, $citta, $cap, $indirizzo, $telefono)) {
+        $login_result = $dbh->getUserIfRegistered($username, $password);
+        if (count($login_result) == 0) {
+            $result["errorelogin"] = "Username e/o password errati, riprova";
+            $templateParams["errorelogin"] = $result["errorelogin"];
+        } else {
+            registerLoggedUser($login_result[0]);
+        }
         header("Location: simulation_registration.php");
         exit();
     } else {
@@ -24,4 +31,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 require 'template/base.php';
-?>

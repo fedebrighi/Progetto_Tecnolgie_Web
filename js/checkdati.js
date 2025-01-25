@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.querySelector("#submitButton");
     const usernameField = document.querySelector("#username");
+    const emailField = document.querySelector("#email"); // Campo email
     const dataNascitaField = document.querySelector("#dataNascita");
     const dataNascitaError = document.querySelector("#dataNascitaError");
+    const usernameError = document.querySelector("#usernameError");
+    const emailError = document.querySelector("#emailError"); // Div per errore email
     const capField = document.querySelector("#cap");
     const telefonoField = document.querySelector("#telefono");
 
@@ -20,64 +23,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (submitButton) {
         submitButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const username = usernameField.value;
+            const email = emailField.value; // Recupera il valore dell'email
             let isValid = true;
 
-            // Verifica username
-            const username = usernameField.value;
             fetch('ajax/api-checkUsername.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: username })
+                body: JSON.stringify({ username: username }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.exists) {
-                    alert("Lo username è già in uso.");
-                    isValid = false;  // Imposta isValid su false se lo username esiste
-                }
-
-                // Verifica la data di nascita (minimo 18 anni)
-                if (dataNascitaField) {
-                    const dataNascita = new Date(dataNascitaField.value);
-                    const oggi = new Date();
-                    const maggioreEta = new Date(
-                        oggi.getFullYear() - 18,
-                        oggi.getMonth(),
-                        oggi.getDate()
-                    );
-
-                    if (dataNascita > maggioreEta) {
-                        isValid = false;
-                        if (dataNascitaError) {
-                            dataNascitaError.classList.remove("d-none");
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        if (usernameError) {
+                            usernameError.classList.remove("d-none");
                         }
+                        isValid = false;
                     } else {
-                        if (dataNascitaError) {
-                            dataNascitaError.classList.add("d-none");
+                        if (usernameError) {
+                            usernameError.classList.add("d-none");
                         }
                     }
-                }
 
-                // Verifica il CAP
-                if (capField && !/^\d{5}$/.test(capField.value)) {
-                    alert("Il CAP deve contenere esattamente 5 cifre.");
-                    isValid = false;
-                }
+                    return fetch('ajax/api-checkEmail.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email }),
+                    });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        if (emailError) {
+                            emailError.classList.remove("d-none");
+                        }
+                        isValid = false;
+                    } else {
+                        if (emailError) {
+                            emailError.classList.add("d-none");
+                        }
+                    }
 
-                // Verifica il telefono
-                if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
-                    alert("Il numero di telefono deve contenere esattamente 10 cifre.");
-                    isValid = false;
-                }
-
-                // Se tutto è valido, invia il modulo, altrimenti bloccalo
-                if (!isValid) {
-                    event.preventDefault();  // Blocca l'invio del form
-                }
-            })
-            .catch(error => {
-                console.error('Errore di rete:', error);
-            });
+                    if (isValid) {
+                        console.log("Invio il form");
+                        document.querySelector("form").submit();
+                    }
+                })
+                .catch(error => {
+                    console.error("Errore durante il fetch:", error);
+                });
         });
     }
 });
