@@ -68,3 +68,5 @@ VALUES
 ('giovanni_rossi', 'DISCOUNT10', 5, 0),
 ('dave', 'WELCOME5', 5, 0),
 ('luca_verdi', 'FREESHIP', 0, 0);
+
+
