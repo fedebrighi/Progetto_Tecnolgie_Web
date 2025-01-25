@@ -11,14 +11,16 @@
                 <h1><?php echo $templateParams["birra"]["nome"] ?></h1>
                 <p>ALC. <?php echo $templateParams["birra"]["alc"] ?> % vol</p>
                 <p><?php echo $templateParams["birra"]["descrizione"] ?></p>
-                <p><strong>INGREDIENTI: <?php echo $templateParams["birra"]["listaIngredienti"]; ?></strong></p>
+                <h2><strong>INGREDIENTI: <span
+                            style="font-size: 0.8em;"><?php echo $templateParams["birra"]["listaIngredienti"]; ?></span></strong>
+                </h2>
                 <p>Prezzo: €<?php echo $templateParams["birra"]["prezzo"] ?></p>
 
                 <div class="d-flex flex-column gap-3 mt-4">
                     <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
                         <div class="d-flex align-items-center">
                             <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
-                                class="form-label mb-0 me-2 fs-3">Quantità da aggiungere al  tuo carrello:</label>
+                                class="form-label mb-0 me-2 fs-3">Quantità da aggiungere al tuo carrello:</label>
                             <input type="number" id="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
                                 class="form-control" style="width: 70px; height: 35px; border-radius: 5px;" min="1"
                                 value="1" />
