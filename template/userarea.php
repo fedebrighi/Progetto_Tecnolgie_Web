@@ -32,8 +32,8 @@
                     <div class="modal-dialog">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
-                                <h5 class="modal-title text-warning" id="modificaInfoUtenteModalLabel">Modifica
-                                    Informazioni</h5>
+                                <h3 class="modal-title text-warning" id="modificaInfoUtenteModalLabel">Modifica
+                                    Informazioni</h3>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -119,7 +119,7 @@
             </div>
         </div>
         <div class="border rounded p-4">
-            <h4 class="text-warning mb-3">Ordini Recenti</h4>
+            <h3 class="text-warning mb-3">Ordini Recenti</h3>
             <ul class="list-group bg-dark">
                 <?php foreach ($templateParams["ordini"] as $order): ?>
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
@@ -133,7 +133,7 @@
             </ul>
         </div>
         <div class="border rounded p-4 mt-5 coupon-section">
-            <h4 class="text-warning mb-3">I tuoi Coupon</h4>
+            <h3 class="text-warning mb-3">I tuoi Coupon</h3>
             <?php if (!empty($templateParams["coupons"])): ?>
                 <table class="table table-dark table-striped">
                     <thead>
@@ -160,7 +160,7 @@
             <?php endif; ?>
         </div>
         <div class="border rounded p-4 mt-5">
-            <h4 class="text-warning mb-3">Lascia una Recensione</h4>
+            <h3 class="text-warning mb-3">Lascia una Recensione</h3>
             <?php if (!empty($templateParams["prodottiNonRecensiti"])): ?>
                 <p>Scegli un prodotto acquistato e lascia una recensione!</p>
                 <div id="conferma-recensione"></div>
