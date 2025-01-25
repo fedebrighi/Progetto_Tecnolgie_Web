@@ -74,22 +74,11 @@ class DatabaseHelper
 
     public function createEmptyCart(): string
     {
-        do {
-            $cartId = bin2hex(random_bytes(8));
-            $queryCheck = "SELECT COUNT(*) AS count FROM CARRELLO WHERE codCarrello = ?";
-            $stmtCheck = $this->db->prepare($queryCheck);
-            $stmtCheck->bind_param('s', $cartId);
-            $stmtCheck->execute();
-            $result = $stmtCheck->get_result();
-            $row = $result->fetch_assoc();
-            $exists = $row['count'] > 0;
-        } while ($exists);
-
-        $queryInsert = "INSERT INTO CARRELLO (codCarrello, totale) VALUES (?, 0)";
-        $stmtInsert = $this->db->prepare($queryInsert);
+        $cartId = $this->getNextCod("CARRELLO", "codCarrello");
+        $query = "INSERT INTO CARRELLO (codCarrello, totale) VALUES (?, 0)";
+        $stmtInsert = $this->db->prepare($query);
         $stmtInsert->bind_param('s', $cartId);
         $stmtInsert->execute();
-
         return $cartId;
     }
 

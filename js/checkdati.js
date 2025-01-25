@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.querySelector("#submitButton");
+    const usernameField = document.querySelector("#username");
     const dataNascitaField = document.querySelector("#dataNascita");
     const dataNascitaError = document.querySelector("#dataNascitaError");
     const capField = document.querySelector("#cap");
@@ -21,40 +22,62 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.addEventListener("click", function (event) {
             let isValid = true;
 
-            if (dataNascitaField) {
-                const dataNascita = new Date(dataNascitaField.value);
-                const oggi = new Date();
-                const maggioreEta = new Date(
-                    oggi.getFullYear() - 18,
-                    oggi.getMonth(),
-                    oggi.getDate()
-                );
+            // Verifica username
+            const username = usernameField.value;
+            fetch('ajax/api-checkUsername.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.exists) {
+                    alert("Lo username è già in uso.");
+                    isValid = false;  // Imposta isValid su false se lo username esiste
+                }
 
-                if (dataNascita > maggioreEta) {
-                    isValid = false;
-                    if (dataNascitaError) {
-                        dataNascitaError.classList.remove("d-none");
-                    }
-                } else {
-                    if (dataNascitaError) {
-                        dataNascitaError.classList.add("d-none");
+                // Verifica la data di nascita (minimo 18 anni)
+                if (dataNascitaField) {
+                    const dataNascita = new Date(dataNascitaField.value);
+                    const oggi = new Date();
+                    const maggioreEta = new Date(
+                        oggi.getFullYear() - 18,
+                        oggi.getMonth(),
+                        oggi.getDate()
+                    );
+
+                    if (dataNascita > maggioreEta) {
+                        isValid = false;
+                        if (dataNascitaError) {
+                            dataNascitaError.classList.remove("d-none");
+                        }
+                    } else {
+                        if (dataNascitaError) {
+                            dataNascitaError.classList.add("d-none");
+                        }
                     }
                 }
-            }
 
-            if (capField && !/^\d{5}$/.test(capField.value)) {
-                alert("Il CAP deve contenere esattamente 5 cifre.");
-                isValid = false;
-            }
+                // Verifica il CAP
+                if (capField && !/^\d{5}$/.test(capField.value)) {
+                    alert("Il CAP deve contenere esattamente 5 cifre.");
+                    isValid = false;
+                }
 
-            if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
-                alert("Il numero di telefono deve contenere esattamente 10 cifre.");
-                isValid = false;
-            }
+                // Verifica il telefono
+                if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
+                    alert("Il numero di telefono deve contenere esattamente 10 cifre.");
+                    isValid = false;
+                }
 
-            if (!isValid) {
-                event.preventDefault();
-            }
+                // Se tutto è valido, invia il modulo, altrimenti bloccalo
+                if (!isValid) {
+                    event.preventDefault();  // Blocca l'invio del form
+                }
+            })
+            .catch(error => {
+                console.error('Errore di rete:', error);
+            });
         });
     }
 });
