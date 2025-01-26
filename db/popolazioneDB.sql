@@ -40,13 +40,13 @@ VALUES
 
 INSERT INTO INFO_VENDITA (codInfo, quantitaVendute, spesaUnitaria, ricavo)
 VALUES
-(1, 3, 2, 13,5),
-(2, 2, 2, 8,40),
+(1, 3, 2, 13.5),
+(2, 2, 2, 8.40),
 (3, 5, 2, 20.00),
-(4, 2, 2, 7,60),
+(4, 2, 2, 7.60),
 (5, 0, 1, 0),
-(6, 3, 1, 10,50),
-(7, 1, 1, 3,50);
+(6, 3, 1, 10.50),
+(7, 1, 1, 3.50);
 
 INSERT INTO PRODOTTO (codProdotto, codInfo, nome, alc, descrizione, listaIngredienti, prezzo, quantitaMagazzino, immagine,glutenFree)
 VALUES
@@ -59,10 +59,10 @@ VALUES
 
 INSERT INTO RECENSIONE (codRecensione, valutazione, testo, codProdotto, username)
 VALUES
-(1, 5, 'Birra fantastica e rinfrescante, fresca sulla spiaggia è un must!'),
+(1, 5, 'Birra fantastica e rinfrescante, fresca sulla spiaggia è un must!', 1, 'mattia'),
 (2, 5, 'Sapore unico e piacevole, inoltre spedizione impeccabile!!', 2, 'monia'),
 (3, 5, 'Bevetela con una pizza, fidatevi ne vale davvero la pena!', 3, 'dave');
-a
+
 INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
 VALUES
 ('giovanni_rossi', 'DISCOUNT10', 5, 0),
@@ -71,9 +71,9 @@ VALUES
 
 INSERT INTO ORDINE (username, codiceOrdine, dataOrdine, dataSpedizione, dataArrivo, dataPrevista, stato, totale, tipoPagamento, indirizzo, citta, cap, note, tipo, scontoUsato)
 VALUES
-    ('giovanni_rossi', 1, '2025-01-01', '2025-01-03', '2025-01-06', '2025-01-05', 'Consegnato', 25.50, 'Carta di Credito', 'Indirizzo giovanni_rossi', 'Città Fittizia', '12345', NULL, 'standard', NULL),
+    ('giovanni_rossi', 1, '2025-01-01', '2025-01-03', '2025-01-13', '2025-01-13', 'Consegnato', 25.50, 'Carta di Credito', 'Indirizzo giovanni_rossi', 'Città Fittizia', '12345', NULL, 'standard', NULL),
     ('maria_bianchi', 2, '2025-01-02', '2025-01-04', '2025-01-07', '2025-01-06', 'Consegnato', 34.00, 'Carta di Credito', 'Indirizzo maria_bianchi', 'Città Fittizia', '12345', NULL, 'rapida', NULL),
-    ('luca_verdi', 3, '2025-01-05', '2025-01-07', NULL, '2025-01-10', 'In Consegna', 20.70, 'Carta di Credito', 'Indirizzo luca_verdi', 'Città Fittizia', '12345', NULL, 'standard', NULL);
+    ('luca_verdi', 3, '2025-01-05', '2025-01-07', NULL, '2025-01-10', 'In Consegna', 20.70, 'Carta di Credito', 'Indirizzo luca_verdi', 'Città Fittizia', '12345', NULL, 'rapida', NULL);
 
 INSERT INTO composizioneOrdine (codProdotto, username, codiceOrdine, quantita)
 VALUES

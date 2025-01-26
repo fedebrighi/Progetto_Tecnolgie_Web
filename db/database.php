@@ -781,7 +781,7 @@ class DatabaseHelper
         $query = "INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
               VALUES (?, ?, ?, 0)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sid", $username, $couponCode, $discountAmount);
+        $stmt->bind_param("ssd", $username, $couponCode, $discountAmount);
         $stmt->execute();
         return $couponCode;
     }

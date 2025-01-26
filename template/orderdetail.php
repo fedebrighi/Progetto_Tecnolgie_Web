@@ -38,7 +38,7 @@
             </div>
             <?php if ($order["scontoUsato"] > 0): ?>
                 <div class="mb-2">
-                    <h3><strong>Coupon Applicato:</strong> <?php echo $order["scontoUsato"]; ?> €</strong></h3>
+                    <strong>Coupon Applicato:</strong> <?php echo $order["scontoUsato"]; ?> €</strong>
                 </div>
             <?php endif; ?>
             <?php if ($order["note"] != ""): ?>
@@ -87,24 +87,24 @@
                     </div>
                     <div class="progress" style="height: 8px;">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: <?php
-                                if ($order['stato'] === 'In Preparazione')
-                                    echo '33%';
-                                elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                                    echo '66%';
-                                elseif ($order['stato'] === 'Consegnato')
-                                    echo '100%';
-                                else
-                                    echo '0%';
-                                ?>;" aria-valuenow="<?php
-                                    if ($order['stato'] === 'In Preparazione')
-                                        echo '33';
-                                    elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
-                                        echo '66';
-                                    elseif ($order['stato'] === 'Consegnato')
-                                        echo '100';
-                                    else
-                                        echo '0';
-                                    ?>"
+                                                                                                if ($order['stato'] === 'In Preparazione')
+                                                                                                    echo '33%';
+                                                                                                elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                                                                                    echo '66%';
+                                                                                                elseif ($order['stato'] === 'Consegnato')
+                                                                                                    echo '100%';
+                                                                                                else
+                                                                                                    echo '0%';
+                                                                                                ?>;" aria-valuenow="<?php
+                                                    if ($order['stato'] === 'In Preparazione')
+                                                        echo '33';
+                                                    elseif ($order['stato'] === 'Spedito' || $order['stato'] === 'In Consegna')
+                                                        echo '66';
+                                                    elseif ($order['stato'] === 'Consegnato')
+                                                        echo '100';
+                                                    else
+                                                        echo '0';
+                                                    ?>"
                             aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
@@ -172,29 +172,29 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <form id="modificaStatoForm-<?php echo $order['codiceOrdine']; ?>">
-                                <fieldset>
-                                    <legend class="form-label">Seleziona il nuovo stato per l'ordine</legend>
-                                    <?php if ($order["stato"] === "In Preparazione"): ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="spedito-<?php echo $order['codiceOrdine']; ?>" value="Spedito">
-                                            <label class="form-check-label" for="spedito-<?php echo $order['codiceOrdine']; ?>">Spedito</label>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if ($order["stato"] === "Spedito"): ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="inConsegna-<?php echo $order['codiceOrdine']; ?>" value="In Consegna">
-                                            <label class="form-check-label" for="inConsegna-<?php echo $order['codiceOrdine']; ?>">In Consegna</label>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php if ($order["stato"] === "Spedito" || $order["stato"] === "In Consegna"): ?>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="consegnato-<?php echo $order['codiceOrdine']; ?>" value="Consegnato">
-                                            <label class="form-check-label" for="consegnato-<?php echo $order['codiceOrdine']; ?>">Consegnato</label>
-                                        </div>
-                                    <?php endif; ?>
-                                </fieldset>
-                            </form>
+                                <form id="modificaStatoForm-<?php echo $order['codiceOrdine']; ?>">
+                                    <fieldset>
+                                        <legend class="form-label">Seleziona il nuovo stato per l'ordine</legend>
+                                        <?php if ($order["stato"] === "In Preparazione"): ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="spedito-<?php echo $order['codiceOrdine']; ?>" value="Spedito">
+                                                <label class="form-check-label" for="spedito-<?php echo $order['codiceOrdine']; ?>">Spedito</label>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if ($order["stato"] === "Spedito"): ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="inConsegna-<?php echo $order['codiceOrdine']; ?>" value="In Consegna">
+                                                <label class="form-check-label" for="inConsegna-<?php echo $order['codiceOrdine']; ?>">In Consegna</label>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if ($order["stato"] === "Spedito" || $order["stato"] === "In Consegna"): ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="stato-<?php echo $order['codiceOrdine']; ?>" id="consegnato-<?php echo $order['codiceOrdine']; ?>" value="Consegnato">
+                                                <label class="form-check-label" for="consegnato-<?php echo $order['codiceOrdine']; ?>">Consegnato</label>
+                                            </div>
+                                        <?php endif; ?>
+                                    </fieldset>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-bs-dismiss="modal">Annulla</button>
