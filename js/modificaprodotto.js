@@ -1,9 +1,7 @@
 function salvaModificheProdotto() {
-    // Trova l'ID del prodotto dal modale aperto
     const modaleAperto = document.querySelector('.modal.show');
     const codProdotto = modaleAperto.id.split('-')[1];
 
-    // Recupera i dati dal form corrispondente, usando gli ID dinamici
     const nome = modaleAperto.querySelector(`#modificaNome-${codProdotto}`).value;
     const alc = modaleAperto.querySelector(`#modificaAlc-${codProdotto}`).value;
     const prezzo = modaleAperto.querySelector(`#modificaPrezzo-${codProdotto}`).value;
@@ -11,7 +9,6 @@ function salvaModificheProdotto() {
     const listaIngredienti = modaleAperto.querySelector(`#modificaListaIngredienti-${codProdotto}`).value;
     const glutenFree = modaleAperto.querySelector(`#glutenFree-${codProdotto}`).checked ? 1 : 0;
 
-    // Creazione del payload
     const dati = {
         codProdotto: codProdotto,
         nome: nome,
@@ -22,7 +19,6 @@ function salvaModificheProdotto() {
         glutenFree: glutenFree,
     };
 
-    // Invia i dati al server tramite fetch
     fetch('ajax/api-updateProduct.php', {
         method: 'POST',
         headers: {
@@ -34,7 +30,7 @@ function salvaModificheProdotto() {
         .then(data => {
             if (data.success) {
                 alert('Modifiche salvate con successo!');
-                location.reload(); // Ricarica la pagina per riflettere le modifiche
+                location.reload(); 
             } else {
                 alert('Errore nel salvataggio: ' + data.error);
             }

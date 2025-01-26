@@ -17,7 +17,12 @@
                 <p>Prezzo: €<?php echo $templateParams["birra"]["prezzo"] ?></p>
 
                 <div class="d-flex flex-column gap-3 mt-4">
-                    <?php if (!isset($_SESSION["username"]) || $_SESSION["username"] != $_SESSION["venditore"]["username"]): ?>
+                    <?php if (empty($_SESSION["username"])): ?>
+                        <button onclick="window.location.href='login.php';" class="btn mt-3"
+                            style="font-weight: bold; padding: 0.5rem; width: 100%;">
+                            <em class="bi bi-cart me-2"></em> Aggiungi al Carrello
+                        </button>
+                    <?php elseif ($templateParams["isClientLogged"]):  ?>
                         <div class="d-flex align-items-center">
                             <label for="quantity-<?php echo $templateParams['birra']['codProdotto']; ?>"
                                 class="form-label mb-0 me-2 fs-3">Quantità da aggiungere al tuo carrello:</label>
@@ -31,14 +36,15 @@
                             document.getElementById('quantity-<?php echo $templateParams['birra']['codProdotto']; ?>').value)">
                             <em class="bi bi-cart me-2"></em> Aggiungi al Carrello
                         </button>
-                    <?php else: ?>
-                        <button onclick="window.location.href='login.php';" class="btn mt-3"
-                            style="font-weight: bold; padding: 0.5rem; width: 100%;">
-                            <em class="bi bi-cart me-2"></em> Aggiungi al Carrello
-                        </button>
+
                     <?php endif; ?>
 
-                    <?php if (!empty($_SESSION["username"])): ?>
+                    <?php if (empty($_SESSION["username"])): ?>
+                        <button onclick="window.location.href='login.php';" class="btn mt-3"
+                            style="font-weight: bold; padding: 0.5rem; width: 100%;">
+                            <em class="bi bi-heart me-2"></em> Aggiungi ai Preferiti
+                        </button>
+                    <?php elseif ($templateParams["isClientLogged"]): ?>
                         <button id="btn-favorite-<?php echo $templateParams['birra']['codProdotto']; ?>" class="btn mt-3"
                             style="font-weight: bold; padding: 0.5rem; width: 100%;"
                             onclick="toggleFavorite(<?php echo $templateParams['birra']['codProdotto']; ?>)">
@@ -47,11 +53,6 @@
                             <span id="favorite-text-<?php echo $templateParams['birra']['codProdotto']; ?>">
                                 <?php echo (isset($templateParams["preferiti"]) && in_array($templateParams["birra"]["codProdotto"], $templateParams["preferiti"])) ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'; ?>
                             </span>
-                        </button>
-                    <?php else: ?>
-                        <button onclick="window.location.href='login.php';" class="btn mt-3"
-                            style="font-weight: bold; padding: 0.5rem; width: 100%;">
-                            <em class="bi bi-heart me-2"></em> Aggiungi ai Preferiti
                         </button>
                     <?php endif; ?>
                 </div>

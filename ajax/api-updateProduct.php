@@ -13,7 +13,7 @@ $listaIngredienti = $data['listaIngredienti'];
 $glutenFree = $data['glutenFree'];
 
 try {
-    $dbh->updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti, $glutenFree);
+    $dbh->updateProduct($idProdotto, $nome, $alc, $prezzo, $descrizione, $listaIngredienti,  $glutenFree);
     echo json_encode(['success' => true]);
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);

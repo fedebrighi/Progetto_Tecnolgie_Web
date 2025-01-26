@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.querySelector("#submitButton");
     const usernameField = document.querySelector("#username");
-    const emailField = document.querySelector("#email"); // Campo email
+    const emailField = document.querySelector("#email");
     const dataNascitaField = document.querySelector("#dataNascita");
     const dataNascitaError = document.querySelector("#dataNascitaError");
     const usernameError = document.querySelector("#usernameError");
-    const emailError = document.querySelector("#emailError"); // Div per errore email
+    const emailError = document.querySelector("#emailError"); 
     const capField = document.querySelector("#cap");
+    const capError = document.querySelector("#capError");
     const telefonoField = document.querySelector("#telefono");
+    const telefonoError = document.querySelector("#telefonoError");
 
     if (capField) {
         capField.addEventListener("input", function () {
@@ -64,6 +66,49 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (emailError) {
                             emailError.classList.add("d-none");
                         }
+                    }
+
+                    if (dataNascitaField) {
+                        const dataNascita = new Date(dataNascitaField.value);
+                        const oggi = new Date();
+                        const maggioreEta = new Date(
+                            oggi.getFullYear() - 18,
+                            oggi.getMonth(),
+                            oggi.getDate()
+                        );
+
+                        if (dataNascita > maggioreEta) {
+                            isValid = false;
+                            if (dataNascitaError) {
+                                dataNascitaError.classList.remove("d-none");
+                            }
+                        } else {
+                            if (dataNascitaError) {
+                                dataNascitaError.classList.add("d-none");
+                            }
+                        }
+                    }
+
+                    if (capField && !/^\d{5}$/.test(capField.value)) {
+                        isValid = false;
+                        if (capError) {
+                            capError.classList.remove("d-none");
+                        } 
+                    }else {
+                        if (capError) {
+                            capError.classList.add("d-none");
+                        } 
+                    }
+
+                    if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
+                        isValid = false;
+                        if (telefonoError) {
+                            telefonoError.classList.remove("d-none");
+                        } 
+                    }else {
+                        if (telefonoError) {
+                            telefonoError.classList.add("d-none");
+                        } 
                     }
 
                     if (isValid) {

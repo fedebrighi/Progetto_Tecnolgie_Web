@@ -75,6 +75,9 @@
                                     pattern="^\d{5}$" maxlength="5" required />
                             </div>
                         </div>
+                        <div class="alert alert-danger d-none" id="capError">
+                            Devi inserire esattamente 5 cifre.
+                        </div>
                         <div class="mb-3">
                             <label for="indirizzo" class="form-label">Indirizzo:</label>
                             <input type="text" name="indirizzo" class="form-control" id="indirizzo"
@@ -85,6 +88,9 @@
                             <input type="text" name="telefono" class="form-control" id="telefono"
                                 placeholder="Inserisci il tuo numero di telefono" pattern="^\d{10}$" maxlength="10"
                                 required />
+                        </div>
+                        <div class="alert alert-danger d-none" id="telefonoError">
+                            Devi inserire esattamente 10 cifre.
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn w-100 fw-bold"

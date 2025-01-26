@@ -6,7 +6,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $nome = $data['nome'] ?? null;
 $cognome = $data['cognome'] ?? null;
-$email = $data['email'] ?? null;
 $pw = $data['pw'] ?? null;
 $indirizzo = $data['indirizzo'] ?? null;
 $citta = $data['citta'] ?? null;
@@ -14,9 +13,19 @@ $cap = $data['cap'] ?? null;
 $telefono = $data['telefono'] ?? null;
 $dataNascita = $data['dataNascita'] ?? null;
 
-if ($nome && $cognome && $email && $pw && $indirizzo && $citta && $cap && $telefono && $dataNascita) {
+if ($nome && $cognome && $pw && $indirizzo && $citta && $cap && $telefono && $dataNascita) {
     try {
-        $dbh->updateUser($_SESSION['username'], $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita);
+        $dbh->updateUser(
+            $_SESSION['username'],
+            $nome,
+            $cognome,
+            $pw,
+            $indirizzo,
+            $citta,
+            $cap,
+            $telefono,
+            $dataNascita
+        );
 
         echo json_encode(['success' => true]);
     } catch (Exception $e) {
@@ -26,6 +35,6 @@ if ($nome && $cognome && $email && $pw && $indirizzo && $citta && $cap && $telef
     echo json_encode([
         'success' => false,
         'error' => 'Dati mancanti o non validi.',
-        'debug' => compact('nome', 'cognome', 'email', 'pw', 'indirizzo', 'citta', 'cap', 'telefono', 'dataNascita')
+        'debug' => compact('nome', 'cognome', 'pw', 'indirizzo', 'citta', 'cap', 'telefono', 'dataNascita')
     ]);
 }

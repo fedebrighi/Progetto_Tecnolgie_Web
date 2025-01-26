@@ -184,14 +184,14 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
-    public function updateUser($username, $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
+    public function updateUser($username, $nome, $cognome, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita)
     {
         $query = "UPDATE UTENTE
-              SET nome = ?, cognome = ?, email = ?, pw = ?, indirizzo = ?, citta = ?, cap = ?, telefono = ?, dataNascita = ?
+              SET nome = ?, cognome = ?, pw = ?, indirizzo = ?, citta = ?, cap = ?, telefono = ?, dataNascita = ?
               WHERE username = ?";
         $stmt = $this->db->prepare($query);
 
-        $stmt->bind_param('ssssssiiss', $nome, $cognome, $email, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita, $username);
+        $stmt->bind_param('sssssiiss', $nome, $cognome, $pw, $indirizzo, $citta, $cap, $telefono, $dataNascita, $username);
         $stmt->execute();
     }
 
@@ -781,7 +781,8 @@ class DatabaseHelper
         $query = "INSERT INTO coupons (username, coupon_code, discount_amount, is_used)
               VALUES (?, ?, ?, 0)";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$username, $couponCode, $discountAmount]);
+        $stmt->bind_param("sid", $username, $couponCode, $discountAmount);
+        $stmt->execute();
         return $couponCode;
     }
 
@@ -789,7 +790,7 @@ class DatabaseHelper
     {
         $query = "SELECT * FROM coupons WHERE username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$username]);
+        $stmt->bind_param("s", $username);
 
         if ($stmt->execute()) {
             $coupons = $stmt->get_result();

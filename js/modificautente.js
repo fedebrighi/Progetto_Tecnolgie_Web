@@ -2,7 +2,6 @@ function salvaModifiche() {
     const dati = {
         nome: document.getElementById("modificaNome").value.trim(),
         cognome: document.getElementById("modificaCognome").value.trim(),
-        email: document.getElementById("modificaEmail").value.trim(),
         pw: document.getElementById("password").value.trim(),
         indirizzo: document.getElementById("modificaIndirizzo").value.trim(),
         citta: document.getElementById("modificaCitta").value.trim(),
@@ -11,7 +10,7 @@ function salvaModifiche() {
         dataNascita: document.getElementById("dataNascita").value.trim(),
     };
 
-    if (!dati.nome || !dati.cognome || !dati.email || !dati.pw || !dati.indirizzo || !dati.citta || !dati.cap || !dati.telefono || !dati.dataNascita) {
+    if (!dati.nome || !dati.cognome || !dati.pw || !dati.indirizzo || !dati.citta || !dati.cap || !dati.telefono || !dati.dataNascita) {
         alert("Compila tutti i campi obbligatori!");
         return;
     }
@@ -19,16 +18,49 @@ function salvaModifiche() {
     const oggi = new Date();
     const dataNascita = new Date(dati.dataNascita);
     const maggioreEta = new Date(oggi.getFullYear() - 18, oggi.getMonth(), oggi.getDate());
-
+    const dataNascitaError = document.querySelector("#dataNascitaError");
+    const telefonoError = document.querySelector("#telefonoError");
+    const capError = document.querySelector("#capError"); 
+    isValid = true;
 
     if (dataNascita > maggioreEta) {
-        alert("Devi essere maggiorenne!");
-        return;
+        isValid = false;
+        if (dataNascitaError) {
+            dataNascitaError.classList.remove("d-none");
+        }
+    } else {
+        if (dataNascitaError) {
+            dataNascitaError.classList.add("d-none");
+        }
+    }
+
+    if (!/^\d{5}$/.test(cap.value)) {
+        isValid = false;
+        if (capError) {
+            capError.classList.remove("d-none");
+        } 
+    }else {
+        if (capError) {
+            capError.classList.add("d-none");
+        } 
+    }
+
+    if (!/^\d{10}$/.test(telefono.value)) {
+        isValid = false;
+        if (telefonoError) {
+            telefonoError.classList.remove("d-none");
+        } 
+    }else {
+        if (telefonoError) {
+            telefonoError.classList.add("d-none");
+        } 
     }
 
     const strength = calcolaForzaPassword(dati.pw);
     if (strength < 4) {
         alert("La password è troppo debole!");
+        return;
+    }else if(!isValid){
         return;
     }
 

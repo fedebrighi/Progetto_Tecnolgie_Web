@@ -51,11 +51,6 @@
                                             value="<?php echo $user["cognome"]; ?> " required />
                                     </div>
                                     <div class="mb-2">
-                                        <label for="modificaEmail" class="form-label  text-warning fs-6">Email</label>
-                                        <input type="text" class="form-control" id="modificaEmail"
-                                            value="<?php echo $user["email"]; ?> " required />
-                                    </div>
-                                    <div class="mb-2">
                                         <label for="password"
                                             class="form-label text-warning fs-6">Password</label>
                                         <div class="input-group">
@@ -90,11 +85,17 @@
                                         <input type="text" class="form-control" id="cap"
                                             value="<?php echo $user["cap"]; ?>" pattern="^\d{5}$" maxlength="5" required />
                                     </div>
+                                    <div class="alert alert-danger d-none" id="capError">
+                                        Devi inserire esattamente 5 cifre.
+                                    </div>
                                     <div class="mb-2">
                                         <label for="telefono"
                                             class="form-label text-warning fs-6">Telefono</label>
                                         <input type="text" class="form-control" id="telefono"
                                             value="<?php echo $user["telefono"]; ?>" pattern="^\d{10}$" maxlength="10" required />
+                                    </div>
+                                    <div class="alert alert-danger d-none" id="telefonoError">
+                                        Devi inserire esattamente 10 cifre.
                                     </div>
                                     <div class="mb-2">
                                         <label for="dataNascita" class="form-label text-warning fs-6">Data di
@@ -120,20 +121,24 @@
         </div>
         <div class="border rounded p-4">
             <h3 class="text-warning mb-3">Ordini Recenti</h3>
-            <ul class="list-group bg-dark">
-                <?php foreach ($templateParams["ordini"] as $order): ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
-                        <div>
-                            Ordine #<?php echo $order["codiceOrdine"]; ?><br />
-                            <span>Totale: <?php echo $order["totale"]; ?>€</span>
-                        </div>
-                        <form action="dettagliordine.php" method="POST">
-                            <input type="hidden" name="codice" value="<?php echo $order["codiceOrdine"]; ?>">
-                            <button type="submit" class="btn btn-sm">Dettagli</button>
-                        </form>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <?php if (!empty($templateParams["ordini"])): ?>
+                <ul class="list-group bg-dark">
+                    <?php foreach ($templateParams["ordini"] as $order): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+                            <div>
+                                Ordine #<?php echo $order["codiceOrdine"]; ?><br />
+                                <span>Totale: <?php echo $order["totale"]; ?>€</span>
+                            </div>
+                            <form action="dettagliordine.php" method="POST">
+                                <input type="hidden" name="codice" value="<?php echo $order["codiceOrdine"]; ?>">
+                                <button type="submit" class="btn btn-sm">Dettagli</button>
+                            </form>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Non hai ancora effettuato ordini.</p>
+            <?php endif; ?>
         </div>
         <div class="border rounded p-4 mt-5 coupon-section">
             <h3 class="text-warning mb-3">I tuoi Coupon</h3>
@@ -171,7 +176,7 @@
                     <div class="mb-3">
                         <label for="prodotto" class="form-label text-warning">Seleziona un prodotto</label>
                         <select id="prodotto" name="codProdotto" class="form-select" required>
-                            <option value="" disabled selected>Seleziona un prodotto</option> <!-- Opzione placeholder -->
+                            <option value="" disabled selected>Seleziona un prodotto</option>
                             <?php foreach ($templateParams["prodottiNonRecensiti"] as $prodotto): ?>
                                 <option value="<?php echo $prodotto["codProdotto"]; ?>">
                                     <?php echo htmlspecialchars($prodotto["nome"], ENT_QUOTES, 'UTF-8'); ?>
@@ -194,6 +199,7 @@
                                             data-codprodotto="<?php echo $codProdotto; ?>"
                                             hidden>
                                         <em class="bi bi-star text-secondary fs-4 star-icon" data-value="<?php echo $i; ?>"></em>
+                                        <span class="visually-hidden">Valutazione <?php echo $i; ?></span>
                                     </label>
                                 <?php endfor; ?>
                             </div>

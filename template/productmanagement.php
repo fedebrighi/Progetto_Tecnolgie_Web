@@ -8,9 +8,13 @@
             <?php foreach ($templateParams["birre"] as $birra): ?>
                 <div class="col">
                     <div class="d-flex align-items-center border-bottom border-secondary pb-3">
-                        <a href="prodotto_in_dettaglio.php?id=<?php echo $birra['codProdotto']; ?>">
-                            <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>" class="img-fluid me-3" style="width: 150px;">
-                        </a>
+                        <form action="prodotto_in_dettaglio.php" method="POST" class="d-inline">
+                            <input type="hidden" name="codice" value="<?php echo $birra['codProdotto']; ?>" />
+                            <button type="submit" style="border: none; background: none; padding: 0;">
+                                <img src="img/beers/<?php echo $birra["immagine"]; ?>" alt="<?php echo $birra["nome"]; ?>"
+                                    class="img-fluid me-3" style="width: 150px;" />
+                            </button>
+                        </form>
                         <div>
                             <h2 class="m-0 fs-5 text-warning"><?php echo $birra["nome"]; ?></h2>
                             <p class="m-0 fs-6">alc. <?php echo $birra["alc"]; ?> % vol</p>
@@ -74,10 +78,6 @@
                                                 <div class="mb-2">
                                                     <label for="modificaListaIngredienti-<?php echo $birra['codProdotto']; ?>" class="form-label text-warning fs-5">Lista Ingredienti:</label>
                                                     <input type="text" class="form-control" id="modificaListaIngredienti-<?php echo $birra['codProdotto']; ?>" value="<?php echo $birra["listaIngredienti"]; ?>" required>
-                                                </div>
-                                                <div class="mb-2">
-                                                    <label for="modificaImmagine-<?php echo $birra['codProdotto']; ?>" class="form-label text-warning fs-5">Immagine:</label>
-                                                    <input type="file" class="form-control" id="modificaImmagine-<?php echo $birra['codProdotto']; ?>" required>
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="form-label text-warning fs-5">Senza Glutine:</label>
