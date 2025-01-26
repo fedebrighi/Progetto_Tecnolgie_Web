@@ -15,7 +15,7 @@
                                     class="btn btn-sm me-md-2 mb-2 mb-md-0"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modificaStatoModal-<?php echo $order['codiceOrdine']; ?>">
-                                    Modifica Stato
+                                    Modifica
                                 </button>
                                 <div class="modal fade" id="modificaStatoModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1" aria-labelledby="modificaStatoModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -69,7 +69,7 @@
 
                             <form action="dettagliordine.php" method="POST" class="ms-md-2">
                                 <input type="hidden" name="codice" value="<?php echo $order["codiceOrdine"]; ?>">
-                                <button type="submit" class="btn btn-sm ">Dettagli</button>
+                                <button type="submit" class="btn btn-sm ">Dettaglio</button>
                             </form>
                         </div>
                     </li>
