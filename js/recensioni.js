@@ -1,4 +1,3 @@
-// Funzione per aggiungere una recensione
 function aggiungiRecensione(codProdotto) {
     const valutazione = document.querySelector(`input[name="valutazione"][data-codprodotto="${codProdotto}"]:checked`)?.value;
     const testo = document.getElementById(`testo-${codProdotto}`)?.value;
@@ -21,7 +20,7 @@ function aggiungiRecensione(codProdotto) {
                     <div class="alert alert-success" role="alert">
                         Recensione aggiunta con successo! Grazie per il tuo feedback.
                     </div>`;
-                setTimeout(() => confermaDiv.innerHTML = "", 5000); // Rimuove il messaggio dopo 5 secondi
+                setTimeout(() => confermaDiv.innerHTML = "", 5000);
 
             } else {
                 confermaDiv.innerHTML = `
@@ -39,7 +38,6 @@ function aggiungiRecensione(codProdotto) {
         });
 }
 
-// Funzione per selezionare la valutazione
 function selectRating(value) {
     const stars = document.querySelectorAll('.star-icon');
 
@@ -61,11 +59,9 @@ function selectRating(value) {
     }
 }
 
-// Inizializza il sistema di valutazione
 function initRecensioni() {
     const recensioneForm = document.getElementById('recensioneForm');
 
-    // Se il form non esiste, interrompi l'esecuzione
     if (!recensioneForm) {
         console.warn("Il form recensioneForm non è presente nel DOM.");
         return;

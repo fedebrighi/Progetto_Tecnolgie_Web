@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterButton = document.getElementById("toggleFilterButton");
     const filterContainer = document.getElementById("filterContainer");
 
-    // Aggiorna il testo del pulsante in base allo stato del collapse
     filterContainer.addEventListener('shown.bs.collapse', () => {
         filterButton.innerHTML = '<em class="bi bi-filter me-2"></em> Nascondi i Filtri sui Prodotti';
     });

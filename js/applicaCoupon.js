@@ -16,8 +16,8 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
             const couponMessage = document.getElementById("couponMessage");
 
             if (data.success) {
-                couponMessage.classList.remove("d-none", "alert-danger", "border-danger"); // Rimuovi classi di errore
-                couponMessage.classList.add("alert", "alert-success", "border", "border-success"); // Aggiungi classi di successo
+                couponMessage.classList.remove("d-none", "alert-danger", "border-danger");
+                couponMessage.classList.add("alert", "alert-success", "border", "border-success");
                 couponMessage.textContent = `Coupon applicato con successo! Hai risparmiato ${data.discount_amount} EUR.`;
 
                 const totalAmountElement = document.getElementById("totale");
@@ -29,8 +29,8 @@ document.getElementById("applyCouponButton").addEventListener("click", function 
                     }
                 }
             } else {
-                couponMessage.classList.remove("d-none", "alert-success", "border-success"); // Rimuovi classi di successo
-                couponMessage.classList.add("alert", "alert-danger", "border", "border-danger"); // Aggiungi classi di errore
+                couponMessage.classList.remove("d-none", "alert-success", "border-success");
+                couponMessage.classList.add("alert", "alert-danger", "border", "border-danger");
                 couponMessage.textContent = `Errore: ${data.message}`;
             }
 

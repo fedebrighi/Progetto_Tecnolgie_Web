@@ -6,7 +6,7 @@
         </div>
         <?php if (empty($templateParams["notifiche"])): ?>
             <div class="text-center my-5">
-                <em class="bi bi-bell-slash text-danger" style="font-size: 6rem;"></em> <!-- Icona notifiche vuote -->
+                <em class="bi bi-bell-slash text-danger" style="font-size: 6rem;"></em>
                 <h3 class="text-warning mt-4">Non hai nuove notifiche!</h3>
                 <p class="fs-4">Torna più tardi per verificare se ci sono aggiornamenti.</p>
             </div>

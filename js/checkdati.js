@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataNascitaField = document.querySelector("#dataNascita");
     const dataNascitaError = document.querySelector("#dataNascitaError");
     const usernameError = document.querySelector("#usernameError");
-    const emailError = document.querySelector("#emailError"); 
+    const emailError = document.querySelector("#emailError");
     const capField = document.querySelector("#cap");
     const capError = document.querySelector("#capError");
     const telefonoField = document.querySelector("#telefono");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             const username = usernameField.value;
-            const email = emailField.value; // Recupera il valore dell'email
+            const email = emailField.value;
             let isValid = true;
 
             fetch('ajax/api-checkUsername.php', {
@@ -93,22 +93,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         isValid = false;
                         if (capError) {
                             capError.classList.remove("d-none");
-                        } 
+                        }
                     }else {
                         if (capError) {
                             capError.classList.add("d-none");
-                        } 
+                        }
                     }
 
                     if (telefonoField && !/^\d{10}$/.test(telefonoField.value)) {
                         isValid = false;
                         if (telefonoError) {
                             telefonoError.classList.remove("d-none");
-                        } 
+                        }
                     }else {
                         if (telefonoError) {
                             telefonoError.classList.add("d-none");
-                        } 
+                        }
                     }
 
                     if (isValid) {

@@ -6,7 +6,6 @@
         </div>
 
         <div class="container text-center mb-4">
-            <!-- Bottone per attivare il filtro -->
             <button id="toggleFilterButton"
                 class="btn d-flex align-items-center justify-content-center mx-auto" type="button"
                 data-bs-toggle="collapse" data-bs-target="#filterContainer" aria-expanded="false"
@@ -19,13 +18,11 @@
         <div class="collapse" id="filterContainer">
             <div class="card card-body bg-dark border-0">
                 <div class="row">
-                    <!-- Input per la ricerca -->
                     <div class="mb-4">
                         <label for="searchBar" class="form-label">Cerca birra:</label>
                         <input type="text" id="searchBar" class="form-control" placeholder="Cerca birra..."
                             oninput="filterProducts()" />
                     </div>
-                    <!-- Filtri prezzo -->
                     <div class="col-12 col-md-4 mb-3">
                         <label class="form-label">Prezzo (€):</label>
                         <div class="range-slider">
@@ -41,7 +38,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Filtri alcol -->
                     <div class="col-12 col-md-4 mb-3">
                         <label class="form-label">Alcol (%):</label>
                         <div class="range-slider">
@@ -57,7 +53,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Filtro gluten free -->
                     <div class="col-12 col-md-4 d-flex align-items-center">
                         <input type="checkbox" id="glutenFreeFilter" class="form-check-input me-2"
                             onchange="filterProducts()" />

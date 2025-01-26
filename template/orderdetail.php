@@ -6,7 +6,6 @@
 
         </div>
 
-        <!-- Sezione Dati Dell'Ordine -->
         <div class="border border-secondary rounded p-4 mb-5">
             <h2 class="text-warning mb-3"> I dati dell'ordine:</h2>
             <div class="mb-2">
@@ -56,7 +55,6 @@
         </div>
     </div>
 
-    <!-- Modale Tracking -->
     <div class="modal fade" id="trackingModal-<?php echo $order['codiceOrdine']; ?>" tabindex="-1"
         aria-labelledby="trackingModalLabel-<?php echo $order['codiceOrdine']; ?>" aria-hidden="true">
         <div class="modal-dialog">
